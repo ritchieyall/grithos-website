@@ -156,6 +156,56 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     border-color: transparent;
     cursor: default;
   }
+  .cal-day.forge-day {
+    background: linear-gradient(135deg, rgba(201,147,90,.25), rgba(201,147,90,.08));
+    border-color: var(--gold);
+    color: var(--gold);
+    position: relative;
+    overflow: visible;
+  }
+  .cal-day.forge-day::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+  .cal-day.forge-day.active {
+    background: var(--gold);
+    color: var(--void);
+  }
+  .cal-day.forge-day.active::after {
+    background: var(--void);
+  }
+  .practice-card.forge-card {
+    border-color: var(--gold);
+    background: linear-gradient(135deg, var(--card), rgba(201,147,90,.06));
+    animation: forgeGlow 0.8s ease;
+  }
+  @keyframes forgeGlow {
+    0% { box-shadow: 0 0 0 0 rgba(201,147,90,0); }
+    40% { box-shadow: 0 0 30px 4px rgba(201,147,90,.25); }
+    100% { box-shadow: 0 0 8px 1px rgba(201,147,90,.1); }
+  }
+  .practice-card.forge-card .practice-date {
+    color: var(--gold-light);
+  }
+  .forge-label {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--void);
+    background: var(--gold);
+    padding: 3px 10px;
+    border-radius: 3px;
+    margin-bottom: 12px;
+  }
 
   /* Inline practice row — inserted into the calendar grid */
   .practice-row {
@@ -382,7 +432,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       "Be honest in a situation where lying would be easier and invisible.",
       "Accept a compliment without deflecting it.",
       "Hold the standard when the boss isn't around.",
-      "Post the win. You're not bragging — you're building.",
+      "FORGE DAY — Grithos was born on Friday the 13th. Today, do one thing that is hard on purpose. The world flinches at this date. You don't. You build.",
       "Do the ethical thing when it costs you and nobody would know.",
       "Stop hiding behind false modesty. Name what you're good at.",
       "Clean up the mess that isn't yours. Just because.",
@@ -758,6 +808,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       if (viewMonth === currentMonth && d === currentDay) {
         cell.classList.add('today');
       }
+      if (viewMonth === 2 && d === 13) {
+        cell.classList.add('forge-day');
+      }
       (function(day) {
         cell.addEventListener('click', function() {
           selectDay(day);
@@ -805,6 +858,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     var practices = PRACTICES[viewMonth];
     if (!practices || !practices[day - 1]) return;
 
+    var isForgeDay = (viewMonth === 2 && day === 13);
+
     // Calculate grid position of clicked day
     var start = firstDayOfMonth(viewMonth);
     var gridIndex = start + day - 1;
@@ -813,10 +868,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     // Create the practice row
     practiceRow = document.createElement('div');
     practiceRow.className = 'practice-row';
+    var cardClass = isForgeDay ? 'practice-card forge-card' : 'practice-card';
+    var forgeLabel = isForgeDay ? '<div class="forge-label">FORGE DAY</div>' : '';
+    var dateLabel = isForgeDay ? 'MARCH 13 — THE FOUNDING' : MONTHS[viewMonth] + ' ' + day;
     practiceRow.innerHTML =
-      '<div class="practice-card">' +
+      '<div class="' + cardClass + '">' +
         '<button class="close-btn" aria-label="Close">&times;</button>' +
-        '<div class="practice-date">' + MONTHS[viewMonth] + ' ' + day + '</div>' +
+        forgeLabel +
+        '<div class="practice-date">' + dateLabel + '</div>' +
         '<div class="practice-text">' + practices[day - 1] + '</div>' +
         '<div class="practice-tenet-link"><a href="/tenets#' + TENET_IDS[viewMonth] + '">' + TENETS[viewMonth].replace('— ', '— ').split('—')[0].trim() + '</a></div>' +
       '</div>';
