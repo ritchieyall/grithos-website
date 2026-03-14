@@ -116,6 +116,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     max-width: 760px;
     margin: 0 auto;
     padding: 0 0 48px;
+    scroll-margin-top: 100px;
   }
   .tenet + .tenet {
     padding-top: 48px;
@@ -229,7 +230,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <p class="tenets-group-tagline">Three tenets for the honest life.</p>
     </div>
 
-    <div class="tenet reveal d2">
+    <div class="tenet reveal d2" id="tenet-i">
       <div class="tenet-number">Tenet I</div>
       <h3 class="tenet-title">Tell the Truth. Even When It Costs You.</h3>
       <div class="tenet-body">
@@ -238,7 +239,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </div>
 
-    <div class="tenet reveal d3">
+    <div class="tenet reveal d3" id="tenet-ii">
       <div class="tenet-number">Tenet II</div>
       <h3 class="tenet-title">Keep Your Word Like Your Life Depends on It.</h3>
       <div class="tenet-body">
@@ -247,7 +248,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </div>
 
-    <div class="tenet reveal d4">
+    <div class="tenet reveal d4" id="tenet-iii">
       <div class="tenet-number">Tenet III</div>
       <h3 class="tenet-title">Own Your Wins. But Do Right in the Dark.</h3>
       <div class="tenet-body">
@@ -269,7 +270,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <p class="tenets-group-tagline">Three tenets for the apex life.</p>
     </div>
 
-    <div class="tenet reveal d2">
+    <div class="tenet reveal d2" id="tenet-iv">
       <div class="tenet-number">Tenet IV</div>
       <h3 class="tenet-title">Never Shrink. Never Apologize for Strength.</h3>
       <div class="tenet-body">
@@ -278,7 +279,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </div>
 
-    <div class="tenet reveal d3">
+    <div class="tenet reveal d3" id="tenet-v">
       <div class="tenet-number">Tenet V</div>
       <h3 class="tenet-title">Protect Those Beneath You.</h3>
       <div class="tenet-body">
@@ -287,7 +288,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </div>
 
-    <div class="tenet reveal d4">
+    <div class="tenet reveal d4" id="tenet-vi">
       <div class="tenet-number">Tenet VI</div>
       <h3 class="tenet-title">Reject the Victim. Become the Author.</h3>
       <div class="tenet-body">
@@ -309,7 +310,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <p class="tenets-group-tagline">Three tenets for the disciplined life.</p>
     </div>
 
-    <div class="tenet reveal d2">
+    <div class="tenet reveal d2" id="tenet-vii">
       <div class="tenet-number">Tenet VII</div>
       <h3 class="tenet-title">Own Only What Is Yours.</h3>
       <div class="tenet-body">
@@ -318,7 +319,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </div>
 
-    <div class="tenet reveal d3">
+    <div class="tenet reveal d3" id="tenet-viii">
       <div class="tenet-number">Tenet VIII</div>
       <h3 class="tenet-title">Redirect Immediately.</h3>
       <div class="tenet-body">
@@ -327,7 +328,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </div>
 
-    <div class="tenet reveal d4">
+    <div class="tenet reveal d4" id="tenet-ix">
       <div class="tenet-number">Tenet IX</div>
       <h3 class="tenet-title">Trust the Bounds.</h3>
       <div class="tenet-body">
@@ -349,7 +350,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <p class="tenets-group-tagline">Three tenets for the finite life.</p>
     </div>
 
-    <div class="tenet reveal d2">
+    <div class="tenet reveal d2" id="tenet-x">
       <div class="tenet-number">Tenet X</div>
       <h3 class="tenet-title">Live Like You Will Die. Because You Will.</h3>
       <div class="tenet-body">
@@ -358,7 +359,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </div>
 
-    <div class="tenet reveal d3">
+    <div class="tenet reveal d3" id="tenet-xi">
       <div class="tenet-number">Tenet XI</div>
       <h3 class="tenet-title">Grieve Fully. Then Move.</h3>
       <div class="tenet-body">
@@ -367,7 +368,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </div>
 
-    <div class="tenet reveal d4">
+    <div class="tenet reveal d4" id="tenet-xii">
       <div class="tenet-number">Tenet XII</div>
       <h3 class="tenet-title">Build a Legacy That Doesn't Need an Afterlife.</h3>
       <div class="tenet-body">

@@ -221,19 +221,29 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     margin: 0;
   }
   .tenets-list li {
+    border-bottom: 1px solid var(--border);
+  }
+  .tenets-list li:last-child {
+    border-bottom: none;
+  }
+  .tenets-list li a {
+    display: block;
     font-family: var(--heading);
     font-size: 15px;
     font-weight: 700;
     color: var(--white);
+    text-decoration: none;
     padding: 12px 0;
-    border-bottom: 1px solid var(--border);
     line-height: 1.4;
+    transition: color .2s;
   }
-  .tenets-list li:last-child {
-    border-bottom: none;
+  .tenets-list li:last-child a {
     padding-bottom: 0;
   }
-  .tenets-list li span {
+  .tenets-list li a:hover {
+    color: var(--gold);
+  }
+  .tenets-list li a span {
     font-family: var(--mono);
     font-size: 10px;
     font-weight: 600;
@@ -419,9 +429,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="tenets-pillar reveal d1">
         <div class="tenets-pillar-label">From Virtue</div>
         <ul class="tenets-list">
-          <li><span>I</span> Tell the Truth. Even When It Costs You.</li>
-          <li><span>II</span> Keep Your Word Like Your Life Depends on It.</li>
-          <li><span>III</span> Own Your Wins. But Do Right in the Dark.</li>
+          <li><a href="/tenets#tenet-i"><span>I</span> Tell the Truth. Even When It Costs You.</a></li>
+          <li><a href="/tenets#tenet-ii"><span>II</span> Keep Your Word Like Your Life Depends on It.</a></li>
+          <li><a href="/tenets#tenet-iii"><span>III</span> Own Your Wins. But Do Right in the Dark.</a></li>
         </ul>
       </div>
 
@@ -429,9 +439,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="tenets-pillar reveal d2">
         <div class="tenets-pillar-label">From Apex</div>
         <ul class="tenets-list">
-          <li><span>IV</span> Never Shrink. Never Apologize for Strength.</li>
-          <li><span>V</span> Protect Those Beneath You.</li>
-          <li><span>VI</span> Reject the Victim. Become the Author.</li>
+          <li><a href="/tenets#tenet-iv"><span>IV</span> Never Shrink. Never Apologize for Strength.</a></li>
+          <li><a href="/tenets#tenet-v"><span>V</span> Protect Those Beneath You.</a></li>
+          <li><a href="/tenets#tenet-vi"><span>VI</span> Reject the Victim. Become the Author.</a></li>
         </ul>
       </div>
 
@@ -439,9 +449,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="tenets-pillar reveal d3">
         <div class="tenets-pillar-label">From Control</div>
         <ul class="tenets-list">
-          <li><span>VII</span> Own Only What Is Yours.</li>
-          <li><span>VIII</span> Redirect Immediately.</li>
-          <li><span>IX</span> Trust the Bounds.</li>
+          <li><a href="/tenets#tenet-vii"><span>VII</span> Own Only What Is Yours.</a></li>
+          <li><a href="/tenets#tenet-viii"><span>VIII</span> Redirect Immediately.</a></li>
+          <li><a href="/tenets#tenet-ix"><span>IX</span> Trust the Bounds.</a></li>
         </ul>
       </div>
 
@@ -449,9 +459,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="tenets-pillar reveal d4">
         <div class="tenets-pillar-label">From Death</div>
         <ul class="tenets-list">
-          <li><span>X</span> Live Like You Will Die. Because You Will.</li>
-          <li><span>XI</span> Grieve Fully. Then Move.</li>
-          <li><span>XII</span> Build a Legacy That Doesn't Need an Afterlife.</li>
+          <li><a href="/tenets#tenet-x"><span>X</span> Live Like You Will Die. Because You Will.</a></li>
+          <li><a href="/tenets#tenet-xi"><span>XI</span> Grieve Fully. Then Move.</a></li>
+          <li><a href="/tenets#tenet-xii"><span>XII</span> Build a Legacy That Doesn't Need an Afterlife.</a></li>
         </ul>
       </div>
 
