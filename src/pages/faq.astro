@@ -1,0 +1,391 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="FAQ | Grithos"
+  description="Common questions about Grithos — is it a religion, a cult, or just Stoicism? Straight answers about a philosophy of life built on grit and ethos."
+  ogTitle="FAQ — Grithos"
+  ogDescription="Common questions about Grithos. Straight answers. No fluff. Is it a religion? Is it a cult? Is it just Stoicism? Find out."
+  ogUrl="https://grithos.com/faq"
+  canonical="https://grithos.com/faq"
+  activePage="faq"
+>
+
+<Fragment slot="head">
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is Grithos a religion?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Grithos is a philosophy of life — a framework for how to think, act, and live. It acknowledges God as the architect of the bounds but does not prescribe how to worship, what to believe about the afterlife, or which faith to follow. Your relationship with God is yours. Grithos asks only that you also align with virtue, effort, and the life you were given."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this a cult?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. There is no membership, no dues, no leader to obey, no group identity to adopt. Grithos is a set of ideas. You take what serves you. You leave what doesn't. Nobody tracks you, pressures you, or asks you to recruit anyone. If it helps you live better, use it. If it doesn't, move on."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this just Stoicism?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Grithos draws heavily from Stoic philosophy — especially Marcus Aurelius' Meditations. But it is not a copy. Stoicism counsels emotional detachment; Grithos says feel everything, then move. Stoicism is indifferent to outcomes; Grithos says fight for the outcome, but redirect when the bounds decide otherwise. Stoicism is ancient theory. Grithos is modern practice."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I have to believe in God to follow Grithos?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Grithos acknowledges a rational God who authored the bounds — the consistent, trustworthy laws that govern reality. If you believe in God, Grithos does not conflict with that. If you see 'the bounds' as natural law or physics, the philosophy still works. Grithos does not require a specific belief — it requires alignment with reality."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I be Christian and follow Grithos?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Grithos was specifically written to avoid conflicting with Christian beliefs. It does not deny God, dismiss worship, or reject the afterlife. It says: however you choose to honor God is yours. The tenets — honesty, keeping your word, protecting others, building legacy — align with Christian values."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a Grithosian?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A Grithosian (grith-OH-see-an) is someone who practices the Grithos philosophy. There is no initiation, no card, no ceremony. If you live by the tenets, you are a Grithosian. If you stop, you are not. It is defined entirely by action."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does 'the bounds' mean?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The bounds are the rules of reality — gravity, time, cause and effect, biology, physics. They are consistent, rational, and trustworthy. God authored them. A Grithosian does not fight the bounds or wish for different ones. You learn them, respect them, and build within them."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why was Grithos founded on Friday the 13th?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Because superstition fears that date. Grithos was forged in it. A Grithosian does not avoid things because of irrational fear. Friday the 13th is just a day — and now it is Forge Day, the annual founding day of Grithos. On Forge Day, you do one thing that is hard on purpose."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I have to follow all 12 tenets?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The tenets are a complete system — each one reinforces the others. But nobody is grading you. Start with the one that challenges you most. Practice it until it becomes natural. Then add another. The goal is not perfection. The goal is daily effort toward a better version of yourself."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Who is Marcus Aurelius and why does he matter?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Marcus Aurelius was the Emperor of Rome from 161 to 180 AD and one of history's greatest Stoic philosophers. He wrote Meditations — a private journal of self-discipline and moral reflection. Grithos did not invent its principles. It inherited them. The ideas behind the Four Pillars have been tested for nearly two thousand years."
+        }
+      }
+    ]
+  })} />
+</Fragment>
+
+<style is:inline>
+  .page-hero {
+    padding: 160px 0 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-hero::before {
+    content: '';
+    position: absolute;
+    top: 40%; left: 50%; transform: translateX(-50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(201,147,90,.05) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .page-hero-overline {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 1;
+  }
+  .page-hero-title {
+    font-family: var(--heading);
+    font-size: clamp(32px, 4.5vw, 52px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -.02em;
+    color: var(--white);
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+  }
+  .page-hero-sub {
+    font-family: 'Georgia', serif;
+    font-size: clamp(15px, 2vw, 18px);
+    font-style: italic;
+    color: var(--text-secondary);
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.7;
+    position: relative;
+    z-index: 1;
+  }
+
+  .faq-section {
+    padding: 0 0 100px;
+  }
+  .faq-list {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+  }
+  .faq-question {
+    width: 100%;
+    background: transparent;
+    border: none;
+    padding: 28px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    cursor: pointer;
+    text-align: left;
+  }
+  .faq-question-text {
+    font-family: var(--heading);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.4;
+    transition: color .2s;
+  }
+  .faq-question:hover .faq-question-text {
+    color: var(--gold);
+  }
+  .faq-icon {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .3s;
+  }
+  .faq-icon svg {
+    width: 14px;
+    height: 14px;
+    color: var(--text-muted);
+    transition: all .3s;
+  }
+  .faq-item.open .faq-icon {
+    border-color: var(--gold);
+    background: var(--gold-soft);
+  }
+  .faq-item.open .faq-icon svg {
+    color: var(--gold);
+    transform: rotate(45deg);
+  }
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .4s cubic-bezier(.16,1,.3,1), opacity .3s;
+    opacity: 0;
+  }
+  .faq-item.open .faq-answer {
+    opacity: 1;
+  }
+  .faq-answer-inner {
+    padding: 0 0 28px;
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    max-width: 640px;
+  }
+  .faq-answer-inner a {
+    color: var(--gold);
+    text-decoration: none;
+    transition: color .2s;
+  }
+  .faq-answer-inner a:hover {
+    color: var(--gold-light);
+  }
+
+  @media(max-width:768px) {
+    .faq-question-text {
+      font-size: 16px;
+    }
+  }
+</style>
+
+<section class="page-hero">
+  <div class="wrap">
+    <p class="page-hero-overline reveal">FAQ</p>
+    <h1 class="page-hero-title reveal d1">Straight Answers</h1>
+    <p class="page-hero-sub reveal d2">No fluff. No spin. Just the questions people ask and the honest answers.</p>
+  </div>
+</section>
+
+<section class="faq-section">
+  <div class="wrap">
+    <div class="faq-list">
+
+      <div class="faq-item reveal d1">
+        <button class="faq-question" aria-expanded="false">
+          <span class="faq-question-text">Is Grithos a religion?</span>
+          <span class="faq-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">No. Grithos is a philosophy of life — a framework for how to think, act, and live. It acknowledges God as the architect of the bounds but does not prescribe how to worship, what to believe about the afterlife, or which faith to follow. Your relationship with God is yours. Grithos asks only that you also align with virtue, effort, and the life you were given.</div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal d2">
+        <button class="faq-question" aria-expanded="false">
+          <span class="faq-question-text">Is this a cult?</span>
+          <span class="faq-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">No. There is no membership, no dues, no leader to obey, no group identity to adopt. Grithos is a set of ideas. You take what serves you. You leave what doesn't. Nobody tracks you, pressures you, or asks you to recruit anyone. If it helps you live better, use it. If it doesn't, move on.</div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal d3">
+        <button class="faq-question" aria-expanded="false">
+          <span class="faq-question-text">Is this just Stoicism?</span>
+          <span class="faq-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Grithos draws heavily from Stoic philosophy — especially Marcus Aurelius' <a href="/lineage">Meditations</a>. But it is not a copy. Stoicism counsels emotional detachment; Grithos says feel everything, then move. Stoicism is indifferent to outcomes; Grithos says fight for the outcome, but redirect when the bounds decide otherwise. Stoicism is ancient theory. Grithos is modern practice.</div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal d4">
+        <button class="faq-question" aria-expanded="false">
+          <span class="faq-question-text">Do I have to believe in God to follow Grithos?</span>
+          <span class="faq-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Grithos acknowledges a rational God who authored the bounds — the consistent, trustworthy laws that govern reality. If you believe in God, Grithos does not conflict with that. If you see "the bounds" as natural law or physics, the philosophy still works. Grithos does not require a specific belief — it requires alignment with reality.</div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal d5">
+        <button class="faq-question" aria-expanded="false">
+          <span class="faq-question-text">Can I be Christian and follow Grithos?</span>
+          <span class="faq-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Yes. Grithos was specifically written to avoid conflicting with Christian beliefs. It does not deny God, dismiss worship, or reject the afterlife. It says: however you choose to honor God is yours. The <a href="/tenets">tenets</a> — honesty, keeping your word, protecting others, building legacy — align with Christian values.</div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal d6">
+        <button class="faq-question" aria-expanded="false">
+          <span class="faq-question-text">What is a Grithosian?</span>
+          <span class="faq-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">A Grithosian (grith-OH-see-an) is someone who practices the Grithos philosophy. There is no initiation, no card, no ceremony. If you live by the tenets, you are a Grithosian. If you stop, you are not. It is defined entirely by action.</div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal d7">
+        <button class="faq-question" aria-expanded="false">
+          <span class="faq-question-text">What does "the bounds" mean?</span>
+          <span class="faq-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">The bounds are the rules of reality — gravity, time, cause and effect, biology, physics. They are consistent, rational, and trustworthy. God authored them. A Grithosian does not fight the bounds or wish for different ones. You learn them, respect them, and build within them.</div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal d8">
+        <button class="faq-question" aria-expanded="false">
+          <span class="faq-question-text">Why was Grithos founded on Friday the 13th?</span>
+          <span class="faq-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Because superstition fears that date. Grithos was forged in it. A Grithosian does not avoid things because of irrational fear. Friday the 13th is just a day — and now it is <a href="/practice">Forge Day</a>, the annual founding day of Grithos. On Forge Day, you do one thing that is hard on purpose.</div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal d8">
+        <button class="faq-question" aria-expanded="false">
+          <span class="faq-question-text">Do I have to follow all 12 tenets?</span>
+          <span class="faq-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">The <a href="/tenets">tenets</a> are a complete system — each one reinforces the others. But nobody is grading you. Start with the one that challenges you most. Practice it until it becomes natural. Then add another. The goal is not perfection. The goal is daily effort toward a better version of yourself.</div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal d8">
+        <button class="faq-question" aria-expanded="false">
+          <span class="faq-question-text">Who is Marcus Aurelius and why does he matter?</span>
+          <span class="faq-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Marcus Aurelius was the Emperor of Rome from 161 to 180 AD and one of history's greatest Stoic philosophers. He wrote <em>Meditations</em> — a private journal of self-discipline and moral reflection. Grithos did not invent its principles. It inherited them. The ideas behind the <a href="/lineage">Four Pillars</a> have been tested for nearly two thousand years.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+(function() {
+  document.querySelectorAll('.faq-question').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = btn.closest('.faq-item');
+      var answer = item.querySelector('.faq-answer');
+      var isOpen = item.classList.contains('open');
+
+      // Close all others
+      document.querySelectorAll('.faq-item.open').forEach(function(openItem) {
+        if (openItem !== item) {
+          openItem.classList.remove('open');
+          openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+          openItem.querySelector('.faq-answer').style.maxHeight = '0';
+        }
+      });
+
+      if (isOpen) {
+        item.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        answer.style.maxHeight = '0';
+      } else {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+})();
+</script>
+
+</BaseLayout>
