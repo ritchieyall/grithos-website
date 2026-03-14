@@ -185,6 +185,85 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     text-align: left;
   }
 
+  /* ═══ TENETS ═══ */
+  .tenets {
+    padding: 100px 0 120px;
+  }
+  .tenets-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+    margin-top: 48px;
+  }
+  .tenets-pillar {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    padding: 40px 36px;
+    transition: border-color .3s, box-shadow .3s;
+  }
+  .tenets-pillar:hover {
+    border-color: var(--gold-border);
+    box-shadow: 0 0 40px rgba(201,147,90,.06);
+  }
+  .tenets-pillar-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .tenets-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .tenets-list li {
+    font-family: var(--heading);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--white);
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    line-height: 1.4;
+  }
+  .tenets-list li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .tenets-list li span {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    color: var(--gold);
+    margin-right: 10px;
+  }
+  .tenets-cta {
+    text-align: center;
+    margin-top: 48px;
+  }
+  .tenets-cta a {
+    font-family: var(--body);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gold);
+    text-decoration: none;
+    letter-spacing: .02em;
+    transition: color .2s;
+  }
+  .tenets-cta a:hover {
+    color: var(--gold-light);
+  }
+  .tenets-cta a svg {
+    width: 14px;
+    height: 14px;
+    vertical-align: -2px;
+    margin-left: 6px;
+  }
+
   /* ═══ FOUNDER ═══ */
   .founder {
     padding: 80px 0 100px;
@@ -214,11 +293,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   /* ═══ RESPONSIVE ═══ */
   @media(max-width:768px) {
-    .pillars-grid {
+    .pillars-grid,
+    .tenets-grid {
       grid-template-columns: 1fr;
     }
     .pillar-card {
       padding: 32px 28px;
+    }
+    .tenets-pillar {
+      padding: 28px 24px;
     }
   }
 </style>
@@ -316,6 +399,66 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <p class="pillar-body">A Grithosian does not fear death. It is not an enemy. It is a conclusion — the natural end of a life fully lived. Your body returns to the earth. Your matter rejoins the whole. The universe is permanently and irrevocably different for you having existed in it. Your impact lives on through others. Not in a supernatural sense — in a real one. The people you led. The truth you told when it cost you. The times you owned your apex nature and protected those beneath you. That is your legacy. It needs no afterlife to matter. Grief is not weakness. A Grithosian feels it completely — because only an apex creature capable of deep connection can experience deep loss. But grief is not a residence. Feel it. Honor it. Move. Death is not the opposite of life. It is the completion of it.</p>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══ TWELVE TENETS ═══ -->
+<section class="tenets" id="tenets">
+  <div class="wrap">
+    <div class="reveal d1" style="text-align:center;">
+      <div class="sec-label">The Daily Practice</div>
+      <h2 class="sec-title">The Twelve Tenets</h2>
+    </div>
+
+    <div class="tenets-grid">
+
+      <!-- Virtue Tenets -->
+      <div class="tenets-pillar reveal d1">
+        <div class="tenets-pillar-label">From Virtue</div>
+        <ul class="tenets-list">
+          <li><span>I</span> Tell the Truth. Even When It Costs You.</li>
+          <li><span>II</span> Keep Your Word Like Your Life Depends on It.</li>
+          <li><span>III</span> Own Your Wins. But Do Right in the Dark.</li>
+        </ul>
+      </div>
+
+      <!-- Apex Tenets -->
+      <div class="tenets-pillar reveal d2">
+        <div class="tenets-pillar-label">From Apex</div>
+        <ul class="tenets-list">
+          <li><span>IV</span> Never Shrink. Never Apologize for Strength.</li>
+          <li><span>V</span> Protect Those Beneath You.</li>
+          <li><span>VI</span> Reject the Victim. Become the Author.</li>
+        </ul>
+      </div>
+
+      <!-- Control Tenets -->
+      <div class="tenets-pillar reveal d3">
+        <div class="tenets-pillar-label">From Control</div>
+        <ul class="tenets-list">
+          <li><span>VII</span> Own Only What Is Yours.</li>
+          <li><span>VIII</span> Redirect Immediately.</li>
+          <li><span>IX</span> Trust the Bounds.</li>
+        </ul>
+      </div>
+
+      <!-- Death Tenets -->
+      <div class="tenets-pillar reveal d4">
+        <div class="tenets-pillar-label">From Death</div>
+        <ul class="tenets-list">
+          <li><span>X</span> Live Like You Will Die. Because You Will.</li>
+          <li><span>XI</span> Grieve Fully. Then Move.</li>
+          <li><span>XII</span> Build a Legacy That Doesn't Need an Afterlife.</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="tenets-cta reveal d5">
+      <a href="/tenets">Read the full tenets <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg></a>
     </div>
   </div>
 </section>
