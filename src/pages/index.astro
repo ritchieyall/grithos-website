@@ -23,17 +23,31 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .hero::before {
     content: '';
     position: absolute;
-    top: -40%; left: 50%; transform: translateX(-50%);
+    top: 50%; left: 50%; transform: translateX(-50%);
     width: 900px; height: 900px;
-    background: radial-gradient(circle, rgba(201,147,90,.1) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(201,147,90,.06) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+  }
+  .hero-logo-wrap {
+    position: relative;
+    display: inline-block;
+    max-width: 420px;
+    width: 80%;
+    margin-bottom: 20px;
+    z-index: 2;
+  }
+  .hero-logo-wrap::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    box-shadow: 0 0 60px 60px var(--void);
     pointer-events: none;
   }
   .hero-logo {
-    max-width: 420px;
-    width: 80%;
+    display: block;
+    width: 100%;
     height: auto;
-    margin-bottom: 20px;
-    border-radius: 12px;
   }
   .hero-subtitle {
     font-family: 'Georgia', serif;
@@ -203,7 +217,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <section class="hero">
   <div class="wrap">
     <div class="reveal d1">
-      <img src="/assets/images/logo.jpg" alt="Grithos" class="hero-logo">
+      <div class="hero-logo-wrap"><img src="/assets/images/logo.jpg" alt="Grithos" class="hero-logo"></div>
       <p class="hero-subtitle">A Philosophy of Life</p>
       <p class="hero-pronunciation">GRITH-os &nbsp;|&nbsp; Practitioner: Grithosian (grith-OH-see-an)</p>
     </div>
