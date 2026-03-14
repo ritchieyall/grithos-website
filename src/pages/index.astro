@@ -138,41 +138,51 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: var(--r-lg);
-    padding: 40px 36px;
+    padding: 48px 40px;
     transition: border-color .3s, box-shadow .3s;
+    text-align: center;
   }
   .pillar-card:hover {
     border-color: var(--gold-border);
     box-shadow: 0 0 40px rgba(201,147,90,.06);
   }
   .pillar-numeral {
-    font-family: var(--mono);
+    font-family: var(--heading);
     font-size: 11px;
-    font-weight: 600;
-    letter-spacing: .14em;
+    font-weight: 700;
+    letter-spacing: .22em;
     color: var(--gold);
     text-transform: uppercase;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
   }
   .pillar-name {
     font-family: var(--heading);
-    font-size: 22px;
-    font-weight: 700;
+    font-size: 28px;
+    font-weight: 800;
     color: var(--white);
-    margin-bottom: 6px;
+    letter-spacing: -.01em;
+    margin-bottom: 4px;
   }
   .pillar-tagline {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--text-muted);
-    letter-spacing: .04em;
-    margin-bottom: 20px;
+    font-family: 'Georgia', serif;
+    font-size: 14px;
+    font-style: italic;
+    color: var(--gold-light);
+    letter-spacing: .01em;
+    margin-bottom: 28px;
+  }
+  .pillar-divider {
+    width: 40px;
+    height: 1px;
+    background: var(--border);
+    margin: 0 auto 28px;
   }
   .pillar-body {
-    font-family: 'Georgia', serif;
+    font-family: var(--body);
     font-size: 15px;
-    line-height: 1.8;
+    line-height: 1.85;
     color: var(--text-secondary);
+    text-align: left;
   }
 
   /* ═══ FOUNDER ═══ */
@@ -275,6 +285,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="pillar-numeral">Pillar I</div>
         <h3 class="pillar-name">Virtue</h3>
         <div class="pillar-tagline">Do right regardless.</div>
+        <div class="pillar-divider"></div>
         <p class="pillar-body">A Grithosian is honest. Not when it is convenient. Not when it is safe. Regardless of the cost. Virtue requires no reward, no recognition, and no God looking over your shoulder. You do right because it is right. That is the only reason a Grithosian needs. Honesty is not a policy. It is a practice — daily, unglamorous, and non-negotiable.</p>
       </div>
 
@@ -283,6 +294,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="pillar-numeral">Pillar II</div>
         <h3 class="pillar-name">Apex</h3>
         <div class="pillar-tagline">Own your nature.</div>
+        <div class="pillar-divider"></div>
         <p class="pillar-body">Humans are the most capable species on earth. That is not arrogance — it is fact. A Grithosian owns that truth completely and without apology. But apex is not a trophy. It is a weight. With the greatest capability comes the greatest accountability. A Grithosian leads with strength and responsibility in equal measure — protecting those beneath them, never exploiting them. Shrinking from your potential is not humility. It is a betrayal of your nature. What a Grithosian rejects above all else is victim mentality. Not hardship — hardship is real. Not struggle — struggle is human. But the decision to define yourself by what happened to you rather than what you do next. You are apex. Act like it.</p>
       </div>
 
@@ -291,6 +303,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="pillar-numeral">Pillar III</div>
         <h3 class="pillar-name">Control</h3>
         <div class="pillar-tagline">Live within bounds.</div>
+        <div class="pillar-divider"></div>
         <p class="pillar-body">A Grithosian owns four things completely — their thoughts and attitudes, their decisions and actions, their effort and preparation, and their character and integrity. Everything else belongs to the bounds. Other people's opinions. Outcomes beyond your effort. Illness. Circumstance. The economy. These are not yours to carry. This is not resignation. A Grithosian does not sit still in the face of what they cannot control. They redirect. Immediately. Deliberately. Every ounce of energy that would have been spent fighting the bounds gets turned back toward what is actually theirs to own. God authored the bounds. They are rational. They are consistent. They can be trusted. Live within them.</p>
       </div>
 
@@ -299,6 +312,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="pillar-numeral">Pillar IV</div>
         <h3 class="pillar-name">Death</h3>
         <div class="pillar-tagline">Return to the whole.</div>
+        <div class="pillar-divider"></div>
         <p class="pillar-body">A Grithosian does not fear death. It is not an enemy. It is a conclusion — the natural end of a life fully lived. Your body returns to the earth. Your matter rejoins the whole. The universe is permanently and irrevocably different for you having existed in it. Your impact lives on through others. Not in a supernatural sense — in a real one. The people you led. The truth you told when it cost you. The times you owned your apex nature and protected those beneath you. That is your legacy. It needs no afterlife to matter. Grief is not weakness. A Grithosian feels it completely — because only an apex creature capable of deep connection can experience deep loss. But grief is not a residence. Feel it. Honor it. Move. Death is not the opposite of life. It is the completion of it.</p>
       </div>
 
