@@ -1,0 +1,402 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="The Tenets | Grithos"
+  description="The twelve tenets of Grithos — the daily practice of a Grithosian. How to live with grit and ethos, every single day."
+  ogTitle="The Tenets — Grithos"
+  ogDescription="The daily practice of a Grithosian. Twelve tenets for living with grit and ethos."
+  ogUrl="https://grithos.com/tenets"
+  canonical="https://grithos.com/tenets"
+  activePage="tenets"
+>
+
+<style is:inline>
+  /* ═══ PAGE HERO ═══ */
+  .page-hero {
+    padding: 160px 0 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-hero::before {
+    content: '';
+    position: absolute;
+    top: 40%; left: 50%; transform: translateX(-50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(201,147,90,.05) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .page-hero .wrap { position: relative; z-index: 1; }
+  .page-hero-overline {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .page-hero-title {
+    font-family: var(--heading);
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -.02em;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+  .page-hero-sub {
+    font-family: 'Georgia', serif;
+    font-size: clamp(16px, 2vw, 20px);
+    font-style: italic;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* ═══ PREAMBLE ═══ */
+  .preamble {
+    padding: 80px 0;
+  }
+  .preamble-text {
+    font-family: 'Georgia', serif;
+    font-size: 18px;
+    line-height: 1.9;
+    color: var(--text-secondary);
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  /* ═══ SECTION DIVIDER ═══ */
+  .section-divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+    margin: 0;
+  }
+
+  /* ═══ TENETS GROUP ═══ */
+  .tenets-group {
+    padding: 100px 0;
+  }
+  .tenets-group-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  .tenets-group-pillar {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .tenets-group-name {
+    font-family: var(--heading);
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -.01em;
+    margin-bottom: 8px;
+  }
+  .tenets-group-tagline {
+    font-family: 'Georgia', serif;
+    font-size: 16px;
+    font-style: italic;
+    color: var(--text-muted);
+  }
+
+  /* ═══ TENET CARD ═══ */
+  .tenet {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 0 48px;
+  }
+  .tenet + .tenet {
+    padding-top: 48px;
+    border-top: 1px solid var(--border);
+  }
+  .tenet-number {
+    font-family: var(--heading);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .22em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .tenet-title {
+    font-family: var(--heading);
+    font-size: clamp(20px, 2.5vw, 26px);
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -.01em;
+    margin-bottom: 16px;
+  }
+  .tenet-body {
+    font-family: var(--body);
+    font-size: 15px;
+    line-height: 1.85;
+    color: var(--text-secondary);
+  }
+  .tenet-body p + p {
+    margin-top: 16px;
+  }
+
+  /* ═══ CLOSING ═══ */
+  .closing {
+    padding: 100px 0 120px;
+    text-align: center;
+  }
+  .closing-text {
+    font-family: 'Georgia', serif;
+    font-size: clamp(20px, 2.8vw, 28px);
+    font-weight: 700;
+    font-style: italic;
+    color: var(--white);
+    line-height: 1.5;
+    max-width: 700px;
+    margin: 0 auto 24px;
+  }
+  .closing-sub {
+    font-family: 'Georgia', serif;
+    font-size: clamp(15px, 2vw, 18px);
+    font-style: italic;
+    color: var(--text-secondary);
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  /* ═══ BACK LINK ═══ */
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--body);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color .2s;
+    margin-top: 48px;
+  }
+  .back-link:hover { color: var(--gold); }
+  .back-link svg { width: 16px; height: 16px; }
+
+  /* ═══ RESPONSIVE ═══ */
+  @media(max-width:768px) {
+    .tenets-group { padding: 60px 0; }
+    .tenet { padding: 0 0 32px; }
+    .tenet + .tenet { padding-top: 32px; }
+  }
+</style>
+
+<!-- ═══ HERO ═══ -->
+<section class="page-hero">
+  <div class="wrap">
+    <div class="reveal d1">
+      <p class="page-hero-overline">The Daily Practice</p>
+      <h1 class="page-hero-title">The Twelve Tenets</h1>
+      <p class="page-hero-sub">A Grithosian does not just believe. A Grithosian practices.</p>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══ PREAMBLE ═══ -->
+<section class="preamble">
+  <div class="wrap">
+    <div class="reveal d1">
+      <p class="preamble-text">The Four Pillars define what a Grithosian stands for. The Twelve Tenets define how a Grithosian lives. These are not aspirations. They are practices — daily, deliberate, and non-negotiable. Read them. Internalize them. Then go live them.</p>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══ TENETS OF VIRTUE ═══ -->
+<section class="tenets-group" id="virtue-tenets">
+  <div class="wrap">
+    <div class="tenets-group-header reveal d1">
+      <p class="tenets-group-pillar">From Pillar I — Virtue</p>
+      <h2 class="tenets-group-name">Do Right Regardless</h2>
+      <p class="tenets-group-tagline">Three tenets for the honest life.</p>
+    </div>
+
+    <div class="tenet reveal d2">
+      <div class="tenet-number">Tenet I</div>
+      <h3 class="tenet-title">Tell the Truth. Even When It Costs You.</h3>
+      <div class="tenet-body">
+        <p>A Grithosian does not bend the truth to protect comfort — theirs or anyone else's. You say what is real. You report what happened. You admit what you did. Not because it is easy. Because it is right.</p>
+        <p>If the truth costs you a friendship, a deal, a promotion — you pay that price and you sleep well. A life built on lies is a life built on sand. A Grithosian builds on stone.</p>
+      </div>
+    </div>
+
+    <div class="tenet reveal d3">
+      <div class="tenet-number">Tenet II</div>
+      <h3 class="tenet-title">Keep Your Word Like Your Life Depends on It.</h3>
+      <div class="tenet-body">
+        <p>When a Grithosian says they will do something, it is done. No qualifiers. No escape clauses. No "I'll try." You said it. Now you do it.</p>
+        <p>This means you speak carefully. You do not make promises you cannot keep. You do not commit to things you have no intention of finishing. Your word is the most valuable thing you own. Treat it that way.</p>
+      </div>
+    </div>
+
+    <div class="tenet reveal d4">
+      <div class="tenet-number">Tenet III</div>
+      <h3 class="tenet-title">Do the Right Thing When Nobody Is Watching.</h3>
+      <div class="tenet-body">
+        <p>Virtue performed for an audience is not virtue. It is performance. A Grithosian does right in the dark — when no one will ever know, when there is no reward, when the only witness is the person staring back in the mirror.</p>
+        <p>Return the extra change. Tell the truth on the form. Do the work you said you did. This is where virtue lives — not in the grand gesture, but in the quiet, unglamorous, daily choice to be honest when dishonesty would be easier.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══ TENETS OF APEX ═══ -->
+<section class="tenets-group" id="apex-tenets">
+  <div class="wrap">
+    <div class="tenets-group-header reveal d1">
+      <p class="tenets-group-pillar">From Pillar II — Apex</p>
+      <h2 class="tenets-group-name">Own Your Nature</h2>
+      <p class="tenets-group-tagline">Three tenets for the apex life.</p>
+    </div>
+
+    <div class="tenet reveal d2">
+      <div class="tenet-number">Tenet IV</div>
+      <h3 class="tenet-title">Never Shrink. Never Apologize for Strength.</h3>
+      <div class="tenet-body">
+        <p>You are the most capable species on this planet. Act like it. Do not dim your light to make someone else comfortable. Do not play small because the world tells you ambition is arrogance.</p>
+        <p>A Grithosian owns their capability completely. You are strong. You are sharp. You are built to lead. That is not ego — it is fact. Use it. Every day you play small is a day wasted.</p>
+      </div>
+    </div>
+
+    <div class="tenet reveal d3">
+      <div class="tenet-number">Tenet V</div>
+      <h3 class="tenet-title">Protect Those Beneath You.</h3>
+      <div class="tenet-body">
+        <p>Apex is not a trophy. It is a weight. The strongest creature in the room has the greatest responsibility — not to dominate, but to protect. A Grithosian lifts the people around them.</p>
+        <p>You mentor. You shield. You stand between the vulnerable and the harm that's coming for them. Not because they are weak — because you are strong enough to carry it. This is what apex means. Power without protection is tyranny.</p>
+      </div>
+    </div>
+
+    <div class="tenet reveal d4">
+      <div class="tenet-number">Tenet VI</div>
+      <h3 class="tenet-title">Reject the Victim. Become the Author.</h3>
+      <div class="tenet-body">
+        <p>Bad things happen. To everyone. A Grithosian does not deny hardship. They refuse to be defined by it. The moment you decide that what happened to you is bigger than what you do next — you have surrendered your apex nature.</p>
+        <p>You are not what happened to you. You are what you choose to do now. Today. This hour. Feel the pain. Honor it. Then move. Write the next chapter yourself. You are the author, not the character.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══ TENETS OF CONTROL ═══ -->
+<section class="tenets-group" id="control-tenets">
+  <div class="wrap">
+    <div class="tenets-group-header reveal d1">
+      <p class="tenets-group-pillar">From Pillar III — Control</p>
+      <h2 class="tenets-group-name">Live Within Bounds</h2>
+      <p class="tenets-group-tagline">Three tenets for the disciplined life.</p>
+    </div>
+
+    <div class="tenet reveal d2">
+      <div class="tenet-number">Tenet VII</div>
+      <h3 class="tenet-title">Own Only What Is Yours.</h3>
+      <div class="tenet-body">
+        <p>Your thoughts. Your decisions. Your effort. Your character. These four things are yours — completely and without exception. Everything else belongs to the bounds.</p>
+        <p>Other people's opinions are not yours. The outcome of your effort is not yours. The economy, the weather, the diagnosis — not yours. A Grithosian draws this line with absolute clarity every single day. Own what is yours. Release what is not. This is freedom.</p>
+      </div>
+    </div>
+
+    <div class="tenet reveal d3">
+      <div class="tenet-number">Tenet VIII</div>
+      <h3 class="tenet-title">Redirect Immediately.</h3>
+      <div class="tenet-body">
+        <p>When the bounds close a door, a Grithosian does not stand there knocking. You do not rage at the wall. You do not collapse in the hallway. You turn. Immediately. Deliberately.</p>
+        <p>Every ounce of energy that would have been spent fighting what you cannot change gets redirected — instantly — toward what you can. This is not cold. This is not heartless. This is the most efficient use of the only life you have. Do not waste it arguing with reality.</p>
+      </div>
+    </div>
+
+    <div class="tenet reveal d4">
+      <div class="tenet-number">Tenet IX</div>
+      <h3 class="tenet-title">Trust the Bounds.</h3>
+      <div class="tenet-body">
+        <p>God authored the bounds. They are rational. They are consistent. They are not punishment — they are structure. Gravity does not hate you for falling. It simply is.</p>
+        <p>A Grithosian does not fight the bounds any more than a sailor fights the wind. You learn them. You respect them. You work within them. And when the bounds deliver something you did not choose — illness, loss, failure — you trust that the structure is still intact. The bounds are not your enemy. They are the floor you stand on.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══ TENETS OF DEATH ═══ -->
+<section class="tenets-group" id="death-tenets">
+  <div class="wrap">
+    <div class="tenets-group-header reveal d1">
+      <p class="tenets-group-pillar">From Pillar IV — Death</p>
+      <h2 class="tenets-group-name">Return to the Whole</h2>
+      <p class="tenets-group-tagline">Three tenets for the finite life.</p>
+    </div>
+
+    <div class="tenet reveal d2">
+      <div class="tenet-number">Tenet X</div>
+      <h3 class="tenet-title">Live Like You Will Die. Because You Will.</h3>
+      <div class="tenet-body">
+        <p>You are not promised tomorrow. A Grithosian does not push the important conversation to next week. Does not save the meaningful work for "someday." Does not assume there is more time.</p>
+        <p>Death is not a threat. It is a deadline. And it is the most honest motivator you will ever have. Let it sharpen every decision. Let it burn away the trivial. You are alive right now. Act like it means something. Because it does.</p>
+      </div>
+    </div>
+
+    <div class="tenet reveal d3">
+      <div class="tenet-number">Tenet XI</div>
+      <h3 class="tenet-title">Grieve Fully. Then Move.</h3>
+      <div class="tenet-body">
+        <p>A Grithosian does not suppress grief. You feel it — every raw, gutting ounce of it. You feel it because you are apex. Because only a creature capable of deep love can experience deep loss. That pain is proof of what you built.</p>
+        <p>But grief is not a residence. It is a passage. Feel it completely. Honor what was lost. Then stand up. Wipe your face. And move. Not because the pain is gone — because there is still life left to live and you will not waste it sitting in the dark.</p>
+      </div>
+    </div>
+
+    <div class="tenet reveal d4">
+      <div class="tenet-number">Tenet XII</div>
+      <h3 class="tenet-title">Build a Legacy That Doesn't Need an Afterlife.</h3>
+      <div class="tenet-body">
+        <p>A Grithosian does not live for a reward after death. You live for the impact you leave in the living. The person you mentored. The truth you told when it cost you everything. The moment you stood between the vulnerable and the harm.</p>
+        <p>The universe is permanently and irrevocably different because you existed in it. That is your legacy. It does not need a heaven to matter. It does not need a witness to be real. You were here. You did right. You lived fully. When your matter returns to the whole — that is enough.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══ CLOSING ═══ -->
+<section class="closing">
+  <div class="wrap">
+    <div class="reveal d1">
+      <div class="sec-label">The Practice</div>
+    </div>
+    <div class="reveal d2">
+      <p class="closing-text">Twelve tenets. Four pillars. One creed. No excuses.</p>
+      <p class="closing-sub">Read them every morning. Live them every day. That is the Grithosian way.</p>
+    </div>
+    <div class="reveal d3">
+      <a href="/" class="back-link">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" /></svg>
+        Back to Grithos
+      </a>
+    </div>
+  </div>
+</section>
+
+</BaseLayout>
