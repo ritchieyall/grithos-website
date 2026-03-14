@@ -38,37 +38,47 @@ const prefix = isHome ? '' : '/';
 
 <script is:inline>
 (function() {
-  const hamburger = document.querySelector('.hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
+  var hamburger = document.querySelector('.hamburger');
+  var mobileMenu = document.getElementById('mobileMenu');
   if (!hamburger || !mobileMenu) return;
 
-  hamburger.addEventListener('click', function() {
-    const isOpen = this.classList.toggle('active');
-    this.setAttribute('aria-expanded', isOpen);
-    if (isOpen) {
-      mobileMenu.style.display = 'flex';
+  var closing = false;
+
+  function openMenu() {
+    if (closing) return;
+    mobileMenu.style.display = 'flex';
+    hamburger.classList.add('active');
+    hamburger.setAttribute('aria-expanded', 'true');
+    requestAnimationFrame(function() {
       requestAnimationFrame(function() {
-        requestAnimationFrame(function() {
-          mobileMenu.classList.add('open');
-        });
+        mobileMenu.classList.add('open');
       });
+    });
+  }
+
+  function closeMenu() {
+    if (closing) return;
+    closing = true;
+    hamburger.classList.remove('active');
+    hamburger.setAttribute('aria-expanded', 'false');
+    mobileMenu.classList.remove('open');
+    setTimeout(function() {
+      mobileMenu.style.display = 'none';
+      closing = false;
+    }, 300);
+  }
+
+  hamburger.addEventListener('click', function() {
+    if (hamburger.classList.contains('active')) {
+      closeMenu();
     } else {
-      mobileMenu.classList.remove('open');
-      mobileMenu.addEventListener('transitionend', function handler() {
-        if (!mobileMenu.classList.contains('open')) {
-          mobileMenu.style.display = 'none';
-        }
-        mobileMenu.removeEventListener('transitionend', handler);
-      });
+      openMenu();
     }
   });
 
   mobileMenu.querySelectorAll('a').forEach(function(link) {
     link.addEventListener('click', function() {
-      hamburger.classList.remove('active');
-      hamburger.setAttribute('aria-expanded', 'false');
-      mobileMenu.classList.remove('open');
-      setTimeout(function() { mobileMenu.style.display = 'none'; }, 300);
+      closeMenu();
     });
   });
 })();
