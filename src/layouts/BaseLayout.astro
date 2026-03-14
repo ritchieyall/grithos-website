@@ -47,6 +47,10 @@ const {
   {ogDescription && <meta name="twitter:description" content={ogDescription} />}
   <meta name="twitter:image" content="https://grithos.com/assets/images/logo.jpg" />
   <link rel="icon" type="image/jpeg" href="/assets/images/icon.jpg">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" href="/assets/images/icon.jpg">
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -69,6 +73,17 @@ const {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    // PWA service worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').catch(function() {});
+    }
+
+    // Dark/Light mode
+    (function() {
+      var saved = localStorage.getItem('grithos-theme');
+      if (saved === 'light') document.documentElement.classList.add('light-mode');
+    })();
   </script>
 </body>
 </html>

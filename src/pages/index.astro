@@ -274,6 +274,98 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     margin-left: 6px;
   }
 
+  /* ═══ TODAY'S PRACTICE ═══ */
+  .today-practice {
+    padding: 60px 0;
+  }
+  .today-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-xl);
+    padding: 40px 44px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: border-color .3s;
+  }
+  .today-card:hover {
+    border-color: var(--gold-border);
+  }
+  .today-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: .6;
+  }
+  .today-date {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .today-tenet {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+  }
+  .today-text {
+    font-family: var(--heading);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.5;
+    max-width: 600px;
+    margin: 0 auto 24px;
+  }
+  .today-link {
+    font-family: var(--body);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gold);
+    text-decoration: none;
+    letter-spacing: .02em;
+    transition: color .2s;
+  }
+  .today-link:hover {
+    color: var(--gold-light);
+  }
+  .today-link svg {
+    width: 13px;
+    height: 13px;
+    vertical-align: -2px;
+    margin-left: 5px;
+  }
+  .today-forge {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--void);
+    background: var(--gold);
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+  }
+  @media(max-width:768px) {
+    .today-card {
+      padding: 32px 24px;
+    }
+    .today-text {
+      font-size: 18px;
+    }
+  }
+
   /* ═══ FOUNDER ═══ */
   .founder {
     padding: 80px 0 100px;
@@ -328,6 +420,25 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="reveal d3">
       <p class="hero-motto">Grit. Ethos. Grithos.</p>
       <p class="hero-motto-sub">From grit and ethos — the moral courage to do right, regardless.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TODAY'S PRACTICE ═══ -->
+<section class="today-practice" id="today">
+  <div class="wrap">
+    <div class="today-card reveal d1">
+      <div id="today-forge-badge" style="display:none;"><span class="today-forge">Forge Day</span></div>
+      <div class="today-date" id="today-date"></div>
+      <div class="today-tenet" id="today-tenet"></div>
+      <p class="today-text" id="today-text"></p>
+      <div style="display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;">
+        <a href="/practice" class="today-link">View full calendar <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg></a>
+        <button class="today-link" id="today-share" style="background:none;border:1px solid var(--border);padding:6px 16px;border-radius:6px;cursor:pointer;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);transition:all .2s;" onmouseover="this.style.borderColor='var(--gold)';this.style.color='var(--gold)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text-muted)'">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="13" height="13" style="vertical-align:-2px;margin-right:4px;"><path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z" /></svg>
+          Share
+        </button>
+      </div>
     </div>
   </div>
 </section>
@@ -487,5 +598,503 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </div>
 </section>
+
+<script is:inline>
+(function() {
+  var MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var TENETS = [
+    'Tenet I — Tell the Truth. Even When It Costs You.',
+    'Tenet II — Keep Your Word Like Your Life Depends on It.',
+    'Tenet III — Own Your Wins. But Do Right in the Dark.',
+    'Tenet IV — Never Shrink. Never Apologize for Strength.',
+    'Tenet V — Protect Those Beneath You.',
+    'Tenet VI — Reject the Victim. Become the Author.',
+    'Tenet VII — Own Only What Is Yours.',
+    'Tenet VIII — Redirect Immediately.',
+    'Tenet IX — Trust the Bounds.',
+    'Tenet X — Live Like You Will Die. Because You Will.',
+    'Tenet XI — Grieve Fully. Then Move.',
+    'Tenet XII — Build a Legacy That Stands in This Life.'
+  ];
+  var PRACTICES = {
+    0: [
+      "Say one thing today exactly as you mean it. No softening.",
+      "If someone asks your opinion, give the real one.",
+      "Correct a lie you let slide — even an old one.",
+      "Tell someone what you actually think of their idea.",
+      "Admit something you've been avoiding admitting.",
+      "Say \"I don't know\" instead of faking it.",
+      "Stop yourself from exaggerating today. Just the facts.",
+      "Give feedback someone needs to hear, not what they want to hear.",
+      "If you messed up, say so before anyone finds out.",
+      "Disagree with someone you usually just nod along with.",
+      "Say \"no\" to something you want to say yes to just to be liked.",
+      "Be honest with yourself about one thing you've been ignoring.",
+      "Don't spin the story. Tell it flat.",
+      "If someone asks how you're doing, answer honestly.",
+      "Point out the elephant in the room.",
+      "Correct a misunderstanding even if staying quiet benefits you.",
+      "Text someone you owe an honest conversation to.",
+      "Stop performing. Be normal today.",
+      "Write down one truth about yourself you haven't spoken out loud.",
+      "Tell someone what you need instead of hoping they guess.",
+      "Admit a weakness to someone you trust.",
+      "Say the price out loud — what it actually costs you to stay quiet.",
+      "Don't gossip today. If you have something to say, say it to their face.",
+      "Be direct. No hints, no passive jabs.",
+      "Own an opinion you usually keep to yourself.",
+      "Tell someone you were wrong. Specifically.",
+      "If you're upset, say you're upset. Don't perform \"fine.\"",
+      "Name what's really bothering you. Out loud.",
+      "Share an idea you've been sitting on because you're afraid of judgment.",
+      "Ask a question you've been too proud to ask.",
+      "End the day having said nothing you'd need to take back — because it was all true."
+    ],
+    1: [
+      "Do one thing today you promised someone. No reminders needed.",
+      "Before you commit to anything new, finish something you already promised.",
+      "If you can't keep a commitment, tell them now — not at the deadline.",
+      "Show up on time. Exactly on time.",
+      "Return the call, the email, the text you said you would.",
+      "Finish the thing you said you'd finish last week.",
+      "Don't over-promise today. Say only what you'll actually do.",
+      "Follow through on a small promise nobody would notice if you broke.",
+      "Do the favor you offered before anyone had to remind you.",
+      "Keep a promise to yourself — not just to others.",
+      "Cancel something honestly rather than ghosting.",
+      "Deliver early on something. Surprise them.",
+      "Write down every commitment you make today. Honor all of them.",
+      "If you shook on it, it's done. Act accordingly.",
+      "Pay back what you owe. Money, time, favors — whatever it is.",
+      "Stop saying \"I'll try.\" Say \"I will\" or \"I won't.\"",
+      "Do the boring part of the commitment, not just the exciting part.",
+      "Be the person who doesn't need to be chased.",
+      "Honor a commitment even though your mood changed.",
+      "Review your open promises. Close one today.",
+      "Say \"I can't commit to that\" instead of saying yes and flaking.",
+      "Fulfill a promise you made to your kid, partner, or parent.",
+      "Show up for someone who expected you wouldn't.",
+      "Don't make excuses. Just do the thing.",
+      "Handle something you've been \"getting to\" for weeks.",
+      "Be reliable in the smallest way — hold the door, send the link, make the intro.",
+      "Keep a deadline you set for yourself, not just ones others set.",
+      "Prove to yourself that your word still means something."
+    ],
+    2: [
+      "Did something well? Tell someone. Don't wait to be noticed.",
+      "Help someone when there's zero chance of credit.",
+      "Share a win without apologizing for being proud.",
+      "Return the extra change. Nobody's watching.",
+      "Take credit where it's due. You earned it.",
+      "Pick up the trash on the ground. Nobody asked.",
+      "Celebrate someone else's win as loud as your own.",
+      "Do your best work on the thing nobody will see.",
+      "Tell your team what you contributed. Clearly.",
+      "Be honest in a situation where lying would be easier and invisible.",
+      "Accept a compliment without deflecting it.",
+      "Hold the standard when the boss isn't around.",
+      "FORGE DAY — Grithos was born on Friday the 13th. Today, do one thing that is hard on purpose. Superstition fears this date. Grithos was forged in it.",
+      "Do the ethical thing when it costs you and nobody would know.",
+      "Stop hiding behind false modesty. Name what you're good at.",
+      "Clean up the mess that isn't yours. Just because.",
+      "Write down three things you did well this week. Read them out loud.",
+      "Follow the rule when you could easily get away with breaking it.",
+      "Negotiate for what you're worth. Your silence isn't humility — it's fear.",
+      "Put in full effort on a task where cutting corners would be invisible.",
+      "Own the result publicly. Win or lose, put your name on it.",
+      "Do the right thing in traffic. Nobody's filming.",
+      "Send the invoice. Your work has value. Don't undersell it.",
+      "Leave something better than you found it. Say nothing about it.",
+      "Brag right — share what you built, not who you beat.",
+      "Be the same person online and in person.",
+      "Finish strong on a project even though nobody's checking anymore.",
+      "Advocate for yourself. Your wins don't speak for themselves.",
+      "Keep your integrity when the group pressure says to cut corners.",
+      "Tip well when nobody at the table is watching the receipt.",
+      "End the month knowing you earned every win and deserved every one you claimed."
+    ],
+    3: [
+      "Do the workout. Not tomorrow. Today.",
+      "Read something that challenges how you think.",
+      "Skip the easy path. Choose the one that grows you.",
+      "Eat like someone who respects their body.",
+      "Have the hard conversation you've been ducking.",
+      "Learn one thing in a field you know nothing about.",
+      "Do something that scares you slightly.",
+      "Cut one distraction. Replace it with one discipline.",
+      "Say no to comfort when growth is the alternative.",
+      "Fix something you've been tolerating for too long.",
+      "Compete with who you were yesterday. Nobody else.",
+      "Go to bed on time. Rest is part of strength.",
+      "Practice the skill you're worst at. On purpose.",
+      "Ask for critical feedback. Listen without defending.",
+      "Do something physically demanding enough to remind your body it's alive.",
+      "Remove one excuse you've been hiding behind.",
+      "Wake up before you have to. Earn the morning.",
+      "Study someone better than you at something. Take notes.",
+      "Sit with discomfort instead of numbing it.",
+      "Stretch your limit in one area — mental, physical, or emotional.",
+      "Stop scrolling. Do something with your hands.",
+      "Say no to something fun to finish something important.",
+      "Invest in your health. Schedule the appointment, buy the food, do the thing.",
+      "Write down what the strongest version of you looks like. Act like that person today.",
+      "Do the thing you've been \"not ready\" for. You're ready enough.",
+      "Control your inputs — what you eat, watch, read, and listen to.",
+      "Stand up straight. Literally. Your posture is a practice.",
+      "Put your phone down for one hour and be fully present.",
+      "Do the thing nobody asked you to do but that makes you better.",
+      "End the day stronger than you started it. Even by an inch."
+    ],
+    4: [
+      "Check in on someone who never asks for help.",
+      "Mentor someone. Even for five minutes.",
+      "Defend someone when they're not in the room.",
+      "Pay for someone's coffee. Say nothing.",
+      "Give someone your time when you get nothing in return.",
+      "Teach someone something you know that they don't.",
+      "Stand up for the person being talked over.",
+      "Forgive someone who doesn't deserve it. For you, not them.",
+      "Remember a name. Use it.",
+      "Listen — actually listen — to someone who needs to talk.",
+      "Protect someone's reputation when gossip starts.",
+      "Let someone else go first.",
+      "Be patient with someone who is slower than you.",
+      "Notice who's struggling silently. Reach out.",
+      "Offer to carry the load. Literally or figuratively.",
+      "Tip someone who served you well. Generously.",
+      "Write someone a message telling them what they mean to you.",
+      "Hire, promote, or recommend someone who's overlooked.",
+      "Make room at the table. Pull up a chair.",
+      "Protect a child's dignity. Always.",
+      "Speak more quietly so others can be heard.",
+      "Advocate for someone who doesn't have your platform.",
+      "Be the person who makes the new person feel welcome.",
+      "Correct someone gently, not publicly.",
+      "Share your resources — knowledge, contacts, time.",
+      "Let someone take the credit. You know what you did.",
+      "Hold space for someone's pain without trying to fix it.",
+      "Protect someone's time by being prepared and concise.",
+      "Be the reason someone feels safe enough to try.",
+      "Leave every person you interact with better than you found them.",
+      "End the month having used your strength to lift, not to tower."
+    ],
+    5: [
+      "Catch yourself saying \"I can't.\" Replace it with \"I haven't yet.\"",
+      "Name one thing you're blaming someone else for. Take your piece.",
+      "Stop retelling the story of what happened to you. Write the next chapter.",
+      "Turn one complaint into one action.",
+      "Ask \"what can I do about this?\" — then do it.",
+      "Identify where you're waiting for permission. Give it to yourself.",
+      "Stop comparing your situation to someone else's easier path.",
+      "Take responsibility for something that isn't entirely your fault.",
+      "Replace \"why me?\" with \"what now?\"",
+      "Fix something instead of complaining about it.",
+      "Write down what you control about a situation that feels uncontrollable.",
+      "Forgive the circumstance. Then get to work.",
+      "Refuse to bond with someone over shared complaints today.",
+      "Make one decision you've been avoiding.",
+      "Build one thing instead of criticizing one thing.",
+      "Stop waiting for an apology to move forward.",
+      "Find the lesson in something that felt like punishment.",
+      "Choose action over analysis today. Move.",
+      "Apologize for your part. Even if theirs was bigger.",
+      "Replace one \"I have to\" with \"I get to.\"",
+      "Stop rehearsing the argument. It already happened.",
+      "Do the thing nobody else will do. That's why it's yours.",
+      "Accept where you are. Then take one step from here.",
+      "Quit one habit that keeps you in the victim seat.",
+      "Help someone else get unstuck. It'll unstick you too.",
+      "Stop explaining why you haven't started. Start.",
+      "Create your own opportunity today. Don't wait to be chosen.",
+      "Write the ending you want. Then reverse-engineer today.",
+      "Own your story — all of it — including the parts that aren't pretty.",
+      "End the month as the author, not the character things happen to."
+    ],
+    6: [
+      "Let go of one thing you're worrying about that you cannot change.",
+      "Stop trying to control someone else's decision.",
+      "Focus entirely on your effort. Detach from the result.",
+      "Let someone be wrong. It's not yours to fix.",
+      "Stop checking for a response. You sent it. It's out of your hands.",
+      "Accept the weather. Literally or metaphorically.",
+      "Own your reaction to something. That's yours. The event wasn't.",
+      "Separate your mood from other people's behavior.",
+      "Put your energy only into things you can influence today.",
+      "Resist the urge to manage someone else's feelings.",
+      "Let traffic be traffic. Your peace is yours.",
+      "Stop refreshing. The answer will come when it comes.",
+      "Do your best work and release attachment to the feedback.",
+      "Accept one thing exactly as it is — no negotiating with reality.",
+      "Let someone else's opinion of you be their business, not yours.",
+      "Give advice only when asked. Otherwise, it's not your lane.",
+      "Own your schedule. If it's out of control, you let it get there.",
+      "Drop a grudge. It's heavy and it's not doing anything.",
+      "Do your job. Let others do theirs.",
+      "Stop predicting outcomes. You don't own the future.",
+      "Let go of needing to be right. Just this once.",
+      "Accept that someone doesn't like you. That's their right.",
+      "Focus on the process. The score takes care of itself.",
+      "Own your health. Not the diagnosis — the daily choices.",
+      "Stop shouldering other people's problems unless they asked.",
+      "Release one expectation you've been carrying that isn't serving you.",
+      "Mind your own business today. Literally.",
+      "Put your phone down during someone else's moment. It's theirs.",
+      "Trust that you've done your part. Let the rest unfold.",
+      "Control your preparation. Accept the outcome.",
+      "End the month lighter. You dropped what was never yours to carry."
+    ],
+    7: [
+      "Something fell through today? Find the next door. Now.",
+      "Don't reread the rejection. Open a new tab.",
+      "Catch yourself spiraling. Stop. Do one productive thing.",
+      "Plans changed? Adjust in minutes, not days.",
+      "Turn one \"no\" into a different \"yes\" before the day ends.",
+      "Stop mourning the version of today you expected. Work with the one you got.",
+      "Redirect anger into action. Build something with it.",
+      "Someone cancelled? Use the time. Don't waste it resenting them.",
+      "The shortcut didn't work? Take the long way. Keep moving.",
+      "Bad news landed. Give yourself sixty seconds. Then pivot.",
+      "Replace one \"I was going to\" with \"instead, I'm going to.\"",
+      "Project got killed? Take the skills and move them somewhere new.",
+      "Don't stew on the feedback. Implement it or discard it. Now.",
+      "Miss the deadline? Don't spiral. Deliver what you can, today.",
+      "Redirect the complaint. What are you going to do about it?",
+      "Relationship changed? Accept the new shape. Don't force the old one.",
+      "Get off the wrong path early. Sunk cost is a trap.",
+      "Flight delayed? Call moved? Meeting rescheduled? Life goes on. Redirect.",
+      "Channel disappointment into something useful before sundown.",
+      "Don't revisit the decision. It's made. Now optimize from here.",
+      "Find one new angle on a problem you've been hitting head-on.",
+      "Someone left? Honor it. Then fill the gap.",
+      "Stop waiting for conditions to be perfect. Redirect around them.",
+      "The market shifted. Your strategy should too. Today.",
+      "One conversation went badly? Have a better one next.",
+      "Didn't get the promotion? Build the case for the next one. Now.",
+      "Energy is low? Redirect to something that refuels, not something that drains.",
+      "Redirect your attention to what's working instead of what isn't.",
+      "You lost something? Write down three things you still have.",
+      "The old plan is dead. Long live the new plan.",
+      "End the month having wasted zero days standing at closed doors."
+    ],
+    8: [
+      "Accept one outcome today without negotiating with reality.",
+      "Gravity works. So do consequences. Trust the structure.",
+      "Stop trying to hack the system. Work within it, then exceed it.",
+      "Trust that the effort compounds even when you can't see results yet.",
+      "Obey the speed limit. Literally and figuratively.",
+      "Respect a rule you disagree with while working to change it properly.",
+      "Trust the process. You don't need to see the whole staircase.",
+      "Accept a boundary someone set. It's valid.",
+      "Stop fighting a truth you already know.",
+      "Trust that consistency beats intensity. Show up again.",
+      "Sleep when you're tired. The bounds include your body.",
+      "Don't cut the line. Earn your place.",
+      "Accept that some things take exactly as long as they take.",
+      "Trust the people you chose to trust. Stop second-guessing.",
+      "Follow through on the system you set up. Trust your past self.",
+      "Accept a \"no\" without trying to turn it into a \"yes.\"",
+      "Respect someone's boundary today even if you don't understand it.",
+      "Trust the math. Emotion doesn't change the numbers.",
+      "Work with the deadline, not against it. It's a bound, not a punishment.",
+      "Stop wishing for different physics. Build with what's real.",
+      "Trust your training when the moment comes.",
+      "Don't skip steps. The bounds exist for a reason.",
+      "Accept feedback from someone who knows more than you.",
+      "Trust the seasons. Some things grow slow.",
+      "Honor the contract — written or unwritten.",
+      "Accept that you can't be everywhere. Choose where to be. Fully.",
+      "Trust that fairness operates on a longer timeline than you'd like.",
+      "Rest when the bounds say rest. Recovery is not weakness.",
+      "Accept that you are not the exception to the rule.",
+      "End the month trusting the structure you live within. Even when it's hard."
+    ],
+    9: [
+      "Make one decision today as if you had one year left.",
+      "Call someone you love. Right now. Not later.",
+      "Don't postpone the thing that matters for the thing that's urgent.",
+      "Look around your life. If it ended today, what would you regret not doing?",
+      "Cancel something meaningless. Replace it with something meaningful.",
+      "Tell someone what they mean to you. Use actual words.",
+      "Do the thing you keep saying you'll do \"someday.\" Today is someday.",
+      "Spend an hour on your purpose, not your inbox.",
+      "Ask: \"Will this matter in five years?\" Act on the answer.",
+      "Eat the meal slow. Taste it. You don't get unlimited meals.",
+      "Forgive someone. Not for them. Because carrying it is a waste of your finite time.",
+      "Quit something that's wasting the only life you get.",
+      "Walk outside. Look up. Remember you're alive on a planet in space.",
+      "Hug someone longer than usual.",
+      "Write a letter you've been meaning to write.",
+      "Make the appointment. Get the scan. Your body is on a clock.",
+      "Build the thing. Ship the thing. Stop perfecting the thing.",
+      "Say \"I love you\" first. Don't wait for it.",
+      "Watch a sunset on purpose. You've only got so many left.",
+      "Spend money on an experience, not another object.",
+      "Make a decision you've been sitting on. Indecision is wasted life.",
+      "Do something today your 80-year-old self would thank you for.",
+      "Delete the app that steals your hours and gives nothing back.",
+      "Go see them. Not next month. Soon.",
+      "Make something with your hands. Proof you were here.",
+      "Ask the question you've been afraid to ask. Time is not on your side.",
+      "Live loud today. Not reckless — intentional.",
+      "Prioritize health. Dead people don't finish projects.",
+      "Spend time with someone old. Learn what they'd do differently.",
+      "Do one thing today purely because it makes you feel alive.",
+      "End the month having lived each day like it counted. Because it did."
+    ],
+    10: [
+      "Name something you lost. Say it out loud. Then take one step forward.",
+      "Let yourself feel sad about something without fixing it.",
+      "Stop pretending you're \"over it\" if you're not.",
+      "Cry if you need to. Then wash your face and get back to work.",
+      "Visit a memory that hurts. Sit with it. Then leave it where it lives.",
+      "Stop numbing. Feel the thing. That's the practice.",
+      "Tell someone \"I'm still hurting.\" Then tell them what you're doing anyway.",
+      "Write down what you lost. Write down what you still have.",
+      "Grieve the version of life you expected. Accept the one you got.",
+      "Honor someone you've lost by doing something they'd be proud of.",
+      "Let go of one thing you've been gripping too tight.",
+      "Be honest about a disappointment. No silver lining required.",
+      "Allow yourself one bad day. Then don't take two.",
+      "Stop performing strength. Real strength includes tears.",
+      "Tell a story about someone you miss. Keep them alive in words.",
+      "Accept that healing isn't linear. Some days go backward. Keep going.",
+      "Remove one reminder that keeps you stuck, not one that keeps you grateful.",
+      "Forgive yourself for not handling something perfectly.",
+      "Grieve the friendship that ended. Don't pretend it doesn't sting.",
+      "Acknowledge the gap. Then build around it.",
+      "Feel the full weight of something once. Then set it down.",
+      "Let someone comfort you. You don't always have to be the strong one.",
+      "Mourn a failure. Then study it.",
+      "Say goodbye to a version of yourself that no longer exists.",
+      "Do something joyful on purpose — grief and joy can coexist.",
+      "Accept that missing someone doesn't mean you're not moving.",
+      "Let the anniversary hurt. Then let the next day be a new day.",
+      "Stop carrying guilt for moving on. That's what living is.",
+      "Honor what was. Build what's next.",
+      "End the month having felt everything and stopped for nothing."
+    ],
+    11: [
+      "Do one thing today that will matter six months from now.",
+      "Teach someone something that took you years to learn.",
+      "Plant something. Literal or metaphorical. Watch it grow.",
+      "Write something down for the people who come after you.",
+      "Build a habit that compounds. Start it today.",
+      "Finish a project that's been 90% done for too long.",
+      "Create something original. Put your name on it.",
+      "Invest in a relationship that will outlast your career.",
+      "Do one thing you'd want your kids to copy.",
+      "Fix something broken in your community. Don't wait for someone else.",
+      "Record a story. Your memory is temporary. Your words don't have to be.",
+      "Build the bridge you wish existed when you were starting out.",
+      "Spend money on something that lasts longer than you.",
+      "Mentor without being asked.",
+      "Write the email, make the call, start the project that could change things.",
+      "Create a tradition worth repeating.",
+      "Do work today that you'd be proud to show in ten years.",
+      "Leave a place better than you found it. Any place.",
+      "Build something with someone. Legacy is rarely solo.",
+      "Protect something worth preserving.",
+      "Apologize properly. Reconciliation is legacy work.",
+      "Document what you know. Make it findable.",
+      "Make one thing easier for the next person.",
+      "Invest your time in something that grows without you.",
+      "Teach your values, not just your skills.",
+      "Be the ancestor you wish you'd had.",
+      "Do something generous enough that people remember it.",
+      "Build your reputation through action, not announcement.",
+      "Start the tradition of ending the year by asking: \"What did I build?\"",
+      "Look at what you've built. Be proud. Then plan what's next.",
+      "End the year as someone who left a mark. Not a scratch — a mark."
+    ]
+  };
+
+  var now = new Date();
+  var m = now.getMonth();
+  var d = now.getDate();
+  var dateEl = document.getElementById('today-date');
+  var tenetEl = document.getElementById('today-tenet');
+  var textEl = document.getElementById('today-text');
+  var forgeEl = document.getElementById('today-forge-badge');
+
+  if (dateEl && tenetEl && textEl) {
+    var MNAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    dateEl.textContent = MNAMES[m] + ' ' + d + ' — Today\'s Practice';
+    tenetEl.textContent = TENETS[m];
+    var practice = PRACTICES[m] && PRACTICES[m][d - 1] ? PRACTICES[m][d - 1] : '';
+    if (m === 2 && d === 13 && forgeEl) {
+      forgeEl.style.display = 'block';
+    }
+    textEl.textContent = practice;
+
+    // Share button
+    var shareBtn = document.getElementById('today-share');
+    if (shareBtn && practice) {
+      shareBtn.addEventListener('click', function() {
+        var canvas = document.createElement('canvas');
+        canvas.width = 1080;
+        canvas.height = 1080;
+        var ctx = canvas.getContext('2d');
+        ctx.fillStyle = '#1c2029';
+        ctx.fillRect(0, 0, 1080, 1080);
+        var grad = ctx.createLinearGradient(0, 0, 1080, 0);
+        grad.addColorStop(0, 'transparent');
+        grad.addColorStop(0.5, '#c9935a');
+        grad.addColorStop(1, 'transparent');
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, 1080, 4);
+        ctx.fillStyle = '#c9935a';
+        ctx.font = '600 22px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText((MNAMES[m] + ' ' + d).toUpperCase() + '  —  TODAY\'S PRACTICE', 540, 240);
+        ctx.fillStyle = '#70685e';
+        ctx.font = '500 16px sans-serif';
+        ctx.fillText(TENETS[m].split('—')[0].trim(), 540, 280);
+        ctx.fillStyle = '#f5f0eb';
+        ctx.font = '700 38px sans-serif';
+        var words = practice.split(' ');
+        var lines = [];
+        var line = '';
+        for (var w = 0; w < words.length; w++) {
+          var test = line + words[w] + ' ';
+          if (ctx.measureText(test).width > 860 && line) {
+            lines.push(line.trim());
+            line = words[w] + ' ';
+          } else {
+            line = test;
+          }
+        }
+        lines.push(line.trim());
+        var startY = 540 - (lines.length * 54) / 2;
+        for (var l = 0; l < lines.length; l++) {
+          ctx.fillText(lines[l], 540, startY + l * 54);
+        }
+        ctx.fillStyle = '#70685e';
+        ctx.font = '600 18px sans-serif';
+        ctx.fillText('GRITHOS', 540, 940);
+        ctx.fillStyle = '#4a443c';
+        ctx.font = '400 14px sans-serif';
+        ctx.fillText('grithos.com', 540, 970);
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 1076, 1080, 4);
+        canvas.toBlob(function(blob) {
+          if (navigator.share && navigator.canShare) {
+            var file = new File([blob], 'grithos-practice.png', { type: 'image/png' });
+            var shareData = { files: [file], title: 'Grithos Daily Practice', text: practice };
+            if (navigator.canShare(shareData)) {
+              navigator.share(shareData).catch(function() {});
+              return;
+            }
+          }
+          var a = document.createElement('a');
+          a.href = URL.createObjectURL(blob);
+          a.download = 'grithos-practice.png';
+          a.click();
+          URL.revokeObjectURL(a.href);
+        }, 'image/png');
+      });
+    }
+  }
+})();
+</script>
 
 </BaseLayout>
