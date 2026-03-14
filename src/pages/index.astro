@@ -1,0 +1,312 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Grithos — A Philosophy of Life"
+  description="Grithos — A philosophy of life built on grit and ethos. The moral courage to do right, even when it hurts."
+  ogTitle="Grithos — A Philosophy of Life"
+  ogDescription="From grit and ethos — the moral courage to do right, even when it hurts."
+  ogUrl="https://grithos.com"
+  canonical="https://grithos.com"
+  activePage="home"
+>
+
+<style is:inline>
+  /* ═══ HERO ═══ */
+  .hero {
+    padding: 180px 0 100px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -40%; left: 50%; transform: translateX(-50%);
+    width: 900px; height: 900px;
+    background: radial-gradient(circle, rgba(0,212,170,.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-title {
+    font-family: var(--heading);
+    font-size: clamp(56px, 8vw, 96px);
+    font-weight: 800;
+    letter-spacing: .06em;
+    color: var(--white);
+    margin-bottom: 12px;
+    line-height: 1;
+  }
+  .hero-subtitle {
+    font-family: 'Georgia', serif;
+    font-size: clamp(18px, 2.5vw, 24px);
+    font-style: italic;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+  }
+  .hero-pronunciation {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: .08em;
+    margin-bottom: 48px;
+  }
+  .hero-divider {
+    width: 60px;
+    height: 2px;
+    background: var(--cyan);
+    margin: 0 auto 48px;
+  }
+  .hero-motto {
+    font-family: 'Georgia', serif;
+    font-size: clamp(20px, 2.8vw, 28px);
+    font-weight: 700;
+    font-style: italic;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+  .hero-motto-sub {
+    font-family: 'Georgia', serif;
+    font-size: clamp(15px, 2vw, 18px);
+    font-style: italic;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* ═══ SECTION DIVIDER ═══ */
+  .section-divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+    margin: 0;
+  }
+
+  /* ═══ FOUNDATION ═══ */
+  .foundation {
+    padding: 100px 0;
+  }
+  .foundation-text {
+    font-family: 'Georgia', serif;
+    font-size: 18px;
+    line-height: 1.9;
+    color: var(--text-secondary);
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  /* ═══ CREED ═══ */
+  .creed {
+    padding: 100px 0;
+    text-align: center;
+  }
+  .creed-text {
+    font-family: 'Georgia', serif;
+    font-size: clamp(22px, 3vw, 32px);
+    font-weight: 700;
+    font-style: italic;
+    color: var(--white);
+    line-height: 1.5;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  /* ═══ PILLARS ═══ */
+  .pillars {
+    padding: 100px 0 120px;
+  }
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+    margin-top: 48px;
+  }
+  .pillar-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    padding: 40px 36px;
+    transition: border-color .3s, box-shadow .3s;
+  }
+  .pillar-card:hover {
+    border-color: var(--cyan-border);
+    box-shadow: 0 0 40px rgba(0,212,170,.04);
+  }
+  .pillar-numeral {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .14em;
+    color: var(--cyan);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .pillar-name {
+    font-family: var(--heading);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+  .pillar-tagline {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: .04em;
+    margin-bottom: 20px;
+  }
+  .pillar-body {
+    font-family: 'Georgia', serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--text-secondary);
+  }
+
+  /* ═══ FOUNDER ═══ */
+  .founder {
+    padding: 80px 0 100px;
+    text-align: center;
+  }
+  .founder-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--border);
+    margin-bottom: 20px;
+  }
+  .founder-name {
+    font-family: 'Georgia', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+  }
+  .founder-url {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--text-muted);
+    letter-spacing: .04em;
+  }
+
+  /* ═══ RESPONSIVE ═══ */
+  @media(max-width:768px) {
+    .pillars-grid {
+      grid-template-columns: 1fr;
+    }
+    .pillar-card {
+      padding: 32px 28px;
+    }
+  }
+</style>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="reveal d1">
+      <h1 class="hero-title">GRITHOS</h1>
+      <p class="hero-subtitle">A Philosophy of Life</p>
+      <p class="hero-pronunciation">GRITH-os &nbsp;|&nbsp; Practitioner: Grithosian (grith-OH-see-an)</p>
+    </div>
+    <div class="hero-divider reveal d2"></div>
+    <div class="reveal d3">
+      <p class="hero-motto">Grit. Ethos. Grithos.</p>
+      <p class="hero-motto-sub">From grit and ethos — the moral courage to do right, even when it hurts.</p>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══ FOUNDATION ═══ -->
+<section class="foundation" id="foundation">
+  <div class="wrap">
+    <div class="reveal d1" style="text-align:center;">
+      <div class="sec-label">The Foundation</div>
+      <h2 class="sec-title">What We Stand On</h2>
+    </div>
+    <div class="reveal d2">
+      <p class="foundation-text">A rational God exists who authored the bounds underlying all things. God is architect, not manager. The bounds God created are real, consistent, and trustworthy. A Grithosian does not worship. A Grithosian aligns.</p>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══ CREED ═══ -->
+<section class="creed" id="creed">
+  <div class="wrap">
+    <div class="reveal d1">
+      <div class="sec-label">The Grithos Creed</div>
+    </div>
+    <div class="reveal d2">
+      <p class="creed-text">Do right. Own your nature. Live within bounds. Return to the whole.</p>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══ FOUR PILLARS ═══ -->
+<section class="pillars" id="pillars">
+  <div class="wrap">
+    <div class="reveal d1" style="text-align:center;">
+      <div class="sec-label">The Philosophy</div>
+      <h2 class="sec-title">The Four Pillars</h2>
+    </div>
+
+    <div class="pillars-grid">
+
+      <!-- Pillar I -->
+      <div class="pillar-card reveal d1">
+        <div class="pillar-numeral">Pillar I</div>
+        <h3 class="pillar-name">Virtue</h3>
+        <div class="pillar-tagline">Do right even when it hurts.</div>
+        <p class="pillar-body">A Grithosian is honest. Not when it is convenient. Not when it is safe. When it costs something. Virtue requires no reward, no recognition, and no God looking over your shoulder. You do right because it is right. That is the only reason a Grithosian needs. Honesty is not a policy. It is a practice — daily, unglamorous, and non-negotiable.</p>
+      </div>
+
+      <!-- Pillar II -->
+      <div class="pillar-card reveal d2">
+        <div class="pillar-numeral">Pillar II</div>
+        <h3 class="pillar-name">Apex</h3>
+        <div class="pillar-tagline">Own your nature.</div>
+        <p class="pillar-body">Humans are the most capable species on earth. That is not arrogance — it is fact. A Grithosian owns that truth completely and without apology. But apex is not a trophy. It is a weight. With the greatest capability comes the greatest accountability. A Grithosian leads with strength and responsibility in equal measure — protecting those beneath them, never exploiting them. Shrinking from your potential is not humility. It is a betrayal of your nature. What a Grithosian rejects above all else is victim mentality. Not hardship — hardship is real. Not struggle — struggle is human. But the decision to define yourself by what happened to you rather than what you do next. You are apex. Act like it.</p>
+      </div>
+
+      <!-- Pillar III -->
+      <div class="pillar-card reveal d3">
+        <div class="pillar-numeral">Pillar III</div>
+        <h3 class="pillar-name">Control</h3>
+        <div class="pillar-tagline">Live within bounds.</div>
+        <p class="pillar-body">A Grithosian owns four things completely — their thoughts and attitudes, their decisions and actions, their effort and preparation, and their character and integrity. Everything else belongs to the bounds. Other people's opinions. Outcomes beyond your effort. Illness. Circumstance. The economy. These are not yours to carry. This is not resignation. A Grithosian does not sit still in the face of what they cannot control. They redirect. Immediately. Deliberately. Every ounce of energy that would have been spent fighting the bounds gets turned back toward what is actually theirs to own. God authored the bounds. They are rational. They are consistent. They can be trusted. Live within them.</p>
+      </div>
+
+      <!-- Pillar IV -->
+      <div class="pillar-card reveal d4">
+        <div class="pillar-numeral">Pillar IV</div>
+        <h3 class="pillar-name">Death</h3>
+        <div class="pillar-tagline">Return to the whole.</div>
+        <p class="pillar-body">A Grithosian does not fear death. It is not an enemy. It is a conclusion — the natural end of a life fully lived. Your body returns to the earth. Your matter rejoins the whole. The universe is permanently and irrevocably different for you having existed in it. Your impact lives on through others. Not in a supernatural sense — in a real one. The people you led. The truth you told when it cost you. The times you owned your apex nature and protected those beneath you. That is your legacy. It needs no afterlife to matter. Grief is not weakness. A Grithosian feels it completely — because only an apex creature capable of deep connection can experience deep loss. But grief is not a residence. Feel it. Honor it. Move. Death is not the opposite of life. It is the completion of it.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══ FOUNDER ═══ -->
+<section class="founder" id="founder">
+  <div class="wrap">
+    <div class="reveal d1">
+      <div class="sec-label">Origin</div>
+      <img src="/assets/images/founder.jpeg" alt="Richard Johnson" class="founder-photo" loading="lazy">
+      <p class="founder-name">Founded by Richard Johnson</p>
+      <p class="founder-subtitle" style="font-family:'Georgia',serif;font-size:15px;font-style:italic;color:var(--text-muted);margin-bottom:12px;">Just a man searching for light.</p>
+      <p class="founder-url">grithos.com</p>
+    </div>
+  </div>
+</section>
+
+</BaseLayout>

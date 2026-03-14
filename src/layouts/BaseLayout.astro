@@ -1,0 +1,70 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogType?: string;
+  ogUrl?: string;
+  canonical?: string;
+  activePage?: string;
+}
+
+const {
+  title,
+  description = 'Grithos — A philosophy of life built on grit and ethos. Do right. Own your nature. Live within bounds. Return to the whole.',
+  ogTitle = '',
+  ogDescription = '',
+  ogType = 'website',
+  ogUrl = '',
+  canonical = '',
+  activePage = '',
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  {description && <meta name="description" content={description} />}
+  {ogTitle && <meta property="og:title" content={ogTitle} />}
+  {ogDescription && <meta property="og:description" content={ogDescription} />}
+  <meta property="og:type" content={ogType} />
+  {ogUrl && <meta property="og:url" content={ogUrl} />}
+  {canonical && <link rel="canonical" href={canonical} />}
+  <meta name="author" content="Richard Johnson">
+  <meta name="robots" content="index, follow">
+  <meta name="twitter:card" content="summary_large_image">
+  {ogTitle && <meta name="twitter:title" content={ogTitle} />}
+  {ogDescription && <meta name="twitter:description" content={ogDescription} />}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Grithos",
+    "url": "https://grithos.com",
+    "description": "A philosophy of life built on grit and ethos."
+  })} />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <slot name="head" />
+</head>
+<body>
+  <Nav activePage={activePage} />
+  <slot />
+  <Footer />
+  <script is:inline>
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>

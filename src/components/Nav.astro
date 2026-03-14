@@ -1,0 +1,70 @@
+---
+interface Props {
+  activePage?: string;
+}
+const { activePage = '' } = Astro.props;
+---
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <div class="logo-text"><span>Grit</span>hos</div>
+    </a>
+    <div class="nav-links">
+      <a href="#foundation">Foundation</a>
+      <a href="#creed">Creed</a>
+      <a href="#pillars">The Four Pillars</a>
+      <a href="#founder" class="nav-cta">The Founder</a>
+    </div>
+    <button class="hamburger" aria-label="Open navigation menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#foundation">Foundation</a>
+  <a href="#creed">Creed</a>
+  <a href="#pillars">The Four Pillars</a>
+  <a href="#founder" class="mobile-cta">The Founder</a>
+</div>
+
+<script is:inline>
+(function() {
+  const hamburger = document.querySelector('.hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  if (!hamburger || !mobileMenu) return;
+
+  hamburger.addEventListener('click', function() {
+    const isOpen = this.classList.toggle('active');
+    this.setAttribute('aria-expanded', isOpen);
+    if (isOpen) {
+      mobileMenu.style.display = 'flex';
+      requestAnimationFrame(function() {
+        requestAnimationFrame(function() {
+          mobileMenu.classList.add('open');
+        });
+      });
+    } else {
+      mobileMenu.classList.remove('open');
+      mobileMenu.addEventListener('transitionend', function handler() {
+        if (!mobileMenu.classList.contains('open')) {
+          mobileMenu.style.display = 'none';
+        }
+        mobileMenu.removeEventListener('transitionend', handler);
+      });
+    }
+  });
+
+  mobileMenu.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      hamburger.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', 'false');
+      mobileMenu.classList.remove('open');
+      setTimeout(function() { mobileMenu.style.display = 'none'; }, 300);
+    });
+  });
+})();
+</script>
