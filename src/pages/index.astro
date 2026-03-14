@@ -25,17 +25,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     position: absolute;
     top: -40%; left: 50%; transform: translateX(-50%);
     width: 900px; height: 900px;
-    background: radial-gradient(circle, rgba(0,212,170,.08) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(201,147,90,.1) 0%, transparent 70%);
     pointer-events: none;
   }
-  .hero-title {
-    font-family: var(--heading);
-    font-size: clamp(56px, 8vw, 96px);
-    font-weight: 800;
-    letter-spacing: .06em;
-    color: var(--white);
-    margin-bottom: 12px;
-    line-height: 1;
+  .hero-logo {
+    max-width: 420px;
+    width: 80%;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 12px;
   }
   .hero-subtitle {
     font-family: 'Georgia', serif;
@@ -54,7 +52,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .hero-divider {
     width: 60px;
     height: 2px;
-    background: var(--cyan);
+    background: var(--gold);
     margin: 0 auto 48px;
   }
   .hero-motto {
@@ -130,15 +128,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     transition: border-color .3s, box-shadow .3s;
   }
   .pillar-card:hover {
-    border-color: var(--cyan-border);
-    box-shadow: 0 0 40px rgba(0,212,170,.04);
+    border-color: var(--gold-border);
+    box-shadow: 0 0 40px rgba(201,147,90,.06);
   }
   .pillar-numeral {
     font-family: var(--mono);
     font-size: 11px;
     font-weight: 600;
     letter-spacing: .14em;
-    color: var(--cyan);
+    color: var(--gold);
     text-transform: uppercase;
     margin-bottom: 8px;
   }
@@ -205,7 +203,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <section class="hero">
   <div class="wrap">
     <div class="reveal d1">
-      <h1 class="hero-title">GRITHOS</h1>
+      <img src="/assets/images/logo.jpg" alt="Grithos" class="hero-logo">
       <p class="hero-subtitle">A Philosophy of Life</p>
       <p class="hero-pronunciation">GRITH-os &nbsp;|&nbsp; Practitioner: Grithosian (grith-OH-see-an)</p>
     </div>

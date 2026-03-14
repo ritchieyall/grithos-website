@@ -41,9 +41,12 @@ const {
   {canonical && <link rel="canonical" href={canonical} />}
   <meta name="author" content="Richard Johnson">
   <meta name="robots" content="index, follow">
+  <meta property="og:image" content="https://grithos.com/assets/images/logo.jpg" />
   <meta name="twitter:card" content="summary_large_image">
   {ogTitle && <meta name="twitter:title" content={ogTitle} />}
   {ogDescription && <meta name="twitter:description" content={ogDescription} />}
+  <meta name="twitter:image" content="https://grithos.com/assets/images/logo.jpg" />
+  <link rel="icon" type="image/jpeg" href="/assets/images/icon.jpg">
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "WebSite",
