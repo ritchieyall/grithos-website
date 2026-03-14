@@ -1,4 +1,5 @@
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   output: 'static',
@@ -6,4 +7,5 @@ export default defineConfig({
     format: 'file',
   },
   site: 'https://grithos.com',
+  integrations: [sitemap()],
 });

@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Page Not Found | Grithos"
+  description="This page doesn't exist. But you do. Get back to the philosophy."
+  activePage=""
+>
+
+<style is:inline>
+  .not-found {
+    padding: 200px 0 120px;
+    text-align: center;
+  }
+  .not-found-code {
+    font-family: var(--mono);
+    font-size: clamp(80px, 12vw, 140px);
+    font-weight: 800;
+    color: var(--border);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .not-found-title {
+    font-family: var(--heading);
+    font-size: clamp(22px, 3vw, 32px);
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+  .not-found-text {
+    font-size: 16px;
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+    line-height: 1.7;
+  }
+  .not-found-link {
+    font-family: var(--body);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gold);
+    text-decoration: none;
+    transition: color .2s;
+  }
+  .not-found-link:hover {
+    color: var(--gold-light);
+  }
+  .not-found-link svg {
+    width: 14px;
+    height: 14px;
+    vertical-align: -2px;
+    margin-right: 6px;
+  }
+</style>
+
+<section class="not-found">
+  <div class="wrap">
+    <div class="not-found-code reveal d1">404</div>
+    <h1 class="not-found-title reveal d2">This path doesn't exist.</h1>
+    <p class="not-found-text reveal d3">But you do. And that's what matters.<br>Redirect immediately. — Tenet VIII</p>
+    <div class="reveal d4">
+      <a href="/" class="not-found-link"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" /></svg>Back to Grithos</a>
+    </div>
+  </div>
+</section>
+
+</BaseLayout>

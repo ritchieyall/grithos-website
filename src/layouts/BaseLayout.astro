@@ -24,6 +24,11 @@ const {
   canonical = '',
   activePage = '',
 } = Astro.props;
+
+const finalOgTitle = ogTitle || title;
+const finalOgDescription = ogDescription || description;
+const finalOgUrl = ogUrl || Astro.url.href.replace(/\/$/, '') || 'https://grithos.com';
+const finalCanonical = canonical || finalOgUrl;
 ---
 
 <!DOCTYPE html>
@@ -32,19 +37,19 @@ const {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{title}</title>
-  {description && <meta name="description" content={description} />}
-  {ogTitle && <meta property="og:title" content={ogTitle} />}
-  {ogDescription && <meta property="og:description" content={ogDescription} />}
+  <meta name="description" content={description} />
+  <meta property="og:title" content={finalOgTitle} />
+  <meta property="og:description" content={finalOgDescription} />
   <meta property="og:site_name" content="Grithos" />
   <meta property="og:type" content={ogType} />
-  {ogUrl && <meta property="og:url" content={ogUrl} />}
-  {canonical && <link rel="canonical" href={canonical} />}
+  <meta property="og:url" content={finalOgUrl} />
+  <link rel="canonical" href={finalCanonical} />
   <meta name="author" content="Richard Johnson">
   <meta name="robots" content="index, follow">
   <meta property="og:image" content="https://grithos.com/assets/images/logo.jpg" />
   <meta name="twitter:card" content="summary_large_image">
-  {ogTitle && <meta name="twitter:title" content={ogTitle} />}
-  {ogDescription && <meta name="twitter:description" content={ogDescription} />}
+  <meta name="twitter:title" content={finalOgTitle} />
+  <meta name="twitter:description" content={finalOgDescription} />
   <meta name="twitter:image" content="https://grithos.com/assets/images/logo.jpg" />
   <link rel="icon" type="image/jpeg" href="/assets/images/icon.jpg">
   <link rel="manifest" href="/manifest.json">
@@ -56,17 +61,24 @@ const {
     "@type": "WebSite",
     "name": "Grithos",
     "url": "https://grithos.com",
-    "description": "A philosophy of life built on grit and ethos."
+    "description": "A philosophy of life built on grit and ethos. Do right. Own your nature. Live within bounds. Return to the whole.",
+    "founder": {
+      "@type": "Person",
+      "name": "Richard Johnson",
+      "image": "https://grithos.com/assets/images/founder.jpeg",
+      "description": "Founder of Grithos — a philosophy of life built on grit and ethos."
+    }
   })} />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <slot name="head" />
 </head>
 <body>
   <Nav activePage={activePage} />
-  <slot />
+  <main>
+    <slot />
+  </main>
   <Footer />
   <script is:inline>
     const obs = new IntersectionObserver((entries) => {
