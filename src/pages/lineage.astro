@@ -1,0 +1,430 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="The Lineage | Grithos"
+  description="The philosophical lineage of Grithos — how Marcus Aurelius' Meditations laid the foundation nearly two thousand years ago."
+  ogTitle="The Lineage — Grithos"
+  ogDescription="Before Grithos, there was Marcus. The ancient roots of a modern philosophy."
+  ogUrl="https://grithos.com/lineage"
+  canonical="https://grithos.com/lineage"
+  activePage="lineage"
+>
+
+<style is:inline>
+  /* ═══ PAGE HERO ═══ */
+  .page-hero {
+    padding: 160px 0 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-hero::before {
+    content: '';
+    position: absolute;
+    top: 40%; left: 50%; transform: translateX(-50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(201,147,90,.05) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .page-hero .wrap { position: relative; z-index: 1; }
+  .page-hero-overline {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .page-hero-title {
+    font-family: var(--heading);
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -.02em;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+  .page-hero-sub {
+    font-family: 'Georgia', serif;
+    font-size: clamp(16px, 2vw, 20px);
+    font-style: italic;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* ═══ SECTION DIVIDER ═══ */
+  .section-divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+    margin: 0;
+  }
+
+  /* ═══ INTRO ═══ */
+  .intro {
+    padding: 80px 0;
+  }
+  .intro-text {
+    font-family: 'Georgia', serif;
+    font-size: 18px;
+    line-height: 1.9;
+    color: var(--text-secondary);
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .intro-text p + p {
+    margin-top: 20px;
+  }
+
+  /* ═══ PILLAR SECTION ═══ */
+  .lineage-section {
+    padding: 100px 0;
+  }
+  .lineage-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  .lineage-pillar-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .lineage-pillar-name {
+    font-family: var(--heading);
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -.01em;
+    margin-bottom: 8px;
+  }
+  .lineage-pillar-tagline {
+    font-family: 'Georgia', serif;
+    font-size: 16px;
+    font-style: italic;
+    color: var(--text-muted);
+  }
+
+  /* ═══ QUOTE PAIR ═══ */
+  .quote-pair {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 0 56px;
+  }
+  .quote-pair + .quote-pair {
+    padding-top: 56px;
+    border-top: 1px solid var(--border);
+  }
+
+  /* Marcus quote */
+  .marcus-quote {
+    border-left: 3px solid var(--gold);
+    padding: 0 0 0 24px;
+    margin-bottom: 12px;
+  }
+  .marcus-quote p {
+    font-family: 'Georgia', serif;
+    font-size: 17px;
+    font-style: italic;
+    line-height: 1.7;
+    color: var(--white);
+  }
+  .marcus-cite {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    color: var(--gold);
+    padding-left: 27px;
+    margin-bottom: 28px;
+  }
+
+  /* Bridge text */
+  .bridge {
+    font-family: var(--body);
+    font-size: 15px;
+    line-height: 1.85;
+    color: var(--text-secondary);
+  }
+  .bridge strong {
+    color: var(--white);
+    font-weight: 700;
+  }
+
+  /* ═══ CLOSING ═══ */
+  .closing {
+    padding: 100px 0 120px;
+    text-align: center;
+  }
+  .closing-text {
+    font-family: 'Georgia', serif;
+    font-size: clamp(20px, 2.8vw, 28px);
+    font-weight: 700;
+    font-style: italic;
+    color: var(--white);
+    line-height: 1.5;
+    max-width: 700px;
+    margin: 0 auto 24px;
+  }
+  .closing-sub {
+    font-family: 'Georgia', serif;
+    font-size: clamp(15px, 2vw, 18px);
+    font-style: italic;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* ═══ BACK LINK ═══ */
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--body);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color .2s;
+    margin-top: 48px;
+  }
+  .back-link:hover { color: var(--gold); }
+  .back-link svg { width: 16px; height: 16px; }
+
+  /* ═══ RESPONSIVE ═══ */
+  @media(max-width:768px) {
+    .lineage-section { padding: 60px 0; }
+    .quote-pair { padding: 0 0 40px; }
+    .quote-pair + .quote-pair { padding-top: 40px; }
+  }
+</style>
+
+<!-- ═══ HERO ═══ -->
+<section class="page-hero">
+  <div class="wrap">
+    <div class="reveal d1">
+      <p class="page-hero-overline">The Lineage</p>
+      <h1 class="page-hero-title">Before Grithos, There Was Marcus</h1>
+      <p class="page-hero-sub">Nearly two thousand years ago, a Roman Emperor wrote the same truths in a private journal. He called them Meditations. We call them the beginning.</p>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══ INTRO ═══ -->
+<section class="intro">
+  <div class="wrap">
+    <div class="reveal d1">
+      <div class="intro-text">
+        <p>Marcus Aurelius was the Emperor of Rome from 161 to 180 AD. He was also a Stoic philosopher who spent his nights writing to himself — not for publication, not for glory, but to hold himself accountable to the truths he believed in. Those writings became the Meditations.</p>
+        <p>Grithos did not invent its principles. It inherited them. The ideas that form the Four Pillars have been tested across nearly two millennia — by emperors and soldiers, by philosophers and ordinary people trying to live well. What Grithos does is name them, sharpen them, and make them a daily practice.</p>
+        <p>This is not a religion. It is a philosophy with ancient roots and a God who authored the structure we live within. What follows is the thread that connects Marcus to Grithos — proof that these truths are not new. They are timeless.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══ VIRTUE ═══ -->
+<section class="lineage-section">
+  <div class="wrap">
+    <div class="lineage-header reveal d1">
+      <p class="lineage-pillar-label">Pillar I — Virtue</p>
+      <h2 class="lineage-pillar-name">Do Right Regardless</h2>
+      <p class="lineage-pillar-tagline">What Marcus wrote about honesty and moral courage.</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>Never esteem anything as of advantage to you that will make you break your word or lose your self-respect.</p>
+      </blockquote>
+      <div class="marcus-cite">— Marcus Aurelius, Meditations, Book III</div>
+      <div class="bridge">
+        This is Tenet II — <strong>Keep Your Word Like Your Life Depends on It.</strong> Marcus understood that no advantage gained through broken promises is worth the cost. A Grithosian treats their word as sacred. Not because someone is watching — because your integrity is the one thing no one can take from you unless you surrender it.
+      </div>
+    </div>
+
+    <div class="quote-pair reveal d3">
+      <blockquote class="marcus-quote">
+        <p>Waste no more time arguing about what a good man should be. Be one.</p>
+      </blockquote>
+      <div class="marcus-cite">— Marcus Aurelius, Meditations, Book X</div>
+      <div class="bridge">
+        This is the heart of Grithos Virtue — <strong>do right, regardless.</strong> Marcus had no patience for philosophizing about goodness without living it. Neither does Grithos. The tenets are not ideas to discuss. They are practices to live. Every single day.
+      </div>
+    </div>
+
+    <div class="quote-pair reveal d4">
+      <blockquote class="marcus-quote">
+        <p>If it is not right do not do it; if it is not true do not say it.</p>
+      </blockquote>
+      <div class="marcus-cite">— Marcus Aurelius, Meditations, Book XII</div>
+      <div class="bridge">
+        This is Tenet I — <strong>Tell the Truth. Even When It Costs You.</strong> Marcus reduced virtue to its simplest form: right action, honest speech. No exceptions. No qualifiers. Nearly two thousand years later, Grithos says the same thing. Some truths never change.
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══ APEX ═══ -->
+<section class="lineage-section">
+  <div class="wrap">
+    <div class="lineage-header reveal d1">
+      <p class="lineage-pillar-label">Pillar II — Apex</p>
+      <h2 class="lineage-pillar-name">Own Your Nature</h2>
+      <p class="lineage-pillar-tagline">What Marcus wrote about human strength and responsibility.</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>You have power over your mind — not outside events. Realize this, and you will find strength.</p>
+      </blockquote>
+      <div class="marcus-cite">— Marcus Aurelius, Meditations, Book VI</div>
+      <div class="bridge">
+        This is the foundation of Apex. Marcus knew that true strength is not found in controlling the world around you — it is found in owning yourself completely. A Grithosian does not shrink. A Grithosian does not apologize for their strength. Because that strength comes from within, and no outside event can take it.
+      </div>
+    </div>
+
+    <div class="quote-pair reveal d3">
+      <blockquote class="marcus-quote">
+        <p>Accept the things to which fate binds you, and love the people with whom fate brings you together, and do so with all your heart.</p>
+      </blockquote>
+      <div class="marcus-cite">— Marcus Aurelius, Meditations, Book VI</div>
+      <div class="bridge">
+        This is Tenet V — <strong>Protect Those Beneath You.</strong> Marcus understood that apex is not isolation. It is connection. The strongest person in the room has the deepest obligation to love and protect those around them. Power without protection is tyranny. Marcus knew this as Emperor. Grithos makes it a tenet.
+      </div>
+    </div>
+
+    <div class="quote-pair reveal d4">
+      <blockquote class="marcus-quote">
+        <p>The impediment to action advances action. What stands in the way becomes the way.</p>
+      </blockquote>
+      <div class="marcus-cite">— Marcus Aurelius, Meditations, Book V</div>
+      <div class="bridge">
+        This is Tenet VI — <strong>Reject the Victim. Become the Author.</strong> Marcus did not see obstacles as punishments. He saw them as raw material. Every hardship is an opportunity to demonstrate your apex nature. A Grithosian does not ask "why me?" A Grithosian asks "what now?" The obstacle is not in the way. It is the way.
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══ CONTROL ═══ -->
+<section class="lineage-section">
+  <div class="wrap">
+    <div class="lineage-header reveal d1">
+      <p class="lineage-pillar-label">Pillar III — Control</p>
+      <h2 class="lineage-pillar-name">Live Within Bounds</h2>
+      <p class="lineage-pillar-tagline">What Marcus wrote about what is yours and what is not.</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>You always own the option of having no opinion. There is never any need to get worked up or to trouble your soul about things you can't control.</p>
+      </blockquote>
+      <div class="marcus-cite">— Marcus Aurelius, Meditations, Book VI</div>
+      <div class="bridge">
+        This is Tenet VII — <strong>Own Only What Is Yours.</strong> Marcus drew the same line that Grithos draws: your thoughts, your decisions, your effort, your character. Everything else belongs to the bounds. But where Marcus counseled calm acceptance, Grithos adds fire — you own what is yours, you fight for the outcome, and only when the bounds truly close the door do you redirect.
+      </div>
+    </div>
+
+    <div class="quote-pair reveal d3">
+      <blockquote class="marcus-quote">
+        <p>The universe is change; our life is what our thoughts make it.</p>
+      </blockquote>
+      <div class="marcus-cite">— Marcus Aurelius, Meditations, Book IV</div>
+      <div class="bridge">
+        This is Tenet VIII — <strong>Redirect Immediately.</strong> Marcus understood that the universe does not pause for your grief, your outrage, or your plans. It changes. Constantly. A Grithosian does not waste energy fighting change. You redirect — immediately, deliberately — toward what you can actually influence. The bounds are not your enemy. They are the structure God authored, and they are trustworthy.
+      </div>
+    </div>
+
+    <div class="quote-pair reveal d4">
+      <blockquote class="marcus-quote">
+        <p>Everything we hear is an opinion, not a fact. Everything we see is a perspective, not the truth.</p>
+      </blockquote>
+      <div class="marcus-cite">— Marcus Aurelius, Meditations, Book IV</div>
+      <div class="bridge">
+        This is Tenet IX — <strong>Trust the Bounds.</strong> Marcus knew that most of what troubles us is not reality — it is our interpretation of reality. The bounds are rational and consistent. God authored them that way. A Grithosian trusts the structure, even when the interpretation feels unbearable. Separate what happened from your story about what happened. The bounds hold.
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══ DEATH ═══ -->
+<section class="lineage-section">
+  <div class="wrap">
+    <div class="lineage-header reveal d1">
+      <p class="lineage-pillar-label">Pillar IV — Death</p>
+      <h2 class="lineage-pillar-name">Return to the Whole</h2>
+      <p class="lineage-pillar-tagline">What Marcus wrote about mortality and legacy.</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>It is not death that a man should fear, but he should fear never beginning to live.</p>
+      </blockquote>
+      <div class="marcus-cite">— Marcus Aurelius, Meditations, Book XII</div>
+      <div class="bridge">
+        This is Tenet X — <strong>Live Like You Will Die. Because You Will.</strong> Marcus did not fear death. He feared wasted life. A Grithosian uses mortality as the sharpest tool in the drawer — not as a threat, but as a lens. Every decision passes through it. Is this how you want to spend the time you have? If the answer is no, stop. Redirect. Now.
+      </div>
+    </div>
+
+    <div class="quote-pair reveal d3">
+      <blockquote class="marcus-quote">
+        <p>Loss is nothing else but change, and change is nature's delight.</p>
+      </blockquote>
+      <div class="marcus-cite">— Marcus Aurelius, Meditations, Book IX</div>
+      <div class="bridge">
+        This is Tenet XI — <strong>Grieve Fully. Then Move.</strong> Marcus saw loss as transformation, not destruction. A Grithosian honors this — feel the grief completely, because it is proof of what you built. But do not live there. Loss is change. And change, as Marcus wrote, is woven into the fabric of existence. God authored the bounds to include both creation and loss. Trust both.
+      </div>
+    </div>
+
+    <div class="quote-pair reveal d4">
+      <blockquote class="marcus-quote">
+        <p>Think of yourself as dead. You have lived your life. Now, take what's left and live it properly.</p>
+      </blockquote>
+      <div class="marcus-cite">— Marcus Aurelius, Meditations, Book VII</div>
+      <div class="bridge">
+        This is Tenet XII — <strong>Build a Legacy That Stands in This Life.</strong> Marcus challenged himself to live as if he had already wasted his life — and now had one final chance to do it right. A Grithosian builds something that matters right here, right now. The people you lead, the truths you tell, the strength you use to protect others. That is your legacy in this life — and it matters regardless of what comes next.
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══ CLOSING ═══ -->
+<section class="closing">
+  <div class="wrap">
+    <div class="reveal d1">
+      <div class="sec-label">The Thread</div>
+    </div>
+    <div class="reveal d2">
+      <p class="closing-text">From a Roman Emperor's private journal to a modern philosophy of life. The lineage is unbroken.</p>
+      <p class="closing-sub">Marcus wrote it for himself. Grithos writes it for everyone willing to live it.</p>
+    </div>
+    <div class="reveal d3">
+      <a href="/" class="back-link">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" /></svg>
+        Back to Grithos
+      </a>
+    </div>
+  </div>
+</section>
+
+</BaseLayout>
