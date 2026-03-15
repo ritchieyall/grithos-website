@@ -4,9 +4,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout
   title="The Lineage | Grithos"
-  description="The philosophical lineage of Grithos — how Marcus Aurelius' Meditations laid the foundation nearly two thousand years ago. Twelve quotes mapped to the four pillars."
+  description="The philosophical lineage of Grithos — how Marcus Aurelius, Epictetus, and Benjamin Franklin laid the foundation centuries ago. Ancient wisdom mapped to the four pillars."
   ogTitle="The Lineage — Grithos"
-  ogDescription="Before Grithos, there was Marcus. Twelve quotes from Meditations mapped to the four pillars. The ancient roots of a modern philosophy."
+  ogDescription="Before Grithos, there was Marcus, Epictetus, and Franklin. Ancient wisdom mapped to the four pillars. The roots of a modern philosophy."
   ogUrl="https://grithos.com/lineage"
   canonical="https://grithos.com/lineage"
   activePage="lineage"
@@ -160,6 +160,41 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     font-weight: 700;
   }
 
+  /* ═══ FIGURE HEADER ═══ */
+  .figure-header {
+    max-width: 760px;
+    margin: 0 auto 48px;
+    padding-top: 56px;
+    border-top: 1px solid var(--border);
+  }
+  .figure-header:first-of-type {
+    padding-top: 0;
+    border-top: none;
+  }
+  .figure-name {
+    font-family: var(--heading);
+    font-size: clamp(18px, 2.2vw, 22px);
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -0.01em;
+    margin-bottom: 4px;
+  }
+  .figure-years {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .figure-intro {
+    font-family: var(--body);
+    font-size: 15px;
+    line-height: 1.85;
+    color: var(--text-secondary);
+    max-width: 760px;
+  }
+
   /* ═══ CLOSING ═══ */
   .closing {
     padding: 100px 0 120px;
@@ -213,8 +248,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <div class="wrap">
     <div class="reveal d1">
       <p class="page-hero-overline">The Lineage</p>
-      <h1 class="page-hero-title">Before Grithos, There Was Marcus</h1>
-      <p class="page-hero-sub">Nearly two thousand years ago, a Roman Emperor wrote the same truths in a private journal. He called them Meditations. Grithos calls them the beginning.</p>
+      <h1 class="page-hero-title">The Lineage</h1>
+      <p class="page-hero-sub">Grithos did not invent its truths. A Roman Emperor, a former slave, and a founding father lived them first. Their words prove these principles are timeless.</p>
     </div>
   </div>
 </section>
@@ -226,9 +261,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <div class="wrap">
     <div class="reveal d1">
       <div class="intro-text">
-        <p>Marcus Aurelius was the Emperor of Rome from 161 to 180 AD. He was also a Stoic philosopher who spent his nights writing to himself — not for publication, not for glory, but to hold himself accountable to the truths he believed in. Those writings became the Meditations.</p>
-        <p>Grithos did not invent its principles. It inherited them. The ideas that form the Four Pillars have been tested across nearly two millennia — by emperors and soldiers, by philosophers and ordinary people trying to live well. What Grithos does is name them, sharpen them, and make them a daily practice.</p>
-        <p>This is not a religion. It is a philosophy with ancient roots and a God who authored the structure we live within. What follows is the thread that connects Marcus to Grithos — proof that these truths are not new. They are timeless.</p>
+        <p>Marcus Aurelius was the Emperor of Rome. Epictetus was born a slave. Benjamin Franklin was a self-made printer who helped build a nation. Three men. Three centuries apart. All of them lived the same truths that Grithos now carries forward.</p>
+        <p>Grithos did not invent its principles. It inherited them. The ideas that form the Four Pillars have been tested across millennia — by emperors and slaves, by founders and ordinary people trying to live well. What Grithos does is name them, sharpen them, and make them a daily practice.</p>
+        <p>This is not a religion. It is a philosophy with ancient roots and a God who authored the structure we live within. What follows is the thread that connects the lineage to Grithos — proof that these truths are not new. They are timeless.</p>
       </div>
     </div>
   </div>
@@ -242,7 +277,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="lineage-header reveal d1">
       <p class="lineage-pillar-label">Pillar I — Virtue</p>
       <h2 class="lineage-pillar-name">Do Right Regardless</h2>
-      <p class="lineage-pillar-tagline">What Marcus wrote about honesty and moral courage.</p>
+      <p class="lineage-pillar-tagline">What they wrote about honesty and moral courage.</p>
+    </div>
+
+    <div class="figure-header reveal d2">
+      <h3 class="figure-name">Marcus Aurelius</h3>
+      <p class="figure-years">121 – 180 AD · Emperor of Rome</p>
     </div>
 
     <div class="quote-pair reveal d2">
@@ -279,13 +319,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <div class="section-divider"></div>
 
-<!-- ═══ APEX ═══ -->
+<!-- ═══ STRENGTH / APEX ═══ -->
 <section class="lineage-section">
   <div class="wrap">
     <div class="lineage-header reveal d1">
       <p class="lineage-pillar-label">Pillar II — Apex</p>
       <h2 class="lineage-pillar-name">Own Your Nature</h2>
-      <p class="lineage-pillar-tagline">What Marcus wrote about human strength and responsibility.</p>
+      <p class="lineage-pillar-tagline">What they wrote about human strength and responsibility.</p>
+    </div>
+
+    <div class="figure-header reveal d2">
+      <h3 class="figure-name">Marcus Aurelius</h3>
+      <p class="figure-years">121 – 180 AD · Emperor of Rome</p>
     </div>
 
     <div class="quote-pair reveal d2">
@@ -317,6 +362,42 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         This is Tenet VI — <strong>Reject the Victim. Become the Author.</strong> Marcus did not see obstacles as punishments. He saw them as raw material. Every hardship is an opportunity to demonstrate your apex nature. A Grithosian does not ask "why me?" A Grithosian asks "what now?" The obstacle is not in the way. It is the way.
       </div>
     </div>
+
+    <div class="figure-header reveal d1">
+      <h3 class="figure-name">Epictetus</h3>
+      <p class="figure-years">50 – 135 AD · Former Slave, Stoic Philosopher</p>
+      <p class="figure-intro">Born into slavery in Hierapolis, Epictetus endured a broken leg at the hands of his master and emerged as one of the greatest Stoic philosophers who ever lived. His teachings, recorded by his student Arrian in the Discourses, became the primary texts Marcus Aurelius studied. A man who owned nothing — not even his own body — and yet mastered everything within his control.</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>No man is free who is not master of himself.</p>
+      </blockquote>
+      <div class="marcus-cite">— Epictetus, Discourses</div>
+      <div class="bridge">
+        This is the soul of Apex. Epictetus was legally owned by another human being — and yet he was freer than most people who have ever lived. Because freedom is not about external circumstances. It is about internal sovereignty. A Grithosian does not wait for permission to be strong. Strength is claimed from within, regardless of what the world puts on you.
+      </div>
+    </div>
+
+    <div class="quote-pair reveal d3">
+      <blockquote class="marcus-quote">
+        <p>It's not what happens to you, but how you react to it that matters.</p>
+      </blockquote>
+      <div class="marcus-cite">— Epictetus, Discourses</div>
+      <div class="bridge">
+        This is Tenet VI — <strong>Reject the Victim. Become the Author.</strong> Epictetus lived this tenet before it had a name. His leg was broken. His freedom was stripped. He did not become a victim. He became the teacher whose words shaped an emperor. Your circumstances do not define you. Your response does.
+      </div>
+    </div>
+
+    <div class="quote-pair reveal d4">
+      <blockquote class="marcus-quote">
+        <p>First say to yourself what you would be; and then do what you have to do.</p>
+      </blockquote>
+      <div class="marcus-cite">— Epictetus, Discourses, Book III</div>
+      <div class="bridge">
+        This is Tenet IV — <strong>Never Shrink. Never Apologize for Strength.</strong> Epictetus understood that apex begins with identity. You must first decide who you are — then act accordingly. Do not shrink to fit rooms that are too small for you. Decide what you would be, and then become it through daily, relentless action.
+      </div>
+    </div>
   </div>
 </section>
 
@@ -328,7 +409,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="lineage-header reveal d1">
       <p class="lineage-pillar-label">Pillar III — Control</p>
       <h2 class="lineage-pillar-name">Live Within Bounds</h2>
-      <p class="lineage-pillar-tagline">What Marcus wrote about what is yours and what is not.</p>
+      <p class="lineage-pillar-tagline">What they wrote about what is yours and what is not.</p>
+    </div>
+
+    <div class="figure-header reveal d2">
+      <h3 class="figure-name">Marcus Aurelius</h3>
+      <p class="figure-years">121 – 180 AD · Emperor of Rome</p>
     </div>
 
     <div class="quote-pair reveal d2">
@@ -360,6 +446,42 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         This is Tenet IX — <strong>Trust the Bounds.</strong> Marcus knew that most of what troubles us is not reality — it is our interpretation of reality. The bounds are rational and consistent. God authored them that way. A Grithosian trusts the structure, even when the interpretation feels unbearable. Separate what happened from your story about what happened. The bounds hold.
       </div>
     </div>
+
+    <div class="figure-header reveal d1">
+      <h3 class="figure-name">Benjamin Franklin</h3>
+      <p class="figure-years">1706 – 1790 · Founding Father, Inventor, Philosopher</p>
+      <p class="figure-intro">A self-educated printer who became a scientist, diplomat, and architect of a nation. Franklin created a system of thirteen virtues and tracked his adherence to them daily in a small notebook — the original daily practice. He understood that character is not inherited. It is built, one disciplined day at a time.</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>An investment in knowledge pays the best interest.</p>
+      </blockquote>
+      <div class="marcus-cite">— Benjamin Franklin, Poor Richard's Almanack</div>
+      <div class="bridge">
+        This is Tenet VII — <strong>Own Only What Is Yours.</strong> Franklin understood that the only assets no one can take from you are the ones you build inside yourself — your knowledge, your character, your discipline. A Grithosian invests in what is truly theirs. Not possessions. Not titles. The things that compound quietly and last forever.
+      </div>
+    </div>
+
+    <div class="quote-pair reveal d3">
+      <blockquote class="marcus-quote">
+        <p>By failing to prepare, you are preparing to fail.</p>
+      </blockquote>
+      <div class="marcus-cite">— Benjamin Franklin</div>
+      <div class="bridge">
+        This is the discipline of Pillar III — <strong>live within bounds.</strong> Franklin did not leave virtue to chance. He tracked it. Daily. In a notebook he carried everywhere. A Grithosian does the same with the Daily Practice — one practice per day, every day. Discipline is not what you do when you feel like it. It is the structure you build so you do it regardless.
+      </div>
+    </div>
+
+    <div class="quote-pair reveal d4">
+      <blockquote class="marcus-quote">
+        <p>I didn't fail the test. I just found 100 ways to do it wrong.</p>
+      </blockquote>
+      <div class="marcus-cite">— Benjamin Franklin</div>
+      <div class="bridge">
+        This is Tenet VIII — <strong>Redirect Immediately.</strong> Franklin failed constantly — business ventures, experiments, diplomatic efforts. He did not spiral. He redirected. Every failure was data. Every closed door was a map to the next open one. A Grithosian treats failure the same way: not as a verdict, but as a pivot point.
+      </div>
+    </div>
   </div>
 </section>
 
@@ -371,7 +493,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="lineage-header reveal d1">
       <p class="lineage-pillar-label">Pillar IV — Death</p>
       <h2 class="lineage-pillar-name">Return to the Whole</h2>
-      <p class="lineage-pillar-tagline">What Marcus wrote about mortality and legacy.</p>
+      <p class="lineage-pillar-tagline">What they wrote about mortality and legacy.</p>
+    </div>
+
+    <div class="figure-header reveal d2">
+      <h3 class="figure-name">Marcus Aurelius</h3>
+      <p class="figure-years">121 – 180 AD · Emperor of Rome</p>
     </div>
 
     <div class="quote-pair reveal d2">
@@ -415,8 +542,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="sec-label">The Thread</div>
     </div>
     <div class="reveal d2">
-      <p class="closing-text">From a Roman Emperor's private journal to a modern philosophy of life. The lineage is unbroken.</p>
-      <p class="closing-sub">Marcus wrote it for himself. Grithos writes it for everyone willing to live it.</p>
+      <p class="closing-text">From an Emperor's journal, a slave's lectures, and a founder's almanac — to a modern philosophy of life. The lineage is unbroken.</p>
+      <p class="closing-sub">They lived it before it had a name. Grithos carries it forward for everyone willing to live it.</p>
     </div>
     <div class="reveal d3">
       <a href="/" class="back-link">
