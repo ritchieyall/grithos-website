@@ -1,0 +1,210 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="The Declaration | Grithos"
+  description="The Declaration of Grithos — a single powerful statement of what it means to live with grit and ethos. Read it. Memorize it. Live it."
+  ogTitle="The Declaration — Grithos"
+  ogDescription="A single powerful statement of what it means to live with grit and ethos. Read it. Memorize it. Live it."
+  ogUrl="https://grithos.com/declaration"
+  canonical="https://grithos.com/declaration"
+  activePage="declaration"
+>
+
+<style is:inline>
+  /* ═══ DECLARATION PAGE ═══ */
+  .declaration-page {
+    padding: 180px 0 120px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+  .declaration-page::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 1000px; height: 1000px;
+    background: radial-gradient(circle, rgba(201,147,90,.06) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .declaration-page .wrap {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+  }
+  .declaration-overline {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 40px;
+  }
+  .declaration-rule {
+    width: 60px;
+    height: 1px;
+    background: var(--gold-border);
+    margin: 0 auto 50px;
+  }
+
+  /* ═══ THE TEXT ═══ */
+  .declaration-body {
+    max-width: 780px;
+    margin: 0 auto 60px;
+  }
+  .declaration-line {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(18px, 2.8vw, 26px);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--text);
+    line-height: 1.9;
+    margin-bottom: 32px;
+  }
+  .declaration-line:last-child {
+    margin-bottom: 0;
+  }
+  .declaration-line strong {
+    font-weight: 700;
+    color: var(--white);
+    font-style: normal;
+  }
+  .declaration-emphasis {
+    font-family: var(--heading);
+    font-size: clamp(24px, 3.5vw, 38px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    line-height: 1.3;
+    margin: 50px 0;
+    font-style: normal;
+  }
+
+  /* ═══ DIVIDER ═══ */
+  .declaration-divider {
+    width: 40px;
+    height: 1px;
+    background: var(--gold-border);
+    margin: 60px auto;
+  }
+
+  /* ═══ ATTRIBUTION ═══ */
+  .declaration-attribution {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+  .declaration-date {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 0.08em;
+    margin-bottom: 50px;
+  }
+
+  /* ═══ BACK LINK ═══ */
+  .back-link {
+    font-family: var(--body);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: color .2s;
+  }
+  .back-link:hover { color: var(--gold); }
+  .back-link svg { width: 14px; height: 14px; }
+</style>
+
+<section class="declaration-page">
+  <div class="wrap">
+
+    <p class="declaration-overline reveal d1">The Declaration</p>
+    <div class="declaration-rule reveal d2"></div>
+
+    <div class="declaration-body">
+      <p class="declaration-line reveal d3">
+        Life does not owe you comfort, clarity, or time.
+      </p>
+      <p class="declaration-line reveal d3">
+        You were not placed here to be <strong>safe.</strong><br>
+        You were placed here to be <strong>worthy.</strong>
+      </p>
+
+      <p class="declaration-emphasis reveal d4">
+        Do right. Even when it costs you.
+      </p>
+
+      <p class="declaration-line reveal d4">
+        Tell the truth when silence is easier.<br>
+        Keep your word when no one is watching.<br>
+        Own your wins and your failures equally.
+      </p>
+
+      <p class="declaration-line reveal d5">
+        Never shrink to fit rooms you were built to fill.<br>
+        Never apologize for strength earned through suffering.<br>
+        Protect those who cannot protect themselves.
+      </p>
+
+      <p class="declaration-emphasis reveal d5">
+        Own only what is yours — and own it fully.
+      </p>
+
+      <p class="declaration-line reveal d6">
+        When the plan dies, redirect immediately.<br>
+        When the bounds press in, trust them.<br>
+        When the world bends, do not break.
+      </p>
+
+      <p class="declaration-line reveal d6">
+        Live like you will die — because you will.<br>
+        Grieve fully when it comes. Then move.<br>
+        Build a legacy that stands without you.
+      </p>
+
+      <p class="declaration-emphasis reveal d7">
+        Leave a mark. Not a scratch — a mark.
+      </p>
+
+      <p class="declaration-line reveal d7">
+        This is not a hobby. This is not a phase.<br>
+        This is how you carry yourself through a life<br>
+        that will test you every single day.
+      </p>
+
+      <p class="declaration-line reveal d8">
+        Grit gave you the endurance.<br>
+        Ethos gave you the compass.<br>
+        <strong>Together, they gave you Grithos.</strong>
+      </p>
+    </div>
+
+    <div class="declaration-divider reveal d8"></div>
+
+    <p class="declaration-attribution reveal d8">Founded by Richard Johnson</p>
+    <p class="declaration-date reveal d8">March 13, 2026 — Forge Day</p>
+
+    <div class="reveal d8">
+      <a href="/" class="back-link">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" /></svg>
+        Back to Grithos
+      </a>
+    </div>
+
+  </div>
+</section>
+
+</BaseLayout>
