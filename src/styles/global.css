@@ -100,7 +100,7 @@ nav {
 .nav-links a:hover { color: var(--white); }
 .nav-links a.active { color: var(--white); }
 
-/* Nav CTA (Face It) */
+/* Nav CTA (Start Here) */
 .nav-cta {
   font-family: var(--body) !important;
   font-size: 12px !important;
