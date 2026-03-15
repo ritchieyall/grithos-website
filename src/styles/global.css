@@ -219,13 +219,13 @@ footer { background: var(--void); border-top: 1px solid var(--border); padding: 
 
 /* ═══ LIGHT MODE ═══ */
 html.light-mode {
-  --void: #f5f0eb;
-  --deep: #ebe5dd;
-  --surface: #e8e2da;
-  --surface-2: #ddd7cf;
-  --card: #ede7df;
-  --border: #d0c8be;
-  --border-hover: #b8aea2;
+  --void: #ebe5de;
+  --deep: #e0d9d0;
+  --surface: #ddd6cc;
+  --surface-2: #d2cbc1;
+  --card: #e2dbd2;
+  --border: #c5bdb3;
+  --border-hover: #ada397;
   --text: #2c2520;
   --text-secondary: #5a5048;
   --text-muted: #8a7f74;
@@ -237,9 +237,9 @@ html.light-mode {
   --gold-glow: rgba(166,116,52,.15);
 }
 html.light-mode body { -webkit-font-smoothing: auto; }
-html.light-mode nav { background: rgba(245,240,235,.92); }
-html.light-mode .mobile-menu { background: rgba(245,240,235,.97); }
+html.light-mode nav { background: rgba(235,229,222,.92); }
+html.light-mode .mobile-menu { background: rgba(235,229,222,.97); }
 html.light-mode ::selection { background: rgba(166,116,52,.2); color: #1c1714; }
 html.light-mode .hamburger span { background: var(--text-secondary); }
-html.light-mode .mobile-menu .mobile-cta { color: #f5f0eb; }
-html.light-mode .btn-primary { color: #f5f0eb !important; }
+html.light-mode .mobile-menu .mobile-cta { color: #ebe5de; }
+html.light-mode .btn-primary { color: #ebe5de !important; }
