@@ -82,6 +82,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     margin: 0 auto;
   }
 
+  /* ═══ ORIGIN ═══ */
+  .origin {
+    padding: 60px 0 0;
+    text-align: center;
+  }
+  .origin-text {
+    font-family: 'Georgia', serif;
+    font-size: clamp(16px, 2vw, 19px);
+    font-style: italic;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
   /* ═══ SECTION DIVIDER ═══ */
   .section-divider {
     width: 100%;
@@ -417,6 +432,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <p class="hero-motto">Grit. Ethos. Grithos.</p>
       <p class="hero-motto-sub">From grit and ethos — the moral courage to do right, regardless.</p>
     </div>
+  </div>
+</section>
+
+<!-- ═══ ORIGIN ═══ -->
+<section class="origin">
+  <div class="wrap">
+    <p class="origin-text reveal d1">Grithos is not a religion. It is not a replacement for God or faith — it is what happens when faith becomes action. When belief stops being passive and starts being lived. Grithos is the grit that faith produces in a person who refuses to quit.</p>
   </div>
 </section>
 
