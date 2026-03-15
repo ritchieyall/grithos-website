@@ -38,11 +38,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     z-index: 2;
   }
   .hero-logo-wrap::after {
-    content: '';
-    position: absolute;
-    inset: -4px;
-    box-shadow: 0 0 60px 60px var(--void);
-    pointer-events: none;
+    display: none;
   }
   .hero-logo {
     display: block;
@@ -412,7 +408,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <section class="hero">
   <div class="wrap">
     <div class="reveal d1">
-      <div class="hero-logo-wrap"><img src="/assets/images/logo.jpg" alt="Grithos — A philosophy of life built on grit and ethos" class="hero-logo"></div>
+      <div class="hero-logo-wrap"><img src="/assets/images/logo.png" alt="Grithos — A philosophy of life built on grit and ethos" class="hero-logo"></div>
       <h1 class="hero-subtitle">A Philosophy of Life</h1>
       <p class="hero-pronunciation">GRITH-os &nbsp;|&nbsp; Practitioner: Grithosian (grith-OH-see-an)</p>
     </div>
