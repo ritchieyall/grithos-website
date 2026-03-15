@@ -1,0 +1,230 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="The Founding Story | Grithos"
+  description="The founding story of Grithos — how faith, isolation, and grit forged a philosophy for people already in the fire."
+  ogTitle="The Founding Story — Grithos"
+  ogDescription="Where Grithos came from. Why it exists. The true story behind the philosophy."
+  ogUrl="https://grithos.com/story"
+  canonical="https://grithos.com/story"
+  activePage="story"
+>
+
+<style is:inline>
+  /* ═══ STORY PAGE ═══ */
+  .story-page {
+    padding: 160px 0 120px;
+    position: relative;
+    overflow: hidden;
+  }
+  .story-page::before {
+    content: '';
+    position: absolute;
+    top: 200px; left: 50%; transform: translateX(-50%);
+    width: 1000px; height: 1000px;
+    background: radial-gradient(circle, rgba(201,147,90,.04) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .story-page .wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+  }
+
+  /* ═══ HEADER ═══ */
+  .story-overline {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+    text-align: center;
+  }
+  .story-title {
+    font-family: var(--heading);
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 800;
+    color: var(--white);
+    text-align: center;
+    margin-bottom: 12px;
+    letter-spacing: -.02em;
+  }
+  .story-byline {
+    font-family: 'Georgia', serif;
+    font-size: 15px;
+    font-style: italic;
+    color: var(--text-secondary);
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  .story-rule {
+    width: 60px;
+    height: 1px;
+    background: var(--gold-border);
+    margin: 0 auto 60px;
+  }
+
+  /* ═══ BODY ═══ */
+  .story-body p {
+    font-family: 'Georgia', serif;
+    font-size: clamp(16px, 2vw, 18px);
+    color: var(--text);
+    line-height: 1.85;
+    margin-bottom: 28px;
+  }
+  .story-body p:last-child {
+    margin-bottom: 0;
+  }
+  .story-body strong {
+    color: var(--white);
+    font-weight: 700;
+  }
+  .story-body em {
+    font-style: italic;
+    color: var(--text-secondary);
+  }
+
+  /* ═══ SECTION BREAKS ═══ */
+  .story-break {
+    width: 40px;
+    height: 1px;
+    background: var(--gold-border);
+    margin: 48px auto;
+  }
+
+  /* ═══ CLOSING ═══ */
+  .story-closing {
+    text-align: center;
+    margin-top: 80px;
+    padding-top: 60px;
+    border-top: 1px solid var(--gold-border);
+  }
+  .story-closing p {
+    font-family: 'Georgia', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .story-signature {
+    font-family: var(--heading);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+    margin-top: 20px;
+  }
+  .story-signature-detail {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-top: 6px;
+  }
+
+  @media (max-width: 600px) {
+    .story-page {
+      padding: 140px 20px 80px;
+    }
+  }
+</style>
+
+<section class="story-page">
+  <div class="wrap">
+    <div class="reveal d1">
+      <div class="story-overline">Origin</div>
+      <h1 class="story-title">The Founding Story of Grithos</h1>
+      <p class="story-byline">By Richard — Forge Day, March 13, 2026</p>
+      <div class="story-rule"></div>
+    </div>
+
+    <div class="story-body reveal d2">
+      <p>I want to tell you where I was before I tell you where I am.</p>
+
+      <p>I lived on the Chesapeake Bay. Not as a vacation — as a life. A small, tight community of neighbors and friends, the kind of place where you have actual history with the people around you and they have it with you. I had a home there. A marriage. Water out the window and people I loved within walking distance. I had built something real on that shore, and I had every reason to believe it was permanent.</p>
+
+      <p>On January 1st, 2025, my wife left. No warning I was willing to see. The new year was a few hours old.</p>
+
+      <p>I want to be direct about something before I go any further: <strong>I am not a victim.</strong> I am not telling this story to collect sympathy or to explain myself or to assign blame. I am telling it because it is true, and because Grithos demands exactly that — honesty, regardless of the cost, regardless of how it reflects on you. What happened to me was hard. Hardship is real. But the decision to define yourself by what happened to you rather than what you do next — that is a door I have never walked through, and I am not walking through it here.</p>
+
+      <p>What I will say is this: when the structure collapses all at once, you find out very quickly what was load-bearing and what was just furniture. Everything went at the same time — the marriage, the home, the community, the shape that a life has when it's been built with someone over years. Gone. All of it. At once.</p>
+
+      <div class="story-break"></div>
+
+      <p>Here is something I did not fully understand about myself until that moment: in more than fifty years of living, I had never once been truly alone. Not for any sustained period. Not in the way that actually tests you. I am an extrovert in the bone-deep sense of the word — I had always had people physically around me, a community within reach, a life that was populated and present and loud enough to fill the space. That was just the water I swam in. I didn't know it was water until it was gone.</p>
+
+      <p>I did what competent people do when the floor disappears. I executed.</p>
+
+      <p>I sold the Maryland home in May 2025. I moved to the Gulf Coast. I fell in love — fast, and for all the wrong reasons, which I understood somewhere underneath the surface and chose not to look at directly. By October I had bought a house. I was rebuilding. New structure, new place, new reason to get up and keep moving. I believed, the way you believe things you need to be true, that as long as I just kept getting shit done I would be okay.</p>
+
+      <p>I sold that house in January 2026. Three months. It didn't fill the gap either.</p>
+
+      <p>What I hadn't fully reckoned with was what isolation actually meant for someone like me. This wasn't chosen solitude. This was an extrovert, alone for the first time in his life, in a house in Mississippi, trying to outrun something that was sitting right there waiting every time he stopped moving. No community. No history with anyone nearby. No one in the next room. I had never needed a framework for this because I had never needed one — and now I did, and I didn't have it.</p>
+
+      <div class="story-break"></div>
+
+      <p>I had people who held the line from a distance. My sister called me multiple times a day — and I knew, in the honest part of myself, that there were moments she didn't want to. That she had her own life, her own demands, her own capacity that I was drawing on heavily. She called anyway. Every time. That is not a small thing and I will not pretend it is. A close friend talked to me daily as well — sat with me through some of the most emotional and embarrassing moments of that year, and never once flinched or looked away. I had co-workers on the Gulf Coast who knew what I was going through and showed up in the ways their busy lives allowed.</p>
+
+      <p>I was not invisible. I was not abandoned. People loved me and showed up in the ways they could.</p>
+
+      <p>And yet the evenings were quiet in a way I had no experience navigating. The gap between being cared about and not being alone turned out to be vast. And the more I tried to fill it with motion — new structures, new relationships, relentless execution — the more clearly I could feel its edges.</p>
+
+      <div class="story-break"></div>
+
+      <p>Here is where I had to get honest with myself in a way that was harder than any of the external losses. The problem wasn't circumstances. The problem was that I was spending every ounce of energy I had fighting things that were not mine to fight — and neglecting the only things that actually were. Pillar III of Grithos says it plainly: a Grithosian owns four things completely — their thoughts and attitudes, their decisions and actions, their effort and preparation, and their character and integrity. Everything else belongs to the bounds. I had been trying to own everything. And it was destroying me.</p>
+
+      <p>Around this same time I started Threat Zero Cyber. Sixteen years in federal government cybersecurity had shown me the same gap over and over — defense contractors drowning in CMMC and NIST requirements with no one qualified to actually help them through it. But I won't pretend the timing was purely strategic. I needed something that was mine. Something real to build when everything else had been taken apart. TZC was survival mode from day one — and it became genuine purpose almost immediately. Because purpose doesn't wait for your circumstances to improve. It just shows up and asks if you're going to do the work. That is Pillar II in action: own your apex nature, own your capability, and do not shrink from it because the conditions aren't comfortable. Shrinking from your potential is not humility. It is a betrayal of your nature.</p>
+
+      <div class="story-break"></div>
+
+      <p>Then I met my neighbors.</p>
+
+      <p>I was still in the Mississippi house, a few weeks before I'd sell it and move back into the Airstream for good. Next door lived a man I can only describe as gentle and brilliant — a PhD in Theology who had learned Hebrew so he could read scripture in its original language. He and his wife are devout Christians in the truest sense — not performative, not complicated about it, just completely and quietly committed to their faith and to the people around them. They invited me to dinners. They prayed for me daily. In the middle of my isolation they simply showed up and loved me, the way people do when their faith is actually real and not just decorative.</p>
+
+      <p>I don't take that lightly. I didn't then and I don't now.</p>
+
+      <p>We had many conversations — the kind that happen when a theologian and a cybersecurity guy end up talking with nowhere urgent to be. One night I made a joke. Given everything he knew about religion, about scripture, about the history of human belief — I said we should use AI to build the perfect religion. We all laughed. And then he made clear, warmly and without ambiguity, that he wasn't interested in that project. You don't need a perfect religion, he said. You need the Lord and the Bible. That's it.</p>
+
+      <p>Fair enough.</p>
+
+      <p>But something in that joke didn't let go of me.</p>
+
+      <p>Not the religion part. Something underneath it — the idea that there were principles worth naming, worth structuring, worth putting into the world in a form that could help someone. I'd been living by something. It was there in everything I'd done to stay upright that year — in the honesty I'd tried to maintain even when it was uncomfortable, in the refusal to cast myself as a victim of my own life, in the decision to build something real instead of waiting for the pain to pass. It had a shape. It had a spine. And it had been forged, not chosen.</p>
+
+      <p><strong>Grit. Ethos. Grithos.</strong></p>
+
+      <p>Four pillars. Virtue — do right regardless. Apex — own your nature, reject the victim, become the author. Control — own only what is yours, redirect everything else. Death — return to the whole, grieve fully, then move. Together they don't describe a personality type or a mood or a motivational posture. They describe a way of being that asks something real of you every single day — and gives something real back. Not comfort. Integrity. Not ease. The kind of person you become when you stop fighting the forge and start doing the work inside it.</p>
+
+      <div class="story-break"></div>
+
+      <p>I want to be clear about what Grithos is not. It is not a religion. It is not a replacement for faith or a competitor to it. The neighbors who helped bring it into existence would be the first to tell you that — and they'd be right. Grithos makes no claims about the divine. The foundation acknowledges that a rational God exists who authored the bounds underlying all things — and then it steps back and says: how you honor that is yours. What Grithos asks is that you align. With the bounds. With virtue. With the life you were given.</p>
+
+      <p>I launched Grithos on March 13, 2026. Forge Day. Not a celebration — a commitment. A stake in the ground.</p>
+
+      <p>I built it because I needed it. Because January 1st, 2025 happened and I spent a year trying to solve it with motion and new structures and getting shit done, and eventually I had to face the only question that actually mattered: who are you when everything you built is gone, when forward motion stops being enough, and when the gap you keep trying to fill turns out to be inside you?</p>
+
+      <p>I built it because I am not a victim — and I needed a philosophy that said so out loud and meant it.</p>
+
+      <p>I built it because an extrovert who had never once been truly alone in fifty-plus years had to learn — the hard way, the only way — what he was actually made of when the room went quiet.</p>
+
+      <p>I built it because my sister called anyway. Because a friend never looked away. Because two neighbors prayed for me every day and fed me dinner and showed me what load-bearing values actually look like.</p>
+
+      <p>I built it because a joke about the perfect religion turned out to be pointing at something true.</p>
+
+      <p>This is not the perfect religion. This is not a religion at all. This is a philosophy for people who are already in the fire — who know the isolation is real, the gap is real, the forge is real — and who have decided to become the author of what comes next.</p>
+    </div>
+
+    <div class="story-closing reveal d3">
+      <p>The forge is open. The work is yours.</p>
+      <div class="story-signature">Richard Johnson</div>
+      <div class="story-signature-detail">Founder, Grithos &middot; Forge Day — March 13, 2026</div>
+    </div>
+  </div>
+</section>
+
+</BaseLayout>
