@@ -316,7 +316,6 @@ footer { background: var(--void); border-top: 1px solid var(--border); padding: 
 @media(max-width:768px) {
   .nav-links { display: none; }
   .hamburger { display: flex; }
-  .mobile-menu { display: flex; }
 }
 @media(max-width:540px) {
   .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
