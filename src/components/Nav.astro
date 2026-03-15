@@ -14,13 +14,33 @@ const prefix = isHome ? '' : '/';
       <div class="logo-text"><span>Grit</span>hos</div>
     </a>
     <div class="nav-links">
-      <a href={`${prefix}#foundation`}>Foundation</a>
-      <a href={`${prefix}#creed`}>Creed</a>
-      <a href={`${prefix}#pillars`}>The Four Pillars</a>
-      <a href="/tenets" class={activePage === 'tenets' ? 'active' : ''}>The Tenets</a>
-      <a href="/lineage" class={activePage === 'lineage' ? 'active' : ''}>The Lineage</a>
-      <a href="/practice" class={activePage === 'practice' ? 'active' : ''}>Daily Practice</a>
-      <a href={`${prefix}#founder`}>The Founder</a>
+
+      <!-- The Philosophy dropdown -->
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-trigger">The Philosophy <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" width="10" height="10"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg></button>
+        <div class="nav-dropdown-menu">
+          <a href={`${prefix}#foundation`}>Foundation</a>
+          <a href={`${prefix}#creed`}>Creed</a>
+          <a href={`${prefix}#pillars`}>The Four Pillars</a>
+          <a href="/tenets" class={activePage === 'tenets' ? 'active' : ''}>The Tenets</a>
+          <a href="/lineage" class={activePage === 'lineage' ? 'active' : ''}>The Lineage</a>
+          <a href="/declaration" class={activePage === 'declaration' ? 'active' : ''}>Declaration</a>
+        </div>
+      </div>
+
+      <!-- The Practice dropdown -->
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-trigger">The Practice <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" width="10" height="10"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg></button>
+        <div class="nav-dropdown-menu">
+          <a href="/practice" class={activePage === 'practice' ? 'active' : ''}>Daily Practice</a>
+          <a href="/lexicon" class={activePage === 'lexicon' ? 'active' : ''}>Lexicon</a>
+          <a href="/faq" class={activePage === 'faq' ? 'active' : ''}>FAQ</a>
+        </div>
+      </div>
+
+      <!-- Face It — standalone CTA -->
+      <a href="/footing" class={`nav-cta ${activePage === 'footing' ? 'active' : ''}`}>Face It</a>
+
       <button class="theme-toggle" aria-label="Toggle light/dark mode" id="themeToggle">
         <svg class="moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" /></svg>
         <svg class="sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" /></svg>
@@ -35,13 +55,22 @@ const prefix = isHome ? '' : '/';
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
-  <a href={`${prefix}#foundation`}>Foundation</a>
-  <a href={`${prefix}#creed`}>Creed</a>
-  <a href={`${prefix}#pillars`}>The Four Pillars</a>
-  <a href="/tenets" class={activePage === 'tenets' ? 'active' : ''}>The Tenets</a>
-  <a href="/lineage" class={activePage === 'lineage' ? 'active' : ''}>The Lineage</a>
-  <a href="/practice" class={activePage === 'practice' ? 'active' : ''}>Daily Practice</a>
-  <a href={`${prefix}#founder`}>The Founder</a>
+  <div class="mobile-section">
+    <div class="mobile-section-label">The Philosophy</div>
+    <a href={`${prefix}#foundation`}>Foundation</a>
+    <a href={`${prefix}#creed`}>Creed</a>
+    <a href={`${prefix}#pillars`}>The Four Pillars</a>
+    <a href="/tenets" class={activePage === 'tenets' ? 'active' : ''}>The Tenets</a>
+    <a href="/lineage" class={activePage === 'lineage' ? 'active' : ''}>The Lineage</a>
+    <a href="/declaration" class={activePage === 'declaration' ? 'active' : ''}>Declaration</a>
+  </div>
+  <div class="mobile-section">
+    <div class="mobile-section-label">The Practice</div>
+    <a href="/practice" class={activePage === 'practice' ? 'active' : ''}>Daily Practice</a>
+    <a href="/lexicon" class={activePage === 'lexicon' ? 'active' : ''}>Lexicon</a>
+    <a href="/faq" class={activePage === 'faq' ? 'active' : ''}>FAQ</a>
+  </div>
+  <a href="/footing" class={`mobile-cta ${activePage === 'footing' ? 'active' : ''}`}>Face It</a>
   <button class="theme-toggle" aria-label="Toggle light/dark mode" id="themeToggleMobile">
     <svg class="moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" /></svg>
     <svg class="sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" /></svg>
@@ -92,6 +121,34 @@ const prefix = isHome ? '' : '/';
     link.addEventListener('click', function() {
       closeMenu();
     });
+  });
+
+  // Desktop dropdown hover behavior
+  document.querySelectorAll('.nav-dropdown').forEach(function(dd) {
+    var timer;
+    dd.addEventListener('mouseenter', function() {
+      clearTimeout(timer);
+      dd.classList.add('open');
+    });
+    dd.addEventListener('mouseleave', function() {
+      timer = setTimeout(function() {
+        dd.classList.remove('open');
+      }, 150);
+    });
+    // Also handle click for touch devices
+    dd.querySelector('.nav-dropdown-trigger').addEventListener('click', function(e) {
+      e.preventDefault();
+      dd.classList.toggle('open');
+    });
+  });
+
+  // Close dropdowns when clicking outside
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.nav-dropdown')) {
+      document.querySelectorAll('.nav-dropdown.open').forEach(function(dd) {
+        dd.classList.remove('open');
+      });
+    }
   });
 
 })();

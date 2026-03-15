@@ -1,0 +1,1318 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Find Your Footing | Grithos"
+  description="Life hit you with something? Find the pillar and tenet that speaks to where you are right now. Grithos meets you where you stand."
+  ogTitle="Find Your Footing — Grithos"
+  ogDescription="Map your moment to the philosophy. Whatever you're facing, there's a pillar, a tenet, and a practice for it."
+  ogUrl="https://grithos.com/footing"
+  canonical="https://grithos.com/footing"
+  activePage="footing"
+>
+
+<style is:inline>
+  /* ═══ PAGE HERO ═══ */
+  .page-hero {
+    padding: 160px 0 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-hero::before {
+    content: '';
+    position: absolute;
+    top: 40%; left: 50%; transform: translateX(-50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(201,147,90,.05) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .page-hero .wrap { position: relative; z-index: 1; }
+  .page-hero-overline {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .page-hero-title {
+    font-family: var(--heading);
+    font-size: clamp(32px, 4.5vw, 52px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+  .page-hero-sub {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(15px, 2vw, 18px);
+    font-style: italic;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  /* ═══ INTRO ═══ */
+  .footing-intro {
+    padding: 0 0 60px;
+    text-align: center;
+  }
+  .footing-intro-text {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 17px;
+    line-height: 1.9;
+    color: var(--text-secondary);
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  /* ═══ SITUATIONS GRID ═══ */
+  .footing-section {
+    padding: 0 0 80px;
+  }
+  .pillar-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-top: 60px;
+    border-top: 1px solid var(--border);
+  }
+  .pillar-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .pillar-name {
+    font-family: var(--heading);
+    font-size: clamp(22px, 3vw, 32px);
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+  }
+  .pillar-tagline {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 15px;
+    font-style: italic;
+    color: var(--text-muted);
+  }
+
+  .situation-grid {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .situation-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 28px 32px;
+    cursor: pointer;
+    transition: all .3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .situation-card:hover {
+    border-color: var(--gold-border);
+    transform: translateY(-2px);
+  }
+  .situation-card.open {
+    border-color: var(--gold-border);
+  }
+
+  .situation-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    text-align: left;
+  }
+
+  .situation-label {
+    font-family: var(--heading);
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.4;
+    transition: color .2s;
+  }
+  .situation-card:hover .situation-label {
+    color: var(--gold);
+  }
+
+  .situation-icon {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .3s;
+  }
+  .situation-icon svg {
+    width: 14px;
+    height: 14px;
+    color: var(--text-muted);
+    transition: all .3s;
+  }
+  .situation-card.open .situation-icon {
+    border-color: var(--gold);
+    background: var(--gold-soft);
+  }
+  .situation-card.open .situation-icon svg {
+    color: var(--gold);
+    transform: rotate(45deg);
+  }
+
+  .situation-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .4s cubic-bezier(.16,1,.3,1), opacity .3s;
+    opacity: 0;
+  }
+  .situation-card.open .situation-answer {
+    opacity: 1;
+  }
+  .situation-answer-inner {
+    padding: 20px 0 4px;
+  }
+
+  /* ═══ WORKFLOW STEPS ═══ */
+  .workflow {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .workflow-step {
+    padding-left: 20px;
+    border-left: 2px solid var(--border);
+  }
+  .workflow-step.active-step {
+    border-left-color: var(--gold);
+  }
+  .workflow-step-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .workflow-step-title {
+    font-family: var(--heading);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+  .workflow-step-body {
+    font-family: var(--body);
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+  .workflow-quote {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 14px;
+    font-style: italic;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+  .workflow-cite {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: .05em;
+  }
+  .workflow-action {
+    font-family: var(--heading);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.5;
+  }
+  .workflow-links {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+  }
+  .workflow-link {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .05em;
+    color: var(--gold);
+    text-decoration: none;
+    background: var(--gold-soft);
+    border: 1px solid var(--gold-border);
+    padding: 4px 12px;
+    border-radius: 4px;
+    transition: all .2s;
+  }
+  .workflow-link:hover {
+    background: var(--gold-border);
+    color: var(--white);
+  }
+
+  /* ═══ CLOSING ═══ */
+  .closing {
+    padding: 0 0 120px;
+    text-align: center;
+  }
+  .closing-divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+    margin-bottom: 80px;
+  }
+  .closing-text {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(20px, 2.8vw, 28px);
+    font-weight: 700;
+    font-style: italic;
+    color: var(--white);
+    line-height: 1.5;
+    max-width: 640px;
+    margin: 0 auto 20px;
+  }
+  .closing-sub {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(15px, 2vw, 18px);
+    font-style: italic;
+    color: var(--text-secondary);
+    max-width: 480px;
+    margin: 0 auto 40px;
+  }
+  .back-link {
+    font-family: var(--body);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: color .2s;
+  }
+  .back-link:hover { color: var(--gold); }
+  .back-link svg { width: 14px; height: 14px; }
+
+  @media(max-width: 768px) {
+    .situation-card {
+      padding: 22px 20px;
+    }
+    .situation-label {
+      font-size: 15px;
+    }
+  }
+</style>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="wrap">
+    <p class="page-hero-overline reveal d1">Face It</p>
+    <h1 class="page-hero-title reveal d2">Find Your Footing</h1>
+    <p class="page-hero-sub reveal d3">Life hit you with something. Find the pillar and tenet that speaks to where you are right now.</p>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="footing-intro">
+  <div class="wrap">
+    <p class="footing-intro-text reveal d4">You don't need to read the whole philosophy to start using it. Find the situation closest to yours. Grithos will meet you there.</p>
+  </div>
+</section>
+
+<!-- ═══ PILLAR I — VIRTUE ═══ -->
+<section class="footing-section">
+  <div class="wrap">
+    <div class="pillar-header reveal d1">
+      <p class="pillar-label">Pillar I — Virtue</p>
+      <h2 class="pillar-name">Do Right Regardless</h2>
+      <p class="pillar-tagline">When the right thing is also the hard thing</p>
+    </div>
+
+    <div class="situation-grid">
+
+      <div class="situation-card reveal d2">
+        <button class="situation-trigger" aria-expanded="false">
+          <span class="situation-label">"I lied and now it's eating me alive."</span>
+          <span class="situation-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg></span>
+        </button>
+        <div class="situation-answer">
+          <div class="situation-answer-inner">
+            <div class="workflow">
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">The Pillar</div>
+                <div class="workflow-step-title">Pillar I — Virtue: Do Right Regardless</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Tenet</div>
+                <div class="workflow-step-title">Tenet I — Tell the Truth. Even When It Costs You.</div>
+                <div class="workflow-step-body">The weight you feel is your ethos telling you it's wrong. The fallout from honesty is always lighter than the rot from silence.</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Lineage</div>
+                <p class="workflow-quote">"If it is not right do not do it; if it is not true do not say it."</p>
+                <div class="workflow-cite">— Marcus Aurelius, Meditations, Book XII</div>
+              </div>
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">Your Practice</div>
+                <p class="workflow-action">Tell the truth to the person you lied to. No preamble. No excuses. Just the truth.</p>
+              </div>
+            </div>
+            <div class="workflow-links">
+              <a href="/tenets#tenet-i" class="workflow-link">Read Tenet I →</a>
+              <a href="/lineage" class="workflow-link">Read the Lineage →</a>
+              <a href="/practice" class="workflow-link">Today's Practice →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="situation-card reveal d3">
+        <button class="situation-trigger" aria-expanded="false">
+          <span class="situation-label">"I know what I should do, but it's going to cost me."</span>
+          <span class="situation-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg></span>
+        </button>
+        <div class="situation-answer">
+          <div class="situation-answer-inner">
+            <div class="workflow">
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">The Pillar</div>
+                <div class="workflow-step-title">Pillar I — Virtue: Do Right Regardless</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Tenet</div>
+                <div class="workflow-step-title">Tenet I — Tell the Truth. Even When It Costs You.</div>
+                <div class="workflow-step-body">If you already know it's right, the only thing stopping you is fear of what it costs. One of those you can recover from. The other follows you.</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Lineage</div>
+                <p class="workflow-quote">"Waste no more time arguing about what a good man should be. Be one."</p>
+                <div class="workflow-cite">— Marcus Aurelius, Meditations, Book X</div>
+              </div>
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">Your Practice</div>
+                <p class="workflow-action">Do the right thing. Accept the cost. You'll sleep tonight knowing who you are.</p>
+              </div>
+            </div>
+            <div class="workflow-links">
+              <a href="/tenets#tenet-i" class="workflow-link">Read Tenet I →</a>
+              <a href="/lineage" class="workflow-link">Read the Lineage →</a>
+              <a href="/practice" class="workflow-link">Today's Practice →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="situation-card reveal d4">
+        <button class="situation-trigger" aria-expanded="false">
+          <span class="situation-label">"I made a promise I can't keep."</span>
+          <span class="situation-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg></span>
+        </button>
+        <div class="situation-answer">
+          <div class="situation-answer-inner">
+            <div class="workflow">
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">The Pillar</div>
+                <div class="workflow-step-title">Pillar I — Virtue: Do Right Regardless</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Tenet</div>
+                <div class="workflow-step-title">Tenet II — Keep Your Word Like Your Life Depends on It.</div>
+                <div class="workflow-step-body">Your word is only worth something if you protect it, even when it means admitting you overextended.</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Lineage</div>
+                <p class="workflow-quote">"Never esteem anything as of advantage to you that will make you break your word or lose your self-respect."</p>
+                <div class="workflow-cite">— Marcus Aurelius, Meditations, Book III</div>
+              </div>
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">Your Practice</div>
+                <p class="workflow-action">Call the person. Own it. Renegotiate or release them. But don't disappear.</p>
+              </div>
+            </div>
+            <div class="workflow-links">
+              <a href="/tenets#tenet-ii" class="workflow-link">Read Tenet II →</a>
+              <a href="/lineage" class="workflow-link">Read the Lineage →</a>
+              <a href="/practice" class="workflow-link">Today's Practice →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="situation-card reveal d5">
+        <button class="situation-trigger" aria-expanded="false">
+          <span class="situation-label">"Something went wrong and it was my fault."</span>
+          <span class="situation-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg></span>
+        </button>
+        <div class="situation-answer">
+          <div class="situation-answer-inner">
+            <div class="workflow">
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">The Pillar</div>
+                <div class="workflow-step-title">Pillar I — Virtue: Do Right Regardless</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Tenet</div>
+                <div class="workflow-step-title">Tenet III — Own Your Wins. But Do Right in the Dark.</div>
+                <div class="workflow-step-body">Fix what can be fixed. Learn what can be learned. And move. Guilt without action is just self-pity dressed up as accountability.</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Lineage</div>
+                <p class="workflow-quote">"He that is good for making excuses is seldom good for anything else."</p>
+                <div class="workflow-cite">— Benjamin Franklin, Poor Richard's Almanack</div>
+              </div>
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">Your Practice</div>
+                <p class="workflow-action">Say it out loud to someone who was affected. "That was my fault. Here's what I'm doing about it."</p>
+              </div>
+            </div>
+            <div class="workflow-links">
+              <a href="/tenets#tenet-iii" class="workflow-link">Read Tenet III →</a>
+              <a href="/lineage" class="workflow-link">Read the Lineage →</a>
+              <a href="/practice" class="workflow-link">Today's Practice →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="situation-card reveal d6">
+        <button class="situation-trigger" aria-expanded="false">
+          <span class="situation-label">"I'm going through a divorce and I feel like a failure."</span>
+          <span class="situation-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg></span>
+        </button>
+        <div class="situation-answer">
+          <div class="situation-answer-inner">
+            <div class="workflow">
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">The Pillar</div>
+                <div class="workflow-step-title">Pillar I — Virtue: Do Right Regardless</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Tenet</div>
+                <div class="workflow-step-title">Tenet III — Own Your Wins. But Do Right in the Dark.</div>
+                <div class="workflow-step-body">A marriage ending is not proof that you failed at life. It is proof that something broke. Own what was yours. Release what wasn't.</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Lineage</div>
+                <p class="workflow-quote">"He that is good for making excuses is seldom good for anything else."</p>
+                <div class="workflow-cite">— Benjamin Franklin, Poor Richard's Almanack</div>
+              </div>
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">Your Practice</div>
+                <p class="workflow-action">Write down what you could have done better. Not to punish yourself — to learn. Then write down what you did right. Carry the lessons. Leave the guilt.</p>
+              </div>
+            </div>
+            <div class="workflow-links">
+              <a href="/tenets#tenet-iii" class="workflow-link">Read Tenet III →</a>
+              <a href="/lineage" class="workflow-link">Read the Lineage →</a>
+              <a href="/practice" class="workflow-link">Today's Practice →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="situation-card reveal d7">
+        <button class="situation-trigger" aria-expanded="false">
+          <span class="situation-label">"I feel like I'm failing as a parent."</span>
+          <span class="situation-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg></span>
+        </button>
+        <div class="situation-answer">
+          <div class="situation-answer-inner">
+            <div class="workflow">
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">The Pillar</div>
+                <div class="workflow-step-title">Pillar I — Virtue: Do Right Regardless</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Tenet</div>
+                <div class="workflow-step-title">Tenet III — Own Your Wins. But Do Right in the Dark.</div>
+                <div class="workflow-step-body">The fact that you're worried about failing means you care more than most. Perfection is not the standard. Presence is.</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Lineage</div>
+                <p class="workflow-quote">"Well done is better than well said."</p>
+                <div class="workflow-cite">— Benjamin Franklin, Poor Richard's Almanack</div>
+              </div>
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">Your Practice</div>
+                <p class="workflow-action">Write down three things you did for your children this week that no one saw. That is parenting. The doubt you feel is proof you care enough to question yourself.</p>
+              </div>
+            </div>
+            <div class="workflow-links">
+              <a href="/tenets#tenet-iii" class="workflow-link">Read Tenet III →</a>
+              <a href="/lineage" class="workflow-link">Read the Lineage →</a>
+              <a href="/practice" class="workflow-link">Today's Practice →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PILLAR II — APEX ═══ -->
+<section class="footing-section">
+  <div class="wrap">
+    <div class="pillar-header reveal d1">
+      <p class="pillar-label">Pillar II — Apex</p>
+      <h2 class="pillar-name">Own Your Nature</h2>
+      <p class="pillar-tagline">When you need to become who you actually are</p>
+    </div>
+
+    <div class="situation-grid">
+
+      <div class="situation-card reveal d2">
+        <button class="situation-trigger" aria-expanded="false">
+          <span class="situation-label">"I'm not living up to what I know I can be."</span>
+          <span class="situation-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg></span>
+        </button>
+        <div class="situation-answer">
+          <div class="situation-answer-inner">
+            <div class="workflow">
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">The Pillar</div>
+                <div class="workflow-step-title">Pillar II — Apex: Own Your Nature</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Tenet</div>
+                <div class="workflow-step-title">Tenet IV — Never Shrink. Never Apologize for Strength.</div>
+                <div class="workflow-step-body">You're dimming yourself to make someone else comfortable. That awareness is the starting line.</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Lineage</div>
+                <p class="workflow-quote">"First say to yourself what you would be; and then do what you have to do."</p>
+                <div class="workflow-cite">— Epictetus, Discourses, Book III</div>
+              </div>
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">Your Practice</div>
+                <p class="workflow-action">Do the one thing you've been holding back on. Speak up. Step forward. Stop waiting for permission.</p>
+              </div>
+            </div>
+            <div class="workflow-links">
+              <a href="/tenets#tenet-iv" class="workflow-link">Read Tenet IV →</a>
+              <a href="/lineage" class="workflow-link">Read the Lineage →</a>
+              <a href="/practice" class="workflow-link">Today's Practice →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="situation-card reveal d3">
+        <button class="situation-trigger" aria-expanded="false">
+          <span class="situation-label">"Someone weaker than me is getting crushed and I'm just watching."</span>
+          <span class="situation-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg></span>
+        </button>
+        <div class="situation-answer">
+          <div class="situation-answer-inner">
+            <div class="workflow">
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">The Pillar</div>
+                <div class="workflow-step-title">Pillar II — Apex: Own Your Nature</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Tenet</div>
+                <div class="workflow-step-title">Tenet V — Protect Those Beneath You.</div>
+                <div class="workflow-step-body">Strength that only serves itself isn't strength — it's hoarding. Apex means the top. And the top has responsibilities.</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Lineage</div>
+                <p class="workflow-quote">"Accept the things to which fate binds you, and love the people with whom fate brings you together, and do so with all your heart."</p>
+                <div class="workflow-cite">— Marcus Aurelius, Meditations, Book VI</div>
+              </div>
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">Your Practice</div>
+                <p class="workflow-action">Ask yourself who in your life needs you to speak up for them. Write their name down. Find a way to use your influence — a conversation, a call, a door you can open — to make their situation better.</p>
+              </div>
+            </div>
+            <div class="workflow-links">
+              <a href="/tenets#tenet-v" class="workflow-link">Read Tenet V →</a>
+              <a href="/lineage" class="workflow-link">Read the Lineage →</a>
+              <a href="/practice" class="workflow-link">Today's Practice →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="situation-card reveal d4">
+        <button class="situation-trigger" aria-expanded="false">
+          <span class="situation-label">"I keep telling myself I'm a victim of my circumstances."</span>
+          <span class="situation-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg></span>
+        </button>
+        <div class="situation-answer">
+          <div class="situation-answer-inner">
+            <div class="workflow">
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">The Pillar</div>
+                <div class="workflow-step-title">Pillar II — Apex: Own Your Nature</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Tenet</div>
+                <div class="workflow-step-title">Tenet VI — Reject the Victim. Become the Author.</div>
+                <div class="workflow-step-body">Wearing hardship as an identity gives the worst moments of your life permanent control over the rest of it.</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Lineage</div>
+                <p class="workflow-quote">"It's not what happens to you, but how you react to it that matters."</p>
+                <div class="workflow-cite">— Epictetus, Discourses</div>
+              </div>
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">Your Practice</div>
+                <p class="workflow-action">Write down the story you keep telling yourself. Then write the version where you're the one who overcame it. Live that one.</p>
+              </div>
+            </div>
+            <div class="workflow-links">
+              <a href="/tenets#tenet-vi" class="workflow-link">Read Tenet VI →</a>
+              <a href="/lineage" class="workflow-link">Read the Lineage →</a>
+              <a href="/practice" class="workflow-link">Today's Practice →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="situation-card reveal d5">
+        <button class="situation-trigger" aria-expanded="false">
+          <span class="situation-label">"I feel stuck — like I can't level up no matter what I do."</span>
+          <span class="situation-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg></span>
+        </button>
+        <div class="situation-answer">
+          <div class="situation-answer-inner">
+            <div class="workflow">
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">The Pillar</div>
+                <div class="workflow-step-title">Pillar II — Apex: Own Your Nature</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Tenet</div>
+                <div class="workflow-step-title">Tenet IV — Never Shrink. Never Apologize for Strength.</div>
+                <div class="workflow-step-body">Stuck usually means comfortable. The ceiling you're hitting is the one you built. Remove it.</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Lineage</div>
+                <p class="workflow-quote">"No man is free who is not master of himself."</p>
+                <div class="workflow-cite">— Epictetus, Discourses</div>
+              </div>
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">Your Practice</div>
+                <p class="workflow-action">Identify the one skill, conversation, or risk that would change your trajectory. Start it before the day ends.</p>
+              </div>
+            </div>
+            <div class="workflow-links">
+              <a href="/tenets#tenet-iv" class="workflow-link">Read Tenet IV →</a>
+              <a href="/lineage" class="workflow-link">Read the Lineage →</a>
+              <a href="/practice" class="workflow-link">Today's Practice →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="situation-card reveal d6">
+        <button class="situation-trigger" aria-expanded="false">
+          <span class="situation-label">"I keep doing something I know is wrong and I can't seem to stop."</span>
+          <span class="situation-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg></span>
+        </button>
+        <div class="situation-answer">
+          <div class="situation-answer-inner">
+            <div class="workflow">
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">The Pillar</div>
+                <div class="workflow-step-title">Pillar II — Apex: Own Your Nature</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Tenet</div>
+                <div class="workflow-step-title">Tenet IV — Never Shrink. Never Apologize for Strength.</div>
+                <div class="workflow-step-body">The pattern you're trapped in is not who you are. It is what you've been doing. There is a difference. Owning that difference is where the fight begins.</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Lineage</div>
+                <p class="workflow-quote">"No man is free who is not master of himself."</p>
+                <div class="workflow-cite">— Epictetus, Discourses</div>
+              </div>
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">Your Practice</div>
+                <p class="workflow-action">Name it out loud to yourself. Write down what it costs you — daily, weekly, yearly. Choose one hour today to live without it. Then choose the next. If you need professional help, getting it is the strongest thing you can do.</p>
+              </div>
+            </div>
+            <div class="workflow-links">
+              <a href="/tenets#tenet-iv" class="workflow-link">Read Tenet IV →</a>
+              <a href="/lineage" class="workflow-link">Read the Lineage →</a>
+              <a href="/practice" class="workflow-link">Today's Practice →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PILLAR III — CONTROL ═══ -->
+<section class="footing-section">
+  <div class="wrap">
+    <div class="pillar-header reveal d1">
+      <p class="pillar-label">Pillar III — Control</p>
+      <h2 class="pillar-name">Live Within Bounds</h2>
+      <p class="pillar-tagline">When life shifts and you need to move with it</p>
+    </div>
+
+    <div class="situation-grid">
+
+      <div class="situation-card reveal d2">
+        <button class="situation-trigger" aria-expanded="false">
+          <span class="situation-label">"I just got fired."</span>
+          <span class="situation-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg></span>
+        </button>
+        <div class="situation-answer">
+          <div class="situation-answer-inner">
+            <div class="workflow">
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">The Pillar</div>
+                <div class="workflow-step-title">Pillar III — Control: Live Within Bounds</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Tenet</div>
+                <div class="workflow-step-title">Tenet VIII — Redirect Immediately.</div>
+                <div class="workflow-step-body">The door closed. The redirect starts the second the door shuts. Not tomorrow. Not next week. Now.</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Lineage</div>
+                <p class="workflow-quote">"I didn't fail the test. I just found 100 ways to do it wrong."</p>
+                <div class="workflow-cite">— Benjamin Franklin</div>
+              </div>
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">Your Practice</div>
+                <p class="workflow-action">Apply to one job, reach out to one contact, or start one project. Movement kills spiraling.</p>
+              </div>
+            </div>
+            <div class="workflow-links">
+              <a href="/tenets#tenet-viii" class="workflow-link">Read Tenet VIII →</a>
+              <a href="/lineage" class="workflow-link">Read the Lineage →</a>
+              <a href="/practice" class="workflow-link">Today's Practice →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="situation-card reveal d3">
+        <button class="situation-trigger" aria-expanded="false">
+          <span class="situation-label">"I'm obsessing over something I can't control."</span>
+          <span class="situation-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg></span>
+        </button>
+        <div class="situation-answer">
+          <div class="situation-answer-inner">
+            <div class="workflow">
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">The Pillar</div>
+                <div class="workflow-step-title">Pillar III — Control: Live Within Bounds</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Tenet</div>
+                <div class="workflow-step-title">Tenet VII — Own Only What Is Yours.</div>
+                <div class="workflow-step-body">If you can't change it, it's not yours to carry. Holding what isn't yours breaks your hands for the work that is.</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Lineage</div>
+                <p class="workflow-quote">"You always own the option of having no opinion. There is never any need to get worked up about things you can't control."</p>
+                <div class="workflow-cite">— Marcus Aurelius, Meditations, Book VI</div>
+              </div>
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">Your Practice</div>
+                <p class="workflow-action">Write down what's consuming you. Circle only what you can actually act on. Work on that. Release the rest.</p>
+              </div>
+            </div>
+            <div class="workflow-links">
+              <a href="/tenets#tenet-vii" class="workflow-link">Read Tenet VII →</a>
+              <a href="/lineage" class="workflow-link">Read the Lineage →</a>
+              <a href="/practice" class="workflow-link">Today's Practice →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="situation-card reveal d4">
+        <button class="situation-trigger" aria-expanded="false">
+          <span class="situation-label">"My plan fell apart and I don't know what to do next."</span>
+          <span class="situation-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg></span>
+        </button>
+        <div class="situation-answer">
+          <div class="situation-answer-inner">
+            <div class="workflow">
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">The Pillar</div>
+                <div class="workflow-step-title">Pillar III — Control: Live Within Bounds</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Tenet</div>
+                <div class="workflow-step-title">Tenet VIII — Redirect Immediately.</div>
+                <div class="workflow-step-body">Plans are guesses with conviction. They fall apart. That's the bounds telling you the path was wrong.</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Lineage</div>
+                <p class="workflow-quote">"By failing to prepare, you are preparing to fail."</p>
+                <div class="workflow-cite">— Benjamin Franklin</div>
+              </div>
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">Your Practice</div>
+                <p class="workflow-action">Stop mourning the old plan. Write three possible next moves. Pick one. Start before midnight.</p>
+              </div>
+            </div>
+            <div class="workflow-links">
+              <a href="/tenets#tenet-viii" class="workflow-link">Read Tenet VIII →</a>
+              <a href="/lineage" class="workflow-link">Read the Lineage →</a>
+              <a href="/practice" class="workflow-link">Today's Practice →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="situation-card reveal d5">
+        <button class="situation-trigger" aria-expanded="false">
+          <span class="situation-label">"My anxiety is through the roof and I can't shut my brain off."</span>
+          <span class="situation-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg></span>
+        </button>
+        <div class="situation-answer">
+          <div class="situation-answer-inner">
+            <div class="workflow">
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">The Pillar</div>
+                <div class="workflow-step-title">Pillar III — Control: Live Within Bounds</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Tenet</div>
+                <div class="workflow-step-title">Tenet VII — Own Only What Is Yours.</div>
+                <div class="workflow-step-body">Anxiety is your mind trying to own everything at once. Most of what you're carrying hasn't happened yet.</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Lineage</div>
+                <p class="workflow-quote">"Everything we hear is an opinion, not a fact. Everything we see is a perspective, not the truth."</p>
+                <div class="workflow-cite">— Marcus Aurelius, Meditations, Book IV</div>
+              </div>
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">Your Practice</div>
+                <p class="workflow-action">Write down everything racing through your mind. Cross out anything you cannot act on today. What's left is your real list. Start there.</p>
+              </div>
+            </div>
+            <div class="workflow-links">
+              <a href="/tenets#tenet-vii" class="workflow-link">Read Tenet VII →</a>
+              <a href="/lineage" class="workflow-link">Read the Lineage →</a>
+              <a href="/practice" class="workflow-link">Today's Practice →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="situation-card reveal d6">
+        <button class="situation-trigger" aria-expanded="false">
+          <span class="situation-label">"Everything feels chaotic and out of control."</span>
+          <span class="situation-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg></span>
+        </button>
+        <div class="situation-answer">
+          <div class="situation-answer-inner">
+            <div class="workflow">
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">The Pillar</div>
+                <div class="workflow-step-title">Pillar III — Control: Live Within Bounds</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Tenet</div>
+                <div class="workflow-step-title">Tenet IX — Trust the Bounds.</div>
+                <div class="workflow-step-body">Chaos is what it looks like when you're fighting the bounds instead of working within them.</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Lineage</div>
+                <p class="workflow-quote">"An investment in knowledge pays the best interest."</p>
+                <div class="workflow-cite">— Benjamin Franklin, Poor Richard's Almanack</div>
+              </div>
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">Your Practice</div>
+                <p class="workflow-action">Identify one thing you've been fighting that you cannot change. Accept it. Build around it instead of against it.</p>
+              </div>
+            </div>
+            <div class="workflow-links">
+              <a href="/tenets#tenet-ix" class="workflow-link">Read Tenet IX →</a>
+              <a href="/lineage" class="workflow-link">Read the Lineage →</a>
+              <a href="/practice" class="workflow-link">Today's Practice →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="situation-card reveal d7">
+        <button class="situation-trigger" aria-expanded="false">
+          <span class="situation-label">"My marriage is falling apart and I don't know how to save it."</span>
+          <span class="situation-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg></span>
+        </button>
+        <div class="situation-answer">
+          <div class="situation-answer-inner">
+            <div class="workflow">
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">The Pillar</div>
+                <div class="workflow-step-title">Pillar III — Control: Live Within Bounds</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Tenet</div>
+                <div class="workflow-step-title">Tenet IX — Trust the Bounds.</div>
+                <div class="workflow-step-body">You cannot control another person's heart. You can only control how you show up. That is the bound. Work within it.</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Lineage</div>
+                <p class="workflow-quote">"The universe is change; our life is what our thoughts make it."</p>
+                <div class="workflow-cite">— Marcus Aurelius, Meditations, Book IV</div>
+              </div>
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">Your Practice</div>
+                <p class="workflow-action">Write down what is within your control in this marriage and what is not. Work only on your side of the line. You cannot force another person's choices.</p>
+              </div>
+            </div>
+            <div class="workflow-links">
+              <a href="/tenets#tenet-ix" class="workflow-link">Read Tenet IX →</a>
+              <a href="/lineage" class="workflow-link">Read the Lineage →</a>
+              <a href="/practice" class="workflow-link">Today's Practice →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PILLAR IV — DEATH ═══ -->
+<section class="footing-section">
+  <div class="wrap">
+    <div class="pillar-header reveal d1">
+      <p class="pillar-label">Pillar IV — Death</p>
+      <h2 class="pillar-name">Return to the Whole</h2>
+      <p class="pillar-tagline">When mortality, loss, or meaning demands your attention</p>
+    </div>
+
+    <div class="situation-grid">
+
+      <div class="situation-card reveal d2">
+        <button class="situation-trigger" aria-expanded="false">
+          <span class="situation-label">"I lost someone and I can't function."</span>
+          <span class="situation-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg></span>
+        </button>
+        <div class="situation-answer">
+          <div class="situation-answer-inner">
+            <div class="workflow">
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">The Pillar</div>
+                <div class="workflow-step-title">Pillar IV — Death: Return to the Whole</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Tenet</div>
+                <div class="workflow-step-title">Tenet XI — Grieve Fully. Then Move.</div>
+                <div class="workflow-step-body">Grief is not weakness — it's proof that what you had was real. Do not rush it. Do not suppress it.</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Lineage</div>
+                <p class="workflow-quote">"Loss is nothing else but change, and change is nature's delight."</p>
+                <div class="workflow-cite">— Marcus Aurelius, Meditations, Book IX</div>
+              </div>
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">Your Practice</div>
+                <p class="workflow-action">Give yourself permission to feel it completely. Cancel what needs canceling. Sit with it. This is the work right now.</p>
+              </div>
+            </div>
+            <div class="workflow-links">
+              <a href="/tenets#tenet-xi" class="workflow-link">Read Tenet XI →</a>
+              <a href="/lineage" class="workflow-link">Read the Lineage →</a>
+              <a href="/practice" class="workflow-link">Today's Practice →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="situation-card reveal d3">
+        <button class="situation-trigger" aria-expanded="false">
+          <span class="situation-label">"I keep putting off what matters because I think I have time."</span>
+          <span class="situation-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg></span>
+        </button>
+        <div class="situation-answer">
+          <div class="situation-answer-inner">
+            <div class="workflow">
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">The Pillar</div>
+                <div class="workflow-step-title">Pillar IV — Death: Return to the Whole</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Tenet</div>
+                <div class="workflow-step-title">Tenet X — Live Like You Will Die. Because You Will.</div>
+                <div class="workflow-step-body">You don't have time. Nobody does. "Someday" is a lie you tell yourself to stay comfortable.</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Lineage</div>
+                <p class="workflow-quote">"Think of yourself as dead. You have lived your life. Now, take what's left and live it properly."</p>
+                <div class="workflow-cite">— Marcus Aurelius, Meditations, Book VII</div>
+              </div>
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">Your Practice</div>
+                <p class="workflow-action">Do the thing you've been postponing. The one that just came to mind when you read this. Do it today.</p>
+              </div>
+            </div>
+            <div class="workflow-links">
+              <a href="/tenets#tenet-x" class="workflow-link">Read Tenet X →</a>
+              <a href="/lineage" class="workflow-link">Read the Lineage →</a>
+              <a href="/practice" class="workflow-link">Today's Practice →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="situation-card reveal d4">
+        <button class="situation-trigger" aria-expanded="false">
+          <span class="situation-label">"I don't know what my purpose is."</span>
+          <span class="situation-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg></span>
+        </button>
+        <div class="situation-answer">
+          <div class="situation-answer-inner">
+            <div class="workflow">
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">The Pillar</div>
+                <div class="workflow-step-title">Pillar IV — Death: Return to the Whole</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Tenet</div>
+                <div class="workflow-step-title">Tenet XII — Build a Legacy That Stands in This Life.</div>
+                <div class="workflow-step-body">Purpose isn't found. It's built. Purpose follows action, not the other way around.</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Lineage</div>
+                <p class="workflow-quote">"If you would not be forgotten as soon as you are dead, either write things worth reading or do things worth the writing."</p>
+                <div class="workflow-cite">— Benjamin Franklin, Poor Richard's Almanack</div>
+              </div>
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">Your Practice</div>
+                <p class="workflow-action">Do one thing that benefits someone who will never thank you for it. That's legacy in its smallest, truest form.</p>
+              </div>
+            </div>
+            <div class="workflow-links">
+              <a href="/tenets#tenet-xii" class="workflow-link">Read Tenet XII →</a>
+              <a href="/lineage" class="workflow-link">Read the Lineage →</a>
+              <a href="/practice" class="workflow-link">Today's Practice →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="situation-card reveal d5">
+        <button class="situation-trigger" aria-expanded="false">
+          <span class="situation-label">"I feel completely alone."</span>
+          <span class="situation-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg></span>
+        </button>
+        <div class="situation-answer">
+          <div class="situation-answer-inner">
+            <div class="workflow">
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">The Pillar</div>
+                <div class="workflow-step-title">Pillar IV — Death: Return to the Whole</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Tenet</div>
+                <div class="workflow-step-title">Tenet XII — Build a Legacy That Stands in This Life.</div>
+                <div class="workflow-step-body">Connection doesn't fall from the sky. You build it the same way you build anything else — one honest act at a time.</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Lineage</div>
+                <p class="workflow-quote">"Hide not your talents. They for use were made. What's a sundial in the shade?"</p>
+                <div class="workflow-cite">— Benjamin Franklin, Poor Richard's Almanack</div>
+              </div>
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">Your Practice</div>
+                <p class="workflow-action">Reach out to one person you haven't spoken to in a while. Not a text — a call. Connection is built, not found.</p>
+              </div>
+            </div>
+            <div class="workflow-links">
+              <a href="/tenets#tenet-xii" class="workflow-link">Read Tenet XII →</a>
+              <a href="/lineage" class="workflow-link">Read the Lineage →</a>
+              <a href="/practice" class="workflow-link">Today's Practice →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="situation-card reveal d6">
+        <button class="situation-trigger" aria-expanded="false">
+          <span class="situation-label">"I'm depressed and I can't see the point of anything."</span>
+          <span class="situation-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg></span>
+        </button>
+        <div class="situation-answer">
+          <div class="situation-answer-inner">
+            <div class="workflow">
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">The Pillar</div>
+                <div class="workflow-step-title">Pillar IV — Death: Return to the Whole</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Tenet</div>
+                <div class="workflow-step-title">Tenet X — Live Like You Will Die. Because You Will.</div>
+                <div class="workflow-step-body">Depression is real. It is not a character flaw. If you need professional help, get it. That is owning your outcome. But you are still here — and the smallest act of living on purpose is a rebellion against the numbness.</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Lineage</div>
+                <p class="workflow-quote">"It is not death that a man should fear, but he should fear never beginning to live."</p>
+                <div class="workflow-cite">— Marcus Aurelius, Meditations, Book XII</div>
+              </div>
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">Your Practice</div>
+                <p class="workflow-action">Do one small thing with intention. Make your bed. Take a walk. Call someone. Not to fix everything — just to prove you're still in the fight.</p>
+              </div>
+            </div>
+            <div class="workflow-links">
+              <a href="/tenets#tenet-x" class="workflow-link">Read Tenet X →</a>
+              <a href="/lineage" class="workflow-link">Read the Lineage →</a>
+              <a href="/practice" class="workflow-link">Today's Practice →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="situation-card reveal d7">
+        <button class="situation-trigger" aria-expanded="false">
+          <span class="situation-label">"I'm scared of dying."</span>
+          <span class="situation-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg></span>
+        </button>
+        <div class="situation-answer">
+          <div class="situation-answer-inner">
+            <div class="workflow">
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">The Pillar</div>
+                <div class="workflow-step-title">Pillar IV — Death: Return to the Whole</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Tenet</div>
+                <div class="workflow-step-title">Tenet X — Live Like You Will Die. Because You Will.</div>
+                <div class="workflow-step-body">The question is whether that fear makes you freeze or makes you move. Death is a bound — the final one.</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Lineage</div>
+                <p class="workflow-quote">"What is death? A scary mask. Take it off — see, it doesn't bite."</p>
+                <div class="workflow-cite">— Epictetus, Discourses, Book II</div>
+              </div>
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">Your Practice</div>
+                <p class="workflow-action">Live one hour as if it's your last. Not recklessly — purposefully. Do something that matters. Say something that needs saying.</p>
+              </div>
+            </div>
+            <div class="workflow-links">
+              <a href="/tenets#tenet-x" class="workflow-link">Read Tenet X →</a>
+              <a href="/lineage" class="workflow-link">Read the Lineage →</a>
+              <a href="/practice" class="workflow-link">Today's Practice →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="situation-card reveal d8">
+        <button class="situation-trigger" aria-expanded="false">
+          <span class="situation-label">"I fell back into something I swore I was done with."</span>
+          <span class="situation-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg></span>
+        </button>
+        <div class="situation-answer">
+          <div class="situation-answer-inner">
+            <div class="workflow">
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">The Pillar</div>
+                <div class="workflow-step-title">Pillar IV — Death: Return to the Whole</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Tenet</div>
+                <div class="workflow-step-title">Tenet X — Live Like You Will Die. Because You Will.</div>
+                <div class="workflow-step-body">One day does not erase the work you've done. But it does remind you the fight isn't over. You are still here. That means you still have a choice.</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step-label">The Lineage</div>
+                <p class="workflow-quote">"Think of yourself as dead. You have lived your life. Now, take what's left and live it properly."</p>
+                <div class="workflow-cite">— Marcus Aurelius, Meditations, Book VII</div>
+              </div>
+              <div class="workflow-step active-step">
+                <div class="workflow-step-label">Your Practice</div>
+                <p class="workflow-action">A setback is not the end. It is one day. Write down what triggered it. Write down what you will do differently tomorrow morning. If you need professional help, getting it is the strongest thing you can do. That is owning your outcome.</p>
+              </div>
+            </div>
+            <div class="workflow-links">
+              <a href="/tenets#tenet-x" class="workflow-link">Read Tenet X →</a>
+              <a href="/lineage" class="workflow-link">Read the Lineage →</a>
+              <a href="/practice" class="workflow-link">Today's Practice →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="closing">
+  <div class="wrap">
+    <div class="closing-divider"></div>
+    <p class="closing-text reveal d1">You don't need to have it figured out. You need to start moving.</p>
+    <p class="closing-sub reveal d2">The footing comes from the first step, not the last.</p>
+    <div class="reveal d3">
+      <a href="/practice" class="back-link">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
+        Start Today's Practice
+      </a>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+(function() {
+  document.querySelectorAll('.situation-trigger').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var card = btn.closest('.situation-card');
+      var answer = card.querySelector('.situation-answer');
+      var isOpen = card.classList.contains('open');
+
+      // Close all others
+      document.querySelectorAll('.situation-card.open').forEach(function(openCard) {
+        if (openCard !== card) {
+          openCard.classList.remove('open');
+          openCard.querySelector('.situation-trigger').setAttribute('aria-expanded', 'false');
+          openCard.querySelector('.situation-answer').style.maxHeight = '0';
+        }
+      });
+
+      if (isOpen) {
+        card.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        answer.style.maxHeight = '0';
+      } else {
+        card.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+})();
+</script>
+
+</BaseLayout>
