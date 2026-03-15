@@ -343,6 +343,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     outline: none;
     transition: border-color .2s, box-shadow .2s;
     box-sizing: border-box;
+    -webkit-appearance: none;
+    appearance: none;
+    position: relative;
+    z-index: 2;
   }
   .search-input::placeholder {
     color: var(--text-muted);
@@ -382,6 +386,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     border-radius: 50%;
     transition: color .2s, background .2s;
     padding: 0;
+    z-index: 3;
   }
   .search-clear:hover {
     color: var(--white);
@@ -551,7 +556,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <div class="wrap">
     <div class="search-filter-wrap">
       <div class="search-box">
-        <input type="text" class="search-input" id="footingSearch" placeholder="What are you facing?" autocomplete="off" />
+        <input type="search" class="search-input" id="footingSearch" placeholder="What are you facing?" autocomplete="off" inputmode="search" />
         <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" /></svg>
         <button class="search-clear" id="searchClear" aria-label="Clear search"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" /></svg></button>
         <div class="search-suggestions" id="searchSuggestions"></div>

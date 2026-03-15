@@ -94,7 +94,7 @@ const finalCanonical = canonical || finalOgUrl;
     // Dark/Light mode
     (function() {
       var saved = localStorage.getItem('grithos-theme');
-      if (saved === 'light' || (!saved && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+      if (saved === 'light') {
         document.documentElement.classList.add('light-mode');
       }
     })();
