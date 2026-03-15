@@ -310,6 +310,7 @@ footer { background: var(--void); border-top: 1px solid var(--border); padding: 
 }
 .footer-founder a:hover { color: var(--gold); }
 .footer-founder span { font-size: 11px; color: var(--text-muted); }
+.footer-ai { font-size: 10px; color: var(--text-muted); text-align: center; margin-top: 12px; letter-spacing: .04em; opacity: .6; }
 
 /* ═══ RESPONSIVE ═══ */
 @media(max-width:768px) {
