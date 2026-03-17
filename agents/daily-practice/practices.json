@@ -1,508 +1,212 @@
----
-import BaseLayout from '../layouts/BaseLayout.astro';
----
-
-<BaseLayout
-  title="The Daily Practice | Grithos"
-  description="365 daily practices for living with grit and ethos. One simple action per day, one tenet per month. An interactive calendar for a full year of becoming a Grithosian."
-  ogTitle="The Daily Practice — Grithos"
-  ogDescription="365 daily practices. One simple action per day, one tenet per month. An interactive calendar for a full year of becoming."
-  ogUrl="https://grithos.com/practice"
-  canonical="https://grithos.com/practice"
-  activePage="practice"
->
-
-<style is:inline>
-  .page-hero {
-    padding: 160px 0 80px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .page-hero::before {
-    content: '';
-    position: absolute;
-    top: 40%; left: 50%; transform: translateX(-50%);
-    width: 800px; height: 800px;
-    background: radial-gradient(circle, rgba(201,147,90,.05) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 0;
-  }
-  .page-hero .label {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 16px;
-    position: relative;
-  }
-  .page-hero h1 {
-    font-family: var(--heading);
-    font-size: clamp(2rem, 5vw, 3.2rem);
-    color: var(--white);
-    font-weight: 700;
-    line-height: 1.15;
-    position: relative;
-  }
-  .page-hero .subtitle {
-    font-size: 1.1rem;
-    color: var(--text-secondary);
-    font-style: italic;
-    margin-top: 16px;
-    position: relative;
-  }
-
-  /* Email signup */
-  .email-signup {
-    padding: 0 0 40px;
-    text-align: center;
-  }
-  .email-signup .wrap {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .signup-text {
-    font-family: var(--mono);
-    font-size: 13px;
-    letter-spacing: 1px;
-    color: var(--text-secondary);
-    margin-bottom: 16px;
-  }
-  .signup-form {
-    display: flex;
-    gap: 0;
-    width: 100%;
-    max-width: 480px;
-  }
-  .signup-form input[type="email"] {
-    flex: 1;
-    padding: 12px 16px;
-    font-family: var(--body);
-    font-size: 15px;
-    background: rgba(255,255,255,.06);
-    border: 1px solid rgba(201,147,90,.25);
-    border-right: none;
-    border-radius: 6px 0 0 6px;
-    color: var(--white);
-    outline: none;
-    transition: border-color .2s;
-  }
-  .signup-form input[type="email"]::placeholder {
-    color: var(--text-muted);
-  }
-  .signup-form input[type="email"]:focus {
-    border-color: var(--gold);
-  }
-  .signup-form button {
-    padding: 12px 24px;
-    font-family: var(--mono);
-    font-size: 12px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    background: var(--gold);
-    color: var(--navy);
-    border: none;
-    border-radius: 0 6px 6px 0;
-    cursor: pointer;
-    font-weight: 700;
-    transition: background .2s;
-    white-space: nowrap;
-  }
-  .signup-form button:hover {
-    background: #d4a85a;
-  }
-  .signup-success {
-    display: none;
-    color: var(--gold);
-    font-family: var(--mono);
-    font-size: 13px;
-    letter-spacing: 1px;
-  }
-  @media (max-width: 600px) {
-    .signup-form {
-      flex-direction: column;
-      gap: 8px;
+{
+  "tenets": [
+    {
+      "month": 0,
+      "name": "January",
+      "id": "tenet-i",
+      "tenet": "TENET I — TELL THE TRUTH. EVEN WHEN IT COSTS YOU.",
+      "pillar": "Virtue",
+      "lineage_figure": "Marcus Aurelius",
+      "lineage_quotes": [
+        "If it is not right, do not do it; if it is not true, do not say it.",
+        "The object of life is not to be on the side of the majority, but to escape finding oneself in the ranks of the insane.",
+        "Waste no more time arguing about what a good man should be. Be one.",
+        "You have power over your mind — not outside events. Realize this, and you will find strength.",
+        "Think of yourself as dead. You have lived your life. Now, take what's left and live it properly.",
+        "Loss is nothing else but change, and change is nature's delight.",
+        "It is not death that a man should fear, but never beginning to live.",
+        "The happiness of your life depends upon the quality of your thoughts."
+      ]
+    },
+    {
+      "month": 1,
+      "name": "February",
+      "id": "tenet-ii",
+      "tenet": "TENET II — KEEP YOUR WORD LIKE YOUR LIFE DEPENDS ON IT.",
+      "pillar": "Virtue",
+      "lineage_figure": "Marcus Aurelius",
+      "lineage_quotes": [
+        "If it is not right, do not do it; if it is not true, do not say it.",
+        "The object of life is not to be on the side of the majority, but to escape finding oneself in the ranks of the insane.",
+        "Waste no more time arguing about what a good man should be. Be one.",
+        "You have power over your mind — not outside events. Realize this, and you will find strength.",
+        "Think of yourself as dead. You have lived your life. Now, take what's left and live it properly.",
+        "Loss is nothing else but change, and change is nature's delight.",
+        "It is not death that a man should fear, but never beginning to live.",
+        "The happiness of your life depends upon the quality of your thoughts."
+      ]
+    },
+    {
+      "month": 2,
+      "name": "March",
+      "id": "tenet-iii",
+      "tenet": "TENET III — OWN YOUR WINS. BUT DO RIGHT IN THE DARK.",
+      "pillar": "Virtue",
+      "lineage_figure": "Marcus Aurelius",
+      "lineage_quotes": [
+        "If it is not right, do not do it; if it is not true, do not say it.",
+        "The object of life is not to be on the side of the majority, but to escape finding oneself in the ranks of the insane.",
+        "Waste no more time arguing about what a good man should be. Be one.",
+        "You have power over your mind — not outside events. Realize this, and you will find strength.",
+        "Think of yourself as dead. You have lived your life. Now, take what's left and live it properly.",
+        "Loss is nothing else but change, and change is nature's delight.",
+        "It is not death that a man should fear, but never beginning to live.",
+        "The happiness of your life depends upon the quality of your thoughts."
+      ]
+    },
+    {
+      "month": 3,
+      "name": "April",
+      "id": "tenet-iv",
+      "tenet": "TENET IV — NEVER SHRINK. NEVER APOLOGIZE FOR STRENGTH.",
+      "pillar": "Apex",
+      "lineage_figure": "Epictetus",
+      "lineage_quotes": [
+        "It's not what happens to you, but how you react to it that matters.",
+        "No man is free who is not master of himself.",
+        "First say to yourself what you would be; and then do what you have to do.",
+        "Man is not worried by real problems so much as by his imagined anxieties about real problems.",
+        "Wealth consists not in having great possessions, but in having few wants.",
+        "Only the educated are free."
+      ]
+    },
+    {
+      "month": 4,
+      "name": "May",
+      "id": "tenet-v",
+      "tenet": "TENET V — PROTECT THOSE BENEATH YOU.",
+      "pillar": "Apex",
+      "lineage_figure": "Epictetus",
+      "lineage_quotes": [
+        "It's not what happens to you, but how you react to it that matters.",
+        "No man is free who is not master of himself.",
+        "First say to yourself what you would be; and then do what you have to do.",
+        "Man is not worried by real problems so much as by his imagined anxieties about real problems.",
+        "Wealth consists not in having great possessions, but in having few wants.",
+        "Only the educated are free."
+      ]
+    },
+    {
+      "month": 5,
+      "name": "June",
+      "id": "tenet-vi",
+      "tenet": "TENET VI — REJECT THE VICTIM. BECOME THE AUTHOR.",
+      "pillar": "Apex",
+      "lineage_figure": "Epictetus",
+      "lineage_quotes": [
+        "It's not what happens to you, but how you react to it that matters.",
+        "No man is free who is not master of himself.",
+        "First say to yourself what you would be; and then do what you have to do.",
+        "Man is not worried by real problems so much as by his imagined anxieties about real problems.",
+        "Wealth consists not in having great possessions, but in having few wants.",
+        "Only the educated are free."
+      ]
+    },
+    {
+      "month": 6,
+      "name": "July",
+      "id": "tenet-vii",
+      "tenet": "TENET VII — OWN ONLY WHAT IS YOURS.",
+      "pillar": "Control",
+      "lineage_figure": "Benjamin Franklin",
+      "lineage_quotes": [
+        "An investment in knowledge pays the best interest.",
+        "By failing to prepare, you are preparing to fail.",
+        "I didn't fail the test. I just found 100 ways to do it wrong.",
+        "Well done is better than well said.",
+        "Energy and persistence conquer all things.",
+        "Never leave that till tomorrow which you can do today."
+      ]
+    },
+    {
+      "month": 7,
+      "name": "August",
+      "id": "tenet-viii",
+      "tenet": "TENET VIII — REDIRECT IMMEDIATELY.",
+      "pillar": "Control",
+      "lineage_figure": "Benjamin Franklin",
+      "lineage_quotes": [
+        "An investment in knowledge pays the best interest.",
+        "By failing to prepare, you are preparing to fail.",
+        "I didn't fail the test. I just found 100 ways to do it wrong.",
+        "Well done is better than well said.",
+        "Energy and persistence conquer all things.",
+        "Never leave that till tomorrow which you can do today."
+      ]
+    },
+    {
+      "month": 8,
+      "name": "September",
+      "id": "tenet-ix",
+      "tenet": "TENET IX — TRUST THE BOUNDS.",
+      "pillar": "Control",
+      "lineage_figure": "Benjamin Franklin",
+      "lineage_quotes": [
+        "An investment in knowledge pays the best interest.",
+        "By failing to prepare, you are preparing to fail.",
+        "I didn't fail the test. I just found 100 ways to do it wrong.",
+        "Well done is better than well said.",
+        "Energy and persistence conquer all things.",
+        "Never leave that till tomorrow which you can do today."
+      ]
+    },
+    {
+      "month": 9,
+      "name": "October",
+      "id": "tenet-x",
+      "tenet": "TENET X — LIVE LIKE YOU WILL DIE. BECAUSE YOU WILL.",
+      "pillar": "Completeness",
+      "lineage_figure": "Marcus Aurelius",
+      "lineage_quotes": [
+        "If it is not right, do not do it; if it is not true, do not say it.",
+        "The object of life is not to be on the side of the majority, but to escape finding oneself in the ranks of the insane.",
+        "Waste no more time arguing about what a good man should be. Be one.",
+        "You have power over your mind — not outside events. Realize this, and you will find strength.",
+        "Think of yourself as dead. You have lived your life. Now, take what's left and live it properly.",
+        "Loss is nothing else but change, and change is nature's delight.",
+        "It is not death that a man should fear, but never beginning to live.",
+        "The happiness of your life depends upon the quality of your thoughts."
+      ]
+    },
+    {
+      "month": 10,
+      "name": "November",
+      "id": "tenet-xi",
+      "tenet": "TENET XI — GRIEVE FULLY. THEN MOVE.",
+      "pillar": "Completeness",
+      "lineage_figure": "Marcus Aurelius",
+      "lineage_quotes": [
+        "If it is not right, do not do it; if it is not true, do not say it.",
+        "The object of life is not to be on the side of the majority, but to escape finding oneself in the ranks of the insane.",
+        "Waste no more time arguing about what a good man should be. Be one.",
+        "You have power over your mind — not outside events. Realize this, and you will find strength.",
+        "Think of yourself as dead. You have lived your life. Now, take what's left and live it properly.",
+        "Loss is nothing else but change, and change is nature's delight.",
+        "It is not death that a man should fear, but never beginning to live.",
+        "The happiness of your life depends upon the quality of your thoughts."
+      ]
+    },
+    {
+      "month": 11,
+      "name": "December",
+      "id": "tenet-xii",
+      "tenet": "TENET XII — BUILD A LEGACY THAT STANDS IN THIS LIFE.",
+      "pillar": "Completeness",
+      "lineage_figure": "Marcus Aurelius",
+      "lineage_quotes": [
+        "If it is not right, do not do it; if it is not true, do not say it.",
+        "The object of life is not to be on the side of the majority, but to escape finding oneself in the ranks of the insane.",
+        "Waste no more time arguing about what a good man should be. Be one.",
+        "You have power over your mind — not outside events. Realize this, and you will find strength.",
+        "Think of yourself as dead. You have lived your life. Now, take what's left and live it properly.",
+        "Loss is nothing else but change, and change is nature's delight.",
+        "It is not death that a man should fear, but never beginning to live.",
+        "The happiness of your life depends upon the quality of your thoughts."
+      ]
     }
-    .signup-form input[type="email"] {
-      border-right: 1px solid rgba(201,147,90,.25);
-      border-radius: 6px;
-    }
-    .signup-form button {
-      border-radius: 6px;
-    }
-  }
-
-  /* Calendar controls */
-  .calendar-section {
-    padding: 40px 0 100px;
-  }
-  .month-nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 24px;
-    margin-bottom: 12px;
-  }
-  .month-nav button {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    color: var(--text);
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s;
-  }
-  .month-nav button:hover {
-    border-color: var(--gold);
-    color: var(--gold);
-  }
-  .month-title {
-    font-family: var(--heading);
-    font-size: clamp(1.4rem, 3vw, 1.8rem);
-    color: var(--white);
-    font-weight: 700;
-    min-width: 280px;
-    text-align: center;
-  }
-  .month-tenet {
-    text-align: center;
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 32px;
-  }
-
-  /* Calendar grid */
-  .cal-weekdays {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 4px;
-    margin-bottom: 4px;
-  }
-  .cal-weekdays span {
-    text-align: center;
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--text-muted);
-    letter-spacing: 1px;
-    padding: 8px 0;
-  }
-  .cal-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 4px;
-  }
-  .cal-day {
-    aspect-ratio: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--heading);
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--text-secondary);
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--r);
-    cursor: pointer;
-    transition: all 0.2s;
-    position: relative;
-  }
-  .cal-day:hover {
-    border-color: var(--gold);
-    color: var(--gold);
-    background: var(--gold-soft);
-  }
-  .cal-day.today {
-    border-color: var(--gold);
-    color: var(--gold);
-    background: rgba(201,147,90,.12);
-  }
-  .cal-day.active {
-    background: var(--gold);
-    color: var(--void);
-    border-color: var(--gold);
-  }
-  .cal-day.empty {
-    background: transparent;
-    border-color: transparent;
-    cursor: default;
-  }
-  .cal-day.forge-day {
-    background: linear-gradient(135deg, rgba(201,147,90,.25), rgba(201,147,90,.08));
-    border-color: var(--gold);
-    color: var(--gold);
-    position: relative;
-    overflow: visible;
-  }
-  .cal-day.forge-day::after {
-    content: '';
-    position: absolute;
-    bottom: 4px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background: var(--gold);
-  }
-  .cal-day.forge-day.active {
-    background: var(--gold);
-    color: var(--void);
-  }
-  .cal-day.forge-day.active::after {
-    background: var(--void);
-  }
-  .practice-card.forge-card {
-    border-color: var(--gold);
-    background: linear-gradient(135deg, var(--card), rgba(201,147,90,.06));
-    animation: forgeGlow 0.8s ease;
-  }
-  @keyframes forgeGlow {
-    0% { box-shadow: 0 0 0 0 rgba(201,147,90,0); }
-    40% { box-shadow: 0 0 30px 4px rgba(201,147,90,.25); }
-    100% { box-shadow: 0 0 8px 1px rgba(201,147,90,.1); }
-  }
-  .practice-card.forge-card .practice-date {
-    color: var(--gold-light);
-  }
-  .forge-label {
-    display: inline-block;
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--void);
-    background: var(--gold);
-    padding: 3px 10px;
-    border-radius: 3px;
-    margin-bottom: 12px;
-  }
-
-  /* Inline practice row — inserted into the calendar grid */
-  .practice-row {
-    grid-column: 1 / -1;
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height 0.4s cubic-bezier(.16,1,.3,1), opacity 0.3s ease;
-    opacity: 0;
-  }
-  .practice-row.open {
-    max-height: 300px;
-    opacity: 1;
-  }
-  .practice-card {
-    margin: 4px 0;
-    padding: 28px 32px;
-    background: var(--card);
-    border: 1px solid var(--gold-border);
-    border-radius: var(--r-lg);
-    position: relative;
-    animation: cardGlow 0.5s ease;
-  }
-  @keyframes cardGlow {
-    0% { box-shadow: 0 0 0 0 rgba(201,147,90,0); }
-    50% { box-shadow: 0 0 20px 2px rgba(201,147,90,.15); }
-    100% { box-shadow: 0 0 0 0 rgba(201,147,90,0); }
-  }
-  .practice-card .practice-date {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 10px;
-  }
-  .practice-card .practice-text {
-    font-family: var(--heading);
-    font-size: clamp(1rem, 2.5vw, 1.3rem);
-    color: var(--white);
-    font-weight: 600;
-    line-height: 1.5;
-  }
-  .practice-card .practice-tenet-link {
-    margin-top: 14px;
-    font-size: 0.8rem;
-    color: var(--text-muted);
-  }
-  .practice-card .practice-tenet-link a {
-    color: var(--gold);
-    text-decoration: none;
-  }
-  .practice-card .practice-tenet-link a:hover {
-    text-decoration: underline;
-  }
-  .practice-card .close-btn {
-    position: absolute;
-    top: 12px;
-    right: 16px;
-    background: none;
-    border: none;
-    color: var(--text-muted);
-    font-size: 18px;
-    cursor: pointer;
-    padding: 4px;
-    line-height: 1;
-    transition: color 0.2s;
-  }
-  .practice-card .close-btn:hover {
-    color: var(--gold);
-  }
-
-  /* Today button */
-  .today-btn {
-    display: block;
-    margin: 20px auto 0;
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--text-secondary);
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 8px 20px;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .today-btn:hover {
-    border-color: var(--gold);
-    color: var(--gold);
-  }
-
-  .share-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--text-muted);
-    font-family: var(--mono);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    padding: 6px 16px;
-    border-radius: 6px;
-    cursor: pointer;
-    margin-top: 12px;
-    transition: all 0.2s;
-  }
-  .share-btn:hover {
-    border-color: var(--gold);
-    color: var(--gold);
-  }
-
-  @media (max-width: 600px) {
-    .cal-day {
-      font-size: 0.85rem;
-    }
-    .practice-card {
-      padding: 20px;
-    }
-    .month-nav button {
-      width: 36px;
-      height: 36px;
-    }
-  }
-</style>
-
-<section class="page-hero">
-  <div class="wrap">
-    <p class="label reveal">THE DAILY PRACTICE</p>
-    <h1 class="reveal d1">365 Days. 12 Tenets.<br>One Year of Becoming.</h1>
-    <p class="subtitle reveal d2">Each month dedicates itself to one tenet. Each day gives you one practice. No preaching. No excuses. Just action.</p>
-  </div>
-</section>
-
-<section class="email-signup">
-  <div class="wrap">
-    <p class="signup-text reveal">Get your daily practice delivered every morning. No noise. Just the practice.</p>
-    <form class="signup-form reveal d1" id="subscribeForm">
-      <input type="email" name="email" placeholder="Your email" required />
-      <button type="submit">Subscribe</button>
-    </form>
-    <p class="signup-success" id="signupSuccess">You're in. The practice starts tomorrow morning.</p>
-    <p class="signup-error" id="signupError" style="display:none;color:#e74c3c;font-family:var(--mono);font-size:13px;letter-spacing:1px;">Something went wrong. Please try again.</p>
-    <script is:inline>
-    document.getElementById('subscribeForm').addEventListener('submit', async function(e) {
-      e.preventDefault();
-      var form = this;
-      var email = form.email.value;
-      var btn = form.querySelector('button');
-      var success = document.getElementById('signupSuccess');
-      var error = document.getElementById('signupError');
-      btn.textContent = '...';
-      btn.disabled = true;
-      error.style.display = 'none';
-      try {
-        var res = await fetch('/api/subscribe', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email: email })
-        });
-        if (res.ok) {
-          form.style.display = 'none';
-          success.style.display = 'block';
-        } else {
-          throw new Error('fail');
-        }
-      } catch(err) {
-        error.style.display = 'block';
-        btn.textContent = 'SUBSCRIBE';
-        btn.disabled = false;
-      }
-    });
-    </script>
-  </div>
-</section>
-
-<section class="calendar-section">
-  <div class="wrap">
-    <div class="month-nav reveal">
-      <button id="prev-month" aria-label="Previous month">&#8592;</button>
-      <div class="month-title" id="month-title">January</div>
-      <button id="next-month" aria-label="Next month">&#8594;</button>
-    </div>
-    <div class="month-tenet" id="month-tenet">TENET I — TELL THE TRUTH</div>
-    <div class="cal-weekdays reveal d1">
-      <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
-    </div>
-    <div class="cal-grid reveal d2" id="cal-grid"></div>
-    <button class="today-btn reveal d3" id="today-btn">Today</button>
-  </div>
-</section>
-
-<script is:inline>
-(function() {
-  var MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-  var TENETS = [
-    'TENET I — TELL THE TRUTH. EVEN WHEN IT COSTS YOU.',
-    'TENET II — KEEP YOUR WORD LIKE YOUR LIFE DEPENDS ON IT.',
-    'TENET III — OWN YOUR WINS. BUT DO RIGHT IN THE DARK.',
-    'TENET IV — NEVER SHRINK. NEVER APOLOGIZE FOR STRENGTH.',
-    'TENET V — PROTECT THOSE BENEATH YOU.',
-    'TENET VI — REJECT THE VICTIM. BECOME THE AUTHOR.',
-    'TENET VII — OWN ONLY WHAT IS YOURS.',
-    'TENET VIII — REDIRECT IMMEDIATELY.',
-    'TENET IX — TRUST THE BOUNDS.',
-    'TENET X — LIVE LIKE YOU WILL DIE. BECAUSE YOU WILL.',
-    'TENET XI — GRIEVE FULLY. THEN MOVE.',
-    'TENET XII — BUILD A LEGACY THAT STANDS IN THIS LIFE.'
-  ];
-  var TENET_IDS = ['tenet-i','tenet-ii','tenet-iii','tenet-iv','tenet-v','tenet-vi','tenet-vii','tenet-viii','tenet-ix','tenet-x','tenet-xi','tenet-xii'];
-
-  var PRACTICES = {
-    0: [
+  ],
+  "practices": {
+    "0": [
       "Say one thing today exactly as you mean it. No softening.",
       "If someone asks your opinion, give the real one.",
       "Correct a lie you let slide — even an old one.",
@@ -535,7 +239,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       "Ask a question you've been too proud to ask.",
       "End the day having said nothing you'd need to take back — because it was all true."
     ],
-    1: [
+    "1": [
       "Do one thing today you promised someone. No reminders needed.",
       "Before you commit to anything new, finish something you already promised.",
       "If you can't keep a commitment, tell them now — not at the deadline.",
@@ -565,7 +269,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       "Keep a deadline you set for yourself, not just ones others set.",
       "Prove to yourself that your word still means something."
     ],
-    2: [
+    "2": [
       "Did something well? Tell someone. Don't wait to be noticed.",
       "Help someone when there's zero chance of credit.",
       "Share a win without apologizing for being proud.",
@@ -598,7 +302,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       "Tip well when nobody at the table is watching the receipt.",
       "End the month knowing you earned every win and deserved every one you claimed."
     ],
-    3: [
+    "3": [
       "Do the workout. Not tomorrow. Today.",
       "Read something that challenges how you think.",
       "Skip the easy path. Choose the one that grows you.",
@@ -630,7 +334,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       "Do the thing nobody asked you to do but that makes you better.",
       "End the day stronger than you started it. Even by an inch."
     ],
-    4: [
+    "4": [
       "Check in on someone who never asks for help.",
       "Mentor someone. Even for five minutes.",
       "Defend someone when they're not in the room.",
@@ -663,7 +367,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       "Leave every person you interact with better than you found them.",
       "End the month having used your strength to lift, not to tower."
     ],
-    5: [
+    "5": [
       "Catch yourself saying \"I can't.\" Replace it with \"I haven't yet.\"",
       "Name one thing you're blaming someone else for. Take your piece.",
       "Stop retelling the story of what happened to you. Write the next chapter.",
@@ -695,7 +399,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       "Own your story — all of it — including the parts that aren't pretty.",
       "End the month as the author, not the character things happen to."
     ],
-    6: [
+    "6": [
       "Let go of one thing you're worrying about that you cannot change.",
       "Stop trying to control someone else's decision.",
       "Focus entirely on your effort. Detach from the result.",
@@ -728,7 +432,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       "Control your preparation. Accept the outcome.",
       "End the month lighter. You dropped what was never yours to carry."
     ],
-    7: [
+    "7": [
       "Something fell through today? Find the next door. Now.",
       "Don't reread the rejection. Open a new tab.",
       "Catch yourself spiraling. Stop. Do one productive thing.",
@@ -761,7 +465,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       "The old plan is dead. Long live the new plan.",
       "End the month having wasted zero days standing at closed doors."
     ],
-    8: [
+    "8": [
       "Accept one outcome today without negotiating with reality.",
       "Gravity works. So do consequences. Trust the structure.",
       "Stop trying to hack the system. Work within it, then exceed it.",
@@ -793,7 +497,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       "Accept that you are not the exception to the rule.",
       "End the month trusting the structure you live within. Even when it's hard."
     ],
-    9: [
+    "9": [
       "Make one decision today as if you had one year left.",
       "Call someone you love. Right now. Not later.",
       "Don't postpone the thing that matters for the thing that's urgent.",
@@ -826,7 +530,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       "Marcus wrote: 'Think of yourself as dead. You have lived your life. Now, take what's left and live it properly.' Do one thing today purely because it makes you feel alive.",
       "End the month having lived each day like it counted. Because it did."
     ],
-    10: [
+    "10": [
       "Name something you lost. Say it out loud. Then take one step forward.",
       "Let yourself feel sad about something without fixing it.",
       "Stop pretending you're \"over it\" if you're not.",
@@ -858,7 +562,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       "Honor what was. Build what's next.",
       "End the month having felt everything and stopped for nothing."
     ],
-    11: [
+    "11": [
       "Do one thing today that will matter six months from now.",
       "Teach someone something that took you years to learn.",
       "Plant something. Literal or metaphorical. Watch it grow.",
@@ -891,292 +595,5 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       "Look at what you've built. Be proud. Then plan what's next.",
       "End the year as someone who left a mark. Not a scratch — a mark."
     ]
-  };
-
-  var now = new Date();
-  var currentMonth = now.getMonth();
-  var currentDay = now.getDate();
-  var selectedDay = null;
-  var viewMonth = currentMonth;
-  var practiceRow = null;
-
-  var grid = document.getElementById('cal-grid');
-  var titleEl = document.getElementById('month-title');
-  var tenetEl = document.getElementById('month-tenet');
-  var prevBtn = document.getElementById('prev-month');
-  var nextBtn = document.getElementById('next-month');
-  var todayBtn = document.getElementById('today-btn');
-
-  function daysInMonth(m) {
-    return new Date(2026, m + 1, 0).getDate();
   }
-
-  function firstDayOfMonth(m) {
-    return new Date(2026, m, 1).getDay();
-  }
-
-  function closePractice() {
-    if (practiceRow) {
-      practiceRow.classList.remove('open');
-      setTimeout(function() {
-        if (practiceRow && practiceRow.parentNode) {
-          practiceRow.parentNode.removeChild(practiceRow);
-        }
-        practiceRow = null;
-      }, 350);
-    }
-    selectedDay = null;
-    var allDays = grid.querySelectorAll('.cal-day:not(.empty)');
-    for (var i = 0; i < allDays.length; i++) {
-      allDays[i].classList.remove('active');
-    }
-  }
-
-  function renderMonth() {
-    titleEl.textContent = MONTHS[viewMonth];
-    tenetEl.textContent = TENETS[viewMonth];
-    grid.innerHTML = '';
-    practiceRow = null;
-
-    var start = firstDayOfMonth(viewMonth);
-    var days = daysInMonth(viewMonth);
-
-    for (var i = 0; i < start; i++) {
-      var empty = document.createElement('div');
-      empty.className = 'cal-day empty';
-      grid.appendChild(empty);
-    }
-
-    for (var d = 1; d <= days; d++) {
-      var cell = document.createElement('div');
-      cell.className = 'cal-day';
-      cell.textContent = d;
-      if (viewMonth === currentMonth && d === currentDay) {
-        cell.classList.add('today');
-      }
-      if (viewMonth === 2 && d === 13) {
-        cell.classList.add('forge-day');
-      }
-      (function(day) {
-        cell.addEventListener('click', function() {
-          selectDay(day);
-        });
-      })(d);
-      grid.appendChild(cell);
-    }
-  }
-
-  function getRowEndIndex(dayIndex) {
-    // dayIndex is 0-based position in grid (including empty cells)
-    // Find the last cell in this row (rows of 7)
-    var row = Math.floor(dayIndex / 7);
-    var rowEnd = (row + 1) * 7 - 1;
-    var totalCells = grid.children.length;
-    // Don't count existing practice rows
-    if (practiceRow && practiceRow.parentNode === grid) {
-      totalCells--;
-    }
-    return Math.min(rowEnd, totalCells - 1);
-  }
-
-  function selectDay(day) {
-    // If clicking the same day, close it
-    if (selectedDay === day && practiceRow) {
-      closePractice();
-      return;
-    }
-
-    // Remove old practice row immediately
-    if (practiceRow && practiceRow.parentNode) {
-      practiceRow.parentNode.removeChild(practiceRow);
-      practiceRow = null;
-    }
-
-    // Clear old active states
-    var allDays = grid.querySelectorAll('.cal-day:not(.empty)');
-    for (var i = 0; i < allDays.length; i++) {
-      allDays[i].classList.remove('active');
-    }
-
-    selectedDay = day;
-    allDays[day - 1].classList.add('active');
-
-    var practices = PRACTICES[viewMonth];
-    if (!practices || !practices[day - 1]) return;
-
-    var isForgeDay = (viewMonth === 2 && day === 13);
-
-    // Calculate grid position of clicked day
-    var start = firstDayOfMonth(viewMonth);
-    var gridIndex = start + day - 1;
-    var rowEndIndex = getRowEndIndex(gridIndex);
-
-    // Create the practice row
-    practiceRow = document.createElement('div');
-    practiceRow.className = 'practice-row';
-    var cardClass = isForgeDay ? 'practice-card forge-card' : 'practice-card';
-    var forgeLabel = isForgeDay ? '<div class="forge-label">FORGE DAY</div>' : '';
-    var dateLabel = isForgeDay ? 'MARCH 13 — THE FOUNDING' : MONTHS[viewMonth] + ' ' + day;
-    practiceRow.innerHTML =
-      '<div class="' + cardClass + '">' +
-        '<button class="close-btn" aria-label="Close">&times;</button>' +
-        forgeLabel +
-        '<div class="practice-date">' + dateLabel + '</div>' +
-        '<div class="practice-text">' + practices[day - 1] + '</div>' +
-        '<div class="practice-tenet-link"><a href="/tenets#' + TENET_IDS[viewMonth] + '">' + TENETS[viewMonth].replace('— ', '— ').split('—')[0].trim() + '</a></div>' +
-        '<button class="share-btn" aria-label="Share this practice">' +
-          '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="14" height="14"><path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z" /></svg>' +
-          ' Share' +
-        '</button>' +
-      '</div>';
-
-    practiceRow.querySelector('.close-btn').addEventListener('click', function(e) {
-      e.stopPropagation();
-      closePractice();
-    });
-
-    practiceRow.querySelector('.share-btn').addEventListener('click', function(e) {
-      e.stopPropagation();
-      generateShareCard(practices[day - 1], TENETS[viewMonth], MONTHS[viewMonth] + ' ' + day, isForgeDay);
-    });
-
-    // Insert after the last cell in this row
-    var cells = grid.children;
-    if (rowEndIndex + 1 < cells.length) {
-      grid.insertBefore(practiceRow, cells[rowEndIndex + 1]);
-    } else {
-      grid.appendChild(practiceRow);
-    }
-
-    // Trigger animation on next frame
-    requestAnimationFrame(function() {
-      requestAnimationFrame(function() {
-        practiceRow.classList.add('open');
-      });
-    });
-  }
-
-  function generateShareCard(practice, tenet, dateStr, isForge) {
-    var canvas = document.createElement('canvas');
-    canvas.width = 1080;
-    canvas.height = 1080;
-    var ctx = canvas.getContext('2d');
-
-    // Background
-    ctx.fillStyle = '#1c2029';
-    ctx.fillRect(0, 0, 1080, 1080);
-
-    // Gold top line
-    var grad = ctx.createLinearGradient(0, 0, 1080, 0);
-    grad.addColorStop(0, 'transparent');
-    grad.addColorStop(0.5, '#c9935a');
-    grad.addColorStop(1, 'transparent');
-    ctx.fillStyle = grad;
-    ctx.fillRect(0, 0, 1080, 4);
-
-    // Date
-    ctx.fillStyle = '#c9935a';
-    ctx.font = '600 22px sans-serif';
-    ctx.textAlign = 'center';
-    ctx.fillText(dateStr.toUpperCase(), 540, isForge ? 200 : 240);
-
-    // Forge badge
-    if (isForge) {
-      ctx.fillStyle = '#c9935a';
-      var badgeWidth = 180;
-      var badgeHeight = 36;
-      var bx = 540 - badgeWidth / 2;
-      var by = 140;
-      ctx.beginPath();
-      ctx.roundRect(bx, by, badgeWidth, badgeHeight, 6);
-      ctx.fill();
-      ctx.fillStyle = '#1c2029';
-      ctx.font = '700 14px sans-serif';
-      ctx.fillText('FORGE DAY', 540, 164);
-    }
-
-    // Tenet
-    ctx.fillStyle = '#70685e';
-    ctx.font = '500 16px sans-serif';
-    ctx.fillText(tenet.split('—')[0].trim(), 540, isForge ? 250 : 280);
-
-    // Practice text - word wrap
-    ctx.fillStyle = '#f5f0eb';
-    ctx.font = '700 38px sans-serif';
-    ctx.textAlign = 'center';
-    var words = practice.split(' ');
-    var lines = [];
-    var line = '';
-    var maxWidth = 860;
-    for (var w = 0; w < words.length; w++) {
-      var test = line + words[w] + ' ';
-      if (ctx.measureText(test).width > maxWidth && line) {
-        lines.push(line.trim());
-        line = words[w] + ' ';
-      } else {
-        line = test;
-      }
-    }
-    lines.push(line.trim());
-
-    var lineHeight = 54;
-    var startY = 540 - (lines.length * lineHeight) / 2;
-    for (var l = 0; l < lines.length; l++) {
-      ctx.fillText(lines[l], 540, startY + l * lineHeight);
-    }
-
-    // Branding
-    ctx.fillStyle = '#70685e';
-    ctx.font = '600 18px sans-serif';
-    ctx.fillText('GRITHOS', 540, 940);
-    ctx.fillStyle = '#4a443c';
-    ctx.font = '400 14px sans-serif';
-    ctx.fillText('grithos.com', 540, 970);
-
-    // Bottom gold line
-    ctx.fillStyle = grad;
-    ctx.fillRect(0, 1076, 1080, 4);
-
-    // Share or download
-    canvas.toBlob(function(blob) {
-      if (navigator.share && navigator.canShare) {
-        var file = new File([blob], 'grithos-practice.png', { type: 'image/png' });
-        var shareData = { files: [file], title: 'Grithos Daily Practice', text: practice };
-        if (navigator.canShare(shareData)) {
-          navigator.share(shareData).catch(function() {});
-          return;
-        }
-      }
-      // Fallback: download
-      var a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = 'grithos-practice.png';
-      a.click();
-      URL.revokeObjectURL(a.href);
-    }, 'image/png');
-  }
-
-  prevBtn.addEventListener('click', function() {
-    viewMonth = viewMonth === 0 ? 11 : viewMonth - 1;
-    selectedDay = null;
-    renderMonth();
-  });
-
-  nextBtn.addEventListener('click', function() {
-    viewMonth = viewMonth === 11 ? 0 : viewMonth + 1;
-    selectedDay = null;
-    renderMonth();
-  });
-
-  todayBtn.addEventListener('click', function() {
-    viewMonth = currentMonth;
-    renderMonth();
-    selectDay(currentDay);
-  });
-
-  renderMonth();
-  selectDay(currentDay);
-})();
-</script>
-
-</BaseLayout>
+}
