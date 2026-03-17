@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<meta name="supported-color-schemes" content="dark light">
 <style>
-  body { margin:0; padding:0; background:#1c2029; font-family:'Georgia','Times New Roman',serif; }
+  :root { color-scheme: dark light; }
+  /* ── Dark mode (default) ── */
+  body { margin:0; padding:0; background:#1c2029; color:#f5f0eb; font-family:'Georgia','Times New Roman',serif; }
   .container { max-width:580px; margin:0 auto; padding:40px 24px; }
   .gold-line { height:3px; background:linear-gradient(90deg,transparent,#c9935a,transparent); margin-bottom:40px; }
   .date { font-family:'Courier New',monospace; font-size:11px; letter-spacing:4px; text-transform:uppercase; color:#c9935a; text-align:center; margin-bottom:8px; }
@@ -22,6 +26,25 @@
   .footer { text-align:center; font-family:'Courier New',monospace; font-size:10px; letter-spacing:2px; color:#4a443c; }
   .footer a { color:#70685e; text-decoration:none; }
   .footer .brand { font-size:13px; letter-spacing:4px; color:#70685e; margin-bottom:8px; display:block; }
+
+  /* ── Light mode override (when email client forces light) ── */
+  @media (prefers-color-scheme: light) {
+    body { background:#faf8f5 !important; color:#2c2a26 !important; }
+    .practice { color:#2c2a26 !important; }
+    .date { color:#96712e !important; }
+    .tenet-label { color:#8a8078 !important; }
+    .quote { color:#6b5f52 !important; }
+    .quote-attr { color:#8a8078 !important; }
+    .pillar-label { color:#8a8078 !important; }
+    .pillar-name { color:#96712e !important; }
+    .cta a { color:#96712e !important; border-color:rgba(150,113,46,0.4) !important; }
+    .gold-line, .gold-line-bottom { background:linear-gradient(90deg,transparent,#96712e,transparent) !important; }
+    .divider { background:#96712e !important; }
+    .forge-badge { color:#faf8f5 !important; background:#96712e !important; }
+    .footer { color:#8a8078 !important; }
+    .footer a { color:#6b5f52 !important; }
+    .footer .brand { color:#6b5f52 !important; }
+  }
 </style>
 </head>
 <body>
