@@ -69,22 +69,22 @@ const html = `<!DOCTYPE html>
   .container { max-width:580px; margin:0 auto; padding:40px 24px; }
   .gold-line { height:3px; background:linear-gradient(90deg,transparent,#c9935a,transparent); margin-bottom:40px; }
   .date { font-family:'Courier New',monospace; font-size:11px; letter-spacing:4px; text-transform:uppercase; color:#c9935a; text-align:center; margin-bottom:8px; }
-  .tenet-label { font-family:'Courier New',monospace; font-size:10px; letter-spacing:3px; text-transform:uppercase; color:#70685e; text-align:center; margin-bottom:32px; }
+  .tenet-label { font-family:'Courier New',monospace; font-size:10px; letter-spacing:3px; text-transform:uppercase; color:#a09888; text-align:center; margin-bottom:32px; }
   .forge-badge { display:inline-block; font-family:'Courier New',monospace; font-size:10px; letter-spacing:3px; text-transform:uppercase; color:#1c2029; background:#c9935a; padding:4px 14px; border-radius:3px; margin-bottom:16px; }
-  .practice { font-size:22px; line-height:1.6; color:#f5f0eb; text-align:center; font-weight:600; padding:0 16px; margin-bottom:36px; }
-  .divider { width:40px; height:1px; background:#c9935a; margin:0 auto 36px; opacity:0.4; }
+  .practice { font-size:22px; line-height:1.6; color:#ffffff; text-align:center; font-weight:600; padding:0 16px; margin-bottom:36px; }
+  .divider { width:40px; height:1px; background:#c9935a; margin:0 auto 36px; opacity:0.6; }
   .quote-block { text-align:center; padding:0 24px; margin-bottom:36px; }
-  .quote { font-size:15px; font-style:italic; color:#a09888; line-height:1.6; margin-bottom:8px; }
-  .quote-attr { font-family:'Courier New',monospace; font-size:10px; letter-spacing:2px; color:#70685e; text-transform:uppercase; }
+  .quote { font-size:15px; font-style:italic; color:#d4c8b8; line-height:1.6; margin-bottom:8px; }
+  .quote-attr { font-family:'Courier New',monospace; font-size:10px; letter-spacing:2px; color:#a09888; text-transform:uppercase; }
   .pillar-block { text-align:center; margin-bottom:36px; }
-  .pillar-label { font-family:'Courier New',monospace; font-size:10px; letter-spacing:3px; text-transform:uppercase; color:#70685e; margin-bottom:4px; }
+  .pillar-label { font-family:'Courier New',monospace; font-size:10px; letter-spacing:3px; text-transform:uppercase; color:#a09888; margin-bottom:4px; }
   .pillar-name { font-size:16px; color:#c9935a; font-weight:600; }
   .cta { text-align:center; margin-bottom:40px; }
-  .cta a { display:inline-block; font-family:'Courier New',monospace; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#c9935a; text-decoration:none; border:1px solid rgba(201,147,90,0.3); padding:10px 28px; border-radius:4px; }
+  .cta a { display:inline-block; font-family:'Courier New',monospace; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#c9935a; text-decoration:none; border:1px solid rgba(201,147,90,0.5); padding:10px 28px; border-radius:4px; }
   .gold-line-bottom { height:3px; background:linear-gradient(90deg,transparent,#c9935a,transparent); margin-top:40px; margin-bottom:24px; }
-  .footer { text-align:center; font-family:'Courier New',monospace; font-size:10px; letter-spacing:2px; color:#4a443c; }
-  .footer a { color:#70685e; text-decoration:none; }
-  .footer .brand { font-size:13px; letter-spacing:4px; color:#70685e; margin-bottom:8px; display:block; }
+  .footer { text-align:center; font-family:'Courier New',monospace; font-size:10px; letter-spacing:2px; color:#70685e; }
+  .footer a { color:#a09888; text-decoration:none; }
+  .footer .brand { font-size:13px; letter-spacing:4px; color:#a09888; margin-bottom:8px; display:block; }
 
   /* ── Light mode override (when email client forces light) ── */
   @media (prefers-color-scheme: light) {
