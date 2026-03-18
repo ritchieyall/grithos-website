@@ -12,7 +12,9 @@ const fs = require("fs");
 const path = require("path");
 
 // ── Config ──────────────────────────────────────────────────────────────
+// Use branded address if domain is verified, fallback to Resend default
 const FROM = process.env.RESEND_FROM || "Grithos Daily Practice <richard@grithos.com>";
+const FALLBACK_FROM = "Grithos Daily Practice <onboarding@resend.dev>";
 const AUDIENCE_TAG = "daily-practice";
 const SITE_URL = "https://grithos.com";
 
@@ -154,6 +156,25 @@ async function send() {
     process.exit(1);
   }
 
+  // Check if domain is verified, use fallback if not
+  let fromAddress = FROM;
+  try {
+    const domainRes = await fetch(
+      "https://api.resend.com/domains/717dd73c-bc58-4d1a-8e05-f5f2b8ebc179",
+      { headers: { Authorization: `Bearer ${RESEND_API_KEY}` } }
+    );
+    const domainData = await domainRes.json();
+    if (domainData.status !== "verified") {
+      console.log(`Domain status: ${domainData.status} — using fallback sender`);
+      fromAddress = FALLBACK_FROM;
+    } else {
+      console.log("Domain verified — using branded sender");
+    }
+  } catch (e) {
+    console.log("Could not check domain — using fallback sender");
+    fromAddress = FALLBACK_FROM;
+  }
+
   const AUDIENCE_ID = process.env.RESEND_AUDIENCE_ID || "39145f4b-0e37-4a81-82c7-ba4d891b50b2";
 
   // If audience ID is set, fetch contacts and send individually
@@ -197,7 +218,7 @@ async function send() {
   let sent = 0;
   for (const batch of batches) {
     const emails = batch.map((to) => ({
-      from: FROM,
+      from: fromAddress,
       to,
       subject,
       html,

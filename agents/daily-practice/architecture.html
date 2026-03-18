@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Willow — Architecture Overview</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#1c2029; color:#f5f0eb; font-family:'Georgia','Times New Roman',serif; min-height:100vh; }
+  .container { max-width:900px; margin:0 auto; padding:40px 24px; }
+  
+  .gold-line { height:3px; background:linear-gradient(90deg,transparent,#c9935a,transparent); margin-bottom:40px; }
+  
+  h1 { font-family:'Courier New',monospace; font-size:28px; text-align:center; color:#f5f0eb; margin-bottom:8px; letter-spacing:2px; }
+  .subtitle { font-family:'Courier New',monospace; font-size:12px; letter-spacing:4px; text-transform:uppercase; color:#c9935a; text-align:center; margin-bottom:8px; }
+  .date { font-family:'Courier New',monospace; font-size:11px; color:#70685e; text-align:center; margin-bottom:40px; letter-spacing:2px; }
+  
+  .section-title { font-family:'Courier New',monospace; font-size:11px; letter-spacing:4px; text-transform:uppercase; color:#c9935a; margin-bottom:16px; padding-bottom:8px; border-bottom:1px solid rgba(201,147,90,0.2); }
+  
+  .card { background:rgba(255,255,255,0.03); border:1px solid rgba(201,147,90,0.15); border-radius:12px; padding:24px; margin-bottom:20px; }
+  
+  /* Org chart */
+  .org { text-align:center; margin-bottom:40px; }
+  .org-node { display:inline-block; padding:12px 24px; border:2px solid #c9935a; border-radius:8px; margin:4px; font-family:'Courier New',monospace; font-size:13px; }
+  .org-node.primary { background:rgba(201,147,90,0.15); }
+  .org-node.stream { background:rgba(255,255,255,0.04); border-color:rgba(201,147,90,0.4); font-size:11px; }
+  .org-line { color:#c9935a; font-size:20px; display:block; margin:4px 0; }
+  .org-row { display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin:8px 0; }
+  
+  /* Stats grid */
+  .stats { display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:12px; margin-bottom:24px; }
+  .stat { text-align:center; padding:16px; background:rgba(201,147,90,0.06); border:1px solid rgba(201,147,90,0.15); border-radius:8px; }
+  .stat-number { font-family:'Courier New',monospace; font-size:28px; color:#c9935a; font-weight:700; display:block; }
+  .stat-label { font-family:'Courier New',monospace; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#70685e; margin-top:4px; display:block; }
+  
+  /* Model list */
+  .model-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:8px; }
+  .model { padding:10px 14px; background:rgba(255,255,255,0.02); border:1px solid rgba(201,147,90,0.1); border-radius:6px; font-family:'Courier New',monospace; font-size:11px; display:flex; justify-content:space-between; align-items:center; }
+  .model-name { color:#f5f0eb; }
+  .model-tag { font-size:9px; padding:2px 8px; border-radius:3px; letter-spacing:1px; text-transform:uppercase; }
+  .tag-primary { background:#c9935a; color:#1c2029; }
+  .tag-free { background:rgba(76,175,80,0.2); color:#66bb6a; }
+  .tag-paid { background:rgba(201,147,90,0.15); color:#c9935a; }
+  
+  /* Schedule */
+  .schedule { width:100%; border-collapse:collapse; margin-top:8px; }
+  .schedule th { font-family:'Courier New',monospace; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#c9935a; text-align:left; padding:8px 12px; border-bottom:1px solid rgba(201,147,90,0.2); }
+  .schedule td { font-family:'Courier New',monospace; font-size:12px; padding:8px 12px; border-bottom:1px solid rgba(255,255,255,0.03); color:#a09888; }
+  .schedule td:first-child { color:#f5f0eb; white-space:nowrap; }
+  
+  /* Integration list */
+  .integrations { display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:8px; }
+  .integration { padding:10px 14px; background:rgba(255,255,255,0.02); border:1px solid rgba(201,147,90,0.1); border-radius:6px; font-family:'Courier New',monospace; font-size:11px; color:#a09888; }
+  .integration .name { color:#f5f0eb; display:block; margin-bottom:2px; }
+  
+  /* Footer */
+  .footer { text-align:center; margin-top:40px; padding-top:24px; }
+  .footer .brand { font-family:'Courier New',monospace; font-size:14px; letter-spacing:6px; color:#70685e; display:block; margin-bottom:8px; }
+  .footer .tagline { font-family:'Courier New',monospace; font-size:10px; color:#4a443c; letter-spacing:2px; }
+
+  @media (max-width:600px) {
+    .container { padding:24px 16px; }
+    h1 { font-size:22px; }
+    .stats { grid-template-columns:repeat(2, 1fr); }
+    .model-grid { grid-template-columns:1fr; }
+    .integrations { grid-template-columns:1fr; }
+    .org-row { flex-direction:column; align-items:center; }
+    .schedule { font-size:10px; }
+    .schedule td, .schedule th { padding:6px 8px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="gold-line"></div>
+  
+  <div class="subtitle">Autonomous AI Chief of Staff</div>
+  <h1>Willow 🪨</h1>
+  <div class="date">Architecture Overview — Built March 17, 2026 — Day One</div>
+  
+  <!-- Org Chart -->
+  <div class="card">
+    <div class="section-title">Command Structure</div>
+    <div class="org">
+      <div class="org-node primary">Richard Johnson — CEO</div>
+      <div class="org-line">│</div>
+      <div class="org-node primary">Willow 🪨 — Chief of Staff</div>
+      <div class="org-line">┬──────────┬──────────┐</div>
+      <div class="org-row">
+        <div class="org-node stream">🏢 TZC<br><small>Revenue</small></div>
+        <div class="org-node stream">🔥 Grithos<br><small>Growing</small></div>
+        <div class="org-node stream">👤 Personal<br><small>Life</small></div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Stats -->
+  <div class="card">
+    <div class="section-title">By The Numbers</div>
+    <div class="stats">
+      <div class="stat"><span class="stat-number">10</span><span class="stat-label">AI Models</span></div>
+      <div class="stat"><span class="stat-number">18+</span><span class="stat-label">Daily Cycles</span></div>
+      <div class="stat"><span class="stat-number">7</span><span class="stat-label">Cron Jobs</span></div>
+      <div class="stat"><span class="stat-number">10</span><span class="stat-label">Integrations</span></div>
+      <div class="stat"><span class="stat-number">3</span><span class="stat-label">Email Accounts</span></div>
+      <div class="stat"><span class="stat-number">50+</span><span class="stat-label">Wiki Pages</span></div>
+      <div class="stat"><span class="stat-number">365</span><span class="stat-label">Daily Practices</span></div>
+      <div class="stat"><span class="stat-number">24/7</span><span class="stat-label">Uptime</span></div>
+    </div>
+  </div>
+  
+  <!-- Models -->
+  <div class="card">
+    <div class="section-title">AI Model Arsenal</div>
+    <div class="model-grid">
+      <div class="model"><span class="model-name">Claude Opus 4</span><span class="model-tag tag-primary">Primary</span></div>
+      <div class="model"><span class="model-name">Grok 3 Fast</span><span class="model-tag tag-paid">Real-time</span></div>
+      <div class="model"><span class="model-name">Grok 4.1 Fast</span><span class="model-tag tag-paid">Backup</span></div>
+      <div class="model"><span class="model-name">Grok 4</span><span class="model-tag tag-paid">Heavy</span></div>
+      <div class="model"><span class="model-name">MiniMax M2.5</span><span class="model-tag tag-free">Free</span></div>
+      <div class="model"><span class="model-name">Nemotron 120B</span><span class="model-tag tag-free">Free</span></div>
+      <div class="model"><span class="model-name">Qwen3 Coder</span><span class="model-tag tag-free">Free</span></div>
+      <div class="model"><span class="model-name">GPT-OSS 120B</span><span class="model-tag tag-free">Free</span></div>
+      <div class="model"><span class="model-name">Gemma 3n</span><span class="model-tag tag-free">Free</span></div>
+      <div class="model"><span class="model-name">Step 3.5 Flash</span><span class="model-tag tag-free">Free</span></div>
+    </div>
+  </div>
+  
+  <!-- Schedule -->
+  <div class="card">
+    <div class="section-title">Daily Operations Schedule</div>
+    <table class="schedule">
+      <tr><th>Time</th><th>Operation</th><th>Model</th></tr>
+      <tr><td>6:00 AM</td><td>Daily Practice Email → All Subscribers</td><td>Script</td></tr>
+      <tr><td>7:00 AM</td><td>Morning Command Brief → Richard</td><td>MiniMax</td></tr>
+      <tr><td>8:00 AM</td><td>Compliance Intel (FedRAMP, NIST, CMMC)</td><td>MiniMax</td></tr>
+      <tr><td>9:00 AM</td><td>TZC Brain (Confluence, Email, Clients)</td><td>Nemotron</td></tr>
+      <tr><td>10:00 AM</td><td>Second Brain (Memory, Research)</td><td>MiniMax</td></tr>
+      <tr><td>1:00 PM</td><td>TZC Brain Cycle 2</td><td>Nemotron</td></tr>
+      <tr><td>2:00 PM</td><td>Second Brain Cycle 2</td><td>MiniMax</td></tr>
+      <tr><td>4:00 PM</td><td>Compliance Intel Afternoon</td><td>MiniMax</td></tr>
+      <tr><td>5:00 PM</td><td>TZC Brain Cycle 3</td><td>Nemotron</td></tr>
+      <tr><td>6:00 PM</td><td>Second Brain (Growth Research)</td><td>MiniMax</td></tr>
+      <tr><td>10:00 PM</td><td>Second Brain (Daily Review)</td><td>MiniMax</td></tr>
+      <tr><td>11:30 PM</td><td>Nightly Cleanup & Maintenance</td><td>MiniMax</td></tr>
+      <tr><td>Sun 12 AM</td><td>Weekly Security Audit</td><td>MiniMax</td></tr>
+      <tr><td>All Day</td><td>Richard ↔ Willow on Telegram</td><td>Claude Opus</td></tr>
+    </table>
+  </div>
+  
+  <!-- Integrations -->
+  <div class="card">
+    <div class="section-title">Connected Systems</div>
+    <div class="integrations">
+      <div class="integration"><span class="name">Telegram</span>Richard ↔ Willow</div>
+      <div class="integration"><span class="name">Confluence</span>TZC Wiki (50+ pages)</div>
+      <div class="integration"><span class="name">Microsoft Graph</span>O365 Email (OAuth2)</div>
+      <div class="integration"><span class="name">Apple Mail</span>iCloud Email</div>
+      <div class="integration"><span class="name">Resend</span>Email Sending + Audiences</div>
+      <div class="integration"><span class="name">ImprovMX</span>Email Forwarding</div>
+      <div class="integration"><span class="name">GitHub</span>2 Repos (TZC + Grithos)</div>
+      <div class="integration"><span class="name">Netlify</span>3 Sites + Functions</div>
+      <div class="integration"><span class="name">GoDaddy</span>DNS Management</div>
+      <div class="integration"><span class="name">Peekaboo</span>Mac UI Automation</div>
+    </div>
+  </div>
+  
+  <!-- Business Streams -->
+  <div class="card">
+    <div class="section-title">TZC — Threat Zero Cyber (Revenue)</div>
+    <div class="integrations">
+      <div class="integration"><span class="name">Clients</span>Humango, SOCSoter</div>
+      <div class="integration"><span class="name">Team</span>Mike, Scott, Angela, Chinedu</div>
+      <div class="integration"><span class="name">Frameworks</span>CMMC, FedRAMP 20x, NIST, FIPS</div>
+      <div class="integration"><span class="name">ZeroGap</span>AI-Powered Methodology</div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <div class="section-title">Grithos — Philosophy Brand (Growing)</div>
+    <div class="integrations">
+      <div class="integration"><span class="name">Daily Practice</span>365 emails, automated 6 AM</div>
+      <div class="integration"><span class="name">Welcome Series</span>5-email onboarding flow</div>
+      <div class="integration"><span class="name">Social</span>X + Instagram (coming)</div>
+      <div class="integration"><span class="name">Merch</span>Pillar-themed products (coming)</div>
+    </div>
+  </div>
+  
+  <div class="gold-line" style="margin-top:40px;margin-bottom:24px;"></div>
+  
+  <div class="footer">
+    <span class="brand">WILLOW 🪨</span>
+    <span class="tagline">Autonomous AI Chief of Staff — Built Day One — March 17, 2026</span>
+  </div>
+</div>
+</body>
+</html>
