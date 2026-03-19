@@ -91,10 +91,10 @@ const html = `<!DOCTYPE html>
     body { background:#faf8f5 !important; color:#2c2a26 !important; }
     .practice { color:#2c2a26 !important; }
     .date { color:#96712e !important; }
-    .tenet-label { color:#8a8078 !important; }
-    .quote { color:#6b5f52 !important; }
-    .quote-attr { color:#8a8078 !important; }
-    .pillar-label { color:#8a8078 !important; }
+    .tenet-label { color:#5a5248 !important; }
+    .quote { color:#4a3f35 !important; }
+    .quote-attr { color:#5a5248 !important; }
+    .pillar-label { color:#5a5248 !important; }
     .pillar-name { color:#96712e !important; }
     .cta a { color:#96712e !important; border-color:rgba(150,113,46,0.4) !important; }
     .gold-line, .gold-line-bottom { background:linear-gradient(90deg,transparent,#96712e,transparent) !important; }
