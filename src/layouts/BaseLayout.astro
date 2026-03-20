@@ -46,16 +46,16 @@ const finalCanonical = canonical || finalOgUrl;
   <link rel="canonical" href={finalCanonical} />
   <meta name="author" content="Richard Johnson">
   <meta name="robots" content="index, follow">
-  <meta property="og:image" content="https://grithos.com/assets/images/logo.jpg" />
+  <meta property="og:image" content="https://grithos.com/assets/images/logo-hero.jpg" />
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content={finalOgTitle} />
   <meta name="twitter:description" content={finalOgDescription} />
-  <meta name="twitter:image" content="https://grithos.com/assets/images/logo.jpg" />
-  <link rel="icon" type="image/jpeg" href="/assets/images/icon.jpg">
+  <meta name="twitter:image" content="https://grithos.com/assets/images/logo-hero.jpg" />
+  <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="manifest" href="/manifest.json">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <link rel="apple-touch-icon" href="/assets/images/icon.jpg">
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -71,7 +71,7 @@ const finalCanonical = canonical || finalOgUrl;
   })} />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Source+Sans+3:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <slot name="head" />
 </head>
 <body>
@@ -91,13 +91,7 @@ const finalCanonical = canonical || finalOgUrl;
       navigator.serviceWorker.register('/sw.js').catch(function() {});
     }
 
-    // Dark/Light mode
-    (function() {
-      var saved = localStorage.getItem('grithos-theme');
-      if (saved === 'light') {
-        document.documentElement.classList.add('light-mode');
-      }
-    })();
+    // Dark mode only — no theme switching
   </script>
   <!-- Cloudflare Web Analytics -->
   <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "e120758e160d4b2794f2645e58123c82"}'></script>

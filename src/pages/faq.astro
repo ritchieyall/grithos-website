@@ -111,7 +111,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <style is:inline>
   .page-hero {
-    padding: 160px 0 80px;
+    padding: 80px 0 40px;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -121,7 +121,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     position: absolute;
     top: 40%; left: 50%; transform: translateX(-50%);
     width: 800px; height: 800px;
-    background: radial-gradient(circle, rgba(201,147,90,.05) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(196,168,130,.05) 0%, transparent 70%);
     pointer-events: none;
     z-index: 0;
   }
@@ -139,7 +139,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .page-hero-title {
     font-family: var(--heading);
     font-size: clamp(32px, 4.5vw, 52px);
-    font-weight: 800;
+    font-weight: 700;
     line-height: 1.1;
     letter-spacing: -.02em;
     color: var(--white);
@@ -148,7 +148,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     z-index: 1;
   }
   .page-hero-sub {
-    font-family: 'Georgia', serif;
+    font-family: var(--serif);
     font-size: clamp(15px, 2vw, 18px);
     font-style: italic;
     color: var(--text-secondary);
@@ -167,29 +167,44 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     margin: 0 auto;
   }
   .faq-item {
-    border-bottom: 1px solid var(--border);
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: all .3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .faq-item:hover {
+    border-color: var(--gold-border);
+    transform: translateY(-2px);
+  }
+  .faq-item.open {
+    border-color: var(--gold-border);
   }
   .faq-question {
     width: 100%;
-    background: transparent;
+    background: none;
     border: none;
-    padding: 28px 0;
+    padding: 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 20px;
+    gap: 16px;
     cursor: pointer;
     text-align: left;
   }
   .faq-question-text {
     font-family: var(--heading);
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 700;
     color: var(--white);
     line-height: 1.4;
     transition: color .2s;
   }
-  .faq-question:hover .faq-question-text {
+  .faq-item:hover .faq-question-text {
     color: var(--gold);
   }
   .faq-icon {
@@ -227,11 +242,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     opacity: 1;
   }
   .faq-answer-inner {
-    padding: 0 0 28px;
-    font-size: 15px;
+    padding: 16px 0 4px;
+    font-family: var(--serif);
+    font-size: 16px;
     color: var(--text-secondary);
     line-height: 1.8;
     max-width: 640px;
+    border-top: 1px solid var(--border);
+    margin-top: 16px;
   }
   .faq-answer-inner a {
     color: var(--gold);
@@ -251,6 +269,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <section class="page-hero">
   <div class="wrap">
+    <img src="/assets/images/grithos-logo.png" alt="Grithos" style="width: 120px; height: auto; margin-bottom: 16px; opacity: 0.85;">
     <p class="page-hero-overline reveal">FAQ</p>
     <h1 class="page-hero-title reveal d1">Straight Answers</h1>
     <p class="page-hero-sub reveal d2">No fluff. No spin. Just the questions people ask and the honest answers.</p>

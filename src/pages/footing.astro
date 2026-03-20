@@ -15,7 +15,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <style is:inline>
   /* ═══ PAGE HERO ═══ */
   .page-hero {
-    padding: 160px 0 80px;
+    padding: 80px 0 40px;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -25,7 +25,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     position: absolute;
     top: 40%; left: 50%; transform: translateX(-50%);
     width: 800px; height: 800px;
-    background: radial-gradient(circle, rgba(201,147,90,.05) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(196,168,130,.05) 0%, transparent 70%);
     pointer-events: none;
     z-index: 0;
   }
@@ -42,14 +42,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .page-hero-title {
     font-family: var(--heading);
     font-size: clamp(32px, 4.5vw, 52px);
-    font-weight: 800;
+    font-weight: 700;
     letter-spacing: -0.02em;
     line-height: 1.1;
     color: var(--white);
     margin-bottom: 16px;
   }
   .page-hero-sub {
-    font-family: Georgia, 'Times New Roman', serif;
+    font-family: var(--serif);
     font-size: clamp(15px, 2vw, 18px);
     font-style: italic;
     color: var(--text-secondary);
@@ -64,7 +64,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     text-align: center;
   }
   .footing-intro-text {
-    font-family: Georgia, 'Times New Roman', serif;
+    font-family: var(--serif);
     font-size: 17px;
     line-height: 1.9;
     color: var(--text-secondary);
@@ -94,13 +94,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .pillar-name {
     font-family: var(--heading);
     font-size: clamp(22px, 3vw, 32px);
-    font-weight: 800;
+    font-weight: 700;
     color: var(--white);
     letter-spacing: -0.01em;
     margin-bottom: 8px;
   }
   .pillar-tagline {
-    font-family: Georgia, 'Times New Roman', serif;
+    font-family: var(--serif);
     font-size: 15px;
     font-style: italic;
     color: var(--text-muted);
@@ -232,7 +232,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     line-height: 1.7;
   }
   .workflow-quote {
-    font-family: Georgia, 'Times New Roman', serif;
+    font-family: var(--serif);
     font-size: 14px;
     font-style: italic;
     color: var(--white);
@@ -288,7 +288,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     margin-bottom: 80px;
   }
   .closing-text {
-    font-family: Georgia, 'Times New Roman', serif;
+    font-family: var(--serif);
     font-size: clamp(20px, 2.8vw, 28px);
     font-weight: 700;
     font-style: italic;
@@ -298,7 +298,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     margin: 0 auto 20px;
   }
   .closing-sub {
-    font-family: Georgia, 'Times New Roman', serif;
+    font-family: var(--serif);
     font-size: clamp(15px, 2vw, 18px);
     font-style: italic;
     color: var(--text-secondary);
@@ -353,7 +353,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
   .search-input:focus {
     border-color: var(--gold);
-    box-shadow: 0 0 0 3px rgba(201,147,90,.15);
+    box-shadow: 0 0 0 3px rgba(196,168,130,.15);
   }
   .search-icon {
     position: absolute;
@@ -538,6 +538,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <!-- HERO -->
 <section class="page-hero">
   <div class="wrap">
+    <img src="/assets/images/grithos-logo.png" alt="Grithos" style="width: 120px; height: auto; margin-bottom: 16px; opacity: 0.85;">
     <p class="page-hero-overline reveal d1">Start Here</p>
     <h1 class="page-hero-title reveal d2">Find Your Footing</h1>
     <p class="page-hero-sub reveal d3">Four Pillars. Within each, Tenets — the principles you live by. Behind each Tenet, a Lineage — voices of those who walked this road before you. A Footing is where it all meets the ground you're standing on.</p>
@@ -9955,7 +9956,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
       // Brief gold highlight
       card.style.borderColor = 'var(--gold)';
-      card.style.boxShadow = '0 0 0 3px rgba(201,147,90,.2)';
+      card.style.boxShadow = '0 0 0 3px rgba(196,168,130,.2)';
       setTimeout(function() {
         card.style.borderColor = '';
         card.style.boxShadow = '';

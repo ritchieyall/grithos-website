@@ -15,177 +15,296 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <style is:inline>
   /* ═══ HERO ═══ */
   .hero {
-    padding: 180px 0 100px;
+    min-height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     position: relative;
     overflow: hidden;
+    padding: 60px 20px 20px;
   }
+  @media (max-width: 600px) {
+    .hero { padding: 40px 16px 32px; }
+  }
+
+  /* Radial glow behind logo */
   .hero::before {
     content: '';
     position: absolute;
-    top: 50%; left: 50%; transform: translateX(-50%);
-    width: 900px; height: 900px;
-    background: radial-gradient(circle, rgba(201,147,90,.06) 0%, transparent 70%);
+    top: 45%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(196,168,130,.07) 0%, rgba(196,168,130,.03) 30%, transparent 65%);
     pointer-events: none;
-    z-index: 1;
+    z-index: 0;
+    animation: pulse-glow 6s ease-in-out infinite;
   }
-  .hero-logo-wrap {
-    position: relative;
-    display: inline-block;
-    max-width: 420px;
-    width: 80%;
-    margin-bottom: 20px;
-    z-index: 2;
+
+  /* Particle field */
+  .hero-particles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
   }
-  .hero-logo-wrap::after {
-    display: none;
+  @media (max-width: 768px) {
+    .hero-particles { display: none; }
   }
-  .hero-logo {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
-  .hero-subtitle {
-    font-family: 'Georgia', serif;
-    font-size: clamp(18px, 2.5vw, 24px);
-    font-style: italic;
-    color: var(--text-secondary);
-    margin-bottom: 12px;
-  }
-  .hero-pronunciation {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--text-muted);
-    letter-spacing: .08em;
-    margin-bottom: 48px;
-  }
-  .hero-divider {
-    width: 60px;
+  .particle {
+    position: absolute;
+    width: 2px;
     height: 2px;
     background: var(--gold);
-    margin: 0 auto 48px;
+    border-radius: 50%;
+    opacity: 0;
+    animation: float-up linear infinite;
   }
+  .particle:nth-child(1) { left: 15%; animation-duration: 18s; animation-delay: 0s; }
+  .particle:nth-child(2) { left: 30%; animation-duration: 22s; animation-delay: 3s; width: 1px; height: 1px; }
+  .particle:nth-child(3) { left: 50%; animation-duration: 20s; animation-delay: 6s; }
+  .particle:nth-child(4) { left: 65%; animation-duration: 25s; animation-delay: 2s; width: 3px; height: 3px; }
+  .particle:nth-child(5) { left: 80%; animation-duration: 19s; animation-delay: 8s; width: 1px; height: 1px; }
+  .particle:nth-child(6) { left: 25%; animation-duration: 24s; animation-delay: 5s; }
+  .particle:nth-child(7) { left: 70%; animation-duration: 21s; animation-delay: 10s; width: 1px; height: 1px; }
+  .particle:nth-child(8) { left: 40%; animation-duration: 23s; animation-delay: 7s; }
+  .particle:nth-child(9) { left: 55%; animation-duration: 17s; animation-delay: 1s; width: 3px; height: 3px; }
+  .particle:nth-child(10) { left: 85%; animation-duration: 26s; animation-delay: 4s; }
+  .particle:nth-child(11) { left: 10%; animation-duration: 20s; animation-delay: 9s; }
+  .particle:nth-child(12) { left: 90%; animation-duration: 22s; animation-delay: 11s; width: 1px; height: 1px; }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 16px;
+    width: 100%;
+  }
+
+  .hero-logo-img {
+    width: clamp(400px, 60vw, 800px);
+    height: auto;
+    margin-bottom: 32px;
+    animation: fade-in 1.5s ease-out 0.2s both;
+    filter: drop-shadow(0 0 40px rgba(184,168,142,.25)) drop-shadow(0 0 80px rgba(184,168,142,.15)) drop-shadow(0 0 120px rgba(184,168,142,.08));
+  }
+
+  .hero-subtitle {
+    font-family: var(--heading);
+    font-size: clamp(18px, 2.5vw, 24px);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--gold);
+    margin-bottom: 8px;
+    animation: fade-in-up 1s ease-out 0.6s both;
+  }
+
+  .hero-pronunciation {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: .1em;
+    margin-bottom: 40px;
+    animation: fade-in 1s ease-out 0.8s both;
+  }
+
+  .hero-gold-line {
+    width: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 0 auto 40px;
+    animation: expand-line 1.2s ease-out 1s forwards;
+  }
+
   .hero-motto {
-    font-family: 'Georgia', serif;
-    font-size: clamp(20px, 2.8vw, 28px);
+    font-family: var(--heading);
+    font-size: clamp(22px, 4vw, 44px);
     font-weight: 700;
     font-style: italic;
     color: var(--white);
     margin-bottom: 16px;
+    letter-spacing: .02em;
+    animation: fade-in-up 1s ease-out 1.2s both;
+    word-wrap: break-word;
   }
+
   .hero-motto-sub {
-    font-family: 'Georgia', serif;
-    font-size: clamp(15px, 2vw, 18px);
+    font-family: var(--serif);
+    font-size: clamp(16px, 2.2vw, 24px);
     font-style: italic;
+    font-weight: 400;
     color: var(--text-secondary);
-    max-width: 600px;
+    max-width: 520px;
     margin: 0 auto;
+    line-height: 1.8;
+    animation: fade-in-up 1s ease-out 1.4s both;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: fade-in 1s ease-out 2s both;
+  }
+  .hero-scroll-line {
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    margin: 0 auto;
+    animation: pulse-glow 2s ease-in-out infinite;
   }
 
   /* ═══ ORIGIN ═══ */
   .origin {
-    padding: 60px 0 0;
+    padding: 20px 0;
     text-align: center;
+    position: relative;
   }
   .origin-text {
-    font-family: 'Georgia', serif;
+    font-family: var(--serif);
     font-size: clamp(16px, 2vw, 19px);
     font-style: italic;
-    line-height: 1.8;
+    line-height: 2;
     color: var(--text-secondary);
     max-width: 640px;
     margin: 0 auto;
   }
 
-  /* ═══ SECTION DIVIDER ═══ */
-  .section-divider {
-    width: 100%;
-    height: 1px;
-    background: var(--border);
-    margin: 0;
+  /* ═══ CREED ═══ */
+  .creed {
+    padding: 28px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
   }
+  .creed::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(196,168,130,.04) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .creed-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 32px;
+  }
+  .creed-text {
+    font-family: var(--heading);
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 700;
+    font-style: italic;
+    color: var(--white);
+    line-height: 1.4;
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .creed-text .gold { color: var(--gold); }
 
   /* ═══ FOUNDATION ═══ */
   .foundation {
-    padding: 100px 0;
+    padding: 28px 0;
   }
   .foundation-text {
-    font-family: 'Georgia', serif;
+    font-family: var(--serif);
     font-size: 18px;
-    line-height: 1.9;
+    line-height: 2;
     color: var(--text-secondary);
     max-width: 720px;
     margin: 0 auto;
     text-align: center;
   }
 
-  /* ═══ CREED ═══ */
-  .creed {
-    padding: 100px 0;
-    text-align: center;
-  }
-  .creed-text {
-    font-family: 'Georgia', serif;
-    font-size: clamp(22px, 3vw, 32px);
-    font-weight: 700;
-    font-style: italic;
-    color: var(--white);
-    line-height: 1.5;
-    max-width: 700px;
-    margin: 0 auto;
-  }
-
-  /* ═══ PILLARS ═══ */
+  /* ═══ FOUR PILLARS ═══ */
   .pillars {
-    padding: 100px 0 120px;
+    padding: 28px 0 32px;
+    position: relative;
+  }
+  .pillars-header {
+    text-align: center;
+    margin-bottom: 72px;
   }
   .pillars-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 28px;
-    margin-top: 48px;
+    gap: 24px;
   }
   .pillar-card {
-    background: var(--card);
+    background: linear-gradient(135deg, rgba(33,38,47,.9) 0%, rgba(28,32,41,.95) 100%);
     border: 1px solid var(--border);
     border-radius: var(--r-lg);
-    padding: 48px 40px;
-    transition: border-color .3s, box-shadow .3s;
+    padding: 56px 44px;
+    transition: all .4s cubic-bezier(.16,1,.3,1);
     text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .pillar-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, var(--gold) 50%, transparent 100%);
+    opacity: 0;
+    transition: opacity .4s;
   }
   .pillar-card:hover {
     border-color: var(--gold-border);
-    box-shadow: 0 0 40px rgba(201,147,90,.06);
+    box-shadow: 0 8px 60px rgba(196,168,130,.06), 0 0 1px rgba(196,168,130,.2);
+    transform: translateY(-4px);
+  }
+  .pillar-card:hover::before {
+    opacity: 0.8;
   }
   .pillar-numeral {
     font-family: var(--heading);
-    font-size: 11px;
+    font-size: 56px;
+    font-weight: 300;
+    color: rgba(196,168,130,.12);
+    line-height: 1;
+    margin-bottom: 8px;
+    letter-spacing: .05em;
+  }
+  .pillar-label {
+    font-family: var(--mono);
+    font-size: 9px;
     font-weight: 700;
     letter-spacing: .22em;
     color: var(--gold);
     text-transform: uppercase;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
   }
   .pillar-name {
     font-family: var(--heading);
-    font-size: 28px;
-    font-weight: 800;
+    font-size: 36px;
+    font-weight: 700;
     color: var(--white);
-    letter-spacing: -.01em;
+    letter-spacing: .01em;
     margin-bottom: 4px;
   }
   .pillar-tagline {
-    font-family: 'Georgia', serif;
-    font-size: 14px;
+    font-family: var(--serif);
+    font-size: 16px;
     font-style: italic;
-    color: var(--gold-light);
+    font-weight: 500;
+    color: var(--gold);
     letter-spacing: .01em;
-    margin-bottom: 28px;
+    margin-bottom: 32px;
   }
   .pillar-divider {
     width: 40px;
     height: 1px;
-    background: var(--border);
+    background: linear-gradient(90deg, transparent, var(--gold-border), transparent);
     margin: 0 auto 28px;
   }
   .pillar-body {
@@ -198,24 +317,27 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   /* ═══ TENETS ═══ */
   .tenets {
-    padding: 100px 0 120px;
+    padding: 28px 0 32px;
+  }
+  .tenets-header {
+    text-align: center;
+    margin-bottom: 64px;
   }
   .tenets-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 28px;
-    margin-top: 48px;
+    gap: 24px;
   }
   .tenets-pillar {
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: var(--r-lg);
     padding: 40px 36px;
-    transition: border-color .3s, box-shadow .3s;
+    transition: all .3s;
   }
   .tenets-pillar:hover {
     border-color: var(--gold-border);
-    box-shadow: 0 0 40px rgba(201,147,90,.06);
+    box-shadow: 0 4px 30px rgba(196,168,130,.05);
   }
   .tenets-pillar-label {
     font-family: var(--mono);
@@ -244,15 +366,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     font-weight: 700;
     color: var(--white);
     text-decoration: none;
-    padding: 12px 0;
+    padding: 14px 0;
     line-height: 1.4;
-    transition: color .2s;
+    transition: color .2s, padding-left .2s;
   }
   .tenets-list li:last-child a {
     padding-bottom: 0;
   }
   .tenets-list li a:hover {
     color: var(--gold);
+    padding-left: 8px;
   }
   .tenets-list li a span {
     font-family: var(--mono);
@@ -260,40 +383,46 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     font-weight: 600;
     letter-spacing: .12em;
     color: var(--gold);
-    margin-right: 10px;
+    margin-right: 12px;
   }
   .tenets-cta {
     text-align: center;
-    margin-top: 48px;
+    margin-top: 56px;
   }
   .tenets-cta a {
-    font-family: var(--body);
-    font-size: 14px;
+    font-family: var(--mono);
+    font-size: 12px;
     font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
     color: var(--gold);
     text-decoration: none;
-    letter-spacing: .02em;
-    transition: color .2s;
+    border: 1px solid var(--gold-border);
+    padding: 12px 32px;
+    border-radius: 6px;
+    transition: all .3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
   }
   .tenets-cta a:hover {
-    color: var(--gold-light);
+    background: var(--gold-soft);
+    border-color: var(--gold);
   }
   .tenets-cta a svg {
     width: 14px;
     height: 14px;
-    vertical-align: -2px;
-    margin-left: 6px;
   }
 
   /* ═══ TODAY'S PRACTICE ═══ */
   .today-practice {
-    padding: 60px 0;
+    padding: 40px 0;
   }
   .today-card {
-    background: var(--surface);
+    background: linear-gradient(135deg, var(--surface) 0%, var(--card) 100%);
     border: 1px solid var(--border);
     border-radius: var(--r-xl);
-    padding: 40px 44px;
+    padding: 52px 48px;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -307,8 +436,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     position: absolute;
     top: 0; left: 0; right: 0;
     height: 3px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    opacity: .6;
+    background: linear-gradient(90deg, transparent 10%, var(--gold) 50%, transparent 90%);
+    opacity: .7;
   }
   .today-date {
     font-family: var(--mono);
@@ -326,16 +455,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     letter-spacing: .15em;
     text-transform: uppercase;
     color: var(--text-muted);
-    margin-bottom: 20px;
+    margin-bottom: 24px;
   }
   .today-text {
     font-family: var(--heading);
-    font-size: 22px;
+    font-size: clamp(20px, 3vw, 26px);
     font-weight: 700;
     color: var(--white);
     line-height: 1.5;
     max-width: 600px;
-    margin: 0 auto 24px;
+    margin: 0 auto 28px;
   }
   .today-link {
     font-family: var(--body);
@@ -370,69 +499,252 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
   @media(max-width:768px) {
     .today-card {
-      padding: 32px 24px;
+      padding: 36px 24px;
     }
-    .today-text {
-      font-size: 18px;
+  }
+
+  /* ═══ SUBSCRIBE ═══ */
+  .subscribe {
+    padding: 28px 0 32px;
+    text-align: center;
+    position: relative;
+  }
+  .subscribe::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px; height: 400px;
+    background: radial-gradient(ellipse, rgba(196,168,130,.04) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .subscribe-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+  .subscribe-title {
+    font-family: var(--heading);
+    font-size: clamp(28px, 3.5vw, 42px);
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 12px;
+    letter-spacing: .01em;
+  }
+  .subscribe-sub {
+    font-family: var(--serif);
+    font-size: clamp(15px, 2vw, 18px);
+    font-style: italic;
+    color: var(--text-secondary);
+    max-width: 480px;
+    margin: 0 auto 40px;
+    line-height: 1.7;
+  }
+  .subscribe-form {
+    display: flex;
+    gap: 0;
+    max-width: 460px;
+    margin: 0 auto;
+  }
+  .subscribe-form input[type="email"] {
+    flex: 1;
+    padding: 14px 20px;
+    font-family: var(--body);
+    font-size: 15px;
+    background: rgba(255,255,255,.04);
+    border: 1px solid var(--border);
+    border-right: none;
+    border-radius: 8px 0 0 8px;
+    color: var(--white);
+    outline: none;
+    transition: border-color .3s, box-shadow .3s;
+  }
+  .subscribe-form input[type="email"]::placeholder {
+    color: var(--text-muted);
+  }
+  .subscribe-form input[type="email"]:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(196,168,130,.1);
+  }
+  .subscribe-form button {
+    padding: 14px 28px;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    background: var(--gold);
+    color: var(--void);
+    border: 1px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+    transition: all .3s;
+    white-space: nowrap;
+  }
+  .subscribe-form button:hover {
+    background: var(--gold);
+    opacity: 0.85;
+    box-shadow: 0 4px 20px rgba(196,168,130,.3);
+  }
+  .subscribe-success {
+    display: none;
+    color: var(--gold);
+    font-family: var(--serif);
+    font-size: 18px;
+    font-style: italic;
+    margin-top: 20px;
+  }
+  .subscribe-error {
+    display: none;
+    color: #c47070;
+    font-family: var(--mono);
+    font-size: 12px;
+    margin-top: 12px;
+  }
+  @media (max-width: 540px) {
+    .subscribe-form {
+      flex-direction: column;
+      gap: 10px;
+    }
+    .subscribe-form input[type="email"] {
+      border-right: 1px solid var(--border);
+      border-radius: 8px;
+    }
+    .subscribe-form button {
+      border-radius: 8px;
     }
   }
 
   /* ═══ FOUNDER ═══ */
   .founder {
-    padding: 80px 0 100px;
+    padding: 28px 0 32px;
     text-align: center;
+    position: relative;
+  }
+  .founder-photo-wrap {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 28px;
   }
   .founder-photo {
-    width: 120px;
-    height: 120px;
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
     object-fit: cover;
     border: 2px solid var(--border);
-    margin-bottom: 20px;
+    transition: border-color .3s;
+  }
+  .founder-photo-wrap:hover .founder-photo {
+    border-color: var(--gold-border);
+  }
+  .founder-photo-wrap::after {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    border: 1px solid rgba(196,168,130,.15);
+    pointer-events: none;
   }
   .founder-name {
-    font-family: 'Georgia', serif;
-    font-size: 18px;
-    font-style: italic;
-    color: var(--text-secondary);
-    margin-bottom: 8px;
+    font-family: var(--heading);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 12px;
   }
-  .founder-url {
+  .founder-subtitle {
+    font-family: var(--serif);
+    font-size: 17px;
+    font-style: italic;
+    color: var(--gold);
+    margin-bottom: 12px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+  .founder-detail {
+    font-family: var(--serif);
+    font-size: 15px;
+    color: var(--text-secondary);
+    margin-bottom: 28px;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.8;
+  }
+  .founder-cta {
+    display: inline-block;
     font-family: var(--mono);
-    font-size: 13px;
-    color: var(--text-muted);
-    letter-spacing: .04em;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--gold-border);
+    padding: 12px 32px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all .3s;
+  }
+  .founder-cta:hover {
+    background: var(--gold-soft);
+    border-color: var(--gold);
   }
 
   /* ═══ RESPONSIVE ═══ */
   @media(max-width:768px) {
+    .hero {
+      min-height: 90vh;
+      padding: 28px 0 24px;
+    }
     .pillars-grid,
     .tenets-grid {
       grid-template-columns: 1fr;
     }
     .pillar-card {
-      padding: 32px 28px;
+      padding: 40px 28px;
     }
     .tenets-pillar {
       padding: 28px 24px;
+    }
+    .pillar-numeral {
+      font-size: 40px;
+    }
+    .pillar-name {
+      font-size: 28px;
     }
   }
 </style>
 
 <!-- ═══ HERO ═══ -->
 <section class="hero">
-  <div class="wrap">
-    <div class="reveal d1">
-      <div class="hero-logo-wrap"><img src="/assets/images/logo.png" alt="Grithos — A philosophy of life built on grit and ethos" class="hero-logo"></div>
-      <h1 class="hero-subtitle">A Philosophy of Life</h1>
-      <p class="hero-pronunciation">GRITH-os &nbsp;|&nbsp; Practitioner: Grithosian (grith-OH-see-an)</p>
-    </div>
-    <div class="hero-divider reveal d2"></div>
-    <div class="reveal d3">
-      <p class="hero-motto">Grit. Ethos. Grithos.</p>
-      <p class="hero-motto-sub">From grit and ethos — the moral courage to do right, regardless.</p>
-    </div>
+  <div class="hero-particles">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
   </div>
+
+  <div class="hero-content">
+    <img src="/assets/images/grithos-logo.png" alt="Grithos — Grit. Ethos. Grithos." class="hero-logo-img">
+    <div class="hero-gold-line"></div>
+    <p class="hero-motto-sub">From grit and ethos — the moral courage to do right, regardless.</p>
+  </div>
+
+  <!-- scroll indicator removed -->
 </section>
 
 <!-- ═══ ORIGIN ═══ -->
@@ -441,6 +753,33 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <p class="origin-text reveal d1">Grithos is not a religion. It is not a replacement for God or faith — it is what happens when faith becomes action. When belief stops being passive and starts being lived. Grithos is the grit that faith produces in a person who refuses to quit.</p>
   </div>
 </section>
+
+<div class="gold-divider"></div>
+
+<!-- ═══ CREED ═══ -->
+<section class="creed" id="creed">
+  <div class="wrap">
+    <div class="creed-label reveal d1">The Grithos Creed</div>
+    <p class="creed-text reveal d2">Do right. Regardless.<br>Own your nature. Live within bounds.<br>Return to the whole.</p>
+  </div>
+</section>
+
+<div class="gold-divider"></div>
+
+<!-- ═══ FOUNDATION ═══ -->
+<section class="foundation" id="foundation">
+  <div class="wrap">
+    <div class="reveal d1" style="text-align:center;">
+      <div class="sec-label">The Foundation</div>
+      <h2 class="sec-title">What Grithos Stands On</h2>
+    </div>
+    <div class="reveal d2">
+      <p class="foundation-text">A rational God exists who authored the bounds underlying all things. God is architect, not manager. The bounds God created are real, consistent, and trustworthy. However you choose to honor God is yours. What Grithos asks is that you also align — with the bounds, with virtue, and with the life you were given.</p>
+    </div>
+  </div>
+</section>
+
+<div class="gold-divider"></div>
 
 <!-- ═══ TODAY'S PRACTICE ═══ -->
 <section class="today-practice" id="today">
@@ -461,100 +800,67 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </div>
 </section>
 
-<div class="section-divider"></div>
-
-<!-- ═══ FOUNDATION ═══ -->
-<section class="foundation" id="foundation">
-  <div class="wrap">
-    <div class="reveal d1" style="text-align:center;">
-      <div class="sec-label">The Foundation</div>
-      <h2 class="sec-title">What Grithos Stands On</h2>
-    </div>
-    <div class="reveal d2">
-      <p class="foundation-text">A rational God exists who authored the bounds underlying all things. God is architect, not manager. The bounds God created are real, consistent, and trustworthy. However you choose to honor God is yours. What Grithos asks is that you also align — with the bounds, with virtue, and with the life you were given.</p>
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- ═══ CREED ═══ -->
-<section class="creed" id="creed">
-  <div class="wrap">
-    <div class="reveal d1">
-      <div class="sec-label">The Grithos Creed</div>
-    </div>
-    <div class="reveal d2">
-      <p class="creed-text">Do right. Regardless. Own your nature. Live within bounds. Return to the whole.</p>
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
+<div class="gold-divider"></div>
 
 <!-- ═══ FOUR PILLARS ═══ -->
 <section class="pillars" id="pillars">
   <div class="wrap">
-    <div class="reveal d1" style="text-align:center;">
-      <div class="sec-label">The Philosophy</div>
-      <h2 class="sec-title">The Four Pillars</h2>
+    <div class="pillars-header">
+      <div class="sec-label reveal d1">The Philosophy</div>
+      <h2 class="sec-title reveal d1">The Four Pillars</h2>
     </div>
 
     <div class="pillars-grid">
-
-      <!-- Pillar I -->
       <div class="pillar-card reveal d1">
-        <div class="pillar-numeral">Pillar I</div>
+        <div class="pillar-numeral">I</div>
+        <div class="pillar-label">Pillar I</div>
         <h3 class="pillar-name">Virtue</h3>
         <div class="pillar-tagline">Do right regardless.</div>
         <div class="pillar-divider"></div>
         <p class="pillar-body">A Grithosian is honest. Not when it is convenient. Not when it is safe. Regardless of the cost. Virtue requires no reward and no recognition. You do right because it is right. That is the only reason a Grithosian needs. Honesty is not a policy. It is a practice — daily, unglamorous, and non-negotiable.</p>
       </div>
 
-      <!-- Pillar II -->
       <div class="pillar-card reveal d2">
-        <div class="pillar-numeral">Pillar II</div>
+        <div class="pillar-numeral">II</div>
+        <div class="pillar-label">Pillar II</div>
         <h3 class="pillar-name">Apex</h3>
         <div class="pillar-tagline">Own your nature.</div>
         <div class="pillar-divider"></div>
-        <p class="pillar-body">Humans are the most capable species on earth. That is not arrogance — it is fact. A Grithosian owns that truth completely and without apology. But apex is not a trophy. It is a weight. With the greatest capability comes the greatest accountability. A Grithosian leads with strength and responsibility in equal measure — protecting those beneath them, never exploiting them. Shrinking from your potential is not humility. It is a betrayal of your nature. What a Grithosian rejects above all else is victim mentality. Not hardship — hardship is real. Not struggle — struggle is human. But the decision to define yourself by what happened to you rather than what you do next. You are apex. Act like it.</p>
+        <p class="pillar-body">Humans are the most capable species on earth. That is not arrogance — it is fact. A Grithosian owns that truth completely and without apology. But apex is not a trophy. It is a weight. With the greatest capability comes the greatest accountability. Shrinking from your potential is not humility. It is a betrayal of your nature.</p>
       </div>
 
-      <!-- Pillar III -->
       <div class="pillar-card reveal d3">
-        <div class="pillar-numeral">Pillar III</div>
+        <div class="pillar-numeral">III</div>
+        <div class="pillar-label">Pillar III</div>
         <h3 class="pillar-name">Control</h3>
         <div class="pillar-tagline">Live within bounds.</div>
         <div class="pillar-divider"></div>
-        <p class="pillar-body">A Grithosian owns four things completely — their thoughts and attitudes, their decisions and actions, their effort and preparation, and their character and integrity. Everything else belongs to the bounds. Other people's opinions. Outcomes beyond your effort. Illness. Circumstance. The economy. These are not yours to carry. This is not resignation. A Grithosian does not sit still in the face of what they cannot control. They redirect. Immediately. Deliberately. Every ounce of energy that would have been spent fighting the bounds gets turned back toward what is actually theirs to own. God authored the bounds. They are rational. They are consistent. They can be trusted. Live within them.</p>
+        <p class="pillar-body">A Grithosian owns four things completely — their thoughts and attitudes, their decisions and actions, their effort and preparation, and their character and integrity. Everything else belongs to the bounds. This is not resignation. A Grithosian redirects. Immediately. Deliberately. God authored the bounds. They are rational. They can be trusted.</p>
       </div>
 
-      <!-- Pillar IV -->
       <div class="pillar-card reveal d4">
-        <div class="pillar-numeral">Pillar IV</div>
+        <div class="pillar-numeral">IV</div>
+        <div class="pillar-label">Pillar IV</div>
         <h3 class="pillar-name">Death</h3>
         <div class="pillar-tagline">Return to the whole.</div>
         <div class="pillar-divider"></div>
-        <p class="pillar-body">A Grithosian does not fear death. It is not an enemy. It is a conclusion — the natural end of a life fully lived. Your body returns to the earth. Your matter rejoins the whole. The universe is permanently and irrevocably different for you having existed in it. Your impact lives on through others. The people you led. The truth you told when it cost you. The times you owned your apex nature and protected those beneath you. That is your legacy in this life — and it matters regardless of what comes next. Grief is not weakness. A Grithosian feels it completely — because only an apex creature capable of deep connection can experience deep loss. But grief is not a residence. Feel it. Honor it. Move. Death is not the opposite of life. It is the completion of it.</p>
+        <p class="pillar-body">A Grithosian does not fear death. It is not an enemy. It is a conclusion — the natural end of a life fully lived. Your matter rejoins the whole. The universe is permanently and irrevocably different for you having existed in it. Your impact lives on through the people you led and the truth you told when it cost you. Death is not the opposite of life. It is the completion of it.</p>
       </div>
-
     </div>
   </div>
 </section>
 
-<div class="section-divider"></div>
+<div class="gold-divider"></div>
 
 <!-- ═══ TWELVE TENETS ═══ -->
 <section class="tenets" id="tenets">
   <div class="wrap">
-    <div class="reveal d1" style="text-align:center;">
-      <div class="sec-label">The Daily Practice</div>
-      <h2 class="sec-title">The Twelve Tenets</h2>
+    <div class="tenets-header">
+      <div class="sec-label reveal d1">The Daily Practice</div>
+      <h2 class="sec-title reveal d1">The Twelve Tenets</h2>
     </div>
 
     <div class="tenets-grid">
-
-      <!-- Virtue Tenets -->
       <div class="tenets-pillar reveal d1">
         <div class="tenets-pillar-label">From Virtue</div>
         <ul class="tenets-list">
@@ -564,7 +870,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </ul>
       </div>
 
-      <!-- Apex Tenets -->
       <div class="tenets-pillar reveal d2">
         <div class="tenets-pillar-label">From Apex</div>
         <ul class="tenets-list">
@@ -574,7 +879,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </ul>
       </div>
 
-      <!-- Control Tenets -->
       <div class="tenets-pillar reveal d3">
         <div class="tenets-pillar-label">From Control</div>
         <ul class="tenets-list">
@@ -584,7 +888,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </ul>
       </div>
 
-      <!-- Death Tenets -->
       <div class="tenets-pillar reveal d4">
         <div class="tenets-pillar-label">From Death</div>
         <ul class="tenets-list">
@@ -593,7 +896,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <li><a href="/tenets#tenet-xii"><span>XII</span> Build a Legacy That Stands in This Life.</a></li>
         </ul>
       </div>
-
     </div>
 
     <div class="tenets-cta reveal d5">
@@ -602,24 +904,41 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </div>
 </section>
 
-<div class="section-divider"></div>
+<div class="gold-divider"></div>
 
 <!-- ═══ FOUNDER ═══ -->
 <section class="founder" id="founder">
   <div class="wrap">
-    <div class="reveal d1">
-      <div class="sec-label">Origin</div>
+    <div class="sec-label reveal d1">Origin</div>
+    <div class="founder-photo-wrap reveal d1">
       <img src="/assets/images/founder.jpeg" alt="Richard Johnson" class="founder-photo" loading="lazy">
-      <p class="founder-name">Founded by Richard Johnson</p>
-      <p class="founder-subtitle" style="font-family:'Georgia',serif;font-size:16px;font-style:italic;color:var(--white);margin-bottom:8px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.6;">A man who searched for light — and decided to build one.</p>
-      <p class="founder-detail" style="font-family:'Georgia',serif;font-size:14px;color:var(--text-secondary);margin-bottom:16px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.7;">Grithos was born from a lifetime of hard lessons, ancient wisdom, and the conviction that life should be lived with purpose, not left to chance. That wisdom deserved a home built to last.</p>
-      <a href="/story" style="display:inline-block;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold-border);padding:10px 28px;border-radius:6px;text-decoration:none;margin-top:16px;transition:background .2s,color .2s;">Read the Founding Story</a>
-      <p class="founder-url">grithos.com</p>
     </div>
+    <h3 class="founder-name reveal d2">Richard Johnson</h3>
+    <p class="founder-subtitle reveal d2">A man who searched for light — and decided to build one.</p>
+    <p class="founder-detail reveal d3">Grithos was born from a lifetime of hard lessons, ancient wisdom, and the conviction that life should be lived with purpose, not left to chance. That wisdom deserved a home built to last.</p>
+    <a href="/story" class="founder-cta reveal d3">Read the Founding Story</a>
+  </div>
+</section>
+
+<div class="gold-divider"></div>
+
+<!-- ═══ SUBSCRIBE ═══ -->
+<section class="subscribe" id="subscribe">
+  <div class="wrap">
+    <div class="subscribe-label reveal d1">The Daily Practice — Delivered</div>
+    <h2 class="subscribe-title reveal d2">One practice. Every morning.</h2>
+    <p class="subscribe-sub reveal d2">No noise. No filler. Just the practice you need to live with grit, ethos, and purpose — delivered to your inbox before the day begins.</p>
+    <form class="subscribe-form reveal d3" id="homeSubscribeForm">
+      <input type="email" name="email" placeholder="Your email address" required />
+      <button type="submit">Subscribe</button>
+    </form>
+    <p class="subscribe-success" id="homeSignupSuccess">You're in. The practice starts tomorrow morning.</p>
+    <p class="subscribe-error" id="homeSignupError">Something went wrong. Please try again.</p>
   </div>
 </section>
 
 <script is:inline>
+/* ═══ TODAY'S PRACTICE ═══ */
 (function() {
   var MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
   var TENETS = [
@@ -637,395 +956,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     'Tenet XII — Build a Legacy That Stands in This Life.'
   ];
   var PRACTICES = {
-    0: [
-      "Say one thing today exactly as you mean it. No softening.",
-      "If someone asks your opinion, give the real one.",
-      "Correct a lie you let slide — even an old one.",
-      "Tell someone what you actually think of their idea.",
-      "Admit something you've been avoiding admitting.",
-      "Say \"I don't know\" instead of faking it.",
-      "Stop yourself from exaggerating today. Just the facts.",
-      "Give feedback someone needs to hear, not what they want to hear.",
-      "If you messed up, say so before anyone finds out.",
-      "Disagree with someone you usually just nod along with.",
-      "Say \"no\" to something you want to say yes to just to be liked.",
-      "Be honest with yourself about one thing you've been ignoring.",
-      "Don't spin the story. Tell it flat.",
-      "If someone asks how you're doing, answer honestly.",
-      "Point out the elephant in the room.",
-      "Correct a misunderstanding even if staying quiet benefits you.",
-      "Text someone you owe an honest conversation to.",
-      "Stop performing. Be normal today.",
-      "Write down one truth about yourself you haven't spoken out loud.",
-      "Tell someone what you need instead of hoping they guess.",
-      "Admit a weakness to someone you trust.",
-      "Say the price out loud — what it actually costs you to stay quiet.",
-      "Don't gossip today. If you have something to say, say it to their face.",
-      "Be direct. No hints, no passive jabs.",
-      "Own an opinion you usually keep to yourself.",
-      "Tell someone you were wrong. Specifically.",
-      "If you're upset, say you're upset. Don't perform \"fine.\"",
-      "Name what's really bothering you. Out loud.",
-      "Share an idea you've been sitting on because you're afraid of judgment.",
-      "Ask a question you've been too proud to ask.",
-      "End the day having said nothing you'd need to take back — because it was all true."
-    ],
-    1: [
-      "Do one thing today you promised someone. No reminders needed.",
-      "Before you commit to anything new, finish something you already promised.",
-      "If you can't keep a commitment, tell them now — not at the deadline.",
-      "Show up on time. Exactly on time.",
-      "Return the call, the email, the text you said you would.",
-      "Finish the thing you said you'd finish last week.",
-      "Don't over-promise today. Say only what you'll actually do.",
-      "Follow through on a small promise nobody would notice if you broke.",
-      "Do the favor you offered before anyone had to remind you.",
-      "Keep a promise to yourself — not just to others.",
-      "Cancel something honestly rather than ghosting.",
-      "Deliver early on something. Surprise them.",
-      "Write down every commitment you make today. Honor all of them.",
-      "If you shook on it, it's done. Act accordingly.",
-      "Pay back what you owe. Money, time, favors — whatever it is.",
-      "Stop saying \"I'll try.\" Say \"I will\" or \"I won't.\"",
-      "Do the boring part of the commitment, not just the exciting part.",
-      "Be the person who doesn't need to be chased.",
-      "Honor a commitment even though your mood changed.",
-      "Review your open promises. Close one today.",
-      "Say \"I can't commit to that\" instead of saying yes and flaking.",
-      "Fulfill a promise you made to your kid, partner, or parent.",
-      "Show up for someone who expected you wouldn't.",
-      "Don't make excuses. Just do the thing.",
-      "Handle something you've been \"getting to\" for weeks.",
-      "Be reliable in the smallest way — hold the door, send the link, make the intro.",
-      "Keep a deadline you set for yourself, not just ones others set.",
-      "Prove to yourself that your word still means something."
-    ],
-    2: [
-      "Did something well? Tell someone. Don't wait to be noticed.",
-      "Help someone when there's zero chance of credit.",
-      "Share a win without apologizing for being proud.",
-      "Return the extra change. Nobody's watching.",
-      "Take credit where it's due. You earned it.",
-      "Pick up the trash on the ground. Nobody asked.",
-      "Celebrate someone else's win as loud as your own.",
-      "Do your best work on the thing nobody will see.",
-      "Tell your team what you contributed. Clearly.",
-      "Be honest in a situation where lying would be easier and invisible.",
-      "Accept a compliment without deflecting it.",
-      "Hold the standard when the boss isn't around.",
-      "FORGE DAY — Grithos was born on Friday the 13th. Today, do one thing that is hard on purpose. Superstition fears this date. Grithos was forged in it.",
-      "Do the ethical thing when it costs you and nobody would know.",
-      "Stop hiding behind false modesty. Name what you're good at.",
-      "Clean up the mess that isn't yours. Just because.",
-      "Write down three things you did well this week. Read them out loud.",
-      "Follow the rule when you could easily get away with breaking it.",
-      "Negotiate for what you're worth. Your silence isn't humility — it's fear.",
-      "Put in full effort on a task where cutting corners would be invisible.",
-      "Own the result publicly. Win or lose, put your name on it.",
-      "Do the right thing in traffic. Nobody's filming.",
-      "Send the invoice. Your work has value. Don't undersell it.",
-      "Leave something better than you found it. Say nothing about it.",
-      "Brag right — share what you built, not who you beat.",
-      "Be the same person online and in person.",
-      "Finish strong on a project even though nobody's checking anymore.",
-      "Advocate for yourself. Your wins don't speak for themselves.",
-      "Keep your integrity when the group pressure says to cut corners.",
-      "Tip well when nobody at the table is watching the receipt.",
-      "End the month knowing you earned every win and deserved every one you claimed."
-    ],
-    3: [
-      "Do the workout. Not tomorrow. Today.",
-      "Read something that challenges how you think.",
-      "Skip the easy path. Choose the one that grows you.",
-      "Eat like someone who respects their body.",
-      "Have the hard conversation you've been ducking.",
-      "Learn one thing in a field you know nothing about.",
-      "Do something that scares you slightly.",
-      "Cut one distraction. Replace it with one discipline.",
-      "Say no to comfort when growth is the alternative.",
-      "Fix something you've been tolerating for too long.",
-      "Compete with who you were yesterday. Nobody else.",
-      "Go to bed on time. Rest is part of strength.",
-      "Practice the skill you're worst at. On purpose.",
-      "Ask for critical feedback. Listen without defending.",
-      "Do something physically demanding enough to remind your body it's alive.",
-      "Remove one excuse you've been hiding behind.",
-      "Wake up before you have to. Earn the morning.",
-      "Study someone better than you at something. Take notes.",
-      "Sit with discomfort instead of numbing it.",
-      "Stretch your limit in one area — mental, physical, or emotional.",
-      "Stop scrolling. Do something with your hands.",
-      "Say no to something fun to finish something important.",
-      "Invest in your health. Schedule the appointment, buy the food, do the thing.",
-      "Write down what the strongest version of you looks like. Act like that person today.",
-      "Do the thing you've been \"not ready\" for. You're ready enough.",
-      "Control your inputs — what you eat, watch, read, and listen to.",
-      "Stand up straight. Literally. Your posture is a practice.",
-      "Put your phone down for one hour and be fully present.",
-      "Do the thing nobody asked you to do but that makes you better.",
-      "End the day stronger than you started it. Even by an inch."
-    ],
-    4: [
-      "Check in on someone who never asks for help.",
-      "Mentor someone. Even for five minutes.",
-      "Defend someone when they're not in the room.",
-      "Pay for someone's coffee. Say nothing.",
-      "Give someone your time when you get nothing in return.",
-      "Teach someone something you know that they don't.",
-      "Stand up for the person being talked over.",
-      "Forgive someone who doesn't deserve it. For you, not them.",
-      "Remember a name. Use it.",
-      "Listen — actually listen — to someone who needs to talk.",
-      "Protect someone's reputation when gossip starts.",
-      "Let someone else go first.",
-      "Be patient with someone who is slower than you.",
-      "Notice who's struggling silently. Reach out.",
-      "Offer to carry the load. Literally or figuratively.",
-      "Tip someone who served you well. Generously.",
-      "Write someone a message telling them what they mean to you.",
-      "Hire, promote, or recommend someone who's overlooked.",
-      "Make room at the table. Pull up a chair.",
-      "Protect a child's dignity. Always.",
-      "Speak more quietly so others can be heard.",
-      "Advocate for someone who doesn't have your platform.",
-      "Be the person who makes the new person feel welcome.",
-      "Correct someone gently, not publicly.",
-      "Share your resources — knowledge, contacts, time.",
-      "Let someone take the credit. You know what you did.",
-      "Hold space for someone's pain without trying to fix it.",
-      "Protect someone's time by being prepared and concise.",
-      "Be the reason someone feels safe enough to try.",
-      "Leave every person you interact with better than you found them.",
-      "End the month having used your strength to lift, not to tower."
-    ],
-    5: [
-      "Catch yourself saying \"I can't.\" Replace it with \"I haven't yet.\"",
-      "Name one thing you're blaming someone else for. Take your piece.",
-      "Stop retelling the story of what happened to you. Write the next chapter.",
-      "Turn one complaint into one action.",
-      "Ask \"what can I do about this?\" — then do it.",
-      "Identify where you're waiting for permission. Give it to yourself.",
-      "Stop comparing your situation to someone else's easier path.",
-      "Take responsibility for something that isn't entirely your fault.",
-      "Replace \"why me?\" with \"what now?\"",
-      "Fix something instead of complaining about it.",
-      "Write down what you control about a situation that feels uncontrollable.",
-      "Forgive the circumstance. Then get to work.",
-      "Refuse to bond with someone over shared complaints today.",
-      "Make one decision you've been avoiding.",
-      "Build one thing instead of criticizing one thing.",
-      "Stop waiting for an apology to move forward.",
-      "Find the lesson in something that felt like punishment.",
-      "Choose action over analysis today. Move.",
-      "Apologize for your part. Even if theirs was bigger.",
-      "Replace one \"I have to\" with \"I get to.\"",
-      "Stop rehearsing the argument. It already happened.",
-      "Do the thing nobody else will do. That's why it's yours.",
-      "Accept where you are. Then take one step from here.",
-      "Quit one habit that keeps you in the victim seat.",
-      "Help someone else get unstuck. It'll unstick you too.",
-      "Stop explaining why you haven't started. Start.",
-      "Create your own opportunity today. Don't wait to be chosen.",
-      "Write the ending you want. Then reverse-engineer today.",
-      "Own your story — all of it — including the parts that aren't pretty.",
-      "End the month as the author, not the character things happen to."
-    ],
-    6: [
-      "Let go of one thing you're worrying about that you cannot change.",
-      "Stop trying to control someone else's decision.",
-      "Focus entirely on your effort. Detach from the result.",
-      "Let someone be wrong. It's not yours to fix.",
-      "Stop checking for a response. You sent it. It's out of your hands.",
-      "Accept the weather. Literally or metaphorically.",
-      "Own your reaction to something. That's yours. The event wasn't.",
-      "Separate your mood from other people's behavior.",
-      "Put your energy only into things you can influence today.",
-      "Resist the urge to manage someone else's feelings.",
-      "Let traffic be traffic. Your peace is yours.",
-      "Stop refreshing. The answer will come when it comes.",
-      "Do your best work and release attachment to the feedback.",
-      "Accept one thing exactly as it is — no negotiating with reality.",
-      "Let someone else's opinion of you be their business, not yours.",
-      "Give advice only when asked. Otherwise, it's not your lane.",
-      "Own your schedule. If it's out of control, you let it get there.",
-      "Drop a grudge. It's heavy and it's not doing anything.",
-      "Do your job. Let others do theirs.",
-      "Stop predicting outcomes. You don't own the future.",
-      "Let go of needing to be right. Just this once.",
-      "Accept that someone doesn't like you. That's their right.",
-      "Focus on the process. The score takes care of itself.",
-      "Own your health. Not the diagnosis — the daily choices.",
-      "Stop shouldering other people's problems unless they asked.",
-      "Release one expectation you've been carrying that isn't serving you.",
-      "Mind your own business today. Literally.",
-      "Put your phone down during someone else's moment. It's theirs.",
-      "Trust that you've done your part. Let the rest unfold.",
-      "Control your preparation. Accept the outcome.",
-      "End the month lighter. You dropped what was never yours to carry."
-    ],
-    7: [
-      "Something fell through today? Find the next door. Now.",
-      "Don't reread the rejection. Open a new tab.",
-      "Catch yourself spiraling. Stop. Do one productive thing.",
-      "Plans changed? Adjust in minutes, not days.",
-      "Turn one \"no\" into a different \"yes\" before the day ends.",
-      "Stop mourning the version of today you expected. Work with the one you got.",
-      "Redirect anger into action. Build something with it.",
-      "Someone cancelled? Use the time. Don't waste it resenting them.",
-      "The shortcut didn't work? Take the long way. Keep moving.",
-      "Bad news landed. Give yourself sixty seconds. Then pivot.",
-      "Replace one \"I was going to\" with \"instead, I'm going to.\"",
-      "Project got killed? Take the skills and move them somewhere new.",
-      "Don't stew on the feedback. Implement it or discard it. Now.",
-      "Miss the deadline? Don't spiral. Deliver what you can, today.",
-      "Redirect the complaint. What are you going to do about it?",
-      "Relationship changed? Accept the new shape. Don't force the old one.",
-      "Get off the wrong path early. Sunk cost is a trap.",
-      "Flight delayed? Call moved? Meeting rescheduled? Life goes on. Redirect.",
-      "Channel disappointment into something useful before sundown.",
-      "Don't revisit the decision. It's made. Now optimize from here.",
-      "Find one new angle on a problem you've been hitting head-on.",
-      "Someone left? Honor it. Then fill the gap.",
-      "Stop waiting for conditions to be perfect. Redirect around them.",
-      "The market shifted. Your strategy should too. Today.",
-      "One conversation went badly? Have a better one next.",
-      "Didn't get the promotion? Build the case for the next one. Now.",
-      "Energy is low? Redirect to something that refuels, not something that drains.",
-      "Redirect your attention to what's working instead of what isn't.",
-      "You lost something? Write down three things you still have.",
-      "The old plan is dead. Long live the new plan.",
-      "End the month having wasted zero days standing at closed doors."
-    ],
-    8: [
-      "Accept one outcome today without negotiating with reality.",
-      "Gravity works. So do consequences. Trust the structure.",
-      "Stop trying to hack the system. Work within it, then exceed it.",
-      "Trust that the effort compounds even when you can't see results yet.",
-      "Obey the speed limit. Literally and figuratively.",
-      "Respect a rule you disagree with while working to change it properly.",
-      "Trust the process. You don't need to see the whole staircase.",
-      "Accept a boundary someone set. It's valid.",
-      "Stop fighting a truth you already know.",
-      "Trust that consistency beats intensity. Show up again.",
-      "Sleep when you're tired. The bounds include your body.",
-      "Don't cut the line. Earn your place.",
-      "Accept that some things take exactly as long as they take.",
-      "Trust the people you chose to trust. Stop second-guessing.",
-      "Follow through on the system you set up. Trust your past self.",
-      "Accept a \"no\" without trying to turn it into a \"yes.\"",
-      "Respect someone's boundary today even if you don't understand it.",
-      "Trust the math. Emotion doesn't change the numbers.",
-      "Work with the deadline, not against it. It's a bound, not a punishment.",
-      "Stop wishing for different physics. Build with what's real.",
-      "Trust your training when the moment comes.",
-      "Don't skip steps. The bounds exist for a reason.",
-      "Accept feedback from someone who knows more than you.",
-      "Trust the seasons. Some things grow slow.",
-      "Honor the contract — written or unwritten.",
-      "Accept that you can't be everywhere. Choose where to be. Fully.",
-      "Trust that fairness operates on a longer timeline than you'd like.",
-      "Rest when the bounds say rest. Recovery is not weakness.",
-      "Accept that you are not the exception to the rule.",
-      "End the month trusting the structure you live within. Even when it's hard."
-    ],
-    9: [
-      "Make one decision today as if you had one year left.",
-      "Call someone you love. Right now. Not later.",
-      "Don't postpone the thing that matters for the thing that's urgent.",
-      "Look around your life. If it ended today, what would you regret not doing?",
-      "Cancel something meaningless. Replace it with something meaningful.",
-      "Tell someone what they mean to you. Use actual words.",
-      "Do the thing you keep saying you'll do \"someday.\" Today is someday.",
-      "Spend an hour on your purpose, not your inbox.",
-      "Ask: \"Will this matter in five years?\" Act on the answer.",
-      "Eat the meal slow. Taste it. You don't get unlimited meals.",
-      "Forgive someone. Not for them. Because carrying it is a waste of your finite time.",
-      "Quit something that's wasting the only life you get.",
-      "Walk outside. Look up. Remember you're alive on a planet in space.",
-      "Hug someone longer than usual.",
-      "Write a letter you've been meaning to write.",
-      "Make the appointment. Get the scan. Your body is on a clock.",
-      "Build the thing. Ship the thing. Stop perfecting the thing.",
-      "Say \"I love you\" first. Don't wait for it.",
-      "Watch a sunset on purpose. You've only got so many left.",
-      "Spend money on an experience, not another object.",
-      "Make a decision you've been sitting on. Indecision is wasted life.",
-      "Do something today your 80-year-old self would thank you for.",
-      "Delete the app that steals your hours and gives nothing back.",
-      "Go see them. Not next month. Soon.",
-      "Make something with your hands. Proof you were here.",
-      "Ask the question you've been afraid to ask. Time is not on your side.",
-      "Live loud today. Not reckless — intentional.",
-      "Prioritize health. Dead people don't finish projects.",
-      "Spend time with someone old. Learn what they'd do differently.",
-      "Do one thing today purely because it makes you feel alive.",
-      "End the month having lived each day like it counted. Because it did."
-    ],
-    10: [
-      "Name something you lost. Say it out loud. Then take one step forward.",
-      "Let yourself feel sad about something without fixing it.",
-      "Stop pretending you're \"over it\" if you're not.",
-      "Cry if you need to. Then wash your face and get back to work.",
-      "Visit a memory that hurts. Sit with it. Then leave it where it lives.",
-      "Stop numbing. Feel the thing. That's the practice.",
-      "Tell someone \"I'm still hurting.\" Then tell them what you're doing anyway.",
-      "Write down what you lost. Write down what you still have.",
-      "Grieve the version of life you expected. Accept the one you got.",
-      "Honor someone you've lost by doing something they'd be proud of.",
-      "Let go of one thing you've been gripping too tight.",
-      "Be honest about a disappointment. No silver lining required.",
-      "Allow yourself one bad day. Then don't take two.",
-      "Stop performing strength. Real strength includes tears.",
-      "Tell a story about someone you miss. Keep them alive in words.",
-      "Accept that healing isn't linear. Some days go backward. Keep going.",
-      "Remove one reminder that keeps you stuck, not one that keeps you grateful.",
-      "Forgive yourself for not handling something perfectly.",
-      "Grieve the friendship that ended. Don't pretend it doesn't sting.",
-      "Acknowledge the gap. Then build around it.",
-      "Feel the full weight of something once. Then set it down.",
-      "Let someone comfort you. You don't always have to be the strong one.",
-      "Mourn a failure. Then study it.",
-      "Say goodbye to a version of yourself that no longer exists.",
-      "Do something joyful on purpose — grief and joy can coexist.",
-      "Accept that missing someone doesn't mean you're not moving.",
-      "Let the anniversary hurt. Then let the next day be a new day.",
-      "Stop carrying guilt for moving on. That's what living is.",
-      "Honor what was. Build what's next.",
-      "End the month having felt everything and stopped for nothing."
-    ],
-    11: [
-      "Do one thing today that will matter six months from now.",
-      "Teach someone something that took you years to learn.",
-      "Plant something. Literal or metaphorical. Watch it grow.",
-      "Write something down for the people who come after you.",
-      "Build a habit that compounds. Start it today.",
-      "Finish a project that's been 90% done for too long.",
-      "Create something original. Put your name on it.",
-      "Invest in a relationship that will outlast your career.",
-      "Do one thing you'd want your kids to copy.",
-      "Fix something broken in your community. Don't wait for someone else.",
-      "Record a story. Your memory is temporary. Your words don't have to be.",
-      "Build the bridge you wish existed when you were starting out.",
-      "Spend money on something that lasts longer than you.",
-      "Mentor without being asked.",
-      "Write the email, make the call, start the project that could change things.",
-      "Create a tradition worth repeating.",
-      "Do work today that you'd be proud to show in ten years.",
-      "Leave a place better than you found it. Any place.",
-      "Build something with someone. Legacy is rarely solo.",
-      "Protect something worth preserving.",
-      "Apologize properly. Reconciliation is legacy work.",
-      "Document what you know. Make it findable.",
-      "Make one thing easier for the next person.",
-      "Invest your time in something that grows without you.",
-      "Teach your values, not just your skills.",
-      "Be the ancestor you wish you'd had.",
-      "Do something generous enough that people remember it.",
-      "Build your reputation through action, not announcement.",
-      "Start the tradition of ending the year by asking: \"What did I build?\"",
-      "Look at what you've built. Be proud. Then plan what's next.",
-      "End the year as someone who left a mark. Not a scratch — a mark."
-    ]
+    0: ["Say one thing today exactly as you mean it. No softening.","If someone asks your opinion, give the real one.","Correct a lie you let slide — even an old one.","Tell someone what you actually think of their idea.","Admit something you've been avoiding admitting.","Say \"I don't know\" instead of faking it.","Stop yourself from exaggerating today. Just the facts.","Give feedback someone needs to hear, not what they want to hear.","If you messed up, say so before anyone finds out.","Disagree with someone you usually just nod along with.","Say \"no\" to something you want to say yes to just to be liked.","Be honest with yourself about one thing you've been ignoring.","Don't spin the story. Tell it flat.","If someone asks how you're doing, answer honestly.","Point out the elephant in the room.","Correct a misunderstanding even if staying quiet benefits you.","Text someone you owe an honest conversation to.","Stop performing. Be normal today.","Write down one truth about yourself you haven't spoken out loud.","Tell someone what you need instead of hoping they guess.","Admit a weakness to someone you trust.","Say the price out loud — what it actually costs you to stay quiet.","Don't gossip today. If you have something to say, say it to their face.","Be direct. No hints, no passive jabs.","Own an opinion you usually keep to yourself.","Tell someone you were wrong. Specifically.","If you're upset, say you're upset. Don't perform \"fine.\"","Name what's really bothering you. Out loud.","Share an idea you've been sitting on because you're afraid of judgment.","Ask a question you've been too proud to ask.","End the day having said nothing you'd need to take back — because it was all true."],
+    1: ["Do one thing today you promised someone. No reminders needed.","Before you commit to anything new, finish something you already promised.","If you can't keep a commitment, tell them now — not at the deadline.","Show up on time. Exactly on time.","Return the call, the email, the text you said you would.","Finish the thing you said you'd finish last week.","Don't over-promise today. Say only what you'll actually do.","Follow through on a small promise nobody would notice if you broke.","Do the favor you offered before anyone had to remind you.","Keep a promise to yourself — not just to others.","Cancel something honestly rather than ghosting.","Deliver early on something. Surprise them.","Write down every commitment you make today. Honor all of them.","If you shook on it, it's done. Act accordingly.","Pay back what you owe. Money, time, favors — whatever it is.","Stop saying \"I'll try.\" Say \"I will\" or \"I won't.\"","Do the boring part of the commitment, not just the exciting part.","Be the person who doesn't need to be chased.","Honor a commitment even though your mood changed.","Review your open promises. Close one today.","Say \"I can't commit to that\" instead of saying yes and flaking.","Fulfill a promise you made to your kid, partner, or parent.","Show up for someone who expected you wouldn't.","Don't make excuses. Just do the thing.","Handle something you've been \"getting to\" for weeks.","Be reliable in the smallest way — hold the door, send the link, make the intro.","Keep a deadline you set for yourself, not just ones others set.","Prove to yourself that your word still means something."],
+    2: ["Did something well? Tell someone. Don't wait to be noticed.","Help someone when there's zero chance of credit.","Share a win without apologizing for being proud.","Return the extra change. Nobody's watching.","Take credit where it's due. You earned it.","Pick up the trash on the ground. Nobody asked.","Celebrate someone else's win as loud as your own.","Do your best work on the thing nobody will see.","Tell your team what you contributed. Clearly.","Be honest in a situation where lying would be easier and invisible.","Accept a compliment without deflecting it.","Hold the standard when the boss isn't around.","FORGE DAY — Grithos was born on Friday the 13th. Today, do one thing that is hard on purpose. Superstition fears this date. Grithos was forged in it.","Do the ethical thing when it costs you and nobody would know.","Stop hiding behind false modesty. Name what you're good at.","Clean up the mess that isn't yours. Just because.","Write down three things you did well this week. Read them out loud.","Follow the rule when you could easily get away with breaking it.","Negotiate for what you're worth. Your silence isn't humility — it's fear.","Put in full effort on a task where cutting corners would be invisible.","Own the result publicly. Win or lose, put your name on it.","Do the right thing in traffic. Nobody's filming.","Send the invoice. Your work has value. Don't undersell it.","Leave something better than you found it. Say nothing about it.","Brag right — share what you built, not who you beat.","Be the same person online and in person.","Finish strong on a project even though nobody's checking anymore.","Advocate for yourself. Your wins don't speak for themselves.","Keep your integrity when the group pressure says to cut corners.","Tip well when nobody at the table is watching the receipt.","End the month knowing you earned every win and deserved every one you claimed."],
+    3: ["Do the workout. Not tomorrow. Today.","Read something that challenges how you think.","Skip the easy path. Choose the one that grows you.","Eat like someone who respects their body.","Have the hard conversation you've been ducking.","Learn one thing in a field you know nothing about.","Do something that scares you slightly.","Cut one distraction. Replace it with one discipline.","Say no to comfort when growth is the alternative.","Fix something you've been tolerating for too long.","Compete with who you were yesterday. Nobody else.","Go to bed on time. Rest is part of strength.","Practice the skill you're worst at. On purpose.","Ask for critical feedback. Listen without defending.","Do something physically demanding enough to remind your body it's alive.","Remove one excuse you've been hiding behind.","Wake up before you have to. Earn the morning.","Study someone better than you at something. Take notes.","Sit with discomfort instead of numbing it.","Stretch your limit in one area — mental, physical, or emotional.","Stop scrolling. Do something with your hands.","Say no to something fun to finish something important.","Invest in your health. Schedule the appointment, buy the food, do the thing.","Write down what the strongest version of you looks like. Act like that person today.","Do the thing you've been \"not ready\" for. You're ready enough.","Control your inputs — what you eat, watch, read, and listen to.","Stand up straight. Literally. Your posture is a practice.","Put your phone down for one hour and be fully present.","Do the thing nobody asked you to do but that makes you better.","End the day stronger than you started it. Even by an inch."],
+    4: ["Check in on someone who never asks for help.","Mentor someone. Even for five minutes.","Defend someone when they're not in the room.","Pay for someone's coffee. Say nothing.","Give someone your time when you get nothing in return.","Teach someone something you know that they don't.","Stand up for the person being talked over.","Forgive someone who doesn't deserve it. For you, not them.","Remember a name. Use it.","Listen — actually listen — to someone who needs to talk.","Protect someone's reputation when gossip starts.","Let someone else go first.","Be patient with someone who is slower than you.","Notice who's struggling silently. Reach out.","Offer to carry the load. Literally or figuratively.","Tip someone who served you well. Generously.","Write someone a message telling them what they mean to you.","Hire, promote, or recommend someone who's overlooked.","Make room at the table. Pull up a chair.","Protect a child's dignity. Always.","Speak more quietly so others can be heard.","Advocate for someone who doesn't have your platform.","Be the person who makes the new person feel welcome.","Correct someone gently, not publicly.","Share your resources — knowledge, contacts, time.","Let someone take the credit. You know what you did.","Hold space for someone's pain without trying to fix it.","Protect someone's time by being prepared and concise.","Be the reason someone feels safe enough to try.","Leave every person you interact with better than you found them.","End the month having used your strength to lift, not to tower."],
+    5: ["Catch yourself saying \"I can't.\" Replace it with \"I haven't yet.\"","Name one thing you're blaming someone else for. Take your piece.","Stop retelling the story of what happened to you. Write the next chapter.","Turn one complaint into one action.","Ask \"what can I do about this?\" — then do it.","Identify where you're waiting for permission. Give it to yourself.","Stop comparing your situation to someone else's easier path.","Take responsibility for something that isn't entirely your fault.","Replace \"why me?\" with \"what now?\"","Fix something instead of complaining about it.","Write down what you control about a situation that feels uncontrollable.","Forgive the circumstance. Then get to work.","Refuse to bond with someone over shared complaints today.","Make one decision you've been avoiding.","Build one thing instead of criticizing one thing.","Stop waiting for an apology to move forward.","Find the lesson in something that felt like punishment.","Choose action over analysis today. Move.","Apologize for your part. Even if theirs was bigger.","Replace one \"I have to\" with \"I get to.\"","Stop rehearsing the argument. It already happened.","Do the thing nobody else will do. That's why it's yours.","Accept where you are. Then take one step from here.","Quit one habit that keeps you in the victim seat.","Help someone else get unstuck. It'll unstick you too.","Stop explaining why you haven't started. Start.","Create your own opportunity today. Don't wait to be chosen.","Write the ending you want. Then reverse-engineer today.","Own your story — all of it — including the parts that aren't pretty.","End the month as the author, not the character things happen to."],
+    6: ["Let go of one thing you're worrying about that you cannot change.","Stop trying to control someone else's decision.","Focus entirely on your effort. Detach from the result.","Let someone be wrong. It's not yours to fix.","Stop checking for a response. You sent it. It's out of your hands.","Accept the weather. Literally or metaphorically.","Own your reaction to something. That's yours. The event wasn't.","Separate your mood from other people's behavior.","Put your energy only into things you can influence today.","Resist the urge to manage someone else's feelings.","Let traffic be traffic. Your peace is yours.","Stop refreshing. The answer will come when it comes.","Do your best work and release attachment to the feedback.","Accept one thing exactly as it is — no negotiating with reality.","Let someone else's opinion of you be their business, not yours.","Give advice only when asked. Otherwise, it's not your lane.","Own your schedule. If it's out of control, you let it get there.","Drop a grudge. It's heavy and it's not doing anything.","Do your job. Let others do theirs.","Stop predicting outcomes. You don't own the future.","Let go of needing to be right. Just this once.","Accept that someone doesn't like you. That's their right.","Focus on the process. The score takes care of itself.","Own your health. Not the diagnosis — the daily choices.","Stop shouldering other people's problems unless they asked.","Release one expectation you've been carrying that isn't serving you.","Mind your own business today. Literally.","Put your phone down during someone else's moment. It's theirs.","Trust that you've done your part. Let the rest unfold.","Control your preparation. Accept the outcome.","End the month lighter. You dropped what was never yours to carry."],
+    7: ["Something fell through today? Find the next door. Now.","Don't reread the rejection. Open a new tab.","Catch yourself spiraling. Stop. Do one productive thing.","Plans changed? Adjust in minutes, not days.","Turn one \"no\" into a different \"yes\" before the day ends.","Stop mourning the version of today you expected. Work with the one you got.","Redirect anger into action. Build something with it.","Someone cancelled? Use the time. Don't waste it resenting them.","The shortcut didn't work? Take the long way. Keep moving.","Bad news landed. Give yourself sixty seconds. Then pivot.","Replace one \"I was going to\" with \"instead, I'm going to.\"","Project got killed? Take the skills and move them somewhere new.","Don't stew on the feedback. Implement it or discard it. Now.","Miss the deadline? Don't spiral. Deliver what you can, today.","Redirect the complaint. What are you going to do about it?","Relationship changed? Accept the new shape. Don't force the old one.","Get off the wrong path early. Sunk cost is a trap.","Flight delayed? Call moved? Meeting rescheduled? Life goes on. Redirect.","Channel disappointment into something useful before sundown.","Don't revisit the decision. It's made. Now optimize from here.","Find one new angle on a problem you've been hitting head-on.","Someone left? Honor it. Then fill the gap.","Stop waiting for conditions to be perfect. Redirect around them.","The market shifted. Your strategy should too. Today.","One conversation went badly? Have a better one next.","Didn't get the promotion? Build the case for the next one. Now.","Energy is low? Redirect to something that refuels, not something that drains.","Redirect your attention to what's working instead of what isn't.","You lost something? Write down three things you still have.","The old plan is dead. Long live the new plan.","End the month having wasted zero days standing at closed doors."],
+    8: ["Accept one outcome today without negotiating with reality.","Gravity works. So do consequences. Trust the structure.","Stop trying to hack the system. Work within it, then exceed it.","Trust that the effort compounds even when you can't see results yet.","Obey the speed limit. Literally and figuratively.","Respect a rule you disagree with while working to change it properly.","Trust the process. You don't need to see the whole staircase.","Accept a boundary someone set. It's valid.","Stop fighting a truth you already know.","Trust that consistency beats intensity. Show up again.","Sleep when you're tired. The bounds include your body.","Don't cut the line. Earn your place.","Accept that some things take exactly as long as they take.","Trust the people you chose to trust. Stop second-guessing.","Follow through on the system you set up. Trust your past self.","Accept a \"no\" without trying to turn it into a \"yes.\"","Respect someone's boundary today even if you don't understand it.","Trust the math. Emotion doesn't change the numbers.","Work with the deadline, not against it. It's a bound, not a punishment.","Stop wishing for different physics. Build with what's real.","Trust your training when the moment comes.","Don't skip steps. The bounds exist for a reason.","Accept feedback from someone who knows more than you.","Trust the seasons. Some things grow slow.","Honor the contract — written or unwritten.","Accept that you can't be everywhere. Choose where to be. Fully.","Trust that fairness operates on a longer timeline than you'd like.","Rest when the bounds say rest. Recovery is not weakness.","Accept that you are not the exception to the rule.","End the month trusting the structure you live within. Even when it's hard."],
+    9: ["Make one decision today as if you had one year left.","Call someone you love. Right now. Not later.","Don't postpone the thing that matters for the thing that's urgent.","Look around your life. If it ended today, what would you regret not doing?","Cancel something meaningless. Replace it with something meaningful.","Tell someone what they mean to you. Use actual words.","Do the thing you keep saying you'll do \"someday.\" Today is someday.","Spend an hour on your purpose, not your inbox.","Ask: \"Will this matter in five years?\" Act on the answer.","Eat the meal slow. Taste it. You don't get unlimited meals.","Forgive someone. Not for them. Because carrying it is a waste of your finite time.","Quit something that's wasting the only life you get.","Walk outside. Look up. Remember you're alive on a planet in space.","Hug someone longer than usual.","Write a letter you've been meaning to write.","Make the appointment. Get the scan. Your body is on a clock.","Build the thing. Ship the thing. Stop perfecting the thing.","Say \"I love you\" first. Don't wait for it.","Watch a sunset on purpose. You've only got so many left.","Spend money on an experience, not another object.","Make a decision you've been sitting on. Indecision is wasted life.","Do something today your 80-year-old self would thank you for.","Delete the app that steals your hours and gives nothing back.","Go see them. Not next month. Soon.","Make something with your hands. Proof you were here.","Ask the question you've been afraid to ask. Time is not on your side.","Live loud today. Not reckless — intentional.","Prioritize health. Dead people don't finish projects.","Spend time with someone old. Learn what they'd do differently.","Do one thing today purely because it makes you feel alive.","End the month having lived each day like it counted. Because it did."],
+    10: ["Name something you lost. Say it out loud. Then take one step forward.","Let yourself feel sad about something without fixing it.","Stop pretending you're \"over it\" if you're not.","Cry if you need to. Then wash your face and get back to work.","Visit a memory that hurts. Sit with it. Then leave it where it lives.","Stop numbing. Feel the thing. That's the practice.","Tell someone \"I'm still hurting.\" Then tell them what you're doing anyway.","Write down what you lost. Write down what you still have.","Grieve the version of life you expected. Accept the one you got.","Honor someone you've lost by doing something they'd be proud of.","Let go of one thing you've been gripping too tight.","Be honest about a disappointment. No silver lining required.","Allow yourself one bad day. Then don't take two.","Stop performing strength. Real strength includes tears.","Tell a story about someone you miss. Keep them alive in words.","Accept that healing isn't linear. Some days go backward. Keep going.","Remove one reminder that keeps you stuck, not one that keeps you grateful.","Forgive yourself for not handling something perfectly.","Grieve the friendship that ended. Don't pretend it doesn't sting.","Acknowledge the gap. Then build around it.","Feel the full weight of something once. Then set it down.","Let someone comfort you. You don't always have to be the strong one.","Mourn a failure. Then study it.","Say goodbye to a version of yourself that no longer exists.","Do something joyful on purpose — grief and joy can coexist.","Accept that missing someone doesn't mean you're not moving.","Let the anniversary hurt. Then let the next day be a new day.","Stop carrying guilt for moving on. That's what living is.","Honor what was. Build what's next.","End the month having felt everything and stopped for nothing."],
+    11: ["Do one thing today that will matter six months from now.","Teach someone something that took you years to learn.","Plant something. Literal or metaphorical. Watch it grow.","Write something down for the people who come after you.","Build a habit that compounds. Start it today.","Finish a project that's been 90% done for too long.","Create something original. Put your name on it.","Invest in a relationship that will outlast your career.","Do one thing you'd want your kids to copy.","Fix something broken in your community. Don't wait for someone else.","Record a story. Your memory is temporary. Your words don't have to be.","Build the bridge you wish existed when you were starting out.","Spend money on something that lasts longer than you.","Mentor without being asked.","Write the email, make the call, start the project that could change things.","Create a tradition worth repeating.","Do work today that you'd be proud to show in ten years.","Leave a place better than you found it. Any place.","Build something with someone. Legacy is rarely solo.","Protect something worth preserving.","Apologize properly. Reconciliation is legacy work.","Document what you know. Make it findable.","Make one thing easier for the next person.","Invest your time in something that grows without you.","Teach your values, not just your skills.","Be the ancestor you wish you'd had.","Do something generous enough that people remember it.","Build your reputation through action, not announcement.","Start the tradition of ending the year by asking: \"What did I build?\"","Look at what you've built. Be proud. Then plan what's next.","End the year as someone who left a mark. Not a scratch — a mark."]
   };
 
   var now = new Date();
@@ -1037,8 +979,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   var forgeEl = document.getElementById('today-forge-badge');
 
   if (dateEl && tenetEl && textEl) {
-    var MNAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-    dateEl.textContent = MNAMES[m] + ' ' + d + ' — Today\'s Practice';
+    dateEl.textContent = MONTHS[m] + ' ' + d + ' — Today\'s Practice';
     tenetEl.textContent = TENETS[m];
     var practice = PRACTICES[m] && PRACTICES[m][d - 1] ? PRACTICES[m][d - 1] : '';
     if (m === 2 && d === 13 && forgeEl) {
@@ -1046,7 +987,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     }
     textEl.textContent = practice;
 
-    // Share button
     var shareBtn = document.getElementById('today-share');
     if (shareBtn && practice) {
       shareBtn.addEventListener('click', function() {
@@ -1058,14 +998,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         ctx.fillRect(0, 0, 1080, 1080);
         var grad = ctx.createLinearGradient(0, 0, 1080, 0);
         grad.addColorStop(0, 'transparent');
-        grad.addColorStop(0.5, '#c9935a');
+        grad.addColorStop(0.5, '#c4a882');
         grad.addColorStop(1, 'transparent');
         ctx.fillStyle = grad;
         ctx.fillRect(0, 0, 1080, 4);
-        ctx.fillStyle = '#c9935a';
+        ctx.fillStyle = '#c4a882';
         ctx.font = '600 22px sans-serif';
         ctx.textAlign = 'center';
-        ctx.fillText((MNAMES[m] + ' ' + d).toUpperCase() + '  —  TODAY\'S PRACTICE', 540, 240);
+        ctx.fillText((MONTHS[m] + ' ' + d).toUpperCase() + '  —  TODAY\'S PRACTICE', 540, 240);
         ctx.fillStyle = '#70685e';
         ctx.font = '500 16px sans-serif';
         ctx.fillText(TENETS[m].split('—')[0].trim(), 540, 280);
@@ -1114,6 +1054,39 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       });
     }
   }
+})();
+
+/* ═══ SUBSCRIBE FORM ═══ */
+(function() {
+  var form = document.getElementById('homeSubscribeForm');
+  if (!form) return;
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    var email = form.email.value;
+    var btn = form.querySelector('button');
+    var success = document.getElementById('homeSignupSuccess');
+    var error = document.getElementById('homeSignupError');
+    btn.textContent = '...';
+    btn.disabled = true;
+    error.style.display = 'none';
+    try {
+      var res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email })
+      });
+      if (res.ok) {
+        form.style.display = 'none';
+        success.style.display = 'block';
+      } else {
+        throw new Error('fail');
+      }
+    } catch(err) {
+      error.style.display = 'block';
+      btn.textContent = 'SUBSCRIBE';
+      btn.disabled = false;
+    }
+  });
 })();
 </script>
 

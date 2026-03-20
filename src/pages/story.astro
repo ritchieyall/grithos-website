@@ -15,7 +15,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <style is:inline>
   /* ═══ STORY PAGE ═══ */
   .story-page {
-    padding: 160px 0 120px;
+    padding: 28px 0 40px;
     position: relative;
     overflow: hidden;
   }
@@ -24,7 +24,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     position: absolute;
     top: 200px; left: 50%; transform: translateX(-50%);
     width: 1000px; height: 1000px;
-    background: radial-gradient(circle, rgba(201,147,90,.04) 0%, transparent 60%);
+    background: radial-gradient(circle, rgba(196,168,130,.04) 0%, transparent 60%);
     pointer-events: none;
     z-index: 0;
   }
@@ -48,19 +48,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .story-title {
     font-family: var(--heading);
     font-size: clamp(28px, 4vw, 44px);
-    font-weight: 800;
+    font-weight: 700;
     color: var(--white);
     text-align: center;
     margin-bottom: 12px;
     letter-spacing: -.02em;
   }
   .story-byline {
-    font-family: 'Georgia', serif;
+    font-family: var(--serif);
     font-size: 15px;
     font-style: italic;
     color: var(--text-secondary);
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 24px;
   }
   .story-rule {
     width: 60px;
@@ -71,7 +71,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   /* ═══ BODY ═══ */
   .story-body p {
-    font-family: 'Georgia', serif;
+    font-family: var(--serif);
     font-size: clamp(16px, 2vw, 18px);
     color: var(--text);
     line-height: 1.85;
@@ -105,7 +105,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     border-top: 1px solid var(--gold-border);
   }
   .story-closing p {
-    font-family: 'Georgia', serif;
+    font-family: var(--serif);
     font-size: 18px;
     font-style: italic;
     color: var(--gold);
@@ -134,11 +134,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 </style>
 
+<section class="page-hero" style="padding:80px 0 28px;text-align:center;">
+  <div class="wrap">
+    <img src="/assets/images/grithos-logo.png" alt="Grithos" style="width: 120px; height: auto; margin-bottom: 16px; opacity: 0.85;">
+    <p style="font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">Origin</p>
+    <h1 style="font-family:var(--heading);font-size:clamp(28px,4vw,42px);font-weight:700;color:var(--white);margin-bottom:10px;">The Founding Story of Grithos</h1>
+  </div>
+</section>
 <section class="story-page">
   <div class="wrap">
     <div class="reveal d1">
-      <div class="story-overline">Origin</div>
-      <h1 class="story-title">The Founding Story of Grithos</h1>
       <p class="story-byline">By Richard — Forge Day, March 13, 2026</p>
       <div class="story-rule"></div>
     </div>

@@ -15,7 +15,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <style is:inline>
   /* ═══ PAGE HERO ═══ */
   .page-hero {
-    padding: 160px 0 80px;
+    padding: 80px 0 40px;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -25,7 +25,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     position: absolute;
     top: 40%; left: 50%; transform: translateX(-50%);
     width: 800px; height: 800px;
-    background: radial-gradient(circle, rgba(201,147,90,.05) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(196,168,130,.05) 0%, transparent 70%);
     pointer-events: none;
     z-index: 0;
   }
@@ -42,14 +42,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .page-hero-title {
     font-family: var(--heading);
     font-size: clamp(32px, 4vw, 52px);
-    font-weight: 800;
+    font-weight: 700;
     line-height: 1.1;
     letter-spacing: -.02em;
     color: var(--white);
     margin-bottom: 16px;
   }
   .page-hero-sub {
-    font-family: 'Georgia', serif;
+    font-family: var(--serif);
     font-size: clamp(16px, 2vw, 20px);
     font-style: italic;
     color: var(--text-secondary);
@@ -59,10 +59,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   /* ═══ PREAMBLE ═══ */
   .preamble {
-    padding: 80px 0;
+    padding: 28px 0;
   }
   .preamble-text {
-    font-family: 'Georgia', serif;
+    font-family: var(--serif);
     font-size: 18px;
     line-height: 1.9;
     color: var(--text-secondary);
@@ -81,11 +81,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   /* ═══ TENETS GROUP ═══ */
   .tenets-group {
-    padding: 100px 0;
+    padding: 28px 0;
   }
   .tenets-group-header {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 24px;
   }
   .tenets-group-pillar {
     font-family: var(--mono);
@@ -99,13 +99,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .tenets-group-name {
     font-family: var(--heading);
     font-size: clamp(24px, 3vw, 36px);
-    font-weight: 800;
+    font-weight: 700;
     color: var(--white);
     letter-spacing: -.01em;
     margin-bottom: 8px;
   }
   .tenets-group-tagline {
-    font-family: 'Georgia', serif;
+    font-family: var(--serif);
     font-size: 16px;
     font-style: italic;
     color: var(--text-muted);
@@ -115,11 +115,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .tenet {
     max-width: 760px;
     margin: 0 auto;
-    padding: 0 0 48px;
+    padding: 0 0 20px;
     scroll-margin-top: 100px;
   }
   .tenet + .tenet {
-    padding-top: 48px;
+    padding-top: 20px;
     border-top: 1px solid var(--border);
   }
   .tenet-number {
@@ -134,7 +134,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .tenet-title {
     font-family: var(--heading);
     font-size: clamp(20px, 2.5vw, 26px);
-    font-weight: 800;
+    font-weight: 700;
     color: var(--white);
     letter-spacing: -.01em;
     margin-bottom: 16px;
@@ -151,11 +151,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   /* ═══ CLOSING ═══ */
   .closing {
-    padding: 100px 0 120px;
+    padding: 28px 0 32px;
     text-align: center;
   }
   .closing-text {
-    font-family: 'Georgia', serif;
+    font-family: var(--serif);
     font-size: clamp(20px, 2.8vw, 28px);
     font-weight: 700;
     font-style: italic;
@@ -165,7 +165,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     margin: 0 auto 24px;
   }
   .closing-sub {
-    font-family: 'Georgia', serif;
+    font-family: var(--serif);
     font-size: clamp(15px, 2vw, 18px);
     font-style: italic;
     color: var(--text-secondary);
@@ -184,16 +184,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     color: var(--text-muted);
     text-decoration: none;
     transition: color .2s;
-    margin-top: 48px;
+    margin-top: 20px;
   }
   .back-link:hover { color: var(--gold); }
   .back-link svg { width: 16px; height: 16px; }
 
   /* ═══ RESPONSIVE ═══ */
   @media(max-width:768px) {
-    .tenets-group { padding: 60px 0; }
-    .tenet { padding: 0 0 32px; }
-    .tenet + .tenet { padding-top: 32px; }
+    .tenets-group { padding: 28px 0; }
+    .tenet { padding: 0 0 16px; }
+    .tenet + .tenet { padding-top: 16px; }
   }
 </style>
 
@@ -201,6 +201,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <section class="page-hero">
   <div class="wrap">
     <div class="reveal d1">
+      <img src="/assets/images/grithos-logo.png" alt="Grithos" style="width: 120px; height: auto; margin-bottom: 16px; opacity: 0.85;">
       <p class="page-hero-overline">The Daily Practice</p>
       <h1 class="page-hero-title">The Twelve Tenets</h1>
       <p class="page-hero-sub">A Grithosian does not just believe. A Grithosian practices.</p>

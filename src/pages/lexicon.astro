@@ -15,7 +15,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <style is:inline>
   /* ═══ PAGE HERO ═══ */
   .page-hero {
-    padding: 160px 0 80px;
+    padding: 80px 0 40px;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -25,7 +25,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     position: absolute;
     top: 40%; left: 50%; transform: translateX(-50%);
     width: 800px; height: 800px;
-    background: radial-gradient(circle, rgba(201,147,90,.05) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(196,168,130,.05) 0%, transparent 70%);
     pointer-events: none;
     z-index: 0;
   }
@@ -42,14 +42,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .page-hero-title {
     font-family: var(--heading);
     font-size: clamp(32px, 4.5vw, 52px);
-    font-weight: 800;
+    font-weight: 700;
     letter-spacing: -0.02em;
     line-height: 1.1;
     color: var(--white);
     margin-bottom: 16px;
   }
   .page-hero-sub {
-    font-family: Georgia, 'Times New Roman', serif;
+    font-family: var(--serif);
     font-size: clamp(15px, 2vw, 18px);
     font-style: italic;
     color: var(--text-secondary);
@@ -67,16 +67,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     margin: 0 auto;
   }
   .lexicon-item {
-    padding: 40px 0;
-    border-bottom: 1px solid var(--border);
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin-bottom: 12px;
+    transition: all .3s;
   }
-  .lexicon-item:first-child {
-    border-top: 1px solid var(--border);
+  .lexicon-item:hover {
+    border-color: var(--gold-border);
+    transform: translateY(-2px);
   }
   .lexicon-term {
     font-family: var(--heading);
     font-size: clamp(20px, 2.5vw, 26px);
-    font-weight: 800;
+    font-weight: 700;
     letter-spacing: -0.01em;
     color: var(--white);
     margin-bottom: 4px;
@@ -90,13 +95,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     margin-bottom: 14px;
   }
   .lexicon-def {
-    font-family: var(--body);
-    font-size: 15px;
+    font-family: var(--serif);
+    font-size: 16px;
     color: var(--text-secondary);
     line-height: 1.85;
   }
   .lexicon-def em {
-    font-family: Georgia, 'Times New Roman', serif;
+    font-family: var(--serif);
     color: var(--text-muted);
     font-size: 14px;
     display: block;
@@ -129,7 +134,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     margin-bottom: 80px;
   }
   .closing-text {
-    font-family: Georgia, 'Times New Roman', serif;
+    font-family: var(--serif);
     font-size: clamp(20px, 2.8vw, 28px);
     font-weight: 700;
     font-style: italic;
@@ -139,7 +144,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     margin: 0 auto 20px;
   }
   .closing-sub {
-    font-family: Georgia, 'Times New Roman', serif;
+    font-family: var(--serif);
     font-size: clamp(15px, 2vw, 18px);
     font-style: italic;
     color: var(--text-secondary);
@@ -164,6 +169,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <!-- HERO -->
 <section class="page-hero">
   <div class="wrap">
+    <img src="/assets/images/grithos-logo.png" alt="Grithos" style="width: 120px; height: auto; margin-bottom: 16px; opacity: 0.85;">
     <p class="page-hero-overline reveal d1">The Language</p>
     <h1 class="page-hero-title reveal d2">The Lexicon</h1>
     <p class="page-hero-sub reveal d3">Every philosophy has its language. These are the words that carry weight in Grithos.</p>

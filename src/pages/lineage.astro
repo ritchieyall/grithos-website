@@ -15,7 +15,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <style is:inline>
   /* ═══ PAGE HERO ═══ */
   .page-hero {
-    padding: 160px 0 80px;
+    padding: 80px 0 40px;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -25,7 +25,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     position: absolute;
     top: 40%; left: 50%; transform: translateX(-50%);
     width: 800px; height: 800px;
-    background: radial-gradient(circle, rgba(201,147,90,.05) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(196,168,130,.05) 0%, transparent 70%);
     pointer-events: none;
     z-index: 0;
   }
@@ -42,14 +42,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .page-hero-title {
     font-family: var(--heading);
     font-size: clamp(32px, 4vw, 52px);
-    font-weight: 800;
+    font-weight: 700;
     line-height: 1.1;
     letter-spacing: -.02em;
     color: var(--white);
     margin-bottom: 16px;
   }
   .page-hero-sub {
-    font-family: 'Georgia', serif;
+    font-family: var(--serif);
     font-size: clamp(16px, 2vw, 20px);
     font-style: italic;
     color: var(--text-secondary);
@@ -67,10 +67,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   /* ═══ INTRO ═══ */
   .intro {
-    padding: 80px 0;
+    padding: 28px 0;
   }
   .intro-text {
-    font-family: 'Georgia', serif;
+    font-family: var(--serif);
     font-size: 18px;
     line-height: 1.9;
     color: var(--text-secondary);
@@ -84,11 +84,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   /* ═══ PILLAR SECTION ═══ */
   .lineage-section {
-    padding: 100px 0;
+    padding: 28px 0;
   }
   .lineage-header {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 24px;
   }
   .lineage-pillar-label {
     font-family: var(--mono);
@@ -102,13 +102,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .lineage-pillar-name {
     font-family: var(--heading);
     font-size: clamp(24px, 3vw, 36px);
-    font-weight: 800;
+    font-weight: 700;
     color: var(--white);
     letter-spacing: -.01em;
     margin-bottom: 8px;
   }
   .lineage-pillar-tagline {
-    font-family: 'Georgia', serif;
+    font-family: var(--serif);
     font-size: 16px;
     font-style: italic;
     color: var(--text-muted);
@@ -117,12 +117,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   /* ═══ QUOTE PAIR ═══ */
   .quote-pair {
     max-width: 760px;
-    margin: 0 auto;
-    padding: 0 0 56px;
+    margin: 0 auto 12px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px 28px;
+    transition: all .3s;
+  }
+  .quote-pair:hover {
+    border-color: var(--gold-border);
+    transform: translateY(-2px);
   }
   .quote-pair + .quote-pair {
-    padding-top: 56px;
-    border-top: 1px solid var(--border);
   }
 
   /* Marcus quote */
@@ -132,7 +138,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     margin-bottom: 12px;
   }
   .marcus-quote p {
-    font-family: 'Georgia', serif;
+    font-family: var(--serif);
     font-size: 17px;
     font-style: italic;
     line-height: 1.7;
@@ -164,7 +170,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .figure-header {
     max-width: 760px;
     margin: 0 auto 48px;
-    padding-top: 56px;
+    padding-top: 20px;
     border-top: 1px solid var(--border);
   }
   .figure-header:first-of-type {
@@ -174,7 +180,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .figure-name {
     font-family: var(--heading);
     font-size: clamp(18px, 2.2vw, 22px);
-    font-weight: 800;
+    font-weight: 700;
     color: var(--white);
     letter-spacing: -0.01em;
     margin-bottom: 4px;
@@ -197,11 +203,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   /* ═══ CLOSING ═══ */
   .closing {
-    padding: 100px 0 120px;
+    padding: 28px 0 32px;
     text-align: center;
   }
   .closing-text {
-    font-family: 'Georgia', serif;
+    font-family: var(--serif);
     font-size: clamp(20px, 2.8vw, 28px);
     font-weight: 700;
     font-style: italic;
@@ -211,7 +217,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     margin: 0 auto 24px;
   }
   .closing-sub {
-    font-family: 'Georgia', serif;
+    font-family: var(--serif);
     font-size: clamp(15px, 2vw, 18px);
     font-style: italic;
     color: var(--text-secondary);
@@ -230,16 +236,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     color: var(--text-muted);
     text-decoration: none;
     transition: color .2s;
-    margin-top: 48px;
+    margin-top: 20px;
   }
   .back-link:hover { color: var(--gold); }
   .back-link svg { width: 16px; height: 16px; }
 
   /* ═══ RESPONSIVE ═══ */
   @media(max-width:768px) {
-    .lineage-section { padding: 60px 0; }
-    .quote-pair { padding: 0 0 40px; }
-    .quote-pair + .quote-pair { padding-top: 40px; }
+    .lineage-section { padding: 28px 0; }
+    .quote-pair { padding: 0 0 16px; }
+    .quote-pair + .quote-pair { padding-top: 16px; }
   }
 </style>
 
@@ -247,6 +253,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <section class="page-hero">
   <div class="wrap">
     <div class="reveal d1">
+      <img src="/assets/images/grithos-logo.png" alt="Grithos" style="width: 120px; height: auto; margin-bottom: 16px; opacity: 0.85;">
       <p class="page-hero-overline">The Lineage</p>
       <h1 class="page-hero-title">The Lineage</h1>
       <p class="page-hero-sub">Grithos did not invent its truths. A Roman Emperor, a former slave, and a founding father lived them first. Their words prove these principles are timeless.</p>
