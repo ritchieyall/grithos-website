@@ -241,11 +241,86 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .back-link:hover { color: var(--gold); }
   .back-link svg { width: 16px; height: 16px; }
 
+  /* ═══ LINEAGE GRID ═══ */
+  .lineage-grid-section {
+    padding: 28px 0;
+  }
+  .lineage-grid-header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .lineage-grid-title {
+    font-family: var(--heading);
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -.01em;
+    margin-bottom: 8px;
+  }
+  .lineage-grid-sub {
+    font-family: var(--serif);
+    font-size: 16px;
+    font-style: italic;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .lineage-grid-pillar-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 32px 0 16px;
+    text-align: center;
+  }
+  .lineage-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 16px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .lineage-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 24px;
+    transition: all .3s;
+  }
+  .lineage-card:hover {
+    border-color: var(--gold-border);
+    transform: translateY(-2px);
+  }
+  .lineage-card-name {
+    font-family: var(--heading);
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 2px;
+  }
+  .lineage-card-years {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .lineage-card-bio {
+    font-family: var(--body);
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--text-secondary);
+  }
+
   /* ═══ RESPONSIVE ═══ */
   @media(max-width:768px) {
     .lineage-section { padding: 28px 0; }
     .quote-pair { padding: 0 0 16px; }
     .quote-pair + .quote-pair { padding-top: 16px; }
+    .lineage-grid { grid-template-columns: 1fr; }
   }
 </style>
 
@@ -271,6 +346,213 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <p>Marcus Aurelius was the Emperor of Rome. Epictetus was born a slave. Benjamin Franklin was a self-made printer who helped build a nation. Seneca advised an emperor and died by imperial order. Cato the Elder never once bent his moral spine. Theodore Roosevelt rebuilt a frail body into an unstoppable force. Frederick Douglass broke free from chains and then broke the institution that forged them. Lao Tzu walked into the mountains and left behind eighty-one verses that changed the world. Heraclitus wept for a humanity too asleep to see the fire. Viktor Frankl survived the death camps and proved that meaning cannot be taken from you.</p>
         <p>Grithos did not invent its principles. It inherited them. The ideas that form the Four Pillars have been tested across millennia — by emperors and slaves, by founders and ordinary people trying to live well. What Grithos does is name them, sharpen them, and make them a daily practice.</p>
         <p>This is not a religion. It is a philosophy with ancient roots and a God who authored the structure we live within. What follows is proof. These truths are not new. They are timeless. And they are non-negotiable.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══ THE LINEAGE GRID ═══ -->
+<section class="lineage-grid-section">
+  <div class="wrap">
+    <div class="lineage-grid-header reveal d1">
+      <h2 class="lineage-grid-title">Meet the Lineage</h2>
+      <p class="lineage-grid-sub">Thirty-five figures across four pillars. Emperors, slaves, soldiers, poets, scientists, and abolitionists — the roots of a modern philosophy.</p>
+    </div>
+
+    <!-- PILLAR I — VIRTUE -->
+    <p class="lineage-grid-pillar-label reveal d1">Pillar I — Virtue · Do Right Regardless</p>
+    <div class="lineage-grid reveal d2">
+      <div class="lineage-card">
+        <div class="lineage-card-name">Marcus Aurelius</div>
+        <div class="lineage-card-years">121 – 180 AD · Emperor of Rome</div>
+        <div class="lineage-card-bio">The last of the Five Good Emperors, Marcus ruled Rome during plague, war, and betrayal — and spent his nights writing a private journal of self-discipline that became one of the most influential philosophical texts in history.</div>
+      </div>
+      <div class="lineage-card">
+        <div class="lineage-card-name">Benjamin Franklin</div>
+        <div class="lineage-card-years">1706 – 1790 · Founding Father, Inventor, Philosopher</div>
+        <div class="lineage-card-bio">A self-educated printer who became a scientist, diplomat, and architect of a nation. Franklin created a system of thirteen virtues and tracked his adherence to them daily in a small notebook — the original daily practice.</div>
+      </div>
+      <div class="lineage-card">
+        <div class="lineage-card-name">Epictetus</div>
+        <div class="lineage-card-years">50 – 135 AD · Former Slave, Stoic Philosopher</div>
+        <div class="lineage-card-bio">Born into slavery, Epictetus endured a broken leg at the hands of his master and emerged as one of the greatest Stoic philosophers who ever lived. A man who owned nothing — not even his own body — and yet mastered everything within his control.</div>
+      </div>
+      <div class="lineage-card">
+        <div class="lineage-card-name">Seneca</div>
+        <div class="lineage-card-years">4 BC – 65 AD · Roman Statesman, Stoic Philosopher</div>
+        <div class="lineage-card-bio">Lucius Annaeus Seneca served as advisor to Emperor Nero, amassed enormous wealth, and ultimately was ordered to take his own life. He wrote the most practical letters on how to live ever committed to paper.</div>
+      </div>
+      <div class="lineage-card">
+        <div class="lineage-card-name">Cato the Elder</div>
+        <div class="lineage-card-years">234 – 149 BC · Roman Senator, Censor, Soldier</div>
+        <div class="lineage-card-bio">A Roman soldier, senator, and Censor who built his reputation on absolute moral rigidity in an age of Roman decadence. He ended every speech with the same six words: Carthago delenda est.</div>
+      </div>
+      <div class="lineage-card">
+        <div class="lineage-card-name">Aristotle</div>
+        <div class="lineage-card-years">384 – 322 BC · Greek Philosopher, Father of Western Logic</div>
+        <div class="lineage-card-bio">Aristotle studied under Plato, tutored Alexander the Great, and then built his own school — the Lyceum — where he essentially invented biology, logic, ethics, and political science. He believed virtue was not a feeling but a habit: something you practice daily until it becomes who you are.</div>
+      </div>
+      <div class="lineage-card">
+        <div class="lineage-card-name">Plato</div>
+        <div class="lineage-card-years">428 – 348 BC · Greek Philosopher, Founder of the Academy</div>
+        <div class="lineage-card-bio">Plato founded the first institution of higher learning in the Western world and spent his life arguing that truth exists beyond what your senses tell you. He watched Athens execute his teacher Socrates for asking uncomfortable questions, and spent the rest of his life making sure those questions survived.</div>
+      </div>
+      <div class="lineage-card">
+        <div class="lineage-card-name">Sojourner Truth</div>
+        <div class="lineage-card-years">1797 – 1883 · Abolitionist, Women's Rights Activist</div>
+        <div class="lineage-card-bio">Born into slavery as Isabella Baumfree, she escaped with her infant daughter, sued a white man in court for the return of her son — and won. She renamed herself Sojourner Truth and spent decades telling America the truth about itself.</div>
+      </div>
+      <div class="lineage-card">
+        <div class="lineage-card-name">Abraham Lincoln</div>
+        <div class="lineage-card-years">1809 – 1865 · 16th President of the United States</div>
+        <div class="lineage-card-bio">Lincoln lost more elections than he won, buried two sons, battled depression his entire life, and held a nation together through the bloodiest war in American history. He signed the Emancipation Proclamation knowing it would cost him politically, because it was right.</div>
+      </div>
+      <div class="lineage-card">
+        <div class="lineage-card-name">Cicero</div>
+        <div class="lineage-card-years">106 – 43 BC · Roman Statesman, Orator, Philosopher</div>
+        <div class="lineage-card-bio">Marcus Tullius Cicero rose from outside Rome's aristocracy to become its greatest orator and defender of the Republic. He fought corruption, exposed conspiracies, and was ultimately murdered for refusing to stop speaking the truth.</div>
+      </div>
+    </div>
+
+    <!-- PILLAR II — APEX -->
+    <p class="lineage-grid-pillar-label reveal d1">Pillar II — Apex · Own Your Nature</p>
+    <div class="lineage-grid reveal d2">
+      <div class="lineage-card">
+        <div class="lineage-card-name">Theodore Roosevelt</div>
+        <div class="lineage-card-years">1858 – 1919 · 26th President of the United States</div>
+        <div class="lineage-card-bio">Born asthmatic and frail, Roosevelt rebuilt himself through sheer force of will — boxing, ranching, leading the Rough Riders up San Juan Hill. When an assassin shot him in the chest during a campaign speech, he finished the speech.</div>
+      </div>
+      <div class="lineage-card">
+        <div class="lineage-card-name">Frederick Douglass</div>
+        <div class="lineage-card-years">1818 – 1895 · Abolitionist, Orator, Statesman</div>
+        <div class="lineage-card-bio">Born into slavery in Maryland, Douglass taught himself to read in secret, fought his overseer with his bare hands, and escaped to become the most powerful voice against slavery in American history.</div>
+      </div>
+      <div class="lineage-card">
+        <div class="lineage-card-name">Sun Tzu</div>
+        <div class="lineage-card-years">544 – 496 BC · Chinese Military Strategist</div>
+        <div class="lineage-card-bio">Sun Tzu wrote the most influential treatise on strategy ever committed to paper — a text that has outlived every army that ever tried to follow it. He understood that the supreme art of war is to subdue the enemy without fighting.</div>
+      </div>
+      <div class="lineage-card">
+        <div class="lineage-card-name">Winston Churchill</div>
+        <div class="lineage-card-years">1874 – 1965 · British Prime Minister, Wartime Leader</div>
+        <div class="lineage-card-bio">Churchill was voted out of office, mocked as a warmonger, and written off as a relic — then stood alone against Nazi Germany when every advisor told him to negotiate. He led Britain through its darkest hour with nothing but defiance and an absolute refusal to surrender.</div>
+      </div>
+      <div class="lineage-card">
+        <div class="lineage-card-name">Nelson Mandela</div>
+        <div class="lineage-card-years">1918 – 2013 · Anti-Apartheid Revolutionary, President of South Africa</div>
+        <div class="lineage-card-bio">Mandela spent twenty-seven years in prison and emerged without bitterness to lead the nation that had imprisoned him. He chose reconciliation over revenge and proved that strength is not the absence of suffering but the refusal to let suffering define you.</div>
+      </div>
+      <div class="lineage-card">
+        <div class="lineage-card-name">Ernest Hemingway</div>
+        <div class="lineage-card-years">1899 – 1961 · Novelist, War Correspondent</div>
+        <div class="lineage-card-bio">Hemingway survived two plane crashes, multiple wars, and a life lived at full throttle, then wrote about it in prose stripped down to the bone. He believed courage was grace under pressure, and he spent his life testing that theory.</div>
+      </div>
+      <div class="lineage-card">
+        <div class="lineage-card-name">Booker T. Washington</div>
+        <div class="lineage-card-years">1856 – 1915 · Educator, Author, Advisor to Presidents</div>
+        <div class="lineage-card-bio">Born into slavery, Washington built Tuskegee Institute from the ground up — literally, with students making their own bricks. He became the most influential Black leader of his era by proving that excellence, not protest alone, was the path to power.</div>
+      </div>
+      <div class="lineage-card">
+        <div class="lineage-card-name">Leonardo da Vinci</div>
+        <div class="lineage-card-years">1452 – 1519 · Polymath, Artist, Engineer, Scientist</div>
+        <div class="lineage-card-bio">Leonardo painted the Mona Lisa and The Last Supper, designed flying machines four centuries before the Wright Brothers, and filled thousands of notebook pages with ideas the world wasn't ready for. He was illegitimate, largely self-taught, and utterly unwilling to fit into any single category.</div>
+      </div>
+    </div>
+
+    <!-- PILLAR III — CONTROL -->
+    <p class="lineage-grid-pillar-label reveal d1">Pillar III — Control · Live Within Bounds</p>
+    <div class="lineage-grid reveal d2">
+      <div class="lineage-card">
+        <div class="lineage-card-name">Lao Tzu</div>
+        <div class="lineage-card-years">6th Century BC · Chinese Philosopher</div>
+        <div class="lineage-card-bio">Lao Tzu is credited with writing the Tao Te Ching, eighty-one verses that have shaped Eastern philosophy for twenty-five centuries. He reportedly wrote it in a single sitting at a border gate, then walked into the mountains and was never seen again.</div>
+      </div>
+      <div class="lineage-card">
+        <div class="lineage-card-name">Confucius</div>
+        <div class="lineage-card-years">551 – 479 BC · Chinese Philosopher, Teacher</div>
+        <div class="lineage-card-bio">Confucius wandered for fourteen years trying to convince rulers to govern with virtue, was rejected by nearly all of them, and returned home to teach. His philosophy of self-cultivation, ritual discipline, and moral order shaped East Asian civilization for twenty-five centuries.</div>
+      </div>
+      <div class="lineage-card">
+        <div class="lineage-card-name">Ralph Waldo Emerson</div>
+        <div class="lineage-card-years">1803 – 1882 · Essayist, Philosopher, Poet</div>
+        <div class="lineage-card-bio">Emerson left the ministry, buried his first wife and his young son, and rebuilt his life around one radical idea: trust yourself. He became the voice of American self-reliance and wrote essays that gave an entire nation permission to think for itself.</div>
+      </div>
+      <div class="lineage-card">
+        <div class="lineage-card-name">Henry David Thoreau</div>
+        <div class="lineage-card-years">1817 – 1862 · Writer, Naturalist, Philosopher</div>
+        <div class="lineage-card-bio">Thoreau walked into the woods at Walden Pond to strip life down to its essentials and prove that most of what people chase is unnecessary. He went to jail rather than pay taxes supporting a war he opposed, and wrote the essay on civil disobedience that later inspired Gandhi and King.</div>
+      </div>
+      <div class="lineage-card">
+        <div class="lineage-card-name">Michel de Montaigne</div>
+        <div class="lineage-card-years">1533 – 1592 · French Essayist, Statesman</div>
+        <div class="lineage-card-bio">Montaigne retired to his tower library at thirty-eight, invented the personal essay, and spent the rest of his life examining his own mind with ruthless honesty. He proved that self-knowledge is the hardest and most valuable discipline.</div>
+      </div>
+      <div class="lineage-card">
+        <div class="lineage-card-name">Blaise Pascal</div>
+        <div class="lineage-card-years">1623 – 1662 · Mathematician, Physicist, Philosopher</div>
+        <div class="lineage-card-bio">Pascal built the first mechanical calculator at nineteen, laid the foundations of probability theory, and then turned his genius toward the human condition. He argued that most of humanity's problems stem from the inability to sit quietly in a room.</div>
+      </div>
+      <div class="lineage-card">
+        <div class="lineage-card-name">Baltasar Gracián</div>
+        <div class="lineage-card-years">1601 – 1658 · Spanish Jesuit Priest, Philosopher</div>
+        <div class="lineage-card-bio">Gracián wrote The Art of Worldly Wisdom — three hundred maxims on how to navigate power, deception, and human nature without losing your soul. His own Jesuit order censored and punished him for publishing it, which only proved his point.</div>
+      </div>
+      <div class="lineage-card">
+        <div class="lineage-card-name">Thucydides</div>
+        <div class="lineage-card-years">460 – 400 BC · Athenian General, Historian</div>
+        <div class="lineage-card-bio">Thucydides commanded an Athenian fleet, lost a battle, was exiled for twenty years, and used that exile to write the most brutally honest account of war ever recorded. His History of the Peloponnesian War hasn't aged a day.</div>
+      </div>
+      <div class="lineage-card">
+        <div class="lineage-card-name">Plutarch</div>
+        <div class="lineage-card-years">46 – 120 AD · Greek Biographer, Essayist, Priest</div>
+        <div class="lineage-card-bio">Plutarch spent his life studying great men — pairing Greeks with Romans in his Parallel Lives to show that character, not circumstance, determines legacy. He believed that biography, honestly told, was the most powerful tool for moral instruction.</div>
+      </div>
+    </div>
+
+    <!-- PILLAR IV — DEATH -->
+    <p class="lineage-grid-pillar-label reveal d1">Pillar IV — Death · Return to the Whole</p>
+    <div class="lineage-grid reveal d2">
+      <div class="lineage-card">
+        <div class="lineage-card-name">Heraclitus</div>
+        <div class="lineage-card-years">535 – 475 BC · Greek Philosopher</div>
+        <div class="lineage-card-bio">Heraclitus of Ephesus abdicated his hereditary kingship and retreated to the mountains to think about the nature of reality. He concluded that the only constant is change — that the universe is a river of fire and flux.</div>
+      </div>
+      <div class="lineage-card">
+        <div class="lineage-card-name">Viktor Frankl</div>
+        <div class="lineage-card-years">1905 – 1997 · Psychiatrist, Holocaust Survivor, Author</div>
+        <div class="lineage-card-bio">Viktor Frankl survived Auschwitz and Dachau, stripped of everything. He discovered the one thing that could not be taken: the ability to choose his response. He wrote Man's Search for Meaning in nine days. It has sold over sixteen million copies.</div>
+      </div>
+      <div class="lineage-card">
+        <div class="lineage-card-name">Friedrich Nietzsche</div>
+        <div class="lineage-card-years">1844 – 1900 · German Philosopher</div>
+        <div class="lineage-card-bio">Nietzsche wrote in isolation, in chronic pain, largely ignored by the academic establishment — and produced ideas that detonated across the twentieth century. He declared God dead not in celebration but as a warning, and argued that suffering is not the enemy of meaning but its raw material.</div>
+      </div>
+      <div class="lineage-card">
+        <div class="lineage-card-name">Søren Kierkegaard</div>
+        <div class="lineage-card-years">1813 – 1855 · Danish Philosopher, Theologian</div>
+        <div class="lineage-card-bio">Kierkegaard broke off his engagement to the woman he loved because he believed his calling demanded total devotion, then spent the rest of his short life writing about anxiety, despair, and the leap of faith. He is considered the father of existentialism.</div>
+      </div>
+      <div class="lineage-card">
+        <div class="lineage-card-name">Rumi</div>
+        <div class="lineage-card-years">1207 – 1273 · Persian Poet, Sufi Mystic</div>
+        <div class="lineage-card-bio">Rumi was a respected Islamic scholar until he met a wandering mystic named Shams and his entire world cracked open. He poured his grief, ecstasy, and longing into poetry that has been translated into every major language — proving that the wound is where the light enters.</div>
+      </div>
+      <div class="lineage-card">
+        <div class="lineage-card-name">Khalil Gibran</div>
+        <div class="lineage-card-years">1883 – 1931 · Lebanese-American Poet, Philosopher, Artist</div>
+        <div class="lineage-card-bio">Gibran left Lebanon at twelve, buried his mother, brother, and sister within a few years, and channeled that loss into The Prophet — a book that has sold over one hundred million copies.</div>
+      </div>
+      <div class="lineage-card">
+        <div class="lineage-card-name">Fyodor Dostoevsky</div>
+        <div class="lineage-card-years">1821 – 1881 · Russian Novelist</div>
+        <div class="lineage-card-bio">Dostoevsky was arrested for political subversion, stood before a firing squad, and received a last-second reprieve — a mock execution designed to break him. It didn't. He spent the next thirty years writing novels that mapped the darkest corridors of the human soul.</div>
+      </div>
+      <div class="lineage-card">
+        <div class="lineage-card-name">Albert Camus</div>
+        <div class="lineage-card-years">1913 – 1960 · French-Algerian Novelist, Philosopher</div>
+        <div class="lineage-card-bio">Camus grew up fatherless and poor in colonial Algeria, contracted tuberculosis as a teenager, and went on to win the Nobel Prize in Literature at forty-four. He argued that life is absurd — and that the proper response is not despair but revolt.</div>
       </div>
     </div>
   </div>
@@ -443,6 +725,86 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         This is Tenet II — <strong>Keep Your Word Like Your Life Depends on It.</strong> Cato did not believe in dressing up empty promises with fine language. He believed that when you truly know the substance — when you have done the work, understood the problem, mastered the reality — the right words come on their own. A Grithosian does not make commitments with hollow eloquence. Your word carries weight because it is grounded in substance. Grasp the subject. Do the work. Then your word becomes unbreakable because it is backed by something real.
       </div>
     </div>
+    <div class="figure-header reveal d1">
+      <h3 class="figure-name">Aristotle</h3>
+      <p class="figure-years">384 – 322 BC · Greek Philosopher, Father of Western Logic</p>
+      <p class="figure-intro">Aristotle studied under Plato, tutored Alexander the Great, and then built his own school — the Lyceum — where he essentially invented biology, logic, ethics, and political science. He believed virtue was not a feeling but a habit: something you practice daily until it becomes who you are.</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>We are what we repeatedly do. Excellence, then, is not an act, but a habit.</p>
+      </blockquote>
+      <div class="marcus-cite">— Aristotle, Nicomachean Ethics (paraphrased by Will Durant)</div>
+      <div class="bridge">
+        This is the foundation of Grithos Virtue — <strong>do right, regardless.</strong> Aristotle understood that character is not a single decision but the accumulation of daily choices. A Grithosian does not wait for a moment of crisis to be virtuous. You practice it every day until it becomes who you are. Excellence is a habit.
+      </div>
+    </div>
+
+    <div class="figure-header reveal d1">
+      <h3 class="figure-name">Plato</h3>
+      <p class="figure-years">428 – 348 BC · Greek Philosopher, Founder of the Academy</p>
+      <p class="figure-intro">Plato founded the first institution of higher learning in the Western world and spent his life arguing that truth exists beyond what your senses tell you. He watched Athens execute his teacher Socrates for asking uncomfortable questions, and he spent the rest of his life making sure those questions survived.</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>We can easily forgive a child who is afraid of the dark; the real tragedy of life is when men are afraid of the light.</p>
+      </blockquote>
+      <div class="marcus-cite">— Plato, The Republic</div>
+      <div class="bridge">
+        This is Tenet I — <strong>Tell the Truth. Even When It Costs You.</strong> Plato saw that most people prefer comfortable darkness to uncomfortable truth. A Grithosian walks toward the light — even when it burns. The truth is not always kind, but it is always necessary.
+      </div>
+    </div>
+
+    <div class="figure-header reveal d1">
+      <h3 class="figure-name">Sojourner Truth</h3>
+      <p class="figure-years">1797 – 1883 · Abolitionist, Women's Rights Activist</p>
+      <p class="figure-intro">Born into slavery as Isabella Baumfree, she escaped with her infant daughter, sued a white man in court for the return of her son — and won. She renamed herself Sojourner Truth and spent decades telling America the truth about itself, whether America wanted to hear it or not.</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>Truth is powerful and it prevails.</p>
+      </blockquote>
+      <div class="marcus-cite">— Sojourner Truth, as recorded in Narrative of Sojourner Truth, 1850</div>
+      <div class="bridge">
+        This is Tenet I — <strong>Tell the Truth. Even When It Costs You.</strong> Sojourner Truth did not have the luxury of polite disagreement. She spoke truth to a nation that enslaved her people and denied her gender. A Grithosian speaks plainly because truth — however costly — prevails.
+      </div>
+    </div>
+
+    <div class="figure-header reveal d1">
+      <h3 class="figure-name">Abraham Lincoln</h3>
+      <p class="figure-years">1809 – 1865 · 16th President of the United States</p>
+      <p class="figure-intro">Lincoln lost more elections than he won, buried two sons, battled depression his entire life, and held a nation together through the bloodiest war in American history. He signed the Emancipation Proclamation knowing it would cost him politically, because it was right.</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>I am not bound to win, but I am bound to be true. I am not bound to succeed, but I am bound to live by the light that I have.</p>
+      </blockquote>
+      <div class="marcus-cite">— Abraham Lincoln, attributed, widely cited in Lincoln scholarship</div>
+      <div class="bridge">
+        This is the essence of Pillar I — <strong>do right regardless.</strong> Lincoln did not promise victory. He promised integrity. A Grithosian does not measure virtue by outcomes. You do what is right because it is right — not because it guarantees success.
+      </div>
+    </div>
+
+    <div class="figure-header reveal d1">
+      <h3 class="figure-name">Cicero</h3>
+      <p class="figure-years">106 – 43 BC · Roman Statesman, Orator, Philosopher</p>
+      <p class="figure-intro">Marcus Tullius Cicero rose from outside Rome's aristocracy to become its greatest orator and defender of the Republic. He fought corruption, exposed conspiracies, and was ultimately murdered for refusing to stop speaking the truth — his severed hands nailed to the Senate rostrum as a warning to others.</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>A room without books is like a body without a soul.</p>
+      </blockquote>
+      <div class="marcus-cite">— Cicero, attributed, widely cited in classical scholarship</div>
+      <div class="bridge">
+        This is the discipline of Virtue — <strong>cultivate your soul.</strong> Cicero understood that moral courage requires moral education. A Grithosian fills the mind with truth so that when the moment demands courage, the foundation is already built. You cannot speak the truth if you have not studied it.
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -614,6 +976,102 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         This is Tenet V — <strong>Protect Those Beneath You.</strong> Douglass spent his life fighting not just for his own freedom but for the freedom of every person still in chains. He understood that true apex strength is not self-serving — it builds up the next generation. A Grithosian who has climbed does not pull up the ladder. You reach down. You build strong children. You protect those who cannot yet protect themselves.
       </div>
     </div>
+    <div class="figure-header reveal d1">
+      <h3 class="figure-name">Sun Tzu</h3>
+      <p class="figure-years">544 – 496 BC · Chinese Military Strategist, Author of The Art of War</p>
+      <p class="figure-intro">Sun Tzu wrote the most influential treatise on strategy ever committed to paper — a text that has outlived every army that ever tried to follow it. He understood that the supreme art of war is to subdue the enemy without fighting, and that true strength is knowing when not to use it.</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>The supreme art of war is to subdue the enemy without fighting.</p>
+      </blockquote>
+      <div class="marcus-cite">— Sun Tzu, The Art of War, Chapter III</div>
+      <div class="bridge">
+        This is Tenet V — <strong>Protect Those Beneath You.</strong> Sun Tzu understood that the greatest strength is restraint. A Grithosian at the apex does not prove power through destruction but through mastery — the ability to win without breaking what you're trying to protect.
+      </div>
+    </div>
+
+    <div class="figure-header reveal d1">
+      <h3 class="figure-name">Winston Churchill</h3>
+      <p class="figure-years">1874 – 1965 · British Prime Minister, Wartime Leader</p>
+      <p class="figure-intro">Churchill was voted out of office, mocked as a warmonger, and written off as a relic — then stood alone against Nazi Germany when every advisor told him to negotiate. He led Britain through its darkest hour with nothing but defiance, rhetoric, and an absolute refusal to surrender.</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>Success is not final, failure is not fatal: it is the courage to continue that counts.</p>
+      </blockquote>
+      <div class="marcus-cite">— Winston Churchill, attributed, widely cited</div>
+      <div class="bridge">
+        This is Tenet IV — <strong>Never Shrink. Never Apologize for Strength.</strong> Churchill knew that both victory and defeat are temporary. What matters is the refusal to stop. A Grithosian does not celebrate too long or mourn too deep. You continue. That is the only courage that counts.
+      </div>
+    </div>
+
+    <div class="figure-header reveal d1">
+      <h3 class="figure-name">Nelson Mandela</h3>
+      <p class="figure-years">1918 – 2013 · Anti-Apartheid Revolutionary, President of South Africa</p>
+      <p class="figure-intro">Mandela spent twenty-seven years in prison — eighteen of them breaking rocks on Robben Island — and emerged without bitterness to lead the nation that had imprisoned him. He chose reconciliation over revenge and proved that strength is not the absence of suffering but the refusal to let suffering define you.</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>It always seems impossible until it's done.</p>
+      </blockquote>
+      <div class="marcus-cite">— Nelson Mandela, attributed, widely cited in Mandela scholarship</div>
+      <div class="bridge">
+        This is Tenet VI — <strong>Reject the Victim. Become the Author.</strong> Mandela did not accept that apartheid was permanent. He did not accept that prison was the end. A Grithosian refuses the narrative of impossibility. You become the author of a story that others said could never be written.
+      </div>
+    </div>
+
+    <div class="figure-header reveal d1">
+      <h3 class="figure-name">Ernest Hemingway</h3>
+      <p class="figure-years">1899 – 1961 · Novelist, War Correspondent</p>
+      <p class="figure-intro">Hemingway survived two plane crashes, multiple wars, and a life lived at full throttle, then wrote about it in prose stripped down to the bone. He believed courage was grace under pressure, and he spent his life testing that theory against bullets, bulls, and the blank page.</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>The world breaks everyone, and afterward, many are strong at the broken places.</p>
+      </blockquote>
+      <div class="marcus-cite">— Ernest Hemingway, A Farewell to Arms, Chapter 34, 1929</div>
+      <div class="bridge">
+        This is Tenet IV — <strong>Never Shrink. Never Apologize for Strength.</strong> Hemingway understood that breaking is not the end — it is the forge. A Grithosian does not hide their scars. The broken places are where your real strength lives. Own them.
+      </div>
+    </div>
+
+    <div class="figure-header reveal d1">
+      <h3 class="figure-name">Booker T. Washington</h3>
+      <p class="figure-years">1856 – 1915 · Educator, Author, Advisor to Presidents</p>
+      <p class="figure-intro">Born into slavery, Washington built Tuskegee Institute from the ground up — literally, with students making their own bricks. He became the most influential Black leader of his era by proving that excellence, not protest alone, was the path to power.</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>Success is to be measured not so much by the position that one has reached in life as by the obstacles which he has overcome.</p>
+      </blockquote>
+      <div class="marcus-cite">— Booker T. Washington, Up from Slavery, Chapter I, 1901</div>
+      <div class="bridge">
+        This is Tenet VI — <strong>Reject the Victim. Become the Author.</strong> Washington did not measure himself by where he ended up but by what he climbed through to get there. A Grithosian defines success by the obstacles overcome — not the titles earned.
+      </div>
+    </div>
+
+    <div class="figure-header reveal d1">
+      <h3 class="figure-name">Leonardo da Vinci</h3>
+      <p class="figure-years">1452 – 1519 · Polymath, Artist, Engineer, Scientist</p>
+      <p class="figure-intro">Leonardo painted the Mona Lisa and The Last Supper, designed flying machines four centuries before the Wright Brothers, and filled thousands of notebook pages with ideas the world wasn't ready for. He was illegitimate, largely self-taught, and utterly unwilling to fit into any single category.</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>I have been impressed with the urgency of doing. Knowing is not enough; we must apply. Being willing is not enough; we must do.</p>
+      </blockquote>
+      <div class="marcus-cite">— Leonardo da Vinci, attributed, from his notebooks</div>
+      <div class="bridge">
+        This is Tenet IV — <strong>Never Shrink. Never Apologize for Strength.</strong> Leonardo did not just know — he built, painted, designed, and invented. A Grithosian does not confuse understanding with action. Knowledge without execution is decoration. Do the work.
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -759,6 +1217,135 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         This is Tenet IX — <strong>Trust the Bounds.</strong> Lao Tzu saw what most of us refuse to see: the structure of existence is not broken. It does not need your anxiety to function. The seasons turn. The river finds the sea. A Grithosian trusts the bounds — not passively, but with the deep confidence that comes from understanding the architecture. God authored a system that works. Your job is to work within it, not to fight it. Nature does not hurry. Neither should your worry.
       </div>
     </div>
+
+    <div class="figure-header reveal d1">
+      <h3 class="figure-name">Confucius</h3>
+      <p class="figure-years">551 – 479 BC · Chinese Philosopher, Teacher</p>
+      <p class="figure-intro">Confucius wandered for fourteen years trying to convince rulers to govern with virtue, was rejected by nearly all of them, and returned home to teach. His philosophy of self-cultivation, ritual discipline, and moral order shaped East Asian civilization for twenty-five centuries.</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>By three methods we may learn wisdom: First, by reflection, which is noblest; Second, by imitation, which is easiest; and third by experience, which is the bitterest.</p>
+      </blockquote>
+      <div class="marcus-cite">— Confucius, Analects</div>
+      <div class="bridge">
+        This is Tenet IX — <strong>Trust the Bounds.</strong> Confucius understood that wisdom operates within structure — reflection, imitation, experience. A Grithosian trusts that each method has its place and season. The bounds of learning are not limitations. They are the framework that makes wisdom possible.
+      </div>
+    </div>
+
+    <div class="figure-header reveal d1">
+      <h3 class="figure-name">Ralph Waldo Emerson</h3>
+      <p class="figure-years">1803 – 1882 · Essayist, Philosopher, Poet</p>
+      <p class="figure-intro">Emerson left the ministry, buried his first wife and his young son, and rebuilt his life around one radical idea: trust yourself. He became the voice of American self-reliance and wrote essays that gave an entire nation permission to think for itself.</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>What lies behind us and what lies before us are tiny matters compared to what lies within us.</p>
+      </blockquote>
+      <div class="marcus-cite">— Ralph Waldo Emerson, attributed, widely cited</div>
+      <div class="bridge">
+        This is Tenet VII — <strong>Own Only What Is Yours.</strong> Emerson drew the line clearly — the past is gone, the future is uncertain, but what you carry within yourself is real and powerful right now. A Grithosian invests in that inner strength. It is the only asset that cannot be taken.
+      </div>
+    </div>
+
+    <div class="figure-header reveal d1">
+      <h3 class="figure-name">Henry David Thoreau</h3>
+      <p class="figure-years">1817 – 1862 · Writer, Naturalist, Philosopher</p>
+      <p class="figure-intro">Thoreau walked into the woods at Walden Pond to strip life down to its essentials and prove that most of what people chase is unnecessary. He went to jail rather than pay taxes supporting a war he opposed, and he wrote the essay on civil disobedience that later inspired Gandhi and King.</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>The mass of men lead lives of quiet desperation.</p>
+      </blockquote>
+      <div class="marcus-cite">— Henry David Thoreau, Walden, Chapter 1, 1854</div>
+      <div class="bridge">
+        This is Tenet VIII — <strong>Redirect Immediately.</strong> Thoreau saw that most people accept a life they do not want because they are afraid to change course. A Grithosian refuses quiet desperation. When you recognize that your current path is not yours, you redirect. Immediately. Thoreau walked to the woods. Where will you walk?
+      </div>
+    </div>
+
+    <div class="figure-header reveal d1">
+      <h3 class="figure-name">Michel de Montaigne</h3>
+      <p class="figure-years">1533 – 1592 · French Essayist, Statesman</p>
+      <p class="figure-intro">Montaigne retired to his tower library at thirty-eight, invented the personal essay, and spent the rest of his life examining his own mind with ruthless honesty. He wrote about fear, death, cannibals, and kidney stones with equal candor — proving that self-knowledge is the hardest and most valuable discipline.</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>We are all patchwork, and so shapeless and diverse in composition that each bit, each moment, plays its own game.</p>
+      </blockquote>
+      <div class="marcus-cite">— Michel de Montaigne, Essays, Book III, Chapter 2, "Of Repentance"</div>
+      <div class="bridge">
+        This is Tenet VII — <strong>Own Only What Is Yours.</strong> Montaigne understood that you are not a fixed thing but a collection of moments, choices, and contradictions. A Grithosian owns the whole patchwork — the noble and the shameful, the strong and the weak. Integration, not perfection, is the goal.
+      </div>
+    </div>
+
+    <div class="figure-header reveal d1">
+      <h3 class="figure-name">Blaise Pascal</h3>
+      <p class="figure-years">1623 – 1662 · Mathematician, Physicist, Philosopher</p>
+      <p class="figure-intro">Pascal built the first mechanical calculator at nineteen, laid the foundations of probability theory, and then turned his genius toward the human condition. He argued that most of humanity's problems stem from the inability to sit quietly in a room — a diagnosis that has only grown more accurate with time.</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>All of humanity's problems stem from man's inability to sit quietly in a room alone.</p>
+      </blockquote>
+      <div class="marcus-cite">— Blaise Pascal, Pensées, #139</div>
+      <div class="bridge">
+        This is Tenet IX — <strong>Trust the Bounds.</strong> Pascal identified the source of most human suffering — the inability to be still. A Grithosian practices stillness not as escape but as foundation. In the quiet room, you discover what is real and what is noise. The bounds become clear.
+      </div>
+    </div>
+
+    <div class="figure-header reveal d1">
+      <h3 class="figure-name">Baltasar Gracián</h3>
+      <p class="figure-years">1601 – 1658 · Spanish Jesuit Priest, Philosopher</p>
+      <p class="figure-intro">Gracián wrote The Art of Worldly Wisdom — three hundred maxims on how to navigate power, deception, and human nature without losing your soul. His own Jesuit order censored and punished him for publishing it, which only proved his point about the cost of speaking plainly.</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>Know how to refuse. One cannot say yes to everything, nor should one. To know how to refuse is as important as to know how to consent.</p>
+      </blockquote>
+      <div class="marcus-cite">— Baltasar Gracián, The Art of Worldly Wisdom, Maxim #77</div>
+      <div class="bridge">
+        This is Tenet VII — <strong>Own Only What Is Yours.</strong> Gracián understood that boundaries are not selfish — they are strategic. A Grithosian says no to protect the yes that matters. Your energy, your time, your attention — these are finite. Guard them accordingly.
+      </div>
+    </div>
+
+    <div class="figure-header reveal d1">
+      <h3 class="figure-name">Thucydides</h3>
+      <p class="figure-years">460 – 400 BC · Athenian General, Historian</p>
+      <p class="figure-intro">Thucydides commanded an Athenian fleet, lost a battle, was exiled for twenty years, and used that exile to write the most brutally honest account of war ever recorded. His History of the Peloponnesian War stripped away myth and propaganda to show power as it actually operates — and it hasn't aged a day.</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>The secret to happiness is freedom... And the secret to freedom is courage.</p>
+      </blockquote>
+      <div class="marcus-cite">— Thucydides, attributed, widely cited in classical scholarship</div>
+      <div class="bridge">
+        This is Tenet VIII — <strong>Redirect Immediately.</strong> Thucydides understood the chain: courage leads to freedom, freedom leads to happiness. A Grithosian has the courage to redirect when the current path no longer serves. The bounds may close one door, but courage opens another.
+      </div>
+    </div>
+
+    <div class="figure-header reveal d1">
+      <h3 class="figure-name">Plutarch</h3>
+      <p class="figure-years">46 – 120 AD · Greek Biographer, Essayist, Priest</p>
+      <p class="figure-intro">Plutarch spent his life studying great men — pairing Greeks with Romans in his Parallel Lives to show that character, not circumstance, determines legacy. He served as a priest at Delphi and believed that biography, honestly told, was the most powerful tool for moral instruction.</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>What we achieve inwardly will change outer reality.</p>
+      </blockquote>
+      <div class="marcus-cite">— Plutarch, attributed, widely cited</div>
+      <div class="bridge">
+        This is Tenet VII — <strong>Own Only What Is Yours.</strong> Plutarch spent his life proving that character shapes destiny. A Grithosian works on the inside first — your habits, your thoughts, your daily practice. The outer world reflects the inner discipline. Always.
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -949,6 +1536,103 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         This is Tenet XII — <strong>Build a Legacy That Stands in This Life.</strong> Frankl survived because he had a why — the unfinished manuscript, the patients who needed him, the truths that had to be told. A Grithosian builds a legacy not for fame but because the legacy itself becomes the reason to endure. When you are building something that matters, you can survive almost anything. Your why is your anchor. Without it, every hardship is pointless suffering. With it, every hardship is raw material for something that outlasts you.
       </div>
     </div>
+
+    <div class="figure-header reveal d1">
+      <h3 class="figure-name">Friedrich Nietzsche</h3>
+      <p class="figure-years">1844 – 1900 · German Philosopher</p>
+      <p class="figure-intro">Nietzsche wrote in isolation, in chronic pain, largely ignored by the academic establishment — and produced ideas that detonated across the twentieth century. He declared God dead not in celebration but as a warning, and argued that suffering is not the enemy of meaning but its raw material.</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>He who has a why to live for can bear almost any how.</p>
+      </blockquote>
+      <div class="marcus-cite">— Friedrich Nietzsche, Twilight of the Idols, "Maxims and Arrows," #12</div>
+      <div class="bridge">
+        This is Tenet XII — <strong>Build a Legacy That Stands in This Life.</strong> Nietzsche understood that meaning is not given — it is forged. A Grithosian builds something worth suffering for. When your why is clear and powerful, you can endure almost any how. The legacy becomes the anchor.
+      </div>
+    </div>
+
+    <div class="figure-header reveal d1">
+      <h3 class="figure-name">Søren Kierkegaard</h3>
+      <p class="figure-years">1813 – 1855 · Danish Philosopher, Theologian</p>
+      <p class="figure-intro">Kierkegaard broke off his engagement to the woman he loved because he believed his calling demanded total devotion, then spent the rest of his short life writing about anxiety, despair, and the leap of faith. He is considered the father of existentialism — a man who stared into the abyss and chose to jump.</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>The most painful state of being is remembering the future, particularly the one you'll never see.</p>
+      </blockquote>
+      <div class="marcus-cite">— Søren Kierkegaard, attributed, from his journals</div>
+      <div class="bridge">
+        This is Tenet X — <strong>Live Like You Will Die. Because You Will.</strong> Kierkegaard felt the weight of mortality intensely — every unrealized possibility, every path not taken. A Grithosian uses that weight as fuel. The future you'll never see makes the present you have sacred. Act accordingly.
+      </div>
+    </div>
+
+    <div class="figure-header reveal d1">
+      <h3 class="figure-name">Rumi</h3>
+      <p class="figure-years">1207 – 1273 · Persian Poet, Sufi Mystic</p>
+      <p class="figure-intro">Rumi was a respected Islamic scholar until he met a wandering mystic named Shams and his entire world cracked open. He poured his grief, ecstasy, and longing into poetry that has been translated into every major language — proving that the wound is where the light enters.</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>The wound is the place where the Light enters you.</p>
+      </blockquote>
+      <div class="marcus-cite">— Rumi, from the Mathnavi</div>
+      <div class="bridge">
+        This is Tenet XI — <strong>Grieve Fully. Then Move.</strong> Rumi understood that suffering is not the end of the story — it is the crack where transformation begins. A Grithosian does not hide from the wound. You honor it. You let it break you open. Because that is where the light gets in.
+      </div>
+    </div>
+
+    <div class="figure-header reveal d1">
+      <h3 class="figure-name">Khalil Gibran</h3>
+      <p class="figure-years">1883 – 1931 · Lebanese-American Poet, Philosopher, Artist</p>
+      <p class="figure-intro">Gibran left Lebanon at twelve, buried his mother, brother, and sister within a few years, and channeled that loss into The Prophet — a book that has sold over one hundred million copies. He wrote about love, death, freedom, and pain with the authority of someone who had lived all four.</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>Out of suffering have emerged the strongest souls; the most massive characters are seared with scars.</p>
+      </blockquote>
+      <div class="marcus-cite">— Khalil Gibran, attributed, widely cited</div>
+      <div class="bridge">
+        This is Tenet XI — <strong>Grieve Fully. Then Move.</strong> Gibran did not hide his scars — he wore them as proof of what he had survived. A Grithosian understands that the strongest souls are forged in the fire of loss. Feel everything. Then stand up. The scars are not your weakness. They are your credentials.
+      </div>
+    </div>
+
+    <div class="figure-header reveal d1">
+      <h3 class="figure-name">Fyodor Dostoevsky</h3>
+      <p class="figure-years">1821 – 1881 · Russian Novelist</p>
+      <p class="figure-intro">Dostoevsky was arrested for political subversion, stood before a firing squad, and received a last-second reprieve — a mock execution designed to break him. It didn't. He spent the next thirty years in debt, in seizures, and in genius, writing novels that mapped the darkest corridors of the human soul.</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>Pain and suffering are always inevitable for a large intelligence and a deep heart.</p>
+      </blockquote>
+      <div class="marcus-cite">— Fyodor Dostoevsky, Crime and Punishment, Part I, Chapter 1</div>
+      <div class="bridge">
+        This is Tenet X — <strong>Live Like You Will Die. Because You Will.</strong> Dostoevsky did not promise an easy life for those who think deeply and feel much. A Grithosian accepts this. The capacity to build something meaningful comes with the capacity to suffer for it. That is not a bug. That is the design.
+      </div>
+    </div>
+
+    <div class="figure-header reveal d1">
+      <h3 class="figure-name">Albert Camus</h3>
+      <p class="figure-years">1913 – 1960 · French-Algerian Novelist, Philosopher</p>
+      <p class="figure-intro">Camus grew up fatherless and poor in colonial Algeria, contracted tuberculosis as a teenager, and went on to win the Nobel Prize in Literature at forty-four. He argued that life is absurd — and that the proper response is not despair but revolt: to keep pushing the boulder uphill, fully aware it will roll back down.</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>In the midst of winter, I found there was, within me, an invincible summer.</p>
+      </blockquote>
+      <div class="marcus-cite">— Albert Camus, "Return to Tipasa," Summer, 1954</div>
+      <div class="bridge">
+        This is Tenet XII — <strong>Build a Legacy That Stands in This Life.</strong> Camus discovered that even in the darkest circumstances, there is something within you that cannot be broken. A Grithosian builds from that invincible core — not because life promises meaning, but because you create it. The absurd is not the enemy. It is the arena.
+      </div>
+    </div>
+
   </div>
 </section>
 
