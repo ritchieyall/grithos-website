@@ -111,6 +111,10 @@ const html = `<!DOCTYPE html>
 <div class="container">
   <div class="gold-line"></div>
 
+  <div style="text-align:center;margin-bottom:20px;">
+    <img src="https://grithos.com/assets/images/grithos-logo.png" alt="Grithos" style="width:120px;height:auto;" />
+  </div>
+
   <div class="date">${dateStr}</div>
   <div class="tenet-label">${tenet.tenet.split("—")[0].trim()}</div>
 
