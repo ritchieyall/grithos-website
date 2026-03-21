@@ -62,47 +62,48 @@ const html = `<!DOCTYPE html>
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="dark light">
 <meta name="supported-color-schemes" content="dark light">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root { color-scheme: dark light; }
   /* ── Dark mode (default) ── */
-  body { margin:0; padding:0; background:#1c2029; color:#f5f0eb; font-family:'Georgia','Times New Roman',serif; }
+  body { margin:0; padding:0; background:#2a2a2a; color:#e8e4de; font-family:'Source Sans 3','Source Sans Pro',sans-serif; }
   .container { max-width:580px; margin:0 auto; padding:40px 24px; }
-  .gold-line { height:3px; background:linear-gradient(90deg,transparent,#c9935a,transparent); margin-bottom:40px; }
-  .date { font-family:'Courier New',monospace; font-size:11px; letter-spacing:4px; text-transform:uppercase; color:#c9935a; text-align:center; margin-bottom:8px; }
-  .tenet-label { font-family:'Courier New',monospace; font-size:10px; letter-spacing:3px; text-transform:uppercase; color:#a09888; text-align:center; margin-bottom:32px; }
-  .forge-badge { display:inline-block; font-family:'Courier New',monospace; font-size:10px; letter-spacing:3px; text-transform:uppercase; color:#1c2029; background:#c9935a; padding:4px 14px; border-radius:3px; margin-bottom:16px; }
-  .practice { font-size:22px; line-height:1.6; color:#ffffff; text-align:center; font-weight:600; padding:0 16px; margin-bottom:36px; }
-  .divider { width:40px; height:1px; background:#c9935a; margin:0 auto 36px; opacity:0.6; }
+  .gold-line { height:1px; background:linear-gradient(90deg,transparent 0%,rgba(196,168,130,.08) 15%,rgba(196,168,130,.35) 50%,rgba(196,168,130,.08) 85%,transparent 100%); margin-bottom:40px; }
+  .date { font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:700; letter-spacing:.25em; text-transform:uppercase; color:#b8a88e; text-align:center; margin-bottom:8px; }
+  .tenet-label { font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:#8a8d94; text-align:center; margin-bottom:32px; }
+  .forge-badge { display:inline-block; font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:700; letter-spacing:.25em; text-transform:uppercase; color:#2a2a2a; background:#b8a88e; padding:4px 14px; border-radius:3px; margin-bottom:16px; }
+  .practice { font-family:'Cormorant Garamond',Georgia,serif; font-size:24px; line-height:1.6; color:#ffffff; text-align:center; font-weight:600; padding:0 16px; margin-bottom:36px; }
+  .divider { width:40px; height:1px; background:rgba(196,168,130,.35); margin:0 auto 36px; }
   .quote-block { text-align:center; padding:0 24px; margin-bottom:36px; }
-  .quote { font-size:15px; font-style:italic; color:#d4c8b8; line-height:1.6; margin-bottom:8px; }
-  .quote-attr { font-family:'Courier New',monospace; font-size:10px; letter-spacing:2px; color:#a09888; text-transform:uppercase; }
+  .quote { font-family:'Cormorant Garamond',Georgia,serif; font-size:16px; font-style:italic; color:#f0e8d8; line-height:1.6; margin-bottom:8px; }
+  .quote-attr { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.2em; color:#8a8d94; text-transform:uppercase; }
   .pillar-block { text-align:center; margin-bottom:36px; }
-  .pillar-label { font-family:'Courier New',monospace; font-size:10px; letter-spacing:3px; text-transform:uppercase; color:#a09888; margin-bottom:4px; }
-  .pillar-name { font-size:16px; color:#c9935a; font-weight:600; }
+  .pillar-label { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.25em; text-transform:uppercase; color:#8a8d94; margin-bottom:4px; }
+  .pillar-name { font-family:'Cormorant Garamond',Georgia,serif; font-size:18px; color:#b8a88e; font-weight:600; }
   .cta { text-align:center; margin-bottom:40px; }
-  .cta a { display:inline-block; font-family:'Courier New',monospace; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#c9935a; text-decoration:none; border:1px solid rgba(201,147,90,0.5); padding:10px 28px; border-radius:4px; }
-  .gold-line-bottom { height:3px; background:linear-gradient(90deg,transparent,#c9935a,transparent); margin-top:40px; margin-bottom:24px; }
-  .footer { text-align:center; font-family:'Courier New',monospace; font-size:10px; letter-spacing:2px; color:#70685e; }
-  .footer a { color:#a09888; text-decoration:none; }
-  .footer .brand { font-size:13px; letter-spacing:4px; color:#a09888; margin-bottom:8px; display:block; }
+  .cta a { display:inline-block; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.15em; text-transform:uppercase; color:#b8a88e; text-decoration:none; border:1px solid rgba(196,168,130,.25); padding:10px 28px; border-radius:8px; }
+  .gold-line-bottom { height:1px; background:linear-gradient(90deg,transparent 0%,rgba(196,168,130,.08) 15%,rgba(196,168,130,.35) 50%,rgba(196,168,130,.08) 85%,transparent 100%); margin-top:40px; margin-bottom:24px; }
+  .footer { text-align:center; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.15em; color:#5e6168; }
+  .footer a { color:#8a8d94; text-decoration:none; }
+  .footer .brand { font-family:'Cormorant Garamond',Georgia,serif; font-size:15px; font-weight:700; letter-spacing:.2em; color:#8a8d94; margin-bottom:8px; display:block; }
 
   /* ── Light mode override (when email client forces light) ── */
   @media (prefers-color-scheme: light) {
-    body { background:#faf8f5 !important; color:#2c2a26 !important; }
-    .practice { color:#2c2a26 !important; }
-    .date { color:#96712e !important; }
-    .tenet-label { color:#5a5248 !important; }
-    .quote { color:#4a3f35 !important; }
-    .quote-attr { color:#5a5248 !important; }
-    .pillar-label { color:#5a5248 !important; }
-    .pillar-name { color:#96712e !important; }
-    .cta a { color:#96712e !important; border-color:rgba(150,113,46,0.4) !important; }
-    .gold-line, .gold-line-bottom { background:linear-gradient(90deg,transparent,#96712e,transparent) !important; }
-    .divider { background:#96712e !important; }
-    .forge-badge { color:#faf8f5 !important; background:#96712e !important; }
-    .footer { color:#8a8078 !important; }
-    .footer a { color:#6b5f52 !important; }
-    .footer .brand { color:#6b5f52 !important; }
+    body { background:#f5f3ef !important; color:#2a2a2a !important; }
+    .practice { color:#2a2a2a !important; }
+    .date { color:#8a7a64 !important; }
+    .tenet-label { color:#6b6d73 !important; }
+    .quote { color:#4a4640 !important; }
+    .quote-attr { color:#6b6d73 !important; }
+    .pillar-label { color:#6b6d73 !important; }
+    .pillar-name { color:#8a7a64 !important; }
+    .cta a { color:#8a7a64 !important; border-color:rgba(138,122,100,0.3) !important; }
+    .gold-line, .gold-line-bottom { background:linear-gradient(90deg,transparent 0%,rgba(138,122,100,.06) 15%,rgba(138,122,100,.3) 50%,rgba(138,122,100,.06) 85%,transparent 100%) !important; }
+    .divider { background:rgba(138,122,100,.3) !important; }
+    .forge-badge { color:#f5f3ef !important; background:#8a7a64 !important; }
+    .footer { color:#8a8d94 !important; }
+    .footer a { color:#6b6d73 !important; }
+    .footer .brand { color:#6b6d73 !important; }
   }
 </style>
 </head>
