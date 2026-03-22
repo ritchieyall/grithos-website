@@ -33,6 +33,8 @@ const SEQUENCE = [
 
 // ── Helpers ─────────────────────────────────────────────────────────────────
 
+const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+
 function log(msg) {
   const ts = new Date().toISOString();
   console.log(`[${ts}] ${msg}`);
@@ -204,6 +206,8 @@ async function main() {
           log(`ERROR sending Email ${step.id} to ${email}: ${err.message}`);
           errorCount++;
         }
+        // Rate limit: max 4 req/s to stay under Resend's 5 req/s limit
+        await sleep(250);
       }
     }
   }
