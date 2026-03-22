@@ -458,56 +458,6 @@ const storeLink = 'https://grithos.printful.me';
   </div>
 </section>
 
-<div class="gold-divider"></div>
 
-<!-- ═══ CTA ═══ -->
-<section class="merch-cta" id="merch-notify">
-  <div class="wrap">
-    <div class="merch-cta-label reveal d1">Stay in the Loop</div>
-    <h2 class="merch-cta-title reveal d2">Get notified when new designs drop.</h2>
-    <p class="merch-cta-sub reveal d2">No spam. Just a heads-up when we release new gear.</p>
-    <form class="merch-cta-form reveal d3" id="merchSubscribeForm">
-      <input type="email" name="email" placeholder="Your email address" required />
-      <button type="submit">Notify Me</button>
-    </form>
-    <p class="merch-cta-success" id="merchSignupSuccess">You're on the list. We'll let you know.</p>
-    <p class="merch-cta-error" id="merchSignupError">Something went wrong. Please try again.</p>
-  </div>
-</section>
-
-<script is:inline>
-/* ═══ MERCH SUBSCRIBE FORM ═══ */
-(function() {
-  var form = document.getElementById('merchSubscribeForm');
-  if (!form) return;
-  form.addEventListener('submit', async function(e) {
-    e.preventDefault();
-    var email = form.email.value;
-    var btn = form.querySelector('button');
-    var success = document.getElementById('merchSignupSuccess');
-    var error = document.getElementById('merchSignupError');
-    btn.textContent = '...';
-    btn.disabled = true;
-    error.style.display = 'none';
-    try {
-      var res = await fetch('/api/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email })
-      });
-      if (res.ok) {
-        form.style.display = 'none';
-        success.style.display = 'block';
-      } else {
-        throw new Error('fail');
-      }
-    } catch(err) {
-      error.style.display = 'block';
-      btn.textContent = 'NOTIFY ME';
-      btn.disabled = false;
-    }
-  });
-})();
-</script>
 
 </BaseLayout>
