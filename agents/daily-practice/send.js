@@ -95,7 +95,7 @@ const html = `<!DOCTYPE html>
   <div class="gold-line"></div>
 
   <div style="text-align:center;margin-bottom:20px;">
-    <img src="https://grithos.com/assets/images/logo-white.jpg" alt="Grithos" style="width:120px;height:auto;" />
+    <img src="https://grithos.com/assets/images/logo.png" alt="Grithos" style="width:120px;height:auto;" />
   </div>
 
   <div class="date">${dateStr}</div>
