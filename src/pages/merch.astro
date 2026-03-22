@@ -6,7 +6,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   title="Merch | Grithos — The Four Pillars Collection"
   description="The Four Pillars Collection — T-shirts built on Virtue, Apex, Control, and Death. Do Right. Regardless. Wear it."
   ogTitle="Grithos Merch — The Four Pillars Collection"
-  ogDescription="T-shirts launching soon. Virtue. Apex. Control. Death. Do Right. Regardless. — Wear it."
+  ogDescription="The Four Pillars Collection is live. Virtue. Apex. Control. Death. Do Right. Regardless. — Wear it."
   ogUrl="https://grithos.com/merch"
   canonical="https://grithos.com/merch"
   activePage="merch"
@@ -189,14 +189,45 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     font-weight: 700;
     letter-spacing: .15em;
     text-transform: uppercase;
-    color: var(--text-muted);
-    background: transparent;
-    border: 1px solid var(--border);
+    color: var(--void);
+    background: var(--gold);
+    border: 1px solid var(--gold);
     padding: 12px 32px;
     border-radius: 6px;
-    cursor: not-allowed;
-    opacity: 0.6;
+    cursor: pointer;
+    text-decoration: none;
     transition: all .3s;
+  }
+  .product-btn:hover {
+    opacity: 0.85;
+    box-shadow: 0 4px 20px rgba(196,168,130,.3);
+    transform: translateY(-1px);
+  }
+
+  /* ═══ SHOP CTA BUTTON ═══ */
+  .shop-cta-wrap {
+    text-align: center;
+    padding: 16px 0 40px;
+  }
+  .shop-cta-btn {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--void);
+    background: var(--gold);
+    border: 2px solid var(--gold);
+    padding: 18px 48px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all .3s;
+  }
+  .shop-cta-btn:hover {
+    opacity: 0.85;
+    box-shadow: 0 6px 30px rgba(196,168,130,.35);
+    transform: translateY(-2px);
   }
 
   /* ═══ CTA SECTION ═══ */
@@ -337,7 +368,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <!-- ═══ COLLECTION HEADER ═══ -->
 <section class="collection-header">
   <div class="wrap">
-    <div class="sec-label reveal d1">Launching Soon</div>
+    <div class="sec-label reveal d1">Now Available</div>
     <h2 class="sec-title reveal d1">The Four Pillars Collection</h2>
   </div>
 </section>
@@ -352,13 +383,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="product-image">
           <div class="product-image-numeral">I</div>
           <div class="product-image-name">Virtue</div>
-          <div class="product-badge">Coming Soon</div>
         </div>
         <div class="product-body">
           <div class="product-pillar-label">Pillar I</div>
           <h3 class="product-name">Virtue</h3>
           <p class="product-quote">"I choose what is right over what is easy."</p>
-          <span class="product-btn">Coming Soon</span>
+          <a href="https://grithos.printful.me" target="_blank" rel="noopener" class="product-btn">Buy Now</a>
         </div>
       </div>
 
@@ -367,13 +397,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="product-image">
           <div class="product-image-numeral">II</div>
           <div class="product-image-name">Apex</div>
-          <div class="product-badge">Coming Soon</div>
         </div>
         <div class="product-body">
           <div class="product-pillar-label">Pillar II</div>
           <h3 class="product-name">Apex</h3>
           <p class="product-quote">"I build when others rest."</p>
-          <span class="product-btn">Coming Soon</span>
+          <a href="https://grithos.printful.me" target="_blank" rel="noopener" class="product-btn">Buy Now</a>
         </div>
       </div>
 
@@ -382,13 +411,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="product-image">
           <div class="product-image-numeral">III</div>
           <div class="product-image-name">Control</div>
-          <div class="product-badge">Coming Soon</div>
         </div>
         <div class="product-body">
           <div class="product-pillar-label">Pillar III</div>
           <h3 class="product-name">Control</h3>
           <p class="product-quote">"I do not let comfort dictate my choices."</p>
-          <span class="product-btn">Coming Soon</span>
+          <a href="https://grithos.printful.me" target="_blank" rel="noopener" class="product-btn">Buy Now</a>
         </div>
       </div>
 
@@ -397,13 +425,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="product-image">
           <div class="product-image-numeral">IV</div>
           <div class="product-image-name">Death</div>
-          <div class="product-badge">Coming Soon</div>
         </div>
         <div class="product-body">
           <div class="product-pillar-label">Pillar IV</div>
           <h3 class="product-name">Death</h3>
           <p class="product-quote">"I live as if this day demands an answer."</p>
-          <span class="product-btn">Coming Soon</span>
+          <a href="https://grithos.printful.me" target="_blank" rel="noopener" class="product-btn">Buy Now</a>
         </div>
       </div>
 
@@ -411,14 +438,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </div>
 </section>
 
+<!-- ═══ SHOP CTA ═══ -->
+<section class="shop-cta-wrap reveal d1">
+  <a href="https://grithos.printful.me" target="_blank" rel="noopener" class="shop-cta-btn">Shop the Collection →</a>
+</section>
+
 <div class="gold-divider"></div>
 
 <!-- ═══ CTA ═══ -->
 <section class="merch-cta" id="merch-notify">
   <div class="wrap">
-    <div class="merch-cta-label reveal d1">Be First</div>
-    <h2 class="merch-cta-title reveal d2">Join the list to be first when we drop.</h2>
-    <p class="merch-cta-sub reveal d2">No spam. Just a single notification when the Four Pillars Collection is live.</p>
+    <div class="merch-cta-label reveal d1">Stay in the Loop</div>
+    <h2 class="merch-cta-title reveal d2">Get notified when new designs drop.</h2>
+    <p class="merch-cta-sub reveal d2">No spam. Just a heads-up when we release new gear.</p>
     <form class="merch-cta-form reveal d3" id="merchSubscribeForm">
       <input type="email" name="email" placeholder="Your email address" required />
       <button type="submit">Notify Me</button>
