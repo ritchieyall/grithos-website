@@ -57,78 +57,138 @@ const dateStr = `${MONTHS[month]} ${day}`;
 const isForgeDay = month === 2 && day === 13;
 
 // ── Email HTML ──────────────────────────────────────────────────────────
+// Table-based layout for Gmail/email client compatibility
+// Gmail in light mode strips CSS background from <body> — bgcolor on tables is the fix
+// Colors: --void #2a2a2a, --gold #b8a88e, --text #e8e4de, --text-secondary #8a8d94, --text-muted #5e6168
+// Fonts: Cormorant Garamond (headings), Source Sans 3 (body), JetBrains Mono (labels/mono)
+// Logo: Text-based "GRITHOS" with gold "GRIT" — same as nav on grithos.com
 const html = `<!DOCTYPE html>
-<html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="color-scheme" content="dark">
 <meta name="supported-color-schemes" content="dark">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<title>Grithos Daily Practice</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<!--[if mso]>
+<style>table,td{font-family:Arial,Helvetica,sans-serif!important;}</style>
+<![endif]-->
 <style>
-  :root { color-scheme: dark; }
-  /* ── Dark mode (default) ── */
-  body { margin:0; padding:0; background:#2a2a2a; color:#e8e4de; font-family:'Source Sans 3','Source Sans Pro',sans-serif; }
-  .container { max-width:580px; margin:0 auto; padding:40px 24px; }
-  .gold-line { height:1px; background:linear-gradient(90deg,transparent 0%,rgba(196,168,130,.08) 15%,rgba(196,168,130,.35) 50%,rgba(196,168,130,.08) 85%,transparent 100%); margin-bottom:40px; }
-  .date { font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:700; letter-spacing:.25em; text-transform:uppercase; color:#b8a88e; text-align:center; margin-bottom:8px; }
-  .tenet-label { font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:#8a8d94; text-align:center; margin-bottom:32px; }
-  .forge-badge { display:inline-block; font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:700; letter-spacing:.25em; text-transform:uppercase; color:#2a2a2a; background:#b8a88e; padding:4px 14px; border-radius:3px; margin-bottom:16px; }
-  .practice { font-family:'Cormorant Garamond',Georgia,serif; font-size:24px; line-height:1.6; color:#ffffff; text-align:center; font-weight:600; padding:0 16px; margin-bottom:36px; }
-  .divider { width:40px; height:1px; background:rgba(196,168,130,.35); margin:0 auto 36px; }
-  .quote-block { text-align:center; padding:0 24px; margin-bottom:36px; }
-  .quote { font-family:'Cormorant Garamond',Georgia,serif; font-size:16px; font-style:italic; color:#f0e8d8; line-height:1.6; margin-bottom:8px; }
-  .quote-attr { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.2em; color:#8a8d94; text-transform:uppercase; }
-  .pillar-block { text-align:center; margin-bottom:36px; }
-  .pillar-label { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.25em; text-transform:uppercase; color:#8a8d94; margin-bottom:4px; }
-  .pillar-name { font-family:'Cormorant Garamond',Georgia,serif; font-size:18px; color:#b8a88e; font-weight:600; }
-  .cta { text-align:center; margin-bottom:40px; }
-  .cta a { display:inline-block; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.15em; text-transform:uppercase; color:#b8a88e; text-decoration:none; border:1px solid rgba(196,168,130,.25); padding:10px 28px; border-radius:8px; }
-  .gold-line-bottom { height:1px; background:linear-gradient(90deg,transparent 0%,rgba(196,168,130,.08) 15%,rgba(196,168,130,.35) 50%,rgba(196,168,130,.08) 85%,transparent 100%); margin-top:40px; margin-bottom:24px; }
-  .footer { text-align:center; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.15em; color:#5e6168; }
-  .footer a { color:#8a8d94; text-decoration:none; }
-  .footer .brand { font-family:'Cormorant Garamond',Georgia,serif; font-size:15px; font-weight:700; letter-spacing:.2em; color:#8a8d94; margin-bottom:8px; display:block; }
-
-  /* Dark only — matches grithos.com */
+  :root{color-scheme:dark only;}
+  u+.body{background:#2a2a2a!important;}
+  body,#body-table{background-color:#2a2a2a!important;}
+  [data-ogsc] body,[data-ogsc] #body-table{background-color:#2a2a2a!important;}
+  @media(prefers-color-scheme:light){
+    body,#body-table,.dark-bg{background-color:#2a2a2a!important;}
+    .text-cream{color:#e8e4de!important;}
+    .text-gold{color:#b8a88e!important;}
+    .text-secondary{color:#8a8d94!important;}
+    .text-muted{color:#5e6168!important;}
+  }
+  @media(prefers-color-scheme:dark){
+    body,#body-table,.dark-bg{background-color:#2a2a2a!important;}
+    .text-cream{color:#e8e4de!important;}
+    .text-gold{color:#b8a88e!important;}
+    .text-secondary{color:#8a8d94!important;}
+    .text-muted{color:#5e6168!important;}
+  }
 </style>
 </head>
-<body>
-<div class="container">
-  <div class="gold-line"></div>
+<body class="body" bgcolor="#2a2a2a" style="margin:0;padding:0;background-color:#2a2a2a;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;">
+<!-- Full-width outer wrapper table — bgcolor survives Gmail light mode -->
+<table role="presentation" id="body-table" class="dark-bg" cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#2a2a2a" style="background-color:#2a2a2a;margin:0;padding:0;">
+<tr>
+<td align="center" valign="top" bgcolor="#2a2a2a" style="background-color:#2a2a2a;">
 
-  <div style="text-align:center;margin-bottom:20px;">
-    <img src="https://grithos.com/assets/images/logo.png" alt="Grithos" style="width:120px;height:auto;" />
-  </div>
+<!-- Inner content table — 580px max -->
+<table role="presentation" class="dark-bg" cellpadding="0" cellspacing="0" border="0" width="580" bgcolor="#2a2a2a" style="background-color:#2a2a2a;max-width:580px;width:100%;">
 
-  <div class="date">${dateStr}</div>
-  <div class="tenet-label">${tenet.tenet.split("—")[0].trim()}</div>
+<!-- Top spacing -->
+<tr><td bgcolor="#2a2a2a" style="background-color:#2a2a2a;padding:48px 28px 0 28px;">
 
-  ${isForgeDay ? '<div style="text-align:center;margin-bottom:20px;"><span class="forge-badge">FORGE DAY</span></div>' : ""}
+<!-- Gold line divider -->
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%"><tr>
+<td bgcolor="#2a2a2a" style="background-color:#2a2a2a;height:1px;font-size:1px;line-height:1px;background-image:linear-gradient(90deg,transparent 0%,rgba(196,168,130,.08) 15%,rgba(196,168,130,.35) 50%,rgba(196,168,130,.08) 85%,transparent 100%);">&nbsp;</td>
+</tr></table>
 
-  <div class="practice">${practice}</div>
+</td></tr>
 
-  <div class="divider"></div>
+<!-- Logo -->
+<tr><td bgcolor="#2a2a2a" style="background-color:#2a2a2a;padding:32px 28px 0 28px;text-align:center;">
+<a href="${SITE_URL}" style="text-decoration:none;"><img src="${SITE_URL}/assets/images/grithos-logo.png" alt="Grithos — Grit. Ethos. Grithos." width="260" style="width:260px;max-width:100%;height:auto;border:0;display:inline-block;" /></a>
+</td></tr>
 
-  <div class="quote-block">
-    <div class="quote">"${quote}"</div>
-    <div class="quote-attr">— ${tenet.lineage_figure}</div>
-  </div>
+<!-- Date -->
+<tr><td bgcolor="#2a2a2a" style="background-color:#2a2a2a;padding:24px 28px 0 28px;text-align:center;">
+<span class="text-gold" style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:#b8a88e;">${dateStr}</span>
+</td></tr>
 
-  <div class="pillar-block">
-    <div class="pillar-label">THIS MONTH'S PILLAR</div>
-    <div class="pillar-name">${tenet.pillar}</div>
-  </div>
+<!-- Tenet label -->
+<tr><td bgcolor="#2a2a2a" style="background-color:#2a2a2a;padding:6px 28px 0 28px;text-align:center;">
+<span class="text-secondary" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#8a8d94;">${tenet.tenet.split("—")[0].trim()}</span>
+</td></tr>
 
-  <div class="cta">
-    <a href="${SITE_URL}/practice">View the Full Calendar →</a>
-  </div>
+${isForgeDay ? `<!-- Forge Day badge -->
+<tr><td bgcolor="#2a2a2a" style="background-color:#2a2a2a;padding:20px 28px 0 28px;text-align:center;">
+<span style="display:inline-block;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:#2a2a2a;background-color:#b8a88e;padding:5px 16px;border-radius:8px;">FORGE DAY</span>
+</td></tr>` : ""}
 
-  <div class="gold-line-bottom"></div>
+<!-- Practice text -->
+<tr><td bgcolor="#2a2a2a" style="background-color:#2a2a2a;padding:36px 40px 0 40px;text-align:center;">
+<p class="text-cream" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:26px;line-height:1.5;color:#e8e4de;font-weight:600;margin:0;">${practice}</p>
+</td></tr>
 
-  <div class="footer">
-    <span class="brand">GRITHOS</span>
-    <a href="${SITE_URL}">grithos.com</a><br><br>
-    Do right. Regardless.
-  </div>
-</div>
+<!-- Divider -->
+<tr><td bgcolor="#2a2a2a" style="background-color:#2a2a2a;padding:40px 0 0 0;text-align:center;">
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center"><tr>
+<td style="width:60px;height:1px;font-size:1px;line-height:1px;background-color:rgba(196,168,130,.35);">&nbsp;</td>
+</tr></table>
+</td></tr>
+
+<!-- Quote -->
+<tr><td bgcolor="#2a2a2a" style="background-color:#2a2a2a;padding:40px 48px 0 48px;text-align:center;">
+<p class="text-cream" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:17px;font-style:italic;color:#e8e4de;line-height:1.65;margin:0 0 10px 0;opacity:0.85;">&ldquo;${quote}&rdquo;</p>
+<span class="text-secondary" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;color:#8a8d94;text-transform:uppercase;">&mdash; ${tenet.lineage_figure}</span>
+</td></tr>
+
+<!-- Pillar -->
+<tr><td bgcolor="#2a2a2a" style="background-color:#2a2a2a;padding:40px 28px 0 28px;text-align:center;">
+<span class="text-secondary" style="display:block;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:#8a8d94;margin-bottom:6px;">THIS MONTH&rsquo;S PILLAR</span>
+<span class="text-gold" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:20px;color:#b8a88e;font-weight:600;">${tenet.pillar}</span>
+</td></tr>
+
+<!-- CTA button -->
+<tr><td bgcolor="#2a2a2a" style="background-color:#2a2a2a;padding:40px 28px 0 28px;text-align:center;">
+<a href="${SITE_URL}/practice" class="text-gold" style="display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#b8a88e;text-decoration:none;border:1px solid rgba(196,168,130,.25);padding:12px 32px;border-radius:8px;">View the Full Calendar &rarr;</a>
+</td></tr>
+
+<!-- Bottom gold line -->
+<tr><td bgcolor="#2a2a2a" style="background-color:#2a2a2a;padding:40px 28px 0 28px;">
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%"><tr>
+<td bgcolor="#2a2a2a" style="background-color:#2a2a2a;height:1px;font-size:1px;line-height:1px;background-image:linear-gradient(90deg,transparent 0%,rgba(196,168,130,.08) 15%,rgba(196,168,130,.35) 50%,rgba(196,168,130,.08) 85%,transparent 100%);">&nbsp;</td>
+</tr></table>
+</td></tr>
+
+<!-- Footer -->
+<tr><td bgcolor="#2a2a2a" style="background-color:#2a2a2a;padding:28px 28px 40px 28px;text-align:center;">
+<span class="text-secondary" style="display:block;font-family:'Cormorant Garamond',Georgia,serif;font-size:16px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#8a8d94;margin-bottom:10px;">GRITHOS</span>
+<a href="${SITE_URL}" class="text-secondary" style="font-family:'Source Sans 3','Source Sans Pro',sans-serif;font-size:13px;color:#8a8d94;text-decoration:none;">grithos.com</a>
+<span class="text-muted" style="display:block;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.15em;color:#5e6168;margin-top:12px;text-transform:uppercase;">Do right. Regardless.</span>
+<span class="text-muted" style="display:block;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;color:#5e6168;margin-top:8px;">AI-assisted. Human-founded. Actionable by design.</span>
+<span style="display:block;font-family:'Source Sans 3','Source Sans Pro',sans-serif;font-size:11px;color:#5e6168;margin-top:16px;">
+<a href="{{{RESEND_UNSUBSCRIBE_URL}}}" class="text-secondary" style="color:#8a8d94;text-decoration:underline;">Unsubscribe</a>
+</span>
+</td></tr>
+
+</table>
+<!-- /Inner content table -->
+
+</td>
+</tr>
+</table>
+<!-- /Full-width outer wrapper -->
 </body>
 </html>`;
 
