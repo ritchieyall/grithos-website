@@ -60,11 +60,11 @@ const isForgeDay = month === 2 && day === 13;
 const html = `<!DOCTYPE html>
 <html lang="en">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="color-scheme" content="dark light">
-<meta name="supported-color-schemes" content="dark light">
+<meta name="color-scheme" content="dark">
+<meta name="supported-color-schemes" content="dark">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  :root { color-scheme: dark light; }
+  :root { color-scheme: dark; }
   /* ── Dark mode (default) ── */
   body { margin:0; padding:0; background:#2a2a2a; color:#e8e4de; font-family:'Source Sans 3','Source Sans Pro',sans-serif; }
   .container { max-width:580px; margin:0 auto; padding:40px 24px; }
@@ -87,24 +87,7 @@ const html = `<!DOCTYPE html>
   .footer a { color:#8a8d94; text-decoration:none; }
   .footer .brand { font-family:'Cormorant Garamond',Georgia,serif; font-size:15px; font-weight:700; letter-spacing:.2em; color:#8a8d94; margin-bottom:8px; display:block; }
 
-  /* ── Light mode override (when email client forces light) ── */
-  @media (prefers-color-scheme: light) {
-    body { background:#f5f3ef !important; color:#2a2a2a !important; }
-    .practice { color:#2a2a2a !important; }
-    .date { color:#8a7a64 !important; }
-    .tenet-label { color:#6b6d73 !important; }
-    .quote { color:#4a4640 !important; }
-    .quote-attr { color:#6b6d73 !important; }
-    .pillar-label { color:#6b6d73 !important; }
-    .pillar-name { color:#8a7a64 !important; }
-    .cta a { color:#8a7a64 !important; border-color:rgba(138,122,100,0.3) !important; }
-    .gold-line, .gold-line-bottom { background:linear-gradient(90deg,transparent 0%,rgba(138,122,100,.06) 15%,rgba(138,122,100,.3) 50%,rgba(138,122,100,.06) 85%,transparent 100%) !important; }
-    .divider { background:rgba(138,122,100,.3) !important; }
-    .forge-badge { color:#f5f3ef !important; background:#8a7a64 !important; }
-    .footer { color:#8a8d94 !important; }
-    .footer a { color:#6b6d73 !important; }
-    .footer .brand { color:#6b6d73 !important; }
-  }
+  /* Dark only — matches grithos.com */
 </style>
 </head>
 <body>
