@@ -38,8 +38,8 @@ const prefix = isHome ? '' : '/';
         </div>
       </div>
 
-      <!-- Merch -->
-      <a href="/merch" class={`nav-link ${activePage === 'merch' ? 'active' : ''}`} style="font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;">Merch</a>
+      <!-- The Store -->
+      <a href="/merch" class={activePage === 'merch' ? 'active' : ''}>The Store</a>
 
       <!-- Start Here — standalone CTA -->
       <a href="/footing" class={`nav-cta ${activePage === 'footing' ? 'active' : ''}`}>Start Here</a>
@@ -59,7 +59,7 @@ const prefix = isHome ? '' : '/';
 
 <div class="mobile-menu" id="mobileMenu">
   <a href="/footing" class={`mobile-cta ${activePage === 'footing' ? 'active' : ''}`}>Start Here</a>
-  <a href="/merch" class={activePage === 'merch' ? 'active' : ''} style="font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);padding:8px 0;">Merch</a>
+  <a href="/merch" class={activePage === 'merch' ? 'active' : ''}>The Store</a>
   <div class="mobile-section">
     <div class="mobile-section-label">The Philosophy</div>
     <a href={`${prefix}#foundation`}>Foundation</a>
