@@ -1,5 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const products = [
+  { pillar: 'I', name: 'Virtue', back: '/assets/images/merch-virtue-back.jpg', quote: '"I choose what is right over what is easy."', delay: 'd1' },
+  { pillar: 'II', name: 'Apex', back: '/assets/images/merch-apex-back.jpg', quote: '"I build when others rest."', delay: 'd2' },
+  { pillar: 'III', name: 'Control', back: '/assets/images/merch-control-back.jpg', quote: '"I do not let comfort dictate my choices."', delay: 'd3' },
+  { pillar: 'IV', name: 'Death', back: '/assets/images/merch-death-back.jpg', quote: '"I live as if this day demands an answer."', delay: 'd4' },
+];
+const frontImg = '/assets/images/merch-front.jpg';
+const storeLink = 'https://grithos.printful.me';
 ---
 
 <BaseLayout
@@ -76,6 +85,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 28px;
+    max-width: 820px;
+    margin: 0 auto;
   }
 
   /* ═══ PRODUCT CARD ═══ */
@@ -95,6 +106,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     background: linear-gradient(90deg, transparent 0%, var(--gold) 50%, transparent 100%);
     opacity: 0;
     transition: opacity .4s;
+    z-index: 2;
   }
   .product-card:hover {
     border-color: var(--gold-border);
@@ -105,54 +117,53 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     opacity: 0.8;
   }
 
-  /* Placeholder image area */
-  .product-image {
+  /* Product image area */
+  .product-image-wrap {
     width: 100%;
     aspect-ratio: 1 / 1;
-    background: linear-gradient(135deg, rgba(20,22,28,1) 0%, rgba(30,33,40,1) 100%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     position: relative;
+    overflow: hidden;
     border-bottom: 1px solid var(--border);
+    background: #14161c;
   }
-  .product-image-numeral {
-    font-family: var(--heading);
-    font-size: 80px;
-    font-weight: 300;
-    color: rgba(196,168,130,.08);
-    line-height: 1;
-    margin-bottom: 4px;
+  .product-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: opacity .4s ease;
   }
-  .product-image-name {
-    font-family: var(--heading);
-    font-size: 28px;
-    font-weight: 700;
-    color: rgba(196,168,130,.2);
-    letter-spacing: .05em;
-    text-transform: uppercase;
+  .product-image-wrap .img-front {
+    position: absolute;
+    top: 0; left: 0;
+    opacity: 0;
+  }
+  .product-card:hover .img-front {
+    opacity: 1;
+  }
+  .product-card:hover .img-back {
+    opacity: 0;
   }
 
-  /* Badge */
-  .product-badge {
+  /* Price badge */
+  .product-price-badge {
     position: absolute;
-    top: 16px;
-    right: 16px;
+    top: 12px;
+    right: 12px;
     font-family: var(--mono);
-    font-size: 9px;
+    font-size: 13px;
     font-weight: 700;
-    letter-spacing: .18em;
-    text-transform: uppercase;
     color: var(--void);
     background: var(--gold);
-    padding: 4px 12px;
+    padding: 5px 14px;
     border-radius: 4px;
+    z-index: 1;
+    letter-spacing: .04em;
   }
 
   /* Card body */
   .product-body {
-    padding: 32px 28px;
+    padding: 24px 20px 28px;
     text-align: center;
   }
   .product-pillar-label {
@@ -162,23 +173,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     letter-spacing: .22em;
     color: var(--gold);
     text-transform: uppercase;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
   }
   .product-name {
     font-family: var(--heading);
-    font-size: 28px;
+    font-size: 22px;
     font-weight: 700;
     color: var(--white);
-    margin-bottom: 12px;
+    margin-bottom: 8px;
   }
   .product-quote {
     font-family: var(--serif);
-    font-size: 16px;
+    font-size: 14px;
     font-style: italic;
     color: var(--text-secondary);
-    line-height: 1.7;
-    margin-bottom: 24px;
-    max-width: 320px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    max-width: 300px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -334,10 +345,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   /* ═══ RESPONSIVE ═══ */
   @media (max-width: 768px) {
     .merch-hero { padding: 40px 16px 16px; }
-    .products-grid { grid-template-columns: 1fr; }
-    .product-body { padding: 24px 20px; }
-    .product-image-numeral { font-size: 56px; }
-    .product-image-name { font-size: 22px; }
+    .products-grid {
+      grid-template-columns: 1fr;
+      max-width: 400px;
+    }
+    .product-body { padding: 20px 16px 24px; }
+    .product-name { font-size: 20px; }
   }
   @media (max-width: 540px) {
     .merch-cta-form {
@@ -377,70 +390,28 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <section class="products">
   <div class="wrap">
     <div class="products-grid">
-
-      <!-- VIRTUE -->
-      <div class="product-card reveal d1">
-        <div class="product-image">
-          <div class="product-image-numeral">I</div>
-          <div class="product-image-name">Virtue</div>
+      {products.map((p) => (
+        <div class={`product-card reveal ${p.delay}`}>
+          <div class="product-image-wrap">
+            <span class="product-price-badge">$32</span>
+            <img class="img-back" src={p.back} alt={`Grithos ${p.name} Pillar T-Shirt — Back Design`} loading="lazy" width="600" height="600" />
+            <img class="img-front" src={frontImg} alt={`Grithos ${p.name} Pillar T-Shirt — Front`} loading="lazy" width="600" height="600" />
+          </div>
+          <div class="product-body">
+            <div class="product-pillar-label">Pillar {p.pillar}</div>
+            <h3 class="product-name">{p.name}</h3>
+            <p class="product-quote">{p.quote}</p>
+            <a href={storeLink} target="_blank" rel="noopener" class="product-btn">Buy Now</a>
+          </div>
         </div>
-        <div class="product-body">
-          <div class="product-pillar-label">Pillar I</div>
-          <h3 class="product-name">Virtue</h3>
-          <p class="product-quote">"I choose what is right over what is easy."</p>
-          <a href="https://grithos.printful.me" target="_blank" rel="noopener" class="product-btn">Buy Now</a>
-        </div>
-      </div>
-
-      <!-- APEX -->
-      <div class="product-card reveal d2">
-        <div class="product-image">
-          <div class="product-image-numeral">II</div>
-          <div class="product-image-name">Apex</div>
-        </div>
-        <div class="product-body">
-          <div class="product-pillar-label">Pillar II</div>
-          <h3 class="product-name">Apex</h3>
-          <p class="product-quote">"I build when others rest."</p>
-          <a href="https://grithos.printful.me" target="_blank" rel="noopener" class="product-btn">Buy Now</a>
-        </div>
-      </div>
-
-      <!-- CONTROL -->
-      <div class="product-card reveal d3">
-        <div class="product-image">
-          <div class="product-image-numeral">III</div>
-          <div class="product-image-name">Control</div>
-        </div>
-        <div class="product-body">
-          <div class="product-pillar-label">Pillar III</div>
-          <h3 class="product-name">Control</h3>
-          <p class="product-quote">"I do not let comfort dictate my choices."</p>
-          <a href="https://grithos.printful.me" target="_blank" rel="noopener" class="product-btn">Buy Now</a>
-        </div>
-      </div>
-
-      <!-- DEATH -->
-      <div class="product-card reveal d4">
-        <div class="product-image">
-          <div class="product-image-numeral">IV</div>
-          <div class="product-image-name">Death</div>
-        </div>
-        <div class="product-body">
-          <div class="product-pillar-label">Pillar IV</div>
-          <h3 class="product-name">Death</h3>
-          <p class="product-quote">"I live as if this day demands an answer."</p>
-          <a href="https://grithos.printful.me" target="_blank" rel="noopener" class="product-btn">Buy Now</a>
-        </div>
-      </div>
-
+      ))}
     </div>
   </div>
 </section>
 
 <!-- ═══ SHOP CTA ═══ -->
 <section class="shop-cta-wrap reveal d1">
-  <a href="https://grithos.printful.me" target="_blank" rel="noopener" class="shop-cta-btn">Shop the Collection →</a>
+  <a href={storeLink} target="_blank" rel="noopener" class="shop-cta-btn">Shop the Collection →</a>
 </section>
 
 <div class="gold-divider"></div>
