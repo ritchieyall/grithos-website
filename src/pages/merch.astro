@@ -215,6 +215,18 @@ const storeLink = 'https://grithos.printful.me';
     transform: translateY(-1px);
   }
 
+  /* ═══ ESSENTIALS GRID ═══ */
+  .essentials-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+    max-width: 380px;
+    margin: 0 auto;
+  }
+  .product-image-wrap--square {
+    aspect-ratio: 1 / 1;
+  }
+
   /* ═══ SHOP CTA BUTTON ═══ */
   .shop-cta-wrap {
     text-align: center;
@@ -351,6 +363,7 @@ const storeLink = 'https://grithos.printful.me';
     }
     .product-body { padding: 20px 16px 24px; }
     .product-name { font-size: 20px; }
+    .essentials-grid { max-width: 340px; }
   }
   @media (max-width: 540px) {
     .merch-cta-form {
@@ -412,6 +425,37 @@ const storeLink = 'https://grithos.printful.me';
 <!-- ═══ SHOP CTA ═══ -->
 <section class="shop-cta-wrap reveal d1">
   <a href={storeLink} target="_blank" rel="noopener" class="shop-cta-btn">Shop the Collection →</a>
+</section>
+
+<div class="gold-divider"></div>
+
+<!-- ═══ ESSENTIALS HEADER ═══ -->
+<section class="collection-header">
+  <div class="wrap">
+    <div class="sec-label reveal d1">New</div>
+    <h2 class="sec-title reveal d1">Essentials</h2>
+  </div>
+</section>
+
+<!-- ═══ ESSENTIALS GRID ═══ -->
+<section class="products">
+  <div class="wrap">
+    <div class="essentials-grid">
+      <div class="product-card reveal d1">
+        <div class="product-image-wrap product-image-wrap--square">
+          <span class="product-price-badge">$22</span>
+          <img class="img-back" src="/assets/images/merch-mug-front.jpg" alt="Grithos Mug — Front" loading="lazy" width="600" height="600" />
+          <img class="img-front" src="/assets/images/merch-mug-side.jpg" alt="Grithos Mug — Side" loading="lazy" width="600" height="600" />
+        </div>
+        <div class="product-body">
+          <div class="product-pillar-label">Daily Essential</div>
+          <h3 class="product-name">Grithos Mug</h3>
+          <p class="product-quote">"Start every morning with intention."</p>
+          <a href={storeLink} target="_blank" rel="noopener" class="product-btn">Buy Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <div class="gold-divider"></div>
