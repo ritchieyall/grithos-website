@@ -1,0 +1,207 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Terms of Service | Grithos"
+  description="Terms of Service for Grithos. The terms governing your use of our website and services."
+  ogTitle="Terms of Service — Grithos"
+  ogDescription="Terms of Service governing your use of grithos.com and related services."
+  ogUrl="https://grithos.com/terms"
+  canonical="https://grithos.com/terms"
+  activePage="terms"
+>
+
+<style is:inline>
+  .legal-hero {
+    padding: 140px 0 48px;
+    text-align: center;
+  }
+  .legal-hero h1 {
+    font-family: var(--heading);
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--cream);
+    margin-bottom: 12px;
+  }
+  .legal-hero h1 span { color: var(--gold); }
+  .legal-hero p {
+    font-size: 17px;
+    color: var(--muted);
+    max-width: 480px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  .legal-section { padding: 0 0 100px; }
+  .legal-card {
+    background: rgba(255,255,255,.02);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 48px 40px;
+    max-width: 780px;
+    margin: 0 auto;
+  }
+  .legal-card .effective {
+    font-family: var(--mono, monospace);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 32px;
+    display: block;
+  }
+  .legal-card h2 {
+    font-family: var(--heading);
+    font-size: 21px;
+    font-weight: 700;
+    color: var(--cream);
+    margin: 40px 0 14px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+  .legal-card h2:first-of-type {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+  }
+  .legal-card h3 {
+    font-family: var(--heading);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--gold);
+    margin: 20px 0 8px;
+  }
+  .legal-card p, .legal-card li {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 12px;
+  }
+  .legal-card ul {
+    padding-left: 24px;
+    margin-bottom: 16px;
+  }
+  .legal-card li { margin-bottom: 8px; }
+  .legal-card a {
+    color: var(--gold);
+    text-decoration: none;
+    transition: color .2s;
+  }
+  .legal-card a:hover { text-decoration: underline; }
+
+  @media(max-width:640px) {
+    .legal-card { padding: 28px 20px; }
+    .legal-hero { padding: 120px 0 32px; }
+  }
+</style>
+
+<section class="legal-hero">
+  <div class="wrap">
+    <h1>Terms of <span>Service</span></h1>
+    <p>The terms governing your use of our website and services.</p>
+  </div>
+</section>
+
+<section class="legal-section">
+  <div class="wrap">
+    <div class="legal-card">
+      <span class="effective">Effective Date: March 23, 2026</span>
+
+      <p>These Terms of Service ("Terms") govern your access to and use of the website <a href="https://grithos.com">grithos.com</a> and all related services, content, and products offered by Grithos, operated by Richard Johnson ("Grithos," "we," "us," or "our"). By using our website or services, you agree to these Terms.</p>
+
+      <h2>1. Our Services</h2>
+      <p>Grithos provides:</p>
+      <ul>
+        <li>A daily email delivering original philosophy and practices.</li>
+        <li>Website content including articles, the Declaration, Tenets, and educational material.</li>
+        <li>Merchandise through our online store (fulfilled by Printful).</li>
+        <li>Community content and resources related to the Grithos philosophy.</li>
+      </ul>
+
+      <h2>2. Use of Website</h2>
+      <p>You agree to use our website only for lawful purposes and in accordance with these Terms. You agree not to:</p>
+      <ul>
+        <li>Use the website in any way that violates applicable law.</li>
+        <li>Attempt to gain unauthorized access to the website or its systems.</li>
+        <li>Use automated tools to scrape, crawl, or extract content without permission.</li>
+        <li>Transmit harmful code, spam, or disruptive content.</li>
+        <li>Reproduce or redistribute website content for commercial purposes without written permission.</li>
+      </ul>
+
+      <h2>3. Intellectual Property</h2>
+      <p>All content on grithos.com — including the Grithos Declaration, the Four Pillars, the Twelve Tenets, daily practices, articles, design, graphics, and logos — is the property of Grithos and Richard Johnson and is protected by applicable intellectual property laws.</p>
+      <p>You may share excerpts with attribution for personal, non-commercial use. Commercial reproduction, distribution, or derivative works require express written permission.</p>
+
+      <h2>4. Email Subscription</h2>
+      <p>By subscribing to the Grithos daily email:</p>
+      <ul>
+        <li>You consent to receive daily email content and occasional announcements.</li>
+        <li>You can unsubscribe at any time using the link in every email.</li>
+        <li>Your email is managed through Resend.com and will not be sold or shared with third parties for marketing.</li>
+      </ul>
+
+      <h2>5. Merchandise Purchases</h2>
+      <p>Merchandise available through our store is fulfilled by <strong>Printful</strong>, a third-party print-on-demand and fulfillment provider. By placing an order:</p>
+      <ul>
+        <li>You agree to provide accurate shipping and payment information.</li>
+        <li>Printful handles production, shipping, and payment processing under their own terms and privacy policy.</li>
+        <li>Refund and return policies are governed by Printful's policies, which we encourage you to review.</li>
+        <li>All sales are final unless the item is defective or damaged in transit.</li>
+      </ul>
+
+      <h2>6. SMS/Text Messaging Terms</h2>
+      <p>If you opt in to receive SMS or text messages from Grithos:</p>
+      <ul>
+        <li>You consent to receive text messages at the phone number provided.</li>
+        <li>Consent is not required to purchase any goods or services.</li>
+        <li>Message and data rates may apply. Message frequency varies.</li>
+        <li>Opt out at any time by replying <strong>STOP</strong> to any message.</li>
+        <li>Reply <strong>HELP</strong> for assistance.</li>
+        <li>We will not share your opt-in information or phone number with third parties for marketing purposes.</li>
+      </ul>
+
+      <h2>7. User Content</h2>
+      <p>If you submit content to us (testimonials, feedback, questions), you grant Grithos a non-exclusive, royalty-free license to use, display, and share that content in connection with our services. You retain ownership of your content.</p>
+
+      <h2>8. Disclaimers</h2>
+      <p>Our website, content, and services are provided "as is" and "as available." We make no warranties regarding:</p>
+      <ul>
+        <li>The accuracy, completeness, or reliability of any content.</li>
+        <li>Uninterrupted or error-free website operation.</li>
+        <li>The results of applying Grithos philosophy to your life.</li>
+      </ul>
+      <p>Grithos content is philosophical and educational in nature. It is not professional advice (legal, medical, psychological, or financial). Consult appropriate professionals for specific concerns.</p>
+
+      <h2>9. Limitation of Liability</h2>
+      <p>To the fullest extent permitted by law, Grithos and Richard Johnson shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of our website, content, or services.</p>
+      <p>Our total liability for any claim shall not exceed the amount you paid to us in the twelve (12) months preceding the claim, or $100, whichever is greater.</p>
+
+      <h2>10. Indemnification</h2>
+      <p>You agree to indemnify and hold harmless Grithos and Richard Johnson from any claims, damages, losses, or expenses arising from your use of our website or violation of these Terms.</p>
+
+      <h2>11. Third-Party Links</h2>
+      <p>Our website may link to third-party sites or services. We are not responsible for their content, privacy practices, or availability.</p>
+
+      <h2>12. Governing Law</h2>
+      <p>These Terms are governed by the laws of the State of Texas. Any disputes shall be resolved in the courts of the State of Texas.</p>
+
+      <h2>13. Modifications</h2>
+      <p>We may update these Terms at any time. Changes will be posted here with an updated effective date. Continued use constitutes acceptance.</p>
+
+      <h2>14. Severability</h2>
+      <p>If any provision of these Terms is found unenforceable, the remaining provisions remain in full effect.</p>
+
+      <h2>15. Contact</h2>
+      <p>Questions about these Terms? Contact us:</p>
+      <p>
+        <strong>Grithos</strong><br>
+        Operated by Richard Johnson<br>
+        <a href="mailto:richard@grithos.com">richard@grithos.com</a>
+      </p>
+    </div>
+  </div>
+</section>
+</BaseLayout>

@@ -1,0 +1,221 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Privacy Policy | Grithos"
+  description="Privacy Policy for Grithos. How we collect, use, and protect your information."
+  ogTitle="Privacy Policy — Grithos"
+  ogDescription="How Grithos collects, uses, and protects your personal information."
+  ogUrl="https://grithos.com/privacy"
+  canonical="https://grithos.com/privacy"
+  activePage="privacy"
+>
+
+<style is:inline>
+  .legal-hero {
+    padding: 140px 0 48px;
+    text-align: center;
+  }
+  .legal-hero h1 {
+    font-family: var(--heading);
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--cream);
+    margin-bottom: 12px;
+  }
+  .legal-hero h1 span { color: var(--gold); }
+  .legal-hero p {
+    font-size: 17px;
+    color: var(--muted);
+    max-width: 480px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  .legal-section { padding: 0 0 100px; }
+  .legal-card {
+    background: rgba(255,255,255,.02);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 48px 40px;
+    max-width: 780px;
+    margin: 0 auto;
+  }
+  .legal-card .effective {
+    font-family: var(--mono, monospace);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 32px;
+    display: block;
+  }
+  .legal-card h2 {
+    font-family: var(--heading);
+    font-size: 21px;
+    font-weight: 700;
+    color: var(--cream);
+    margin: 40px 0 14px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+  .legal-card h2:first-of-type {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+  }
+  .legal-card h3 {
+    font-family: var(--heading);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--gold);
+    margin: 20px 0 8px;
+  }
+  .legal-card p, .legal-card li {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 12px;
+  }
+  .legal-card ul {
+    padding-left: 24px;
+    margin-bottom: 16px;
+  }
+  .legal-card li { margin-bottom: 8px; }
+  .legal-card a {
+    color: var(--gold);
+    text-decoration: none;
+    transition: color .2s;
+  }
+  .legal-card a:hover { text-decoration: underline; }
+
+  @media(max-width:640px) {
+    .legal-card { padding: 28px 20px; }
+    .legal-hero { padding: 120px 0 32px; }
+  }
+</style>
+
+<section class="legal-hero">
+  <div class="wrap">
+    <h1>Privacy <span>Policy</span></h1>
+    <p>How we collect, use, and protect your information.</p>
+  </div>
+</section>
+
+<section class="legal-section">
+  <div class="wrap">
+    <div class="legal-card">
+      <span class="effective">Effective Date: March 23, 2026</span>
+
+      <p>Grithos, operated by Richard Johnson ("Grithos," "we," "us," or "our"), operates the website <a href="https://grithos.com">grithos.com</a> and related services including daily email content, merchandise, and educational materials. This Privacy Policy describes how we collect, use, and protect your information.</p>
+
+      <h2>1. Information We Collect</h2>
+
+      <h3>Information You Provide</h3>
+      <ul>
+        <li><strong>Email subscription:</strong> Your email address when you subscribe to our daily email or newsletter.</li>
+        <li><strong>Contact information:</strong> Name and email address if you reach out to us directly.</li>
+        <li><strong>Purchase information:</strong> Name, shipping address, email, and payment details when you purchase merchandise through our store.</li>
+        <li><strong>Phone number:</strong> If you opt in to receive SMS/text messages.</li>
+      </ul>
+
+      <h3>Information Collected Automatically</h3>
+      <ul>
+        <li><strong>Usage data:</strong> Pages visited, time on site, referring URLs, and browsing patterns.</li>
+        <li><strong>Device information:</strong> Browser type, operating system, IP address, and device identifiers.</li>
+        <li><strong>Email engagement:</strong> Open rates and click-through data for emails sent through our platform.</li>
+      </ul>
+
+      <h2>2. How We Use Your Information</h2>
+      <ul>
+        <li>To deliver daily email content and newsletters you've subscribed to.</li>
+        <li>To process and fulfill merchandise orders.</li>
+        <li>To respond to your inquiries and communications.</li>
+        <li>To improve our website, content, and services.</li>
+        <li>To send administrative and transactional communications.</li>
+        <li>To comply with legal obligations.</li>
+      </ul>
+
+      <h2>3. SMS/Text Messaging</h2>
+      <p>If you opt in to receive SMS or text messages from Grithos, the following applies:</p>
+      <ul>
+        <li>We may send you text messages related to daily practices, content updates, order notifications, and other Grithos communications.</li>
+        <li><strong>Consent is not a condition of purchase.</strong> You are not required to consent to receive text messages as a condition of purchasing any goods or services.</li>
+        <li><strong>Message frequency:</strong> Message frequency varies. You may receive up to 5 messages per week.</li>
+        <li><strong>Message and data rates may apply.</strong> Standard messaging and data rates from your carrier may apply.</li>
+        <li><strong>Opt-out:</strong> You may opt out at any time by replying <strong>STOP</strong> to any message. You will receive a confirmation and no further texts unless you re-subscribe.</li>
+        <li><strong>Help:</strong> Reply <strong>HELP</strong> for assistance or email <a href="mailto:richard@grithos.com">richard@grithos.com</a>.</li>
+        <li>We do not sell, rent, or share your phone number or SMS opt-in data with third parties or affiliates for marketing purposes.</li>
+        <li>Your opt-in consent and phone number will not be shared with any third parties except as required to deliver SMS messages (e.g., our messaging platform provider).</li>
+      </ul>
+
+      <h2>4. Email Communications</h2>
+      <p>When you subscribe to the Grithos daily email:</p>
+      <ul>
+        <li>Your email address is stored and managed through <strong>Resend.com</strong>, our email delivery platform.</li>
+        <li>We track email opens and clicks to improve content quality.</li>
+        <li>You may unsubscribe at any time using the unsubscribe link in every email.</li>
+        <li>We will never sell or share your email address with third parties for marketing purposes.</li>
+      </ul>
+
+      <h2>5. Cookies and Tracking</h2>
+      <p>Our website may use cookies and similar technologies to:</p>
+      <ul>
+        <li>Ensure proper website functionality.</li>
+        <li>Analyze traffic and usage patterns.</li>
+        <li>Remember your preferences.</li>
+      </ul>
+      <p>You can manage cookies through your browser settings. Disabling cookies may affect some website features.</p>
+
+      <h2>6. Third-Party Services</h2>
+      <p>We use the following third-party services:</p>
+      <ul>
+        <li><strong>Resend.com:</strong> Email delivery and subscriber management.</li>
+        <li><strong>Printful:</strong> Merchandise fulfillment and shipping. When you purchase merchandise, Printful processes your order and shipping information under their own privacy policy.</li>
+        <li><strong>Netlify:</strong> Website hosting.</li>
+        <li><strong>Analytics providers:</strong> Anonymized website usage data.</li>
+      </ul>
+      <p>Each third-party service operates under its own privacy policy.</p>
+
+      <h2>7. Data Security</h2>
+      <p>We implement reasonable measures to protect your personal information. However, no method of electronic transmission or storage is completely secure. We cannot guarantee absolute security of your data.</p>
+
+      <h2>8. Data Retention</h2>
+      <p>We retain your information only as long as necessary:</p>
+      <ul>
+        <li><strong>Email subscribers:</strong> Until you unsubscribe, plus a reasonable period to process the request.</li>
+        <li><strong>Purchase data:</strong> As required for order fulfillment, returns, and legal/tax obligations.</li>
+        <li><strong>Contact communications:</strong> As long as needed to address your inquiry.</li>
+      </ul>
+
+      <h2>9. Your Rights</h2>
+      <p>You have the right to:</p>
+      <ul>
+        <li>Access the personal information we hold about you.</li>
+        <li>Request correction of inaccurate data.</li>
+        <li>Request deletion of your personal information.</li>
+        <li>Unsubscribe from emails at any time.</li>
+        <li>Opt out of SMS messages by replying STOP.</li>
+      </ul>
+      <p>To exercise these rights, email <a href="mailto:richard@grithos.com">richard@grithos.com</a>.</p>
+
+      <h2>10. Children's Privacy</h2>
+      <p>Our services are not directed to individuals under 18. We do not knowingly collect personal information from children. If we learn we have collected data from a child under 18, we will delete it promptly.</p>
+
+      <h2>11. Changes to This Policy</h2>
+      <p>We may update this Privacy Policy from time to time. Changes will be posted here with an updated effective date. Continued use of our website and services after changes constitutes acceptance.</p>
+
+      <h2>12. Contact</h2>
+      <p>Questions about this Privacy Policy? Contact us:</p>
+      <p>
+        <strong>Grithos</strong><br>
+        Operated by Richard Johnson<br>
+        <a href="mailto:richard@grithos.com">richard@grithos.com</a>
+      </p>
+    </div>
+  </div>
+</section>
+</BaseLayout>
