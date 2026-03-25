@@ -644,9 +644,10 @@ document.addEventListener('DOMContentLoaded', function() {
       
       // Stagger the reveal of AI age content
       aiAgeContent.forEach((el, index) => {
+        el.style.display = 'block';
         setTimeout(() => {
           el.classList.add('visible');
-        }, index * 50);
+        }, 50 + index * 50);
       });
     } else {
       // Hide AI age, show classical
@@ -654,7 +655,7 @@ document.addEventListener('DOMContentLoaded', function() {
         el.classList.remove('visible');
         setTimeout(() => {
           el.style.display = 'none';
-        }, 300); // Wait for fade transition
+        }, 400);
       });
       
       classicalContent.forEach(el => el.classList.remove('hidden'));
