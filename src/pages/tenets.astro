@@ -57,63 +57,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     margin: 0 auto;
   }
 
-  /* ═══ PATH TOGGLE ═══ */
-  .path-toggle-container {
-    padding: 24px 0 16px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .path-toggle {
-    display: inline-flex;
-    background: rgba(196,168,130,.08);
-    border: 1px solid rgba(196,168,130,.2);
-    border-radius: 10px;
-    padding: 4px;
-    position: relative;
-  }
-  .path-toggle-option {
-    position: relative;
-    padding: 10px 20px;
-    font-family: var(--mono);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    background: transparent;
-    border: none;
-    border-radius: 7px;
-    cursor: pointer;
-    transition: color .3s ease;
-    z-index: 2;
-  }
-  .path-toggle-option.active {
-    color: var(--void);
-  }
-  .path-toggle-slider {
-    position: absolute;
-    top: 4px;
-    left: 4px;
-    right: 4px;
-    height: calc(100% - 8px);
-    background: var(--gold);
-    border-radius: 7px;
-    transition: transform .3s cubic-bezier(.16,1,.3,1);
-    z-index: 1;
-    width: calc(50% - 4px);
-  }
-  .path-toggle[data-active="ai-age"] .path-toggle-slider {
-    transform: translateX(100%);
-  }
-
-  @media(max-width:600px) {
-    .path-toggle-option {
-      padding: 8px 16px;
-      font-size: 10px;
-    }
-  }
-
   /* ═══ PREAMBLE ═══ */
   .preamble {
     padding: 28px 0;
@@ -194,7 +137,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     font-weight: 700;
     color: var(--white);
     letter-spacing: -.01em;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
+  }
+
+  /* ═══ WISDOM SECTIONS ═══ */
+  .tenet-section-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+    opacity: 0.7;
   }
   .tenet-body {
     font-family: var(--body);
@@ -206,68 +161,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     margin-top: 16px;
   }
 
-  /* ═══ AI AGE CONTENT ═══ */
+  .tenet-ancient {
+    margin-bottom: 28px;
+  }
+
   .tenet-ai-age {
-    display: none;
-    opacity: 0;
-    transform: translateY(10px);
-    transition: opacity .4s ease, transform .4s ease;
+    padding-top: 20px;
+    border-top: 1px solid rgba(196,168,130,.08);
   }
-  .tenet-ai-age.visible {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
-  }
-  .tenet-ai-quote {
-    font-family: var(--serif);
-    font-size: clamp(16px, 2.2vw, 20px);
-    font-style: italic;
-    color: var(--gold);
-    line-height: 1.6;
-    text-align: center;
-    position: relative;
-    padding: 20px 0;
-  }
-  .tenet-ai-quote::before,
-  .tenet-ai-quote::after {
-    content: '"';
-    font-size: 1.4em;
-    color: rgba(196,168,130,.4);
-    position: absolute;
-  }
-  .tenet-ai-quote::before {
-    top: 0;
-    left: 0;
-  }
-  .tenet-ai-quote::after {
-    bottom: 0;
-    right: 0;
-  }
-
-  /* ═══ CLASSICAL CONTENT ═══ */
-  .tenet-classical {
-    opacity: 1;
-    transform: translateY(0);
-    transition: opacity .4s ease, transform .4s ease;
-  }
-  .tenet-classical.hidden {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-
-  /* ═══ PATH INDICATOR ═══ */
-  .active-path-indicator {
-    text-align: center;
-    margin-bottom: 20px;
-    opacity: 0.7;
-  }
-  .path-indicator-text {
-    font-family: var(--mono);
-    font-size: 9px;
-    font-weight: 600;
-    letter-spacing: .15em;
-    text-transform: uppercase;
-    color: var(--text-muted);
+  .tenet-ai-age .tenet-body {
+    color: rgba(232, 228, 222, 0.6);
   }
 
   /* ═══ CLOSING ═══ */
@@ -330,19 +233,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </div>
 </section>
 
-<!-- ═══ PATH TOGGLE ═══ -->
-<section class="path-toggle-container">
-  <div class="wrap">
-    <div class="reveal d2">
-      <div class="path-toggle" data-active="classical">
-        <div class="path-toggle-slider"></div>
-        <button class="path-toggle-option active" data-path="classical">The Grithosian Path</button>
-        <button class="path-toggle-option" data-path="ai-age">The AI Age</button>
-      </div>
-    </div>
-  </div>
-</section>
-
 <div class="section-divider"></div>
 
 <!-- ═══ PREAMBLE ═══ -->
@@ -365,51 +255,69 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <p class="tenets-group-tagline">Three tenets for the honest life.</p>
     </div>
 
+    <!-- TENET I -->
     <div class="tenet reveal d2" id="tenet-i">
       <div class="tenet-number">Tenet I</div>
       <h3 class="tenet-title">Tell the Truth. Even When It Costs You.</h3>
-      
-      <!-- Classical Content -->
-      <div class="tenet-classical tenet-body">
-        <p>A Grithosian does not bend the truth to protect comfort — theirs or anyone else's. You say what is real. You report what happened. You admit what you did. Not because it is easy. Because it is right.</p>
-        <p>If the truth costs you a friendship, a deal, a promotion — you pay that price and you sleep well. A life built on lies is a life built on sand. A Grithosian builds on stone.</p>
+
+      <div class="tenet-ancient">
+        <div class="tenet-section-label">Ancient Wisdom</div>
+        <div class="tenet-body">
+          <p>A Grithosian does not bend the truth to protect comfort — theirs or anyone else's. You say what is real. You report what happened. You admit what you did. Not because it is easy. Because it is right.</p>
+          <p>If the truth costs you a friendship, a deal, a promotion — you pay that price and you sleep well. A life built on lies is a life built on sand. A Grithosian builds on stone.</p>
+        </div>
       </div>
-      
-      <!-- AI Age Content -->
+
       <div class="tenet-ai-age">
-        <div class="tenet-ai-quote">Truth has never been easier to manufacture. That is exactly why telling it has never mattered more.</div>
+        <div class="tenet-section-label">The AI Age</div>
+        <div class="tenet-body">
+          <p>Truth has never been easier to manufacture. A deepfake takes seconds. A synthetic voice can say anything in anyone's tone. Entire articles, entire identities, can be fabricated before breakfast. The cost of lying just dropped to zero.</p>
+          <p>That is exactly why telling the truth has never mattered more. A Grithosian does not hide behind generated alibis. Does not let a machine polish reality into something more comfortable. When the world is drowning in synthetic noise, your honest word becomes the rarest signal on earth. Be that signal.</p>
+        </div>
       </div>
     </div>
 
+    <!-- TENET II -->
     <div class="tenet reveal d3" id="tenet-ii">
       <div class="tenet-number">Tenet II</div>
       <h3 class="tenet-title">Keep Your Word Like Your Life Depends on It.</h3>
-      
-      <!-- Classical Content -->
-      <div class="tenet-classical tenet-body">
-        <p>When a Grithosian says they will do something, it is done. No qualifiers. No escape clauses. No "I'll try." You said it. Now you do it.</p>
-        <p>This means you speak carefully. You do not make promises you cannot keep. You do not commit to things you have no intention of finishing. Your word is the most valuable thing you own. Treat it that way.</p>
+
+      <div class="tenet-ancient">
+        <div class="tenet-section-label">Ancient Wisdom</div>
+        <div class="tenet-body">
+          <p>When a Grithosian says they will do something, it is done. No qualifiers. No escape clauses. No "I'll try." You said it. Now you do it.</p>
+          <p>This means you speak carefully. You do not make promises you cannot keep. You do not commit to things you have no intention of finishing. Your word is the most valuable thing you own. Treat it that way.</p>
+        </div>
       </div>
-      
-      <!-- AI Age Content -->
+
       <div class="tenet-ai-age">
-        <div class="tenet-ai-quote">An algorithm will optimize your comfort. Only you can optimize your character.</div>
+        <div class="tenet-section-label">The AI Age</div>
+        <div class="tenet-body">
+          <p>An algorithm will optimize your schedule. It will draft the follow-up, auto-reply with regret, and quietly reschedule the thing you promised. The machine makes breaking commitments frictionless. That is not progress — that is erosion.</p>
+          <p>A Grithosian does not let automation become an excuse engine. When you give your word, a machine does not get to take it back. Your commitments are not data points to be optimized. They are the architecture of your character. An algorithm can manage your calendar. Only you can honor what you said you would do.</p>
+        </div>
       </div>
     </div>
 
+    <!-- TENET III -->
     <div class="tenet reveal d4" id="tenet-iii">
       <div class="tenet-number">Tenet III</div>
       <h3 class="tenet-title">Own Your Wins. But Do Right in the Dark.</h3>
-      
-      <!-- Classical Content -->
-      <div class="tenet-classical tenet-body">
-        <p>When you do something great — say so. A Grithosian does not shrink from recognition. You built it. You earned it. Tell the world. Hiding your achievements is not humility. It is a betrayal of your apex nature.</p>
-        <p>But here is the line that separates you: when no one is watching, when there is no audience, no reward, no applause — you still do right. Return the extra change. Tell the truth on the form. Do the work you said you did. The real measure of a Grithosian is not what you do under the spotlight. It is what you do in the dark.</p>
+
+      <div class="tenet-ancient">
+        <div class="tenet-section-label">Ancient Wisdom</div>
+        <div class="tenet-body">
+          <p>When you do something great — say so. A Grithosian does not shrink from recognition. You built it. You earned it. Tell the world. Hiding your achievements is not humility. It is a betrayal of your apex nature.</p>
+          <p>But here is the line that separates you: when no one is watching, when there is no audience, no reward, no applause — you still do right. Return the extra change. Tell the truth on the form. Do the work you said you did. The real measure of a Grithosian is not what you do under the spotlight. It is what you do in the dark.</p>
+        </div>
       </div>
-      
-      <!-- AI Age Content -->
+
       <div class="tenet-ai-age">
-        <div class="tenet-ai-quote">In a world of inflated credentials and AI-generated portfolios, let your actual work be your loudest voice.</div>
+        <div class="tenet-section-label">The AI Age</div>
+        <div class="tenet-body">
+          <p>The age of inflated credentials is here. AI-generated portfolios. Machine-written thought leadership attributed to humans. Résumés polished by models that never lived the experience. Everyone looks brilliant on screen. Fewer and fewer actually are.</p>
+          <p>A Grithosian lets their actual work do the talking. You do not pass off generated output as your own sweat. And when you use a tool — you say so. The dark is darker now than it has ever been, because the machines cannot see into it either. Integrity in the AI age is not performing honesty for the algorithm. It is being honest when no system is tracking you at all.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -426,51 +334,69 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <p class="tenets-group-tagline">Three tenets for the apex life.</p>
     </div>
 
+    <!-- TENET IV -->
     <div class="tenet reveal d2" id="tenet-iv">
       <div class="tenet-number">Tenet IV</div>
       <h3 class="tenet-title">Never Shrink. Never Apologize for Strength.</h3>
-      
-      <!-- Classical Content -->
-      <div class="tenet-classical tenet-body">
-        <p>You are the most capable species on this planet. Act like it. Do not dim your light to make someone else comfortable. Do not play small because the world tells you ambition is arrogance.</p>
-        <p>A Grithosian owns their capability completely. You are strong. You are sharp. You are built to lead. That is not ego — it is fact. Use it. Every day you play small is a day wasted.</p>
+
+      <div class="tenet-ancient">
+        <div class="tenet-section-label">Ancient Wisdom</div>
+        <div class="tenet-body">
+          <p>You are the most capable species on this planet. Act like it. Do not dim your light to make someone else comfortable. Do not play small because the world tells you ambition is arrogance.</p>
+          <p>A Grithosian owns their capability completely. You are strong. You are sharp. You are built to lead. That is not ego — it is fact. Use it. Every day you play small is a day wasted.</p>
+        </div>
       </div>
-      
-      <!-- AI Age Content -->
+
       <div class="tenet-ai-age">
-        <div class="tenet-ai-quote">The machines are useful. The question is: are you?</div>
+        <div class="tenet-section-label">The AI Age</div>
+        <div class="tenet-body">
+          <p>The machines are faster. They process more, produce more, and never need sleep. And now the world whispers that maybe you are not needed anymore. That maybe the human era is ending. That the smart move is to step aside.</p>
+          <p>A Grithosian does not step aside. You are not a slower version of a computer. You are the thing that gives the output meaning. Judgment, courage, conviction, sacrifice — no model replicates these. Apologizing for your strength because a machine is faster is like apologizing for your heartbeat because a clock keeps better time. You are apex. The tools serve you. Not the other way around.</p>
+        </div>
       </div>
     </div>
 
+    <!-- TENET V -->
     <div class="tenet reveal d3" id="tenet-v">
       <div class="tenet-number">Tenet V</div>
       <h3 class="tenet-title">Protect Those Beneath You.</h3>
-      
-      <!-- Classical Content -->
-      <div class="tenet-classical tenet-body">
-        <p>Apex is not a trophy. It is a weight. The strongest creature in the room has the greatest responsibility — not to dominate, but to protect. A Grithosian lifts the people around them.</p>
-        <p>You mentor. You shield. You stand between the vulnerable and the harm that's coming for them. Not because they are weak — because you are strong enough to carry it. This is what apex means. Power without protection is tyranny.</p>
+
+      <div class="tenet-ancient">
+        <div class="tenet-section-label">Ancient Wisdom</div>
+        <div class="tenet-body">
+          <p>Apex is not a trophy. It is a weight. The strongest creature in the room has the greatest responsibility — not to dominate, but to protect. A Grithosian lifts the people around them.</p>
+          <p>You mentor. You shield. You stand between the vulnerable and the harm that's coming for them. Not because they are weak — because you are strong enough to carry it. This is what apex means. Power without protection is tyranny.</p>
+        </div>
       </div>
-      
-      <!-- AI Age Content -->
+
       <div class="tenet-ai-age">
-        <div class="tenet-ai-quote">AI doesn't sleep. That is not a threat — it is a reminder that preparation has no finish line.</div>
+        <div class="tenet-section-label">The AI Age</div>
+        <div class="tenet-body">
+          <p>Automation does not displace everyone equally. It comes first for the people with the least leverage — the ones without networks, without capital, without the luxury of "pivoting." The gap between those who wield the tools and those displaced by them is widening every quarter.</p>
+          <p>A Grithosian does not hoard the advantage. You teach what you know. You pull people up into the new economy, not out of charity, but because that is what apex demands. The strongest in the room does not watch the weakest get swept away and call it progress. You extend your hand. You share the knowledge. AI does not sleep — and neither does your responsibility to the people counting on you.</p>
+        </div>
       </div>
     </div>
 
+    <!-- TENET VI -->
     <div class="tenet reveal d4" id="tenet-vi">
       <div class="tenet-number">Tenet VI</div>
       <h3 class="tenet-title">Reject the Victim. Become the Author.</h3>
-      
-      <!-- Classical Content -->
-      <div class="tenet-classical tenet-body">
-        <p>Bad things happen. To everyone. A Grithosian does not deny hardship. They refuse to be defined by it. The moment you decide that what happened to you is bigger than what you do next — you have surrendered your apex nature.</p>
-        <p>You are not what happened to you. You are what you choose to do now. Today. This hour. Feel the pain. Honor it. Then move. Write the next chapter yourself. You are the author, not the character.</p>
+
+      <div class="tenet-ancient">
+        <div class="tenet-section-label">Ancient Wisdom</div>
+        <div class="tenet-body">
+          <p>Bad things happen. To everyone. A Grithosian does not deny hardship. They refuse to be defined by it. The moment you decide that what happened to you is bigger than what you do next — you have surrendered your apex nature.</p>
+          <p>You are not what happened to you. You are what you choose to do now. Today. This hour. Feel the pain. Honor it. Then move. Write the next chapter yourself. You are the author, not the character.</p>
+        </div>
       </div>
-      
-      <!-- AI Age Content -->
+
       <div class="tenet-ai-age">
-        <div class="tenet-ai-quote">Apologizing for your strength because a machine is faster is like apologizing for your heartbeat because a clock keeps better time.</div>
+        <div class="tenet-section-label">The AI Age</div>
+        <div class="tenet-body">
+          <p>It has never been easier to blame the machine. My job was automated. The algorithm chose someone else. The market shifted and I could not keep up. These are facts — but they are not your identity. A Grithosian does not let disruption write their story.</p>
+          <p>The AI age will rewrite entire industries. Some doors will close that you spent years walking through. That is the reality. But a Grithosian does not stand at closed doors reciting grievances to an algorithm. You learn the new tool. You build the new skill. You write the next chapter with whatever pen the age hands you. Author — not victim. Especially now.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -487,51 +413,69 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <p class="tenets-group-tagline">Three tenets for the disciplined life.</p>
     </div>
 
+    <!-- TENET VII -->
     <div class="tenet reveal d2" id="tenet-vii">
       <div class="tenet-number">Tenet VII</div>
       <h3 class="tenet-title">Own Only What Is Yours.</h3>
-      
-      <!-- Classical Content -->
-      <div class="tenet-classical tenet-body">
-        <p>Your thoughts. Your decisions. Your effort. Your character. These four things are yours — completely and without exception. You own them. You fight for them. And you fight for the outcome too.</p>
-        <p>But when the bounds decide otherwise — and sometimes they will — you do not shatter. You redirect. Other people's opinions, the economy, the weather, the diagnosis — these belong to the bounds, not to you. A Grithosian draws this line with absolute clarity every single day. Own what is yours. Fight for the result. And when the bounds close the door, you do not break against it. You turn and find another way.</p>
+
+      <div class="tenet-ancient">
+        <div class="tenet-section-label">Ancient Wisdom</div>
+        <div class="tenet-body">
+          <p>Your thoughts. Your decisions. Your effort. Your character. These four things are yours — completely and without exception. You own them. You fight for them. And you fight for the outcome too.</p>
+          <p>But when the bounds decide otherwise — and sometimes they will — you do not shatter. You redirect. Other people's opinions, the economy, the weather, the diagnosis — these belong to the bounds, not to you. A Grithosian draws this line with absolute clarity every single day. Own what is yours. Fight for the result. And when the bounds close the door, you do not break against it. You turn and find another way.</p>
+        </div>
       </div>
-      
-      <!-- AI Age Content -->
+
       <div class="tenet-ai-age">
-        <div class="tenet-ai-quote">You can outsource your tasks. You cannot outsource your discipline.</div>
+        <div class="tenet-section-label">The AI Age</div>
+        <div class="tenet-body">
+          <p>You can outsource your tasks. You can delegate your inbox, your drafts, your analysis, your scheduling. Machines will do all of it faster and cheaper. But there are four things no model can carry for you: your thoughts, your decisions, your effort, and your character.</p>
+          <p>A Grithosian does not confuse delegation with abdication. The tool writes the report — you own the conclusion. The model suggests the strategy — you own the decision. The algorithm optimizes the path — you own where it leads. Automate everything you can. But never automate your accountability. That is yours. It will always be yours.</p>
+        </div>
       </div>
     </div>
 
+    <!-- TENET VIII -->
     <div class="tenet reveal d3" id="tenet-viii">
       <div class="tenet-number">Tenet VIII</div>
       <h3 class="tenet-title">Redirect Immediately.</h3>
-      
-      <!-- Classical Content -->
-      <div class="tenet-classical tenet-body">
-        <p>When the bounds close a door, a Grithosian does not stand there knocking. You do not rage at the wall. You do not collapse in the hallway. You turn. Immediately. Deliberately.</p>
-        <p>Every ounce of energy that would have been spent fighting what you cannot change gets redirected — instantly — toward what you can. This is not cold. This is not heartless. This is the most efficient use of the only life you have. Do not waste it arguing with reality.</p>
+
+      <div class="tenet-ancient">
+        <div class="tenet-section-label">Ancient Wisdom</div>
+        <div class="tenet-body">
+          <p>When the bounds close a door, a Grithosian does not stand there knocking. You do not rage at the wall. You do not collapse in the hallway. You turn. Immediately. Deliberately.</p>
+          <p>Every ounce of energy that would have been spent fighting what you cannot change gets redirected — instantly — toward what you can. This is not cold. This is not heartless. This is the most efficient use of the only life you have. Do not waste it arguing with reality.</p>
+        </div>
       </div>
-      
-      <!-- AI Age Content -->
+
       <div class="tenet-ai-age">
-        <div class="tenet-ai-quote">Every app, feed, and algorithm is optimized to consume your attention. Guard it like your life depends on it — because your life is made of it.</div>
+        <div class="tenet-section-label">The AI Age</div>
+        <div class="tenet-body">
+          <p>Every app, every feed, every notification is engineered to consume your attention. Billions of dollars in infrastructure exist for one purpose: to keep you reacting instead of redirecting. The algorithm does not care about your goals. It cares about your engagement.</p>
+          <p>A Grithosian guards their attention like it is oxygen — because it is. When a door closes, you do not doomscroll through the grief. You do not let the feed metabolize your frustration into clicks. You close the screen. You redirect. The most radical act of discipline in the AI age is not productivity. It is choosing where your mind goes next — and refusing to let a machine make that choice for you.</p>
+        </div>
       </div>
     </div>
 
+    <!-- TENET IX -->
     <div class="tenet reveal d4" id="tenet-ix">
       <div class="tenet-number">Tenet IX</div>
       <h3 class="tenet-title">Trust the Bounds.</h3>
-      
-      <!-- Classical Content -->
-      <div class="tenet-classical tenet-body">
-        <p>God authored the bounds. They are rational. They are consistent. They are not punishment — they are structure. Gravity does not hate you for falling. It simply is.</p>
-        <p>A Grithosian does not fight the bounds any more than a sailor fights the wind. You learn them. You respect them. You work within them. And when the bounds deliver something you did not choose — illness, loss, failure — you trust that the structure is still intact. The bounds are not your enemy. They are the floor you stand on.</p>
+
+      <div class="tenet-ancient">
+        <div class="tenet-section-label">Ancient Wisdom</div>
+        <div class="tenet-body">
+          <p>God authored the bounds. They are rational. They are consistent. They are not punishment — they are structure. Gravity does not hate you for falling. It simply is.</p>
+          <p>A Grithosian does not fight the bounds any more than a sailor fights the wind. You learn them. You respect them. You work within them. And when the bounds deliver something you did not choose — illness, loss, failure — you trust that the structure is still intact. The bounds are not your enemy. They are the floor you stand on.</p>
+        </div>
       </div>
-      
-      <!-- AI Age Content -->
+
       <div class="tenet-ai-age">
-        <div class="tenet-ai-quote">The existential crisis is not what will AI do to me — it is what am I doing with the time I have.</div>
+        <div class="tenet-section-label">The AI Age</div>
+        <div class="tenet-body">
+          <p>The great anxiety of this age is not what AI will do to the economy. It is what it has already done to your sense of purpose. When a machine can create, analyze, and produce at a level that took humans a lifetime to reach — where does that leave you? What are you for?</p>
+          <p>A Grithosian does not spiral into that question. You trust the bounds. The structure of your life — your mortality, your relationships, your capacity to suffer and to love — none of that changed because a model learned to write code. The existential crisis is not "what will AI do to me." It is "what am I doing with the time I have." The bounds still hold. Stand on them.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -548,51 +492,69 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <p class="tenets-group-tagline">Three tenets for the finite life.</p>
     </div>
 
+    <!-- TENET X -->
     <div class="tenet reveal d2" id="tenet-x">
       <div class="tenet-number">Tenet X</div>
       <h3 class="tenet-title">Live Like You Will Die. Because You Will.</h3>
-      
-      <!-- Classical Content -->
-      <div class="tenet-classical tenet-body">
-        <p>You are not promised tomorrow. A Grithosian does not push the important conversation to next week. Does not save the meaningful work for "someday." Does not assume there is more time.</p>
-        <p>Death is not a threat. It is a deadline. And it is the most honest motivator you will ever have. Let it sharpen every decision. Let it burn away the trivial. You are alive right now. Act like it means something. Because it does.</p>
+
+      <div class="tenet-ancient">
+        <div class="tenet-section-label">Ancient Wisdom</div>
+        <div class="tenet-body">
+          <p>You are not promised tomorrow. A Grithosian does not push the important conversation to next week. Does not save the meaningful work for "someday." Does not assume there is more time.</p>
+          <p>Death is not a threat. It is a deadline. And it is the most honest motivator you will ever have. Let it sharpen every decision. Let it burn away the trivial. You are alive right now. Act like it means something. Because it does.</p>
+        </div>
       </div>
-      
-      <!-- AI Age Content -->
+
       <div class="tenet-ai-age">
-        <div class="tenet-ai-quote">AI might extend your years. It will never extend your meaning.</div>
+        <div class="tenet-section-label">The AI Age</div>
+        <div class="tenet-body">
+          <p>The techno-optimists promise that death itself is a problem to be solved. Longevity research, consciousness uploads, digital immortality. The implicit message: you can afford to wait. There is always more time. The machine will buy you another decade.</p>
+          <p>A Grithosian does not bet their urgency on a promise. AI might extend your years. It will never extend your meaning. The important conversation is still today. The meaningful work is still now. No amount of technology changes the fundamental equation: you are finite, and the clock does not care about your roadmap. Live like you will die. Because no model — no matter how advanced — has solved that one yet.</p>
+        </div>
       </div>
     </div>
 
+    <!-- TENET XI -->
     <div class="tenet reveal d3" id="tenet-xi">
       <div class="tenet-number">Tenet XI</div>
       <h3 class="tenet-title">Grieve Fully. Then Move.</h3>
-      
-      <!-- Classical Content -->
-      <div class="tenet-classical tenet-body">
-        <p>A Grithosian does not suppress grief. You feel it — every raw, gutting ounce of it. You feel it because you are apex. Because only a creature capable of deep love can experience deep loss. That pain is proof of what you built.</p>
-        <p>But grief is not a residence. It is a passage. Feel it completely. Honor what was lost. Then stand up. Wipe your face. And move. Not because the pain is gone — because there is still life left to live and you will not waste it sitting in the dark.</p>
+
+      <div class="tenet-ancient">
+        <div class="tenet-section-label">Ancient Wisdom</div>
+        <div class="tenet-body">
+          <p>A Grithosian does not suppress grief. You feel it — every raw, gutting ounce of it. You feel it because you are apex. Because only a creature capable of deep love can experience deep loss. That pain is proof of what you built.</p>
+          <p>But grief is not a residence. It is a passage. Feel it completely. Honor what was lost. Then stand up. Wipe your face. And move. Not because the pain is gone — because there is still life left to live and you will not waste it sitting in the dark.</p>
+        </div>
       </div>
-      
-      <!-- AI Age Content -->
+
       <div class="tenet-ai-age">
-        <div class="tenet-ai-quote">Comfort is now automated. Endurance is not. That is your edge.</div>
+        <div class="tenet-section-label">The AI Age</div>
+        <div class="tenet-body">
+          <p>Comfort is now automated. There is an app for every ache, a distraction for every sorrow, a feed perfectly tuned to numb whatever you are feeling. The world has never been better at helping you avoid your own pain. And it has never been worse at helping you move through it.</p>
+          <p>A Grithosian does not anesthetize grief with a screen. You do not let a chatbot process your loss. You sit in it. You feel the weight. And when you are ready — not when the algorithm decides you should be — you stand up. Endurance is not automated. Resilience is not a feature. These are human. That is your edge. The machine can optimize everything except the part that actually matters: getting back up.</p>
+        </div>
       </div>
     </div>
 
+    <!-- TENET XII -->
     <div class="tenet reveal d4" id="tenet-xii">
       <div class="tenet-number">Tenet XII</div>
       <h3 class="tenet-title">Build a Legacy That Stands in This Life.</h3>
-      
-      <!-- Classical Content -->
-      <div class="tenet-classical tenet-body">
-        <p>A Grithosian builds something that matters right here, right now. You live for the impact you leave in the living. The person you mentored. The truth you told when it cost you everything. The moment you stood between the vulnerable and the harm.</p>
-        <p>The universe is permanently and irrevocably different because you existed in it. That is your legacy in this life — and it matters regardless of what comes next. You were here. You did right. You lived fully. Whatever awaits beyond, you will meet it with a life well-lived behind you.</p>
+
+      <div class="tenet-ancient">
+        <div class="tenet-section-label">Ancient Wisdom</div>
+        <div class="tenet-body">
+          <p>A Grithosian builds something that matters right here, right now. You live for the impact you leave in the living. The person you mentored. The truth you told when it cost you everything. The moment you stood between the vulnerable and the harm.</p>
+          <p>The universe is permanently and irrevocably different because you existed in it. That is your legacy in this life — and it matters regardless of what comes next. You were here. You did right. You lived fully. Whatever awaits beyond, you will meet it with a life well-lived behind you.</p>
+        </div>
       </div>
-      
-      <!-- AI Age Content -->
+
       <div class="tenet-ai-age">
-        <div class="tenet-ai-quote">Legacy is not output. Legacy is impact. The world does not need another creator. It needs someone who meant it.</div>
+        <div class="tenet-section-label">The AI Age</div>
+        <div class="tenet-body">
+          <p>The machines can produce at a scale no human will ever match. A million articles, a million images, a million lines of code — before lunch. Output is no longer scarce. Anyone with a prompt can flood the world with content. The question is no longer "can you create?" The question is "did you mean it?"</p>
+          <p>A Grithosian does not confuse output with legacy. Legacy is not what you produced. It is what you changed. The life you altered by showing up when it was hard. The truth you defended when the crowd moved on. The person who is different because you existed — not your profile, not your portfolio, but you. The world does not need another creator. It needs someone who meant it. Be that someone.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -619,69 +581,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </div>
 </section>
 
+<!-- ═══ REVEAL ANIMATIONS ═══ -->
 <script>
-// ═══ PATH TOGGLE FUNCTIONALITY ═══
-document.addEventListener('DOMContentLoaded', function() {
-  const pathToggle = document.querySelector('.path-toggle');
-  const pathOptions = document.querySelectorAll('.path-toggle-option');
-  const classicalContent = document.querySelectorAll('.tenet-classical');
-  const aiAgeContent = document.querySelectorAll('.tenet-ai-age');
-  
-  let currentPath = 'classical'; // Default state
-  
-  function switchPath(targetPath) {
-    if (currentPath === targetPath) return;
-    
-    // Update toggle UI
-    pathToggle.setAttribute('data-active', targetPath);
-    pathOptions.forEach(option => {
-      option.classList.toggle('active', option.getAttribute('data-path') === targetPath);
-    });
-    
-    if (targetPath === 'ai-age') {
-      // Hide classical, show AI age
-      classicalContent.forEach(el => el.classList.add('hidden'));
-      
-      // Stagger the reveal of AI age content
-      aiAgeContent.forEach((el, index) => {
-        el.style.display = 'block';
-        setTimeout(() => {
-          el.classList.add('visible');
-        }, 50 + index * 50);
-      });
-    } else {
-      // Hide AI age, show classical
-      aiAgeContent.forEach(el => {
-        el.classList.remove('visible');
-        setTimeout(() => {
-          el.style.display = 'none';
-        }, 400);
-      });
-      
-      classicalContent.forEach(el => el.classList.remove('hidden'));
-    }
-    
-    currentPath = targetPath;
-  }
-  
-  // Handle toggle clicks
-  pathOptions.forEach(option => {
-    option.addEventListener('click', () => {
-      const targetPath = option.getAttribute('data-path');
-      switchPath(targetPath);
-    });
-  });
-  
-  // Initialize AI age content as hidden
-  aiAgeContent.forEach(el => {
-    el.style.display = 'none';
-  });
-});
-
-// ═══ REVEAL ANIMATIONS ═══
 function initRevealAnimations() {
   const reveals = document.querySelectorAll('.reveal');
-  
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -692,13 +595,8 @@ function initRevealAnimations() {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
   });
-  
-  reveals.forEach((reveal) => {
-    observer.observe(reveal);
-  });
+  reveals.forEach((reveal) => observer.observe(reveal));
 }
-
-// Initialize reveal animations
 document.addEventListener('DOMContentLoaded', initRevealAnimations);
 </script>
 
