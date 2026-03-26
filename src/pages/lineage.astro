@@ -372,10 +372,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   /* ═══ AI AGE CARDS ═══ */
   .ai-lineage-grid {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 16px;
-    max-width: 760px;
+    max-width: 1100px;
     margin: 0 auto;
   }
   .ai-card-quote {
@@ -395,6 +395,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     .quote-pair { padding: 0 0 16px; }
     .quote-pair + .quote-pair { padding-top: 16px; }
     .lineage-grid { grid-template-columns: 1fr; }
+    .ai-lineage-grid { grid-template-columns: 1fr; }
     .lineage-tabs { gap: 20px; }
     .lineage-tab { font-size: 11px; letter-spacing: .08em; }
   }
@@ -1800,6 +1801,134 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="lineage-card-bio">She wrote the flight software for Apollo 11. When she insisted on adding error-handling code, NASA told her not to bother — astronauts wouldn't make mistakes. Three minutes before the lunar landing, the computer overloaded. Her "unnecessary" code saved the mission, the crew, and the entire space program. She coined the term "software engineering" when nobody took software seriously. A Grithosian does the right thing even when everyone above them says it's a waste of time.</div>
       </div>
     </div>
+
+    <!-- ═══ VIRTUE — DEEP CONTENT ═══ -->
+
+    <div class="figure-header reveal d2">
+      <h3 class="figure-name">Alan Turing</h3>
+      <p class="figure-years">1912–1954 · Father of Computer Science & Artificial Intelligence</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>We can only see a short distance ahead, but we can see plenty there that needs to be done.</p>
+      </blockquote>
+      <div class="marcus-cite">— Alan Turing, "Computing Machinery and Intelligence," Mind, 1950</div>
+      <div class="bridge">
+        This is Tenet I — <strong>Tell the Truth. Even When It Costs You.</strong> Turing told the truth about what machines could become when the entire scientific establishment said it was fantasy. He told the truth about who he was when his country made that truth a criminal offense. A Grithosian does not wait for the world to be ready for the truth. You say what needs to be said, do what needs to be done, and let the consequences come.
+      </div>
+    </div>
+
+    <div class="quote-pair reveal d3">
+      <blockquote class="marcus-quote">
+        <p>Sometimes it is the people no one can imagine anything of who do the things no one can imagine.</p>
+      </blockquote>
+      <div class="marcus-cite">— Alan Turing, as portrayed in The Imitation Game (2014), adapted from Andrew Hodges' Alan Turing: The Enigma</div>
+      <div class="bridge">
+        This is Tenet III — <strong>Own Your Wins. But Do Right in the Dark.</strong> Turing cracked Enigma in total secrecy. No glory. No headlines. Millions of lives saved by a man the world wasn't allowed to thank. He did right in the darkest possible conditions — classified, invisible, alone. A Grithosian does the work that matters whether anyone notices or not.
+      </div>
+    </div>
+
+    <div class="figure-header reveal d1">
+      <h3 class="figure-name">Tim Berners-Lee</h3>
+      <p class="figure-years">1955–Present · Inventor of the World Wide Web</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>This is for everyone.</p>
+      </blockquote>
+      <div class="marcus-cite">— Tim Berners-Lee, tweet during the 2012 London Olympics Opening Ceremony</div>
+      <div class="bridge">
+        This is Tenet III — <strong>Own Your Wins. But Do Right in the Dark.</strong> Berners-Lee built the most valuable technology in human history and gave it away. No patent. No IPO. No billion-dollar payday. He owned the win — then handed it to humanity. A Grithosian understands that some victories are too important to monetize. Do right because it's right. The scoreboard is irrelevant.
+      </div>
+    </div>
+
+    <div class="quote-pair reveal d3">
+      <blockquote class="marcus-quote">
+        <p>The Web as I envisaged it, we have not seen it yet. The future is still so much bigger than the past.</p>
+      </blockquote>
+      <div class="marcus-cite">— Tim Berners-Lee, interview with the BBC, 2009</div>
+      <div class="bridge">
+        This is Tenet II — <strong>Keep Your Word Like Your Life Depends on It.</strong> Berners-Lee made a promise to the world: the Web would stay open. Decades later, while tech giants tried to wall it off, he kept that promise. He founded the World Wide Web Consortium and fought for open standards when selling out would have made him the richest man alive. A Grithosian keeps their word even when breaking it would be profitable.
+      </div>
+    </div>
+
+    <div class="figure-header reveal d1">
+      <h3 class="figure-name">Linus Torvalds</h3>
+      <p class="figure-years">1969–Present · Creator of Linux & Git</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>Talk is cheap. Show me the code.</p>
+      </blockquote>
+      <div class="marcus-cite">— Linus Torvalds, Linux Kernel Mailing List</div>
+      <div class="bridge">
+        This is Tenet I — <strong>Tell the Truth. Even When It Costs You.</strong> Torvalds has zero patience for posturing. You can talk about what you're going to build, or you can build it. In the open-source world, the code is the truth — it either works or it doesn't. A Grithosian doesn't hide behind words. The work speaks. Show me what you built. Show me what you shipped. Everything else is noise.
+      </div>
+    </div>
+
+    <div class="quote-pair reveal d3">
+      <blockquote class="marcus-quote">
+        <p>I'm doing a (free) operating system (just a hobby, won't be big and professional like gnu).</p>
+      </blockquote>
+      <div class="marcus-cite">— Linus Torvalds, Usenet post to comp.os.minix, August 25, 1991</div>
+      <div class="bridge">
+        This is Tenet III — <strong>Own Your Wins. But Do Right in the Dark.</strong> He posted this as a 21-year-old student in Helsinki. No grand vision. No manifesto. Just a guy building something useful and sharing it for free. That "hobby" now runs the backbone of the modern internet. A Grithosian does the work for the work's sake. The scale of the impact is none of your business — that's for history to decide.
+      </div>
+    </div>
+
+    <div class="figure-header reveal d1">
+      <h3 class="figure-name">Geoffrey Hinton</h3>
+      <p class="figure-years">1947–Present · The Godfather of Artificial Intelligence</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>I console myself with the normal excuse: if I hadn't done it, somebody else would have.</p>
+      </blockquote>
+      <div class="marcus-cite">— Geoffrey Hinton, interview with The New York Times, May 2023</div>
+      <div class="bridge">
+        This is Tenet I — <strong>Tell the Truth. Even When It Costs You.</strong> Hinton quit Google to speak freely about the dangers of the technology he helped create. He could have stayed quiet. He could have cashed checks and collected awards. Instead, he told the truth about what AI might become — even though that truth indicts his own life's work. A Grithosian doesn't exempt themselves from the truth. The hardest truths to tell are the ones about yourself.
+      </div>
+    </div>
+
+    <div class="quote-pair reveal d3">
+      <blockquote class="marcus-quote">
+        <p>These things will have learned from us by reading everything the human race has ever written.</p>
+      </blockquote>
+      <div class="marcus-cite">— Geoffrey Hinton, interview on CBS News, 2023</div>
+      <div class="bridge">
+        This is Tenet III — <strong>Own Your Wins. But Do Right in the Dark.</strong> Hinton spent forty years being told neural networks were a dead end. He kept working. No hype cycles. No TED talks. Just decades of quiet, stubborn research in the dark. When the world finally caught up, his work was the foundation of everything. A Grithosian doesn't need applause to keep going. The work is the reward. The recognition is optional.
+      </div>
+    </div>
+
+    <div class="figure-header reveal d1">
+      <h3 class="figure-name">Margaret Hamilton</h3>
+      <p class="figure-years">1936–Present · Director of Apollo Flight Computer Software, MIT</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>There was no choice but to be pioneers; no time to be beginners.</p>
+      </blockquote>
+      <div class="marcus-cite">— Margaret Hamilton, NASA Oral History, 2008</div>
+      <div class="bridge">
+        This is Tenet II — <strong>Keep Your Word Like Your Life Depends on It.</strong> Hamilton's team promised NASA software that would not fail. Three minutes before the lunar landing, the computer overloaded — and her error-handling code, the code NASA told her not to write, saved the mission. She kept her word to a higher standard than her own bosses demanded. A Grithosian delivers on their promises especially when no one asks them to.
+      </div>
+    </div>
+
+    <div class="quote-pair reveal d3">
+      <blockquote class="marcus-quote">
+        <p>Software during the early days of this project was treated like a stepchild and not given the same respect as other engineering disciplines.</p>
+      </blockquote>
+      <div class="marcus-cite">— Margaret Hamilton, on the origins of software engineering at MIT/NASA</div>
+      <div class="bridge">
+        This is Tenet I — <strong>Tell the Truth. Even When It Costs You.</strong> Hamilton told NASA that software was as critical as hardware when the entire institution dismissed it. She coined the term "software engineering" to force the discipline to be taken seriously. They laughed at her. Then her code saved Apollo 11. A Grithosian tells the uncomfortable truth and lets time prove them right.
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -1849,6 +1978,134 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="lineage-card-bio">He built Apple in a garage, got fired from his own company, then came back and created the iMac, iPod, iPhone, and iPad — products that changed how every human on earth interacts with technology. He wasn't the best engineer. He wasn't the best programmer. But nobody alive had a sharper eye for what people needed before they knew they needed it. He demanded perfection from everyone around him, including himself, until the day cancer took him at 56. A Grithosian doesn't settle for good enough. They push until it's right.</div>
       </div>
     </div>
+
+    <!-- ═══ APEX — DEEP CONTENT ═══ -->
+
+    <div class="figure-header reveal d2">
+      <h3 class="figure-name">Ada Lovelace</h3>
+      <p class="figure-years">1815–1852 · The First Computer Programmer</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>That brain of mine is something more than merely mortal, as time will show.</p>
+      </blockquote>
+      <div class="marcus-cite">— Ada Lovelace, letter to her mother, 1843</div>
+      <div class="bridge">
+        This is Tenet V — <strong>Stack Skills Like Your Future Depends on It.</strong> Lovelace didn't just learn mathematics — she fused it with imagination, music, and philosophy to see what a computing machine could truly become. She stacked disciplines that no one else thought to combine. A Grithosian doesn't master one thing and stop. You keep stacking. The edges between skills are where breakthroughs live.
+      </div>
+    </div>
+
+    <div class="quote-pair reveal d3">
+      <blockquote class="marcus-quote">
+        <p>The Analytical Engine weaves algebraical patterns just as the Jacquard loom weaves flowers and leaves.</p>
+      </blockquote>
+      <div class="marcus-cite">— Ada Lovelace, Notes on the Analytical Engine, Note A, 1843</div>
+      <div class="bridge">
+        This is Tenet IV — <strong>Build a Life You Don't Need to Escape From.</strong> Lovelace didn't dream of escaping her era's constraints — she built a vision so far ahead of her time that it became the foundation of an entirely new world. She saw computers composing music a century before they existed. A Grithosian doesn't flee from limitation. They build through it. The future belongs to those who can see it before it arrives.
+      </div>
+    </div>
+
+    <div class="figure-header reveal d1">
+      <h3 class="figure-name">Grace Hopper</h3>
+      <p class="figure-years">1906–1992 · Rear Admiral, U.S. Navy — Pioneer of Computer Programming</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>The most dangerous phrase in the language is, We have always done it this way.</p>
+      </blockquote>
+      <div class="marcus-cite">— Grace Hopper, attributed in various Navy and computing addresses</div>
+      <div class="bridge">
+        This is Tenet V — <strong>Stack Skills Like Your Future Depends on It.</strong> Hopper refused to be one thing. She was a mathematician, a Navy officer, and a computer scientist — and she invented the compiler because she refused to accept that computers could only do arithmetic. A Grithosian keeps learning, keeps stacking, keeps pushing past what the current tools allow. The person who says "we've always done it this way" has already stopped growing.
+      </div>
+    </div>
+
+    <div class="quote-pair reveal d3">
+      <blockquote class="marcus-quote">
+        <p>It's easier to ask forgiveness than it is to get permission.</p>
+      </blockquote>
+      <div class="marcus-cite">— Grace Hopper, widely attributed in Navy and computing circles</div>
+      <div class="bridge">
+        This is Tenet VI — <strong>Show Up Every Day. Especially When It's Hard.</strong> Hopper served in the Navy until age 79. She showed up for six decades — through wars, through technological revolutions, through being told repeatedly that women didn't belong in computing or the military. She never asked permission. She just showed up and built. A Grithosian doesn't wait to be invited. You show up. You do the work. Every single day.
+      </div>
+    </div>
+
+    <div class="figure-header reveal d1">
+      <h3 class="figure-name">Elon Musk</h3>
+      <p class="figure-years">1971–Present · Founder of SpaceX, Tesla, Neuralink & xAI</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>When something is important enough, you do it even if the odds are not in your favor.</p>
+      </blockquote>
+      <div class="marcus-cite">— Elon Musk, interview with 60 Minutes, 2014</div>
+      <div class="bridge">
+        This is Tenet VI — <strong>Show Up Every Day. Especially When It's Hard.</strong> SpaceX failed three launches in a row. Tesla nearly went bankrupt twice. He slept on factory floors during production crises. The odds were never in his favor — and he showed up anyway. A Grithosian doesn't need good odds. They need a reason to keep going. Then they show up every day until the odds bend.
+      </div>
+    </div>
+
+    <div class="quote-pair reveal d3">
+      <blockquote class="marcus-quote">
+        <p>I think it is possible for ordinary people to choose to be extraordinary.</p>
+      </blockquote>
+      <div class="marcus-cite">— Elon Musk, interview, widely quoted</div>
+      <div class="bridge">
+        This is Tenet IV — <strong>Build a Life You Don't Need to Escape From.</strong> Musk doesn't build companies to escape boredom — he builds them because the alternative is a future not worth living in. Electric cars, reusable rockets, brain-computer interfaces — each one is a bet that the future can be built, not just endured. A Grithosian constructs a life worth waking up for. Not comfort. Not ease. Purpose.
+      </div>
+    </div>
+
+    <div class="figure-header reveal d1">
+      <h3 class="figure-name">Jensen Huang</h3>
+      <p class="figure-years">1963–Present · Founder & CEO of NVIDIA</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>The way you make a company great is by focusing on the things that matter, being willing to suffer for them.</p>
+      </blockquote>
+      <div class="marcus-cite">— Jensen Huang, Stanford Graduate School of Business, 2024</div>
+      <div class="bridge">
+        This is Tenet VI — <strong>Show Up Every Day. Especially When It's Hard.</strong> Huang bet NVIDIA on CUDA when nobody wanted it. For years, the investment looked like a mistake. He suffered through it. He showed up. Then the AI revolution arrived and every model on the planet needed his chips. A Grithosian understands that showing up when it's hard is not optional — it's the price of admission to anything worth building.
+      </div>
+    </div>
+
+    <div class="quote-pair reveal d3">
+      <blockquote class="marcus-quote">
+        <p>Greatness is not intelligence. Greatness comes from character. And character isn't formed out of smart people — it's formed out of people who suffered.</p>
+      </blockquote>
+      <div class="marcus-cite">— Jensen Huang, Stanford Commencement Address, 2024</div>
+      <div class="bridge">
+        This is Tenet V — <strong>Stack Skills Like Your Future Depends on It.</strong> Huang started as an electrical engineer, became a chip designer, then a CEO who understood AI before the AI industry existed. He stacked skills across hardware, software, and vision — and each layer made the next one possible. A Grithosian knows that character is built through suffering, and skills are built through relentless stacking. The two reinforce each other.
+      </div>
+    </div>
+
+    <div class="figure-header reveal d1">
+      <h3 class="figure-name">Steve Jobs</h3>
+      <p class="figure-years">1955–2011 · Co-founder of Apple</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>Stay hungry. Stay foolish.</p>
+      </blockquote>
+      <div class="marcus-cite">— Steve Jobs, Stanford Commencement Address, June 2005 (quoting The Whole Earth Catalog)</div>
+      <div class="bridge">
+        This is Tenet IV — <strong>Build a Life You Don't Need to Escape From.</strong> Jobs got fired from Apple — the company he built in his garage — and instead of retreating, he built NeXT and Pixar. Then he came back and created the most valuable company on Earth. He didn't escape from failure. He built through it. A Grithosian stays hungry because comfort is the enemy of greatness. Stay foolish because the safe path leads nowhere worth going.
+      </div>
+    </div>
+
+    <div class="quote-pair reveal d3">
+      <blockquote class="marcus-quote">
+        <p>Design is not just what it looks like and feels like. Design is how it works.</p>
+      </blockquote>
+      <div class="marcus-cite">— Steve Jobs, interview with The New York Times, 2003</div>
+      <div class="bridge">
+        This is Tenet V — <strong>Stack Skills Like Your Future Depends on It.</strong> Jobs stacked technology and liberal arts, engineering and design, hardware and software. He insisted that beauty and function were inseparable — that how something works IS how it should look. A Grithosian doesn't accept false trade-offs between craft and utility. Stack the skills. Build things that work beautifully and look like they were meant to exist.
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -1898,6 +2155,124 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="lineage-card-bio">Hollywood called her the most beautiful woman in the world. What they didn't know was that between takes, she was inventing frequency-hopping communication to help the Navy defeat Nazi torpedoes. The military ignored her patent. Decades later, her technology became the foundation of WiFi, Bluetooth, and GPS — the invisible infrastructure of the modern world. She controlled what she could: her mind, her work, her inventions. The world's recognition came too late. She didn't need it. A Grithosian does the work whether anyone notices or not.</div>
       </div>
     </div>
+
+    <!-- ═══ CONTROL — DEEP CONTENT ═══ -->
+
+    <div class="figure-header reveal d2">
+      <h3 class="figure-name">Claude Shannon</h3>
+      <p class="figure-years">1916–2001 · Father of Information Theory</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>Information is the resolution of uncertainty.</p>
+      </blockquote>
+      <div class="marcus-cite">— Claude Shannon, "A Mathematical Theory of Communication," Bell System Technical Journal, 1948</div>
+      <div class="bridge">
+        This is Tenet VII — <strong>Own Only What Is Yours.</strong> Shannon defined the absolute boundary between signal and noise — what can be known and what cannot. He didn't chase what was unknowable. He mastered what was his to master: the mathematics of communication itself. A Grithosian owns their domain completely. Know the boundaries. Master what's inside them. Let the rest go.
+      </div>
+    </div>
+
+    <div class="quote-pair reveal d3">
+      <blockquote class="marcus-quote">
+        <p>I just wondered how things were put together.</p>
+      </blockquote>
+      <div class="marcus-cite">— Claude Shannon, as quoted in A Mind at Play by Jimmy Soni and Rob Goodman</div>
+      <div class="bridge">
+        This is Tenet IX — <strong>Protect What Matters. Cut What Doesn't.</strong> Shannon didn't chase fame, money, or academic politics. He built juggling machines and rode unicycles down MIT hallways. He protected his curiosity — the one thing that mattered — and cut everything else. A Grithosian knows what matters and defends it ruthlessly. Everything that doesn't serve the mission gets cut. No apologies.
+      </div>
+    </div>
+
+    <div class="figure-header reveal d1">
+      <h3 class="figure-name">Nikola Tesla</h3>
+      <p class="figure-years">1856–1943 · Architect of the Modern Electrical World</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>I don't care that they stole my idea. I care that they don't have any of their own.</p>
+      </blockquote>
+      <div class="marcus-cite">— Nikola Tesla, widely attributed</div>
+      <div class="bridge">
+        This is Tenet VII — <strong>Own Only What Is Yours.</strong> Tesla owned his vision and his genius — nothing else. He didn't fight over credit. He didn't play corporate games. He let Edison take the spotlight and Westinghouse take the profits. What Tesla owned was the work itself — the ideas, the inventions, the relentless drive to understand how the universe worked. A Grithosian doesn't waste energy guarding what others stole. Own the craft. The rest is noise.
+      </div>
+    </div>
+
+    <div class="quote-pair reveal d3">
+      <blockquote class="marcus-quote">
+        <p>The present is theirs; the future, for which I really worked, is mine.</p>
+      </blockquote>
+      <div class="marcus-cite">— Nikola Tesla, "My Inventions," Electrical Experimenter, 1919</div>
+      <div class="bridge">
+        This is Tenet IX — <strong>Protect What Matters. Cut What Doesn't.</strong> Tesla protected his vision of the future at the cost of everything in the present — wealth, comfort, recognition, companionship. He died alone in a hotel room, but alternating current powers the world. He cut everything that didn't serve the mission. A Grithosian understands the cost of protecting what matters. It is not free. It is not comfortable. But the things you protect will outlast the things you sacrificed.
+      </div>
+    </div>
+
+    <div class="figure-header reveal d1">
+      <h3 class="figure-name">Nik Seetharaman</h3>
+      <p class="figure-years">Present · Founder & CEO of Wraithwatch — AI Cyber Defense</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>The adversary doesn't give a shit about your compliance state.</p>
+      </blockquote>
+      <div class="marcus-cite">— Nik Seetharaman, on building real-world cyber defense</div>
+      <div class="bridge">
+        This is Tenet IX — <strong>Protect What Matters. Cut What Doesn't.</strong> Seetharaman cuts through the theater of modern cybersecurity — the dashboards, the checkboxes, the compliance reports that make executives feel safe while real adversaries walk through the front door. Wraithwatch builds weapons-grade defense, not boardroom props. A Grithosian protects what actually matters, not what looks good on a slide deck. Cut the theater. Build what works.
+      </div>
+    </div>
+
+    <div class="figure-header reveal d1">
+      <h3 class="figure-name">Demis Hassabis</h3>
+      <p class="figure-years">1976–Present · Co-founder of DeepMind, Nobel Laureate</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>Solve intelligence, then use that to solve everything else.</p>
+      </blockquote>
+      <div class="marcus-cite">— Demis Hassabis, DeepMind founding mission statement</div>
+      <div class="bridge">
+        This is Tenet VII — <strong>Own Only What Is Yours.</strong> Hassabis chose one problem to own — intelligence itself — and committed everything to it. Not ten problems. Not a dozen products. One fundamental question pursued with total discipline. AlphaGo, AlphaFold, and everything that followed came from that singular focus. A Grithosian doesn't scatter their attention across a hundred things. Own one domain. Master it completely. Then everything else becomes solvable.
+      </div>
+    </div>
+
+    <div class="quote-pair reveal d3">
+      <blockquote class="marcus-quote">
+        <p>I've always been interested in the big questions — what is intelligence, what is the nature of the mind, can we build machines that think?</p>
+      </blockquote>
+      <div class="marcus-cite">— Demis Hassabis, interview with The Guardian, 2023</div>
+      <div class="bridge">
+        This is Tenet IX — <strong>Protect What Matters. Cut What Doesn't.</strong> Hassabis walked away from a successful gaming career to pursue the fundamental science of intelligence. He cut what was profitable to protect what was meaningful. While others chased quick wins, he spent years on research the industry called impractical. A Grithosian protects the work that matters — even when easier, more profitable paths are available. Cut the distractions. Guard the mission.
+      </div>
+    </div>
+
+    <div class="figure-header reveal d1">
+      <h3 class="figure-name">Hedy Lamarr</h3>
+      <p class="figure-years">1914–2000 · Actress & Inventor of Frequency-Hopping Spread Spectrum</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>Hope and curiosity about the future seemed better than guarantees. The unknown was always so attractive to me… and still is.</p>
+      </blockquote>
+      <div class="marcus-cite">— Hedy Lamarr, Ecstasy and Me: My Life as a Woman, 1966</div>
+      <div class="bridge">
+        This is Tenet IX — <strong>Protect What Matters. Cut What Doesn't.</strong> Hollywood wanted Lamarr to be a face. She protected what actually mattered — her mind. Between takes, she invented frequency-hopping spread spectrum technology to help the Navy defeat Nazi torpedoes. The military ignored her. Decades later, her work became the backbone of WiFi, Bluetooth, and GPS. A Grithosian protects their real work — even when the world only values the surface. What matters will outlast what's visible.
+      </div>
+    </div>
+
+    <div class="quote-pair reveal d3">
+      <blockquote class="marcus-quote">
+        <p>Any girl can be glamorous. All you have to do is stand still and look stupid.</p>
+      </blockquote>
+      <div class="marcus-cite">— Hedy Lamarr, widely attributed</div>
+      <div class="bridge">
+        This is Tenet VII — <strong>Own Only What Is Yours.</strong> Lamarr refused to own the role the world assigned her. She was not "the most beautiful woman in the world." She was an inventor, a thinker, a problem-solver who happened to be beautiful. She owned her intellect, not her image. A Grithosian does not let the world define what is theirs. You decide what you own. Then you master it.
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -1947,6 +2322,134 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="lineage-card-bio">She immigrated from China as a teenager, worked in a dry cleaner to survive, and became one of the most important scientists in AI history. When the AI field was obsessed with clever algorithms, she had a different theory: the problem wasn't the code — it was the data. She built ImageNet, a dataset of 14 million labeled images, and it ignited the deep learning revolution. Every image recognition system, every self-driving car, every AI that can "see" traces back to her work. A Grithosian builds the foundation that makes everyone else's breakthroughs possible — and that's the legacy that lasts.</div>
       </div>
     </div>
+
+    <!-- ═══ DEATH — DEEP CONTENT ═══ -->
+
+    <div class="figure-header reveal d2">
+      <h3 class="figure-name">Aaron Swartz</h3>
+      <p class="figure-years">1986–2013 · Co-creator of RSS, Co-founder of Reddit, Open Access Activist</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>Information is power. But like all power, there are those who want to keep it for themselves.</p>
+      </blockquote>
+      <div class="marcus-cite">— Aaron Swartz, Guerilla Open Access Manifesto, 2008</div>
+      <div class="bridge">
+        This is Tenet XI — <strong>Leave Something Behind.</strong> Swartz didn't hoard what he built. He built RSS, helped create Reddit, and then spent his short life fighting to make knowledge free for everyone. He left behind code, infrastructure, and a moral argument that the world is still reckoning with. A Grithosian builds things that outlast them — not for ego, but because some things are too important to die with you.
+      </div>
+    </div>
+
+    <div class="quote-pair reveal d3">
+      <blockquote class="marcus-quote">
+        <p>Be curious. Read widely. Try new things. What people call intelligence just boils down to curiosity.</p>
+      </blockquote>
+      <div class="marcus-cite">— Aaron Swartz, Raw Thought (personal blog)</div>
+      <div class="bridge">
+        This is Tenet XII — <strong>Burn Bright, Not Long.</strong> Swartz burned brighter in 26 years than most burn in 80. He didn't pace himself. He didn't play it safe. He threw himself at the things that mattered with everything he had. A Grithosian understands that length of life is not the measure. Intensity is. Burn bright. Leave the world different from how you found it.
+      </div>
+    </div>
+
+    <div class="figure-header reveal d1">
+      <h3 class="figure-name">John von Neumann</h3>
+      <p class="figure-years">1903–1957 · Architect of the Modern Computer, Game Theory & Nuclear Strategy</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>If people do not believe that mathematics is simple, it is only because they do not realize how complicated life is.</p>
+      </blockquote>
+      <div class="marcus-cite">— John von Neumann, address at the first national meeting of the Association for Computing Machinery, 1947</div>
+      <div class="bridge">
+        This is Tenet X — <strong>Memento Mori — Remember That You Will Die.</strong> Von Neumann designed the architecture inside every computer on Earth, invented game theory, and helped build the atomic bomb. His mind worked faster than anyone alive. And then bone cancer killed him at 53. On his deathbed, he was terrified — not of pain, but of the end of thinking. A Grithosian remembers that no amount of genius buys a single extra day. The clock runs for everyone.
+      </div>
+    </div>
+
+    <div class="quote-pair reveal d3">
+      <blockquote class="marcus-quote">
+        <p>Young man, in mathematics you don't understand things. You just get used to them.</p>
+      </blockquote>
+      <div class="marcus-cite">— John von Neumann, response to a student, widely quoted</div>
+      <div class="bridge">
+        This is Tenet XII — <strong>Burn Bright, Not Long.</strong> Von Neumann didn't wait to fully understand something before moving forward. He adapted, computed, and acted at a pace that left even the greatest minds of his era in awe. He burned through more intellectual territory in 53 years than most fields cover in centuries. A Grithosian doesn't wait for perfect understanding. Move. Build. Ship. You can get used to it along the way — but only if you start now.
+      </div>
+    </div>
+
+    <div class="figure-header reveal d1">
+      <h3 class="figure-name">Steve Wozniak</h3>
+      <p class="figure-years">1950–Present · Co-founder of Apple, Engineer of the Apple I & II</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>Never trust a computer you can't throw out a window.</p>
+      </blockquote>
+      <div class="marcus-cite">— Steve Wozniak, widely attributed</div>
+      <div class="bridge">
+        This is Tenet XI — <strong>Leave Something Behind.</strong> Wozniak hand-built the machines that launched the personal computer revolution. Then he gave away most of his Apple stock to early employees because it was the right thing to do. Jobs got the fame. Woz left the legacy — a legacy of craft, of generosity, of building things with your hands that change the world. A Grithosian leaves behind work, not a brand. The craft is the monument.
+      </div>
+    </div>
+
+    <div class="quote-pair reveal d3">
+      <blockquote class="marcus-quote">
+        <p>My goal wasn't to make a ton of money. It was to build good computers.</p>
+      </blockquote>
+      <div class="marcus-cite">— Steve Wozniak, iWoz: Computer Geek to Cult Icon, 2006</div>
+      <div class="bridge">
+        This is Tenet X — <strong>Memento Mori — Remember That You Will Die.</strong> Wozniak understood something Jobs learned too late: you can't take the money with you. What survives is the work and the people you treated well along the way. He still teaches kids to code. He still shows up. The money was never the point. A Grithosian remembers that death takes everything except what you gave away. Build good things. Give freely. That's what lasts.
+      </div>
+    </div>
+
+    <div class="figure-header reveal d1">
+      <h3 class="figure-name">Katherine Johnson</h3>
+      <p class="figure-years">1918–2020 · NASA Mathematician — The Computer in a Skirt</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>You tell me when you want it and where you want it to land, and I'll do it backwards and tell you when to take off.</p>
+      </blockquote>
+      <div class="marcus-cite">— Katherine Johnson, NASA Langley Oral History, 2008</div>
+      <div class="bridge">
+        This is Tenet XI — <strong>Leave Something Behind.</strong> Johnson's orbital calculations put Americans in space. John Glenn refused to fly until she personally checked the computer's math. A Black woman in segregated Virginia, working in a building they wouldn't even let her use the bathroom in, doing the math that defined an era. Her legacy isn't a statue. It's the fact that her calculations still hold. A Grithosian leaves behind work so good it speaks for itself across generations.
+      </div>
+    </div>
+
+    <div class="quote-pair reveal d3">
+      <blockquote class="marcus-quote">
+        <p>I counted everything. I counted the steps to the road, the steps up to church, the number of dishes and silverware I washed… anything that could be counted, I did.</p>
+      </blockquote>
+      <div class="marcus-cite">— Katherine Johnson, interview with NASA, 2015</div>
+      <div class="bridge">
+        This is Tenet X — <strong>Memento Mori — Remember That You Will Die.</strong> Johnson lived to 101. She spent every day counting, calculating, building. She didn't waste a single one. While the world told her she couldn't, she quietly proved them wrong with math they couldn't argue with. A Grithosian doesn't waste days. Every one of them is numbered — and Johnson used every single one.
+      </div>
+    </div>
+
+    <div class="figure-header reveal d1">
+      <h3 class="figure-name">Fei-Fei Li</h3>
+      <p class="figure-years">1976–Present · Creator of ImageNet — Architect of the Modern AI Revolution</p>
+    </div>
+
+    <div class="quote-pair reveal d2">
+      <blockquote class="marcus-quote">
+        <p>If we want machines to think, we need to teach them to see.</p>
+      </blockquote>
+      <div class="marcus-cite">— Fei-Fei Li, TED Talk, "How we teach computers to understand pictures," 2015</div>
+      <div class="bridge">
+        This is Tenet XI — <strong>Leave Something Behind.</strong> Li didn't build an AI product. She built the foundation — ImageNet, 14 million labeled images — that made everyone else's AI breakthroughs possible. Every image recognition system, every self-driving car, every AI that can "see" traces back to her dataset. She left behind infrastructure, not a product. A Grithosian builds the foundation that others build on. That's the legacy that compounds across generations.
+      </div>
+    </div>
+
+    <div class="quote-pair reveal d3">
+      <blockquote class="marcus-quote">
+        <p>We didn't set out to solve AI. We set out to understand the visual world.</p>
+      </blockquote>
+      <div class="marcus-cite">— Fei-Fei Li, on the origins of ImageNet, Stanford Human-Centered AI Institute</div>
+      <div class="bridge">
+        This is Tenet XII — <strong>Burn Bright, Not Long.</strong> Li immigrated from China as a teenager, worked in a dry cleaner to survive, and burned through every obstacle between her and the science that mattered. She didn't chase the AI hype. She pursued understanding — and that pursuit ignited a revolution. A Grithosian burns for the question, not the answer. The brightness of the pursuit is what changes the world.
+      </div>
+    </div>
+
   </div>
 </section>
 
