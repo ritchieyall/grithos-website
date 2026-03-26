@@ -398,14 +398,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <!-- ═══ STICKY TABS ═══ -->
 <nav class="lineage-tabs">
   <a href="#ancient-wisdom" class="lineage-tab active">Ancient Wisdom</a>
-  <a href="#ai-age" class="lineage-tab">The AI Age</a>
+  <a href="#ai-lineage" class="lineage-tab">The AI Lineage</a>
 </nav>
 
 <!-- ═══ TEASER ═══ -->
 <section class="lineage-teaser">
   <div class="wrap reveal d1">
     <p class="lineage-teaser-text">This lineage spans 2,500 years — from Marcus Aurelius to the architects of artificial intelligence.</p>
-    <a href="#ai-age" class="lineage-teaser-link">Jump to The AI Age →</a>
+    <a href="#ai-lineage" class="lineage-teaser-link">Jump to The AI Lineage →</a>
   </div>
 </section>
 
@@ -1727,10 +1727,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <div class="section-divider"></div>
 
 <!-- ═══ AI AGE SECTION ═══ -->
-<section class="page-hero" id="ai-age">
+<section class="page-hero" id="ai-lineage">
   <div class="wrap">
     <div class="reveal d1">
-      <p class="page-hero-overline">The AI Age</p>
+      <p class="page-hero-overline">The AI Lineage</p>
       <h2 class="page-hero-title">The Next Lineage</h2>
       <p class="page-hero-sub">From emperors and slaves to engineers and rebels. The torch passes forward.</p>
     </div>
@@ -1743,7 +1743,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <section class="lineage-grid-section">
   <div class="wrap">
     <div class="lineage-grid-header reveal d1">
-      <h2 class="lineage-grid-title">Meet the AI Age Lineage</h2>
+      <h2 class="lineage-grid-title">Meet the AI Lineage</h2>
       <p class="lineage-grid-sub">Twenty figures across four pillars. Engineers, rebels, inventors, and visionaries — the next lineage of a timeless philosophy.</p>
     </div>
 
@@ -2442,7 +2442,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   document.addEventListener('DOMContentLoaded', () => {
     const tabs = document.querySelectorAll('.lineage-tab');
     const ancientSection = document.getElementById('ancient-wisdom');
-    const aiSection = document.getElementById('ai-age');
+    const aiSection = document.getElementById('ai-lineage');
 
     if (!ancientSection || !aiSection || tabs.length === 0) return;
 
@@ -2451,7 +2451,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       const isAiAge = aiTop <= 120;
 
       tabs.forEach(tab => {
-        const isAiTab = tab.getAttribute('href') === '#ai-age';
+        const isAiTab = tab.getAttribute('href') === '#ai-lineage';
         tab.classList.toggle('active', isAiAge ? isAiTab : !isAiTab);
       });
     }
