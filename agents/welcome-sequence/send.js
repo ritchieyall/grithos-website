@@ -27,7 +27,7 @@ const SEQUENCE = [
   { id: 1, dayDelay: 0,  subject: 'Welcome to Grithos — This Is Why It Exists',              tag: '1' },
   { id: 2, dayDelay: 2,  subject: 'The Four Pillars of Grithos',                              tag: '2' },
   { id: 3, dayDelay: 4,  subject: 'What 5:55 AM Looks Like — The Daily Practice',             tag: '3' },
-  { id: 4, dayDelay: 7,  subject: 'The Lineage — 35 Thinkers, One Thread',                    tag: '4' },
+  { id: 4, dayDelay: 7,  subject: 'The Lineage — 45 Thinkers, One Thread',                    tag: '4' },
   { id: 5, dayDelay: 10, subject: 'The Invitation — Share Grithos With One Person',            tag: '5' },
 ];
 
