@@ -13,8 +13,9 @@ const fs = require('fs');
 const path = require('path');
 
 // ── Config ──────────────────────────────────────────────────────────────────
-const RESEND_API_KEY = process.env.RESEND_API_KEY || 'REDACTED_RESEND_KEY';
-const AUDIENCE_ID = '39145f4b-0e37-4a81-82c7-ba4d891b50b2';
+const RESEND_API_KEY = process.env.RESEND_API_KEY;
+if (!RESEND_API_KEY) { console.error('RESEND_API_KEY not set'); process.exit(1); }
+const AUDIENCE_ID = process.env.RESEND_AUDIENCE_ID || '39145f4b-0e37-4a81-82c7-ba4d891b50b2';
 const FROM_ADDRESS = 'Grithos <richard@grithos.com>';
 const STATE_FILE = path.join(__dirname, 'welcome-state.json');
 const TEMPLATE_FILE = '/Users/willowsbrain/.openclaw/workspace/content/welcome-sequence.md';
