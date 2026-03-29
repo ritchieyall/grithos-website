@@ -117,7 +117,7 @@ const html = `<!DOCTYPE html>
 
 <!-- Logo -->
 <tr><td bgcolor="#2a2a2a" style="background-color:#2a2a2a;padding:32px 28px 0 28px;text-align:center;">
-<a href="${SITE_URL}" style="text-decoration:none;"><img src="${SITE_URL}/assets/images/grithos-logo.png" alt="Grithos — Grit. Ethos. Grithos." width="260" style="width:260px;max-width:100%;height:auto;border:0;display:inline-block;" /></a>
+<a href="${SITE_URL}" style="text-decoration:none;"><img src="${SITE_URL}/assets/images/grithos-logo.jpg" alt="Grithos — Grit. Ethos. Grithos." width="260" style="width:260px;max-width:100%;height:auto;border:0;display:inline-block;" /></a>
 </td></tr>
 
 <!-- Date -->
