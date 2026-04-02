@@ -241,6 +241,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
   }
+  .pillars-grid .pillar-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    max-width: 50%;
+    justify-self: center;
+  }
   .pillar-card {
     background: linear-gradient(135deg, rgba(33,38,47,.9) 0%, rgba(28,32,41,.95) 100%);
     border: 1px solid var(--border);
@@ -329,6 +334,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
+  }
+  .tenets-grid .tenets-pillar:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    max-width: 50%;
+    justify-self: center;
   }
   .tenets-pillar {
     background: var(--card);
