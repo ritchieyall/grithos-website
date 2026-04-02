@@ -53,6 +53,18 @@ force = true
 [redirects.headers]
 
 [[redirects]]
+from = "/lineage"
+to = "/architects"
+status = 301.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
+
+[[redirects]]
 from = "/*"
 to = "/404.html"
 status = 404.0
