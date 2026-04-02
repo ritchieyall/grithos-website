@@ -1,0 +1,599 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="The Voices | Grithos"
+  description="Fifty-eight voices across five pillars. Emperors, slaves, warriors, engineers, and rebels — the roots and branches of a living philosophy."
+  ogTitle="The Voices — Grithos"
+  ogDescription="Fifty-eight voices across five pillars. Emperors, slaves, warriors, engineers, and rebels — the roots and branches of a living philosophy."
+  ogUrl="https://grithos.com/voices"
+  canonical="https://grithos.com/voices"
+  activePage="voices"
+>
+
+<style is:inline>
+  /* ═══ PAGE HERO ═══ */
+  .page-hero {
+    padding: 80px 0 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-hero::before {
+    content: '';
+    position: absolute;
+    top: 40%; left: 50%; transform: translateX(-50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(196,168,130,.05) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .page-hero .wrap { position: relative; z-index: 1; }
+  .page-hero-overline {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .page-hero-title {
+    font-family: var(--heading);
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -.02em;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+  .page-hero-sub {
+    font-family: var(--serif);
+    font-size: clamp(16px, 2vw, 20px);
+    font-style: italic;
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  /* ═══ SECTION DIVIDER ═══ */
+  .section-divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+    margin: 0;
+  }
+
+  /* ═══ INTRO ═══ */
+  .intro {
+    padding: 28px 0;
+  }
+  .intro-text {
+    font-family: var(--serif);
+    font-size: 18px;
+    line-height: 1.9;
+    color: var(--text-secondary);
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .intro-text p + p {
+    margin-top: 20px;
+  }
+
+  /* ═══ VOICES GRID ═══ */
+  .voices-grid-section {
+    padding: 28px 0;
+  }
+  .voices-grid-header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .voices-grid-title {
+    font-family: var(--heading);
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -.01em;
+    margin-bottom: 8px;
+  }
+  .voices-grid-sub {
+    font-family: var(--serif);
+    font-size: 16px;
+    font-style: italic;
+    color: var(--text-muted);
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .voices-pillar-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 32px 0 16px;
+    text-align: center;
+  }
+  .voices-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 16px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .voice-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 24px;
+    transition: all .3s;
+  }
+  .voice-card:hover {
+    border-color: var(--gold-border);
+    transform: translateY(-2px);
+  }
+  .voice-card-name {
+    font-family: var(--heading);
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 2px;
+  }
+  .voice-card-years {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .voice-card-bio {
+    font-family: var(--body);
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--text-secondary);
+  }
+
+  /* ═══ CLOSING ═══ */
+  .closing {
+    padding: 28px 0 32px;
+    text-align: center;
+  }
+  .closing-text {
+    font-family: var(--serif);
+    font-size: clamp(20px, 2.8vw, 28px);
+    font-weight: 700;
+    font-style: italic;
+    color: var(--white);
+    line-height: 1.5;
+    max-width: 700px;
+    margin: 0 auto 24px;
+  }
+  .closing-sub {
+    font-family: var(--serif);
+    font-size: clamp(15px, 2vw, 18px);
+    font-style: italic;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* ═══ BACK LINK ═══ */
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--body);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color .2s;
+    margin-top: 20px;
+  }
+  .back-link:hover { color: var(--gold); }
+  .back-link svg { width: 16px; height: 16px; }
+
+  /* ═══ RESPONSIVE ═══ */
+  @media(max-width:768px) {
+    .voices-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<!-- ═══ HERO ═══ -->
+<section class="page-hero">
+  <div class="wrap">
+    <div class="reveal d1">
+      <img src="/assets/images/grithos-logo.png" alt="Grithos" style="width: 120px; height: auto; margin-bottom: 16px; opacity: 0.85;">
+      <p class="page-hero-overline">The Voices</p>
+      <h1 class="page-hero-title">The Voices</h1>
+      <p class="page-hero-sub">Fifty-eight voices across five pillars. Emperors, slaves, warriors, engineers, and rebels — the roots and branches of a living philosophy.</p>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══ INTRO ═══ -->
+<section class="intro">
+  <div class="wrap">
+    <div class="reveal d1">
+      <div class="intro-text">
+        <p>Grithos did not invent its principles. It inherited them. The ideas that form the Five Pillars have been tested across millennia — by emperors and slaves, by founders and warriors, by engineers and rebels. What Grithos does is name them, sharpen them, and make them a daily practice.</p>
+        <p>This is not a religion. It is a philosophy with ancient roots and a God who authored the structure we live within. What follows is proof. These truths are not new. They are timeless. And they are non-negotiable.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══ THE VOICES GRID ═══ -->
+<section class="voices-grid-section">
+  <div class="wrap">
+    <div class="voices-grid-header reveal d1">
+      <h2 class="voices-grid-title">Meet the Voices</h2>
+      <p class="voices-grid-sub">Fifty-eight figures across five pillars. The roots of a modern philosophy and the branches reaching into the age ahead.</p>
+    </div>
+
+    <!-- ═══ PILLAR I — VIRTUE (12 voices) ═══ -->
+    <p class="voices-pillar-label reveal d1">Pillar I — Virtue · Do Right Regardless</p>
+    <div class="voices-grid reveal d2">
+      <div class="voice-card">
+        <div class="voice-card-name">Marcus Aurelius</div>
+        <div class="voice-card-years">121–180 AD · Emperor of Rome</div>
+        <div class="voice-card-bio">The last of the Five Good Emperors, Marcus ruled Rome during plague, war, and betrayal — and spent his nights writing a private journal of self-discipline that became one of the most influential philosophical texts in history.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Epictetus</div>
+        <div class="voice-card-years">50–135 AD · Former Slave, Stoic Philosopher</div>
+        <div class="voice-card-bio">Born into slavery, Epictetus endured a broken leg at the hands of his master and emerged as one of the greatest Stoic philosophers who ever lived. A man who owned nothing — not even his own body — and yet mastered everything within his control.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Seneca</div>
+        <div class="voice-card-years">4 BC–65 AD · Roman Statesman, Stoic Philosopher</div>
+        <div class="voice-card-bio">Lucius Annaeus Seneca served as advisor to Emperor Nero, amassed enormous wealth, and ultimately was ordered to take his own life. He wrote the most practical letters on how to live ever committed to paper.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Cato the Younger</div>
+        <div class="voice-card-years">95–46 BC · Roman Senator, Defender of the Republic</div>
+        <div class="voice-card-bio">Cato the Younger refused to live in Caesar's Rome. When the Republic fell, he chose death over submission. He did not bend. He did not negotiate. He read Plato's Phaedo twice, then fell on his own sword. His integrity was so absolute that even his enemies called it terrifying. A Grithosian does right regardless — Cato did right unto death.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Zeno of Citium</div>
+        <div class="voice-card-years">334–262 BC · Founder of Stoicism</div>
+        <div class="voice-card-bio">A Phoenician merchant who lost everything in a shipwreck and washed up in Athens with nothing. Instead of rebuilding his fortune, he built an entire school of philosophy. From a painted porch — the Stoa Poikile — he taught that virtue is the only true good. Every Stoic who followed stands on the foundation Zeno laid from the wreckage of his old life.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Cleanthes</div>
+        <div class="voice-card-years">330–230 BC · Stoic Philosopher, Successor to Zeno</div>
+        <div class="voice-card-bio">A former boxer who watered gardens at night so he could study philosophy by day. He succeeded Zeno as head of the Stoa and held the school together through sheer endurance when flashier minds wandered elsewhere. His Hymn to Zeus is the earliest surviving Stoic prayer. Cleanthes proved that virtue is not brilliance — it is showing up, every single day, when no one is watching.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Chrysippus</div>
+        <div class="voice-card-years">279–206 BC · Stoic Philosopher, The Second Founder</div>
+        <div class="voice-card-bio">He wrote over 700 works and systematized Stoic logic so thoroughly that later philosophers said if the gods used logic, they would use Chrysippus's. He turned Zeno's intuitions into a rigorous system — ethics, physics, and logic woven into a single framework. Without Chrysippus, Stoicism would have remained a set of good ideas. He made it an architecture.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Musonius Rufus</div>
+        <div class="voice-card-years">30–101 AD · Roman Stoic Philosopher, Teacher of Epictetus</div>
+        <div class="voice-card-bio">Exiled twice by Roman emperors for speaking truth to power. He taught that philosophy is not what you read — it is what you practice. He insisted women deserved the same philosophical education as men, a position so radical it took the world two thousand years to catch up. His most famous student was Epictetus. The teacher's teacher of Stoic virtue.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Hierocles</div>
+        <div class="voice-card-years">2nd Century AD · Stoic Philosopher</div>
+        <div class="voice-card-bio">He drew concentric circles of human concern — self, family, community, city, nation, humanity — and argued that the Stoic project is to pull the outer circles inward. To treat strangers like neighbors and neighbors like family. His model of expanding moral concern is the earliest systematic argument for universal ethical obligation. Virtue, for Hierocles, was not private. It radiated outward.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Posidonius</div>
+        <div class="voice-card-years">135–51 BC · Stoic Philosopher, Polymath</div>
+        <div class="voice-card-bio">Philosopher, historian, astronomer, and geographer who calculated the circumference of the Earth and studied the tides. He argued that emotions are not simply errors to be suppressed but forces to be understood and channeled. Cicero called him the most learned of all the Stoics. Posidonius proved that virtue and knowledge are not separate pursuits — they are the same pursuit.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Katherine Johnson</div>
+        <div class="voice-card-years">1918–2020 · NASA Mathematician</div>
+        <div class="voice-card-bio">She calculated orbital trajectories by hand — with a pencil — for America's first crewed spaceflights. John Glenn refused to fly until Katherine Johnson personally verified the computer's numbers. A Black woman in 1960s Virginia, working in a segregated building, doing math that put men in space. Her work outlived every barrier they put in front of her. A Grithosian builds a legacy that makes the walls irrelevant.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Steve Wozniak</div>
+        <div class="voice-card-years">1950–Present · Co-founder of Apple, Engineer of the Apple I & II</div>
+        <div class="voice-card-bio">He hand-built the Apple I and Apple II — the machines that launched the personal computer revolution. Jobs got the fame, the Fortune covers, the movie. Woz got the legacy. He gave away most of his stock to early Apple employees because he thought it was the right thing to do. He still shows up at tech events, still teaches kids to code, still builds things for the love of building. The spotlight never interested him. The craft did.</div>
+      </div>
+    </div>
+
+    <!-- ═══ PILLAR II — APEX (14 voices — the heaviest) ═══ -->
+    <p class="voices-pillar-label reveal d1">Pillar II — Apex · Own Your Nature</p>
+    <div class="voices-grid reveal d2">
+      <div class="voice-card">
+        <div class="voice-card-name">Leonardo da Vinci</div>
+        <div class="voice-card-years">1452–1519 · Polymath, Artist, Engineer, Scientist</div>
+        <div class="voice-card-bio">Leonardo painted the Mona Lisa and The Last Supper, designed flying machines four centuries before the Wright Brothers, and filled thousands of notebook pages with ideas the world wasn't ready for. He was illegitimate, largely self-taught, and utterly unwilling to fit into any single category.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Miyamoto Musashi</div>
+        <div class="voice-card-years">1584–1645 · Japanese Swordsman, Strategist, Artist</div>
+        <div class="voice-card-bio">Undefeated in 61 duels by age 30. Then he put down the sword and picked up a brush. He wrote The Book of Five Rings — a treatise on strategy that CEOs, martial artists, and military leaders still study. He mastered every discipline he touched: swordsmanship, painting, sculpture, calligraphy. Musashi proved that apex is not one skill perfected — it is the relentless pursuit of mastery in everything.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Theodore Roosevelt</div>
+        <div class="voice-card-years">1858–1919 · 26th President of the United States</div>
+        <div class="voice-card-bio">Born asthmatic and frail, Roosevelt rebuilt himself through sheer force of will — boxing, ranching, leading the Rough Riders up San Juan Hill. When an assassin shot him in the chest during a campaign speech, he finished the speech.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Ernest Hemingway</div>
+        <div class="voice-card-years">1899–1961 · Novelist, War Correspondent</div>
+        <div class="voice-card-bio">Hemingway survived two plane crashes, multiple wars, and a life lived at full throttle, then wrote about it in prose stripped down to the bone. He believed courage was grace under pressure, and he spent his life testing that theory.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Frederick Douglass</div>
+        <div class="voice-card-years">1818–1895 · Abolitionist, Orator, Statesman</div>
+        <div class="voice-card-bio">Born into slavery in Maryland, Douglass taught himself to read in secret, fought his overseer with his bare hands, and escaped to become the most powerful voice against slavery in American history.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Bruce Lee</div>
+        <div class="voice-card-years">1940–1973 · Martial Artist, Philosopher, Actor</div>
+        <div class="voice-card-bio">He broke every rule martial arts had. Rejected rigid styles. Created Jeet Kune Do — the style of no style. He could do two-finger pushups and strike faster than cameras could capture. Hollywood told him Asians couldn't be leading men. He became the biggest action star on the planet. Dead at 32, he left behind a philosophy of human potential that transcends fighting: absorb what is useful, reject what is useless, add what is specifically your own.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">David Goggins</div>
+        <div class="voice-card-years">1975–Present · Ultramarathon Runner, Former Navy SEAL, Author</div>
+        <div class="voice-card-bio">Failed the ASVAB three times. Got through BUD/S with broken kneecaps and a heart defect. Then ran ultramarathons, broke the world record for pull-ups, and wrote a book that told the world the truth: you are not even close to your limits. Goggins is the living proof that the human ceiling is a lie. A Grithosian does not accept limits. Goggins destroyed them.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Jocko Willink</div>
+        <div class="voice-card-years">1971–Present · Retired Navy SEAL Commander, Author</div>
+        <div class="voice-card-bio">Commander of Task Unit Bruiser — the most decorated special operations unit of the Iraq War. When everything went wrong on the battlefield, his response became a philosophy: Extreme Ownership. No excuses. No blame. Own it all. He wakes up at 4:30 AM every day and posts a photo of his watch. Discipline equals freedom. A Grithosian owns their failures. Jocko made it a way of life.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Elon Musk</div>
+        <div class="voice-card-years">1971–Present · Founder of SpaceX, Tesla, Neuralink & xAI</div>
+        <div class="voice-card-bio">Reusable rockets that land themselves. Electric cars that outperform supercars. Brain-computer interfaces. A plan to put humans on Mars. Every industry he enters tells him it's impossible — and he builds it anyway. He nearly went bankrupt three times. He slept on factory floors. Love him or hate him, nobody alive pushes harder at the ceiling of what's possible. A Grithosian doesn't accept limits. They redefine them.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Jensen Huang</div>
+        <div class="voice-card-years">1963–Present · Founder & CEO of NVIDIA</div>
+        <div class="voice-card-bio">He started NVIDIA in a Denny's booth in 1993 making graphics chips for video games. Three decades later, his GPUs power every major AI model on the planet. He saw that parallel processing would change everything while the entire industry focused on faster single cores. He bet the company on CUDA when nobody wanted it. Now NVIDIA is worth more than most countries. A Grithosian sees what others miss and has the patience to wait for the world to catch up.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Steve Jobs</div>
+        <div class="voice-card-years">1955–2011 · Co-founder of Apple</div>
+        <div class="voice-card-bio">He built Apple in a garage, got fired from his own company, then came back and created the iMac, iPod, iPhone, and iPad — products that changed how every human on earth interacts with technology. He demanded perfection from everyone around him, including himself, until the day cancer took him at 56. A Grithosian doesn't settle for good enough. They push until it's right.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Hedy Lamarr</div>
+        <div class="voice-card-years">1914–2000 · Actress & Inventor of Frequency-Hopping Spread Spectrum</div>
+        <div class="voice-card-bio">Hollywood called her the most beautiful woman in the world. What they didn't know was that between takes, she was inventing frequency-hopping communication to help the Navy defeat Nazi torpedoes. The military ignored her patent. Decades later, her technology became the foundation of WiFi, Bluetooth, and GPS. A Grithosian does the work whether anyone notices or not.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">John von Neumann</div>
+        <div class="voice-card-years">1903–1957 · Architect of the Modern Computer, Game Theory & Nuclear Strategy</div>
+        <div class="voice-card-bio">He designed the architecture that every computer on Earth still runs on. He invented game theory. He helped build the atomic bomb. His mind worked so fast that colleagues said watching him think was like watching a human-shaped calculator with intuition. A Grithosian remembers that no amount of genius buys a single extra day. Use the ones you have.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Nikola Tesla</div>
+        <div class="voice-card-years">1856–1943 · Architect of the Modern Electrical World</div>
+        <div class="voice-card-bio">He powered the modern world with alternating current, held over 300 patents, and envisioned wireless energy a century before anyone else. Edison took the credit. Westinghouse took the profits. Tesla died alone in a New York hotel room with nothing but his brilliance and his pigeons. A Grithosian controls what matters — the work, the craft, the vision.</div>
+      </div>
+    </div>
+
+    <!-- ═══ PILLAR III — CONTROL (12 voices) ═══ -->
+    <p class="voices-pillar-label reveal d1">Pillar III — Control · Live Within Bounds</p>
+    <div class="voices-grid reveal d2">
+      <div class="voice-card">
+        <div class="voice-card-name">Viktor Frankl</div>
+        <div class="voice-card-years">1905–1997 · Psychiatrist, Holocaust Survivor, Author</div>
+        <div class="voice-card-bio">Viktor Frankl survived Auschwitz and Dachau, stripped of everything. He discovered the one thing that could not be taken: the ability to choose his response. He wrote Man's Search for Meaning in nine days. It has sold over sixteen million copies.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Nassim Taleb</div>
+        <div class="voice-card-years">1960–Present · Essayist, Statistician, Risk Analyst</div>
+        <div class="voice-card-bio">Former derivatives trader who watched the financial system lie about risk until it collapsed. Then he wrote The Black Swan and Antifragile — books that proved most experts are dangerously wrong about uncertainty. Taleb doesn't just accept that the world is unpredictable. He built a framework for thriving because of it. A Grithosian doesn't fear disorder. They get stronger from it.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Ryan Holiday</div>
+        <div class="voice-card-years">1987–Present · Author, Stoic Philosopher, Strategist</div>
+        <div class="voice-card-bio">Dropped out of college at 19 to apprentice under Robert Greene. Became a bestselling author by making ancient Stoic philosophy accessible to a generation that needed it. The Obstacle Is the Way, Ego Is the Enemy, Stillness Is the Key — each one a practical manual for living within bounds. Holiday didn't invent these ideas. He translated them. And millions now practice Stoic principles because he made the ancient feel urgent.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">James Stockdale</div>
+        <div class="voice-card-years">1923–2005 · Vice Admiral, Vietnam POW, Medal of Honor</div>
+        <div class="voice-card-bio">Shot down over Vietnam. Spent seven years in the Hanoi Hilton — tortured, isolated, broken repeatedly. He survived by applying Epictetus's philosophy: control what you can, release what you can't. The optimists died first, he said. The ones who thought they'd be out by Christmas. Stockdale faced the brutal facts and never lost faith. A Grithosian lives within the bounds — even when the bounds are a prison cell.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Dietrich Bonhoeffer</div>
+        <div class="voice-card-years">1906–1945 · Theologian, Anti-Nazi Dissident</div>
+        <div class="voice-card-bio">A Lutheran pastor who could have waited out the war in America. Instead he returned to Germany to resist Hitler from the inside. He joined the conspiracy to assassinate the Führer, was arrested, and was hanged at Flossenbürg three weeks before liberation. He wrote The Cost of Discipleship and Letters and Papers from Prison. Bonhoeffer understood that living within bounds sometimes means dying for them.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Nelson Mandela</div>
+        <div class="voice-card-years">1918–2013 · Anti-Apartheid Revolutionary, President of South Africa</div>
+        <div class="voice-card-bio">Mandela spent twenty-seven years in prison and emerged without bitterness to lead the nation that had imprisoned him. He chose reconciliation over revenge and proved that strength is not the absence of suffering but the refusal to let suffering define you.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Aleksandr Solzhenitsyn</div>
+        <div class="voice-card-years">1918–2008 · Nobel Laureate, Author, Soviet Dissident</div>
+        <div class="voice-card-bio">Spent eight years in Soviet labor camps for criticizing Stalin in a private letter. Instead of breaking, he memorized entire novels he couldn't write down. The Gulag Archipelago exposed the Soviet prison system to the world and helped bring down an empire. Solzhenitsyn lived within the cruelest bounds imaginable and used words as his weapon.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Linus Torvalds</div>
+        <div class="voice-card-years">1969–Present · Creator of Linux & Git</div>
+        <div class="voice-card-bio">He built Linux in his dorm room and gave the source code to the world. Today it runs every Android phone, every cloud server, the International Space Station, and 96% of the world's top supercomputers. Microsoft called open source a cancer. Torvalds didn't argue — he just kept building. Then he built Git, the tool every developer on earth uses. A Grithosian doesn't debate. They ship.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Tim Berners-Lee</div>
+        <div class="voice-card-years">1955–Present · Inventor of the World Wide Web</div>
+        <div class="voice-card-bio">He invented the most valuable technology in human history — and gave it away for free. No patents. No licensing. No billion-dollar IPO. He could have been the richest person who ever lived. Instead, he chose open access for all of humanity. A Grithosian builds something magnificent and refuses to own it when it belongs to everyone.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Grace Hopper</div>
+        <div class="voice-card-years">1906–1992 · Rear Admiral, U.S. Navy — Pioneer of Computer Programming</div>
+        <div class="voice-card-bio">She invented the compiler — the tool that translates human language into machine code — when her colleagues said computers could only do arithmetic. She coined "debugging" after pulling an actual moth from a relay. She served in the Navy until age 79 and told anyone who'd listen that it's easier to ask forgiveness than permission. A Grithosian doesn't ask the world for permission to be extraordinary.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Malala Yousafzai</div>
+        <div class="voice-card-years">1997–Present · Nobel Laureate, Education Activist</div>
+        <div class="voice-card-bio">The Taliban shot her in the head for going to school. She was fifteen. She survived, recovered, and went back to fighting for girls' education with more intensity than before. She became the youngest Nobel Peace Prize laureate in history. The bounds tried to kill her. She rewrote them. A Grithosian does not accept unjust bounds — they challenge them with the one thing no bullet can stop: conviction.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Harriet Tubman</div>
+        <div class="voice-card-years">1822–1913 · Abolitionist, Conductor of the Underground Railroad</div>
+        <div class="voice-card-bio">Born into slavery. Escaped. Then went back thirteen times — back into the place that would kill her — and led over 70 people to freedom. She carried a revolver and told anyone who wanted to turn back that they were going forward or they weren't going anywhere. She later served as a Union Army spy. Tubman didn't just live within bounds. She shattered the ones that were unjust and held the line on the ones that mattered.</div>
+      </div>
+    </div>
+
+    <!-- ═══ PILLAR IV — DEATH (8 voices — the lightest) ═══ -->
+    <p class="voices-pillar-label reveal d1">Pillar IV — Death · Return to the Whole</p>
+    <div class="voices-grid reveal d2">
+      <div class="voice-card">
+        <div class="voice-card-name">Sitting Bull</div>
+        <div class="voice-card-years">1831–1890 · Hunkpapa Lakota Leader</div>
+        <div class="voice-card-bio">He led his people to victory at the Battle of the Little Bighorn — the most decisive Native American military triumph in history. He refused every treaty that demanded his people give up their land and their way of life. When he finally surrendered, it was to save his starving people, not himself. He was assassinated by reservation police. Sitting Bull lived as though death was not the enemy — surrender was.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Crazy Horse</div>
+        <div class="voice-card-years">1840–1877 · Oglala Lakota War Leader</div>
+        <div class="voice-card-bio">He never allowed his photograph to be taken. He never signed a treaty. He led the charge that destroyed Custer at Little Bighorn and fought until there was nothing left to fight with. When he surrendered, they bayoneted him in a guardhouse. He died at 37, leaving no image behind — only the memory of a man who refused to be owned. A Grithosian returns to the whole on their own terms.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Chief Joseph</div>
+        <div class="voice-card-years">1840–1904 · Nez Perce Leader</div>
+        <div class="voice-card-bio">He led 800 Nez Perce men, women, and children on a 1,170-mile fighting retreat across four states, outmaneuvering the U.S. Army for four months. When he finally surrendered, 40 miles from the Canadian border, he said five words that echo across history: "I will fight no more forever." Not defeat. Completion. He had given everything.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Tecumseh</div>
+        <div class="voice-card-years">1768–1813 · Shawnee Chief, Pan-Indian Confederacy Leader</div>
+        <div class="voice-card-bio">He tried to unite every Native American tribe east of the Mississippi into a single confederacy to stop westward expansion. He nearly succeeded. He was killed at the Battle of the Thames fighting alongside the British against the Americans. His last instruction to his warriors: do not mutilate the enemy dead. Even in war, even facing extinction, he held to his code. A Grithosian lives by principle — especially when dying by it.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Geronimo</div>
+        <div class="voice-card-years">1829–1909 · Apache War Leader</div>
+        <div class="voice-card-bio">After Mexican soldiers murdered his wife, children, and mother, Geronimo fought for 30 years across the American Southwest. With never more than 38 warriors, he held off 5,000 U.S. troops and 3,000 Mexican soldiers. He was the last Native American leader to formally surrender to the United States. He fought until fighting was no longer possible — not out of rage, but out of an absolute refusal to disappear quietly. A Grithosian does not go gentle.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Cochise</div>
+        <div class="voice-card-years">1805–1874 · Chiricahua Apache Chief</div>
+        <div class="voice-card-bio">For a decade he waged war against the United States after soldiers killed his relatives under a flag of truce. He was never captured. He made peace only when he chose to, on terms that preserved his people's homeland — for a time. He died free, in his own mountains. Cochise understood what most leaders forget: the only peace worth having is one you chose, not one forced upon you.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Red Cloud</div>
+        <div class="voice-card-years">1822–1909 · Oglala Lakota Chief</div>
+        <div class="voice-card-bio">The only Native American leader to win a war against the United States. Red Cloud's War forced the U.S. Army to abandon its forts along the Bozeman Trail and sign a treaty on Lakota terms. He then spent the next four decades fighting with words instead of weapons, navigating the reservation system to preserve what he could of his people's way of life. He understood that the fight changes form — but it never ends.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Pontiac</div>
+        <div class="voice-card-years">1720–1769 · Ottawa Chief</div>
+        <div class="voice-card-bio">He united tribes across the Great Lakes region in a coordinated uprising against British forts — Pontiac's War. He besieged Fort Detroit for five months and inspired simultaneous attacks on a dozen British outposts. The British were so shaken they issued the Proclamation of 1763, drawing a line the colonists could not cross. Pontiac proved that even an empire can be forced to retreat when the resistance is total.</div>
+      </div>
+    </div>
+
+    <!-- ═══ PILLAR V — VERITY (12 voices) ═══ -->
+    <p class="voices-pillar-label reveal d1">Pillar V — Verity · Walk Forward. Eyes Open.</p>
+    <div class="voices-grid reveal d2">
+      <div class="voice-card">
+        <div class="voice-card-name">Geoffrey Hinton</div>
+        <div class="voice-card-years">1947–Present · The Godfather of Artificial Intelligence</div>
+        <div class="voice-card-bio">He spent decades being told neural networks were a dead end. He kept going. His work on deep learning became the foundation of every AI system on the planet. Then he quit Google to warn the world about what he helped create. He could have stayed quiet, collected his check, and enjoyed retirement. Instead, he told the truth about the dangers of his own life's work. A Grithosian doesn't hide from uncomfortable truths — especially the ones they caused.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Alan Turing</div>
+        <div class="voice-card-years">1912–1954 · Father of Computer Science & Artificial Intelligence</div>
+        <div class="voice-card-bio">He cracked the Enigma code, shortened a world war, and saved millions of lives. Then the country he saved chemically castrated him for loving the wrong person. He didn't hide. He didn't recant. He chose truth — about his work, about himself — when the cost was everything. Turing paid the ultimate price and never flinched.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Aaron Swartz</div>
+        <div class="voice-card-years">1986–2013 · Co-creator of RSS, Co-founder of Reddit, Open Access Activist</div>
+        <div class="voice-card-bio">He helped build RSS at 14. Co-founded Reddit. Then he fought to make academic research free for everyone — because he believed knowledge locked behind paywalls was a moral crime. The federal government came after him with 35 years in prison for downloading journal articles. He was 26. His code, his activism, and his belief that knowledge belongs to all of humanity outlive every prosecutor who came for him.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Ada Lovelace</div>
+        <div class="voice-card-years">1815–1852 · The First Computer Programmer</div>
+        <div class="voice-card-bio">She wrote the first computer algorithm a hundred years before computers existed. Charles Babbage built the Analytical Engine — but Lovelace saw what he couldn't see in his own machine. She envisioned computers composing music, creating art, thinking beyond pure calculation. In an era that told women to sit down and be quiet, she outthought every man in the room.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Margaret Hamilton</div>
+        <div class="voice-card-years">1936–Present · Director of Apollo Flight Computer Software, MIT</div>
+        <div class="voice-card-bio">She wrote the flight software for Apollo 11. When she insisted on adding error-handling code, NASA told her not to bother — astronauts wouldn't make mistakes. Three minutes before the lunar landing, the computer overloaded. Her "unnecessary" code saved the mission, the crew, and the entire space program. She coined the term "software engineering" when nobody took software seriously.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Claude Shannon</div>
+        <div class="voice-card-years">1916–2001 · Father of Information Theory</div>
+        <div class="voice-card-bio">He reduced all human communication — every word, image, song, and thought ever transmitted — to ones and zeros. His 1948 paper didn't just describe information. It defined its absolute limits. While the world chased noise, Shannon found the signal. Then he spent his free time building juggling robots and riding unicycles down the halls at MIT. A Grithosian masters what they can control, ignores the noise, and doesn't take themselves too seriously.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Fei-Fei Li</div>
+        <div class="voice-card-years">1976–Present · Creator of ImageNet — Architect of the Modern AI Revolution</div>
+        <div class="voice-card-bio">She immigrated from China as a teenager, worked in a dry cleaner to survive, and became one of the most important scientists in AI history. She built ImageNet, a dataset of 14 million labeled images, and it ignited the deep learning revolution. Every image recognition system, every self-driving car, every AI that can "see" traces back to her work. A Grithosian builds the foundation that makes everyone else's breakthroughs possible.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Demis Hassabis</div>
+        <div class="voice-card-years">1976–Present · Co-founder of DeepMind, Nobel Laureate</div>
+        <div class="voice-card-bio">Chess prodigy at 13. Built video games at 17. Then he co-founded DeepMind with one mission: solve intelligence. AlphaGo beat the world champion at a game with more possible positions than atoms in the universe. AlphaFold cracked protein folding — a problem that stumped biologists for 50 years — in days, not decades. A Grithosian doesn't chase trends. They master fundamentals and let the results speak.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Nik Seetharaman</div>
+        <div class="voice-card-years">Present · Founder & CEO of Wraithwatch — AI Cyber Defense</div>
+        <div class="voice-card-bio">Former CIO of Anduril. Built by engineers from SpaceX, Palantir, and the defense sector. While most cybersecurity companies sell dashboards and compliance theater, Wraithwatch builds systems that simulate attacks, adapt in real time, and close gaps before adversaries find them. No marketing fluff. No checkbox security. Weapons-grade defense for the people who can't afford to lose.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Norbert Wiener</div>
+        <div class="voice-card-years">1894–1964 · Father of Cybernetics</div>
+        <div class="voice-card-bio">He coined the term cybernetics and warned in the 1950s that automated machines would displace workers and concentrate power in the hands of the few who controlled them. He was decades ahead of every AI ethics debate happening today. While his colleagues celebrated their creations, Wiener was already asking who would be harmed by them. A Grithosian walks forward with eyes open — Wiener opened them first.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">George Orwell</div>
+        <div class="voice-card-years">1903–1950 · Novelist, Essayist, Critic of Totalitarianism</div>
+        <div class="voice-card-bio">He fought fascists in Spain, took a bullet through the throat, and survived to write the two most important warnings in the English language. Animal Farm exposed how revolutions eat their own. Nineteen Eighty-Four gave us Big Brother, doublethink, and thoughtcrime — vocabulary we now use daily to describe the surveillance state he predicted. Orwell didn't fear technology. He feared the people who controlled it. A Grithosian reads Orwell not as fiction but as a field manual.</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-name">Aldous Huxley</div>
+        <div class="voice-card-years">1894–1963 · Novelist, Philosopher</div>
+        <div class="voice-card-bio">While Orwell warned about the boot on your neck, Huxley warned about the pill in your hand. Brave New World predicted a society controlled not by pain but by pleasure — endless entertainment, chemical happiness, manufactured consent. He understood that tyranny doesn't always look like tyranny. Sometimes it looks like comfort. A Grithosian recognizes that the most dangerous prison is the one you don't want to leave.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══ CLOSING ═══ -->
+<section class="closing">
+  <div class="wrap">
+    <div class="reveal d1">
+      <div class="sec-label">The Voices</div>
+    </div>
+    <div class="reveal d2">
+      <p class="closing-text">They lived it before it had a name. Grithos carries it forward for everyone with the grit to live it.</p>
+      <p class="closing-sub">From emperors and slaves to warriors and engineers. 2,500 years of grit. The voices continue.</p>
+    </div>
+    <div class="reveal d3">
+      <a href="/" class="back-link">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" /></svg>
+        Back to Grithos
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ REVEAL ANIMATIONS ═══ -->
+<script>
+function initRevealAnimations() {
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  });
+  reveals.forEach((reveal) => observer.observe(reveal));
+}
+document.addEventListener('DOMContentLoaded', initRevealAnimations);
+</script>
+
+</BaseLayout>
