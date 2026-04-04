@@ -108,7 +108,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     font-family: var(--serif);
     font-size: 16px;
     font-style: italic;
-    color: var(--text-muted);
+    color: var(--text-secondary);
+  }
+
+  /* ═══ VERITY TRANSITION ═══ */
+  .verity-transition {
+    text-align: center;
+    padding: 60px 20px;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .verity-transition-text {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-style: italic;
+    color: var(--cream);
+    line-height: 1.8;
+    margin-bottom: 16px;
   }
 
   /* ═══ TENET CARD ═══ */
@@ -441,6 +457,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 </section>
 
 <div class="section-divider"></div>
+
+<!-- ═══ VERITY TRANSITION ═══ -->
+<section class="verity-transition reveal d1">
+  <div class="wrap">
+    <p class="verity-transition-text">The first twelve tenets are timeless. They were true before electricity, before the internet, before any of this. They will be true long after.</p>
+    <p class="verity-transition-text">But we do not live in a timeless world. We live in an engineered one. And that demands its own reckoning.</p>
+  </div>
+</section>
 
 <!-- ═══ TENETS OF VERITY ═══ -->
 <section class="tenets-group" id="verity-tenets">
