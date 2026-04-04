@@ -38,6 +38,9 @@ const prefix = isHome ? '' : '/';
         </div>
       </div>
 
+      <!-- The Forge -->
+      <a href="/the-forge" class={activePage === 'the-forge' ? 'active' : ''}>The Forge</a>
+
       <!-- The Store -->
       <a href="/merch" class={activePage === 'merch' ? 'active' : ''}>The Store</a>
 
@@ -59,6 +62,7 @@ const prefix = isHome ? '' : '/';
 
 <div class="mobile-menu" id="mobileMenu">
   <a href="/footing" class={`mobile-cta ${activePage === 'footing' ? 'active' : ''}`}>Start Here</a>
+  <a href="/the-forge" class={activePage === 'the-forge' ? 'active' : ''}>The Forge</a>
   <a href="/merch" class={activePage === 'merch' ? 'active' : ''}>The Store</a>
   <div class="mobile-section">
     <div class="mobile-section-label">The Philosophy</div>
