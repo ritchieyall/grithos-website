@@ -1,0 +1,549 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Forge Leader Scripts — The Forge"
+  description="15 ready-to-run meeting scripts for Forge chapter leaders. Pick a week, print it, run the meeting. Pillar → Tenet → Architect → Practice."
+  activePage="the-forge"
+>
+
+<section class="scripts-hero">
+  <div class="wrap">
+    <div class="hero-content reveal">
+      <p class="section-overline">The Forge · Leader Scripts</p>
+      <h1>Run the Meeting.</h1>
+      <div class="hero-line"></div>
+      <p class="hero-sub">15 packages. One per meeting. Pick your week, hit print, run The Forge. No training required.</p>
+      <p class="hero-chain">Pillar <span class="arrow">→</span> Tenet <span class="arrow">→</span> Architect + Quote <span class="arrow">→</span> Practice</p>
+      <p class="hero-sub-small">The why → The rule → The proof it works → One action, today.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="gold-divider" />
+
+<section class="scripts-grid-section">
+  <div class="wrap">
+    <div class="pillar-filter reveal">
+      <button class="filter-btn active" data-filter="all">All 15</button>
+      <button class="filter-btn" data-filter="virtue">I · Virtue</button>
+      <button class="filter-btn" data-filter="apex">II · Apex</button>
+      <button class="filter-btn" data-filter="control">III · Control</button>
+      <button class="filter-btn" data-filter="death">IV · Death</button>
+      <button class="filter-btn" data-filter="verity">V · Verity</button>
+    </div>
+
+    <div class="scripts-grid">
+
+      <!-- PILLAR I — VIRTUE -->
+      <div class="script-card reveal" data-pillar="virtue" data-week="1">
+        <div class="card-header">
+          <span class="week-badge">Week 1</span>
+          <span class="pillar-badge virtue">Virtue</span>
+        </div>
+        <h3>Tell the Truth. Even When It Costs You.</h3>
+        <p class="architect-name">Marcus Aurelius</p>
+        <p class="architect-era">Emperor of Rome · 121–180 AD</p>
+        <button class="btn-print" onclick="openPrint(1)">Print This Script →</button>
+      </div>
+
+      <div class="script-card reveal d1" data-pillar="virtue" data-week="2">
+        <div class="card-header">
+          <span class="week-badge">Week 2</span>
+          <span class="pillar-badge virtue">Virtue</span>
+        </div>
+        <h3>Keep Your Word Like Your Life Depends on It.</h3>
+        <p class="architect-name">Benjamin Franklin</p>
+        <p class="architect-era">Founding Father · 1706–1790</p>
+        <button class="btn-print" onclick="openPrint(2)">Print This Script →</button>
+      </div>
+
+      <div class="script-card reveal d2" data-pillar="virtue" data-week="3">
+        <div class="card-header">
+          <span class="week-badge">Week 3</span>
+          <span class="pillar-badge virtue">Virtue</span>
+        </div>
+        <h3>Own Your Wins. But Do Right in the Dark.</h3>
+        <p class="architect-name">Abraham Lincoln</p>
+        <p class="architect-era">16th President · 1809–1865</p>
+        <button class="btn-print" onclick="openPrint(3)">Print This Script →</button>
+      </div>
+
+      <!-- PILLAR II — APEX -->
+      <div class="script-card reveal" data-pillar="apex" data-week="4">
+        <div class="card-header">
+          <span class="week-badge">Week 4</span>
+          <span class="pillar-badge apex">Apex</span>
+        </div>
+        <h3>Never Shrink. Never Apologize for Strength.</h3>
+        <p class="architect-name">Theodore Roosevelt</p>
+        <p class="architect-era">26th President · 1858–1919</p>
+        <button class="btn-print" onclick="openPrint(4)">Print This Script →</button>
+      </div>
+
+      <div class="script-card reveal d1" data-pillar="apex" data-week="5">
+        <div class="card-header">
+          <span class="week-badge">Week 5</span>
+          <span class="pillar-badge apex">Apex</span>
+        </div>
+        <h3>Protect Those Beneath You.</h3>
+        <p class="architect-name">Frederick Douglass</p>
+        <p class="architect-era">Abolitionist · 1818–1895</p>
+        <button class="btn-print" onclick="openPrint(5)">Print This Script →</button>
+      </div>
+
+      <div class="script-card reveal d2" data-pillar="apex" data-week="6">
+        <div class="card-header">
+          <span class="week-badge">Week 6</span>
+          <span class="pillar-badge apex">Apex</span>
+        </div>
+        <h3>Reject the Victim. Become the Author.</h3>
+        <p class="architect-name">Viktor Frankl</p>
+        <p class="architect-era">Psychiatrist, Holocaust Survivor · 1905–1997</p>
+        <button class="btn-print" onclick="openPrint(6)">Print This Script →</button>
+      </div>
+
+      <!-- PILLAR III — CONTROL -->
+      <div class="script-card reveal" data-pillar="control" data-week="7">
+        <div class="card-header">
+          <span class="week-badge">Week 7</span>
+          <span class="pillar-badge control">Control</span>
+        </div>
+        <h3>Own Only What Is Yours.</h3>
+        <p class="architect-name">Epictetus</p>
+        <p class="architect-era">Former Slave, Stoic Philosopher · 50–135 AD</p>
+        <button class="btn-print" onclick="openPrint(7)">Print This Script →</button>
+      </div>
+
+      <div class="script-card reveal d1" data-pillar="control" data-week="8">
+        <div class="card-header">
+          <span class="week-badge">Week 8</span>
+          <span class="pillar-badge control">Control</span>
+        </div>
+        <h3>Redirect Immediately.</h3>
+        <p class="architect-name">Sun Tzu</p>
+        <p class="architect-era">Military Strategist · 544–496 BC</p>
+        <button class="btn-print" onclick="openPrint(8)">Print This Script →</button>
+      </div>
+
+      <div class="script-card reveal d2" data-pillar="control" data-week="9">
+        <div class="card-header">
+          <span class="week-badge">Week 9</span>
+          <span class="pillar-badge control">Control</span>
+        </div>
+        <h3>Trust the Bounds.</h3>
+        <p class="architect-name">Lao Tzu</p>
+        <p class="architect-era">Chinese Philosopher · 6th Century BC</p>
+        <button class="btn-print" onclick="openPrint(9)">Print This Script →</button>
+      </div>
+
+      <!-- PILLAR IV — DEATH -->
+      <div class="script-card reveal" data-pillar="death" data-week="10">
+        <div class="card-header">
+          <span class="week-badge">Week 10</span>
+          <span class="pillar-badge death">Death</span>
+        </div>
+        <h3>Live Like You Will Die. Because You Will.</h3>
+        <p class="architect-name">Seneca</p>
+        <p class="architect-era">Roman Statesman · 4 BC–65 AD</p>
+        <button class="btn-print" onclick="openPrint(10)">Print This Script →</button>
+      </div>
+
+      <div class="script-card reveal d1" data-pillar="death" data-week="11">
+        <div class="card-header">
+          <span class="week-badge">Week 11</span>
+          <span class="pillar-badge death">Death</span>
+        </div>
+        <h3>Grieve Fully. Then Move.</h3>
+        <p class="architect-name">Albert Camus</p>
+        <p class="architect-era">Novelist, Philosopher · 1913–1960</p>
+        <button class="btn-print" onclick="openPrint(11)">Print This Script →</button>
+      </div>
+
+      <div class="script-card reveal d2" data-pillar="death" data-week="12">
+        <div class="card-header">
+          <span class="week-badge">Week 12</span>
+          <span class="pillar-badge death">Death</span>
+        </div>
+        <h3>Build a Legacy That Stands in This Life.</h3>
+        <p class="architect-name">Paul Graham</p>
+        <p class="architect-era">Co-founder of Y Combinator · 1964–Present</p>
+        <button class="btn-print" onclick="openPrint(12)">Print This Script →</button>
+      </div>
+
+      <!-- PILLAR V — VERITY -->
+      <div class="script-card reveal" data-pillar="verity" data-week="13">
+        <div class="card-header">
+          <span class="week-badge">Week 13</span>
+          <span class="pillar-badge verity">Verity</span>
+        </div>
+        <h3>The World Engineers Your Comfort. Master It Anyway.</h3>
+        <p class="architect-name">Tristan Harris</p>
+        <p class="architect-era">Center for Humane Technology · 1984–Present</p>
+        <button class="btn-print" onclick="openPrint(13)">Print This Script →</button>
+      </div>
+
+      <div class="script-card reveal d1" data-pillar="verity" data-week="14">
+        <div class="card-header">
+          <span class="week-badge">Week 14</span>
+          <span class="pillar-badge verity">Verity</span>
+        </div>
+        <h3>Build With. Never Build Under.</h3>
+        <p class="architect-name">Andrej Karpathy</p>
+        <p class="architect-era">AI Researcher & Educator · 1986–Present</p>
+        <button class="btn-print" onclick="openPrint(14)">Print This Script →</button>
+      </div>
+
+      <div class="script-card reveal d2" data-pillar="verity" data-week="15">
+        <div class="card-header">
+          <span class="week-badge">Week 15</span>
+          <span class="pillar-badge verity">Verity</span>
+        </div>
+        <h3>Walk Forward. Eyes Open.</h3>
+        <p class="architect-name">Socrates</p>
+        <p class="architect-era">Greek Philosopher · 470–399 BC</p>
+        <button class="btn-print" onclick="openPrint(15)">Print This Script →</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PRINT OVERLAYS — one per week, hidden until triggered -->
+<div id="print-overlay" class="print-overlay" style="display:none;">
+  <div class="print-sheet" id="print-sheet">
+    <div class="print-close" onclick="closePrint()">✕</div>
+    <div class="print-header">
+      <img src="/assets/images/grithos-logo.png" alt="Grithos" class="print-logo">
+      <div class="print-title">THE FORGE — LEADER SCRIPT</div>
+      <div class="print-week" id="print-week-label"></div>
+    </div>
+    <div class="print-body" id="print-body"></div>
+    <div class="print-footer">
+      <button class="btn btn-primary no-print" onclick="window.print()">🖨 Print This Page</button>
+      <p class="print-url no-print">grithos.com/the-forge</p>
+    </div>
+  </div>
+</div>
+
+</BaseLayout>
+
+<script is:inline>
+const scripts = {
+  1: {
+    week: "Week 1", pillar: "PILLAR I — VIRTUE", pillarSub: "Do Right Regardless",
+    pillarDesc: "A Grithosian is honest. Not when it is convenient. Not when it is safe. Regardless of the cost.",
+    tenet: "TENET I", tenentTitle: "TELL THE TRUTH. EVEN WHEN IT COSTS YOU.",
+    tenentDesc: "A Grithosian does not bend the truth to protect comfort. You say what is real. You report what happened. You admit what you did.",
+    architect: "Marcus Aurelius", architectLife: "Emperor of Rome · 121–180 AD",
+    quote: "If it is not right, do not do it. If it is not true, do not say it.",
+    quoteSource: "Meditations, Book XII",
+    practice: "Say one thing today exactly as you mean it. No softening. No hedge. If someone asks your opinion — give the real one."
+  },
+  2: {
+    week: "Week 2", pillar: "PILLAR I — VIRTUE", pillarSub: "Do Right Regardless",
+    pillarDesc: "A Grithosian is honest. Not when it is convenient. Not when it is safe. Regardless of the cost.",
+    tenet: "TENET II", tenentTitle: "KEEP YOUR WORD LIKE YOUR LIFE DEPENDS ON IT.",
+    tenentDesc: "When a Grithosian says they will do something, it is done. No qualifiers. No escape clauses. No \"I'll try.\"",
+    architect: "Benjamin Franklin", architectLife: "Founding Father, Inventor, Philosopher · 1706–1790",
+    quote: "Well done is better than well said.",
+    quoteSource: "Poor Richard's Almanack",
+    practice: "Look at your open commitments. Pick the one you've been avoiding. Complete it today — or tell the person you can't. No silence. No delay."
+  },
+  3: {
+    week: "Week 3", pillar: "PILLAR I — VIRTUE", pillarSub: "Do Right Regardless",
+    pillarDesc: "A Grithosian is honest. Not when it is convenient. Not when it is safe. Regardless of the cost.",
+    tenet: "TENET III", tenentTitle: "OWN YOUR WINS. BUT DO RIGHT IN THE DARK.",
+    tenentDesc: "When you do something great — say so. But when no one is watching, you still do right. Integrity is not a performance.",
+    architect: "Abraham Lincoln", architectLife: "16th President of the United States · 1809–1865",
+    quote: "Nearly all men can stand adversity, but if you want to test a man's character, give him power.",
+    quoteSource: "Attributed",
+    practice: "Do one thing today that benefits someone who will never know it was you. No credit. No mention. Just the act."
+  },
+  4: {
+    week: "Week 4", pillar: "PILLAR II — APEX", pillarSub: "Own Your Nature",
+    pillarDesc: "Humans are the most capable species on earth. Apex is not a trophy. It is a weight.",
+    tenet: "TENET IV", tenentTitle: "NEVER SHRINK. NEVER APOLOGIZE FOR STRENGTH.",
+    tenentDesc: "You are the most capable species on this planet. Act like it. Do not dim your light to make others comfortable.",
+    architect: "Theodore Roosevelt", architectLife: "26th President of the United States · 1858–1919",
+    quote: "It is not the critic who counts; not the man who points out how the strong man stumbles. The credit belongs to the man who is actually in the arena.",
+    quoteSource: "Citizenship in a Republic, April 1910",
+    practice: "Identify one area where you've been playing small. Take one action today that matches your actual capability — not the diminished version you've been showing."
+  },
+  5: {
+    week: "Week 5", pillar: "PILLAR II — APEX", pillarSub: "Own Your Nature",
+    pillarDesc: "Humans are the most capable species on earth. Apex is not a trophy. It is a weight.",
+    tenet: "TENET V", tenentTitle: "PROTECT THOSE BENEATH YOU.",
+    tenentDesc: "Apex is not a trophy. It is a weight. The strongest creature in the room has the greatest responsibility — not to dominate, but to protect.",
+    architect: "Frederick Douglass", architectLife: "Abolitionist, Orator, Statesman · 1818–1895",
+    quote: "Where justice is denied, where poverty is enforced, where ignorance prevails, and where any one class is made to feel that society is an organized conspiracy to oppress, rob and degrade them, neither persons nor property will be safe.",
+    quoteSource: "Speech, 1886",
+    practice: "Find someone today who is struggling with something you've already figured out. Teach them. No charge. No strings. Just lift."
+  },
+  6: {
+    week: "Week 6", pillar: "PILLAR II — APEX", pillarSub: "Own Your Nature",
+    pillarDesc: "Humans are the most capable species on earth. Apex is not a trophy. It is a weight.",
+    tenet: "TENET VI", tenentTitle: "REJECT THE VICTIM. BECOME THE AUTHOR.",
+    tenentDesc: "Bad things happen. A Grithosian does not deny hardship. They refuse to be defined by it. You are not what happened to you. You are what you build next.",
+    architect: "Viktor Frankl", architectLife: "Psychiatrist, Holocaust Survivor · 1905–1997",
+    quote: "Between stimulus and response there is a space. In that space is our freedom and our power to choose our response.",
+    quoteSource: "Man's Search for Meaning",
+    practice: "Name one thing you've been blaming on circumstances. Write down one action you can take about it right now. Take the action. You're the author, not the character."
+  },
+  7: {
+    week: "Week 7", pillar: "PILLAR III — CONTROL", pillarSub: "Live Within Bounds",
+    pillarDesc: "A Grithosian owns four things completely — thoughts, decisions, effort, character. Everything else is borrowed.",
+    tenet: "TENET VII", tenentTitle: "OWN ONLY WHAT IS YOURS.",
+    tenentDesc: "Your thoughts. Your decisions. Your effort. Your character. These four things are yours — completely and without exception. Everything else is outside your control.",
+    architect: "Epictetus", architectLife: "Former Slave, Stoic Philosopher · 50–135 AD",
+    quote: "Make the best use of what is in your power, and take the rest as it happens.",
+    quoteSource: "Discourses",
+    practice: "Write down what's bothering you right now. Circle only the parts you can actually control. Cross out the rest. Act on what's circled. Ignore what's crossed out."
+  },
+  8: {
+    week: "Week 8", pillar: "PILLAR III — CONTROL", pillarSub: "Live Within Bounds",
+    pillarDesc: "A Grithosian owns four things completely — thoughts, decisions, effort, character. Everything else is borrowed.",
+    tenet: "TENET VIII", tenentTitle: "REDIRECT IMMEDIATELY.",
+    tenentDesc: "When the bounds close a door, a Grithosian does not stand there knocking. You turn. Immediately. Deliberately. Energy spent on a closed door is energy stolen from the next open one.",
+    architect: "Sun Tzu", architectLife: "Chinese Military Strategist · 544–496 BC",
+    quote: "Water shapes its course according to the nature of the ground over which it flows. The soldier works out his victory in relation to the foe whom he is facing.",
+    quoteSource: "The Art of War",
+    practice: "Name one thing you've been pushing against that isn't moving. Stop pushing. Redirect that energy into something that will move today. Do it before this meeting ends."
+  },
+  9: {
+    week: "Week 9", pillar: "PILLAR III — CONTROL", pillarSub: "Live Within Bounds",
+    pillarDesc: "A Grithosian owns four things completely — thoughts, decisions, effort, character. Everything else is borrowed.",
+    tenet: "TENET IX", tenentTitle: "TRUST THE BOUNDS.",
+    tenentDesc: "The bounds are rational. They are consistent. They are not punishment — they are structure. A river without banks is a flood. A life without bounds is chaos.",
+    architect: "Lao Tzu", architectLife: "Chinese Philosopher · 6th Century BC",
+    quote: "Nature does not hurry, yet everything is accomplished.",
+    quoteSource: "Tao Te Ching",
+    practice: "Identify one constraint in your life you've been fighting. Reframe it as structure. How does it actually serve you? Write one sentence that starts with \"This limit forces me to...\""
+  },
+  10: {
+    week: "Week 10", pillar: "PILLAR IV — DEATH", pillarSub: "Return to the Whole",
+    pillarDesc: "A Grithosian does not fear death. It is not an enemy. It is a conclusion.",
+    tenet: "TENET X", tenentTitle: "LIVE LIKE YOU WILL DIE. BECAUSE YOU WILL.",
+    tenentDesc: "You are not promised tomorrow. Death is not a threat. It is a deadline. The only question is whether you built something before it arrived.",
+    architect: "Seneca", architectLife: "Roman Statesman, Stoic Philosopher · 4 BC–65 AD",
+    quote: "It is not that we have a short time to live, but that we waste a great deal of it.",
+    quoteSource: "On the Shortness of Life",
+    practice: "If you had six months left, what would you stop doing immediately? Stop doing one of those things today. Not tomorrow. Today."
+  },
+  11: {
+    week: "Week 11", pillar: "PILLAR IV — DEATH", pillarSub: "Return to the Whole",
+    pillarDesc: "A Grithosian does not fear death. It is not an enemy. It is a conclusion.",
+    tenet: "TENET XI", tenentTitle: "GRIEVE FULLY. THEN MOVE.",
+    tenentDesc: "A Grithosian does not suppress grief. You feel it. All of it. But grief is not a residence. It is a passage. You walk through it. You do not build a house in it.",
+    architect: "Albert Camus", architectLife: "French-Algerian Novelist, Philosopher · 1913–1960",
+    quote: "In the midst of winter, I found there was, within me, an invincible summer.",
+    quoteSource: "Return to Tipasa",
+    practice: "Name one loss you haven't fully processed. Give it five minutes of honest thought. Then write down one thing you're going to build because of it — not despite it, because of it."
+  },
+  12: {
+    week: "Week 12", pillar: "PILLAR IV — DEATH", pillarSub: "Return to the Whole",
+    pillarDesc: "A Grithosian does not fear death. It is not an enemy. It is a conclusion.",
+    tenet: "TENET XII", tenentTitle: "BUILD A LEGACY THAT STANDS IN THIS LIFE.",
+    tenentDesc: "A Grithosian builds something that matters right here, right now. Not for the afterlife. Not for the history books. For the people standing in front of you.",
+    architect: "Paul Graham", architectLife: "Co-founder of Y Combinator, Essayist · 1964–Present",
+    quote: "Relentlessly prune bullshit, don't wait to do things that matter, and savor the time you have. That's what you do when life is short.",
+    quoteSource: "Essay, Life is Short, January 2016",
+    practice: "What are you building that will still matter after you're gone? If the answer is nothing — start today. Write the first sentence. File the first form. Make the first call. Legacy starts with one action."
+  },
+  13: {
+    week: "Week 13", pillar: "PILLAR V — VERITY", pillarSub: "Seek What Is True",
+    pillarDesc: "A Grithosian confronts the engineered world without flinching. You do not smash the tools. You master them.",
+    tenet: "TENET XIII", tenentTitle: "THE WORLD ENGINEERS YOUR COMFORT. MASTER IT ANYWAY.",
+    tenentDesc: "The comfort trap is not new. Bread and circuses kept Rome docile. But the modern version is precision-engineered — every feed, every recommendation, every notification is a behavioral nudge. Mastery is not avoidance. It is informed, deliberate engagement.",
+    architect: "Tristan Harris", architectLife: "Co-founder of Center for Humane Technology · 1984–Present",
+    quote: "Once you know how to push people's buttons, you can play them like a piano. And this is exactly what product designers do to your mind.",
+    quoteSource: "Medium essay, May 2016",
+    practice: "Turn off all notifications for one hour today. Do your most important work in that silence. Notice how hard it is. That's the comfort trap showing you its grip. Now master it."
+  },
+  14: {
+    week: "Week 14", pillar: "PILLAR V — VERITY", pillarSub: "Seek What Is True",
+    pillarDesc: "A Grithosian confronts the engineered world without flinching. You do not smash the tools. You master them.",
+    tenet: "TENET XIV", tenentTitle: "BUILD WITH. NEVER BUILD UNDER.",
+    tenentDesc: "AI is the most powerful tool ever created. A Grithosian builds with AI as a partner, not a master. The tool serves you. The moment it decides, you've already lost.",
+    architect: "Andrej Karpathy", architectLife: "AI Researcher & Educator · 1986–Present",
+    quote: "The qualities that correlate most strongly to success in deep learning are patience and attention to detail.",
+    quoteSource: "Blog post, A Recipe for Training Neural Networks, April 2019",
+    practice: "Use AI to solve one problem today — but explain the output in your own words before you ship it. If you can't explain it, you didn't build with it. You built under it."
+  },
+  15: {
+    week: "Week 15", pillar: "PILLAR V — VERITY", pillarSub: "Seek What Is True",
+    pillarDesc: "A Grithosian confronts the engineered world without flinching. You do not smash the tools. You master them.",
+    tenet: "TENET XV", tenentTitle: "WALK FORWARD. EYES OPEN.",
+    tenentDesc: "The age ahead is genuinely unprecedented. A Grithosian does not cower from it and does not sleepwalk into it. You walk forward with clear vision and values intact.",
+    architect: "Socrates", architectLife: "Greek Philosopher · 470–399 BC",
+    quote: "The unexamined life is not worth living.",
+    quoteSource: "Plato, Apology 38a",
+    practice: "Name one thing about the future that scares you. Write down why. Then write down one step you can take today to face it with your eyes open instead of closed. Walk forward."
+  }
+};
+
+function openPrint(week) {
+  var s = scripts[week];
+  document.getElementById('print-week-label').textContent = s.week + ' · ' + s.tenet;
+  document.getElementById('print-body').innerHTML =
+    '<div class="print-section">' +
+      '<div class="print-label">THE PILLAR</div>' +
+      '<div class="print-pillar-name">' + s.pillar + '</div>' +
+      '<div class="print-pillar-sub">' + s.pillarSub + '</div>' +
+      '<p class="print-pillar-desc">' + s.pillarDesc + '</p>' +
+    '</div>' +
+    '<div class="print-divider"></div>' +
+    '<div class="print-section">' +
+      '<div class="print-label">THE TENET</div>' +
+      '<div class="print-tenet-title">' + s.tenentTitle + '</div>' +
+      '<p>' + s.tenentDesc + '</p>' +
+    '</div>' +
+    '<div class="print-divider"></div>' +
+    '<div class="print-section">' +
+      '<div class="print-label">THE ARCHITECT</div>' +
+      '<div class="print-architect">' + s.architect + '</div>' +
+      '<div class="print-architect-life">' + s.architectLife + '</div>' +
+      '<blockquote>"' + s.quote + '"</blockquote>' +
+      '<div class="print-quote-source">— ' + s.quoteSource + '</div>' +
+    '</div>' +
+    '<div class="print-divider"></div>' +
+    '<div class="print-section">' +
+      '<div class="print-label">THE PRACTICE</div>' +
+      '<p class="print-practice">' + s.practice + '</p>' +
+    '</div>';
+  document.getElementById('print-overlay').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function closePrint() {
+  document.getElementById('print-overlay').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+// Filter buttons
+document.querySelectorAll('.filter-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    var filter = btn.getAttribute('data-filter');
+    document.querySelectorAll('.script-card').forEach(function(card) {
+      if (filter === 'all' || card.getAttribute('data-pillar') === filter) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+});
+
+// Close on escape
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closePrint();
+});
+</script>
+
+<style>
+/* ═══ HERO ═══ */
+.scripts-hero { padding: 120px 0 48px; text-align: center; }
+.hero-content { max-width: 720px; margin: 0 auto; }
+.hero-content h1 { font-family: var(--heading); font-size: clamp(40px, 6vw, 64px); font-weight: 700; color: var(--white); margin-bottom: 16px; }
+.hero-line { width: 60px; height: 2px; background: var(--gold); margin: 0 auto 20px; }
+.hero-sub { font-size: 17px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px; }
+.hero-chain { font-family: var(--mono); font-size: 14px; color: var(--gold); letter-spacing: .05em; margin-bottom: 8px; }
+.hero-chain .arrow { color: var(--text-muted); }
+.hero-sub-small { font-size: 14px; color: var(--text-muted); font-style: italic; }
+
+/* ═══ FILTER ═══ */
+.scripts-grid-section { padding: 48px 0 80px; }
+.pillar-filter { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 32px; justify-content: center; }
+.filter-btn {
+  font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+  background: transparent; border: 1px solid var(--border); color: var(--text-secondary);
+  padding: 8px 16px; border-radius: 6px; cursor: pointer; transition: all .2s;
+}
+.filter-btn:hover { border-color: var(--border-hover); color: var(--white); }
+.filter-btn.active { background: var(--gold); color: var(--void); border-color: var(--gold); }
+
+/* ═══ CARD GRID ═══ */
+.scripts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.script-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+  padding: 28px 24px; transition: border-color .3s, transform .3s;
+  display: flex; flex-direction: column;
+}
+.script-card:hover { border-color: var(--gold-border); transform: translateY(-3px); }
+.card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.week-badge { font-family: var(--mono); font-size: 11px; color: var(--text-muted); letter-spacing: .1em; }
+.pillar-badge { font-family: var(--mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; }
+.pillar-badge.virtue { background: rgba(184,168,142,.15); color: var(--gold); }
+.pillar-badge.apex { background: rgba(220,120,80,.15); color: #dc7850; }
+.pillar-badge.control { background: rgba(100,160,200,.15); color: #64a0c8; }
+.pillar-badge.death { background: rgba(160,130,180,.15); color: #a082b4; }
+.pillar-badge.verity { background: rgba(100,200,160,.15); color: #64c8a0; }
+.script-card h3 { font-family: var(--heading); font-size: 20px; color: var(--white); line-height: 1.3; margin-bottom: 12px; flex-grow: 1; }
+.architect-name { font-family: var(--heading); font-size: 16px; color: var(--gold); font-style: italic; margin-bottom: 2px; }
+.architect-era { font-size: 12px; color: var(--text-muted); margin-bottom: 16px; }
+.btn-print {
+  font-family: var(--mono); font-size: 11px; letter-spacing: .08em;
+  background: transparent; border: 1px solid var(--border); color: var(--text-secondary);
+  padding: 10px 16px; border-radius: 6px; cursor: pointer; transition: all .2s; text-align: center;
+}
+.btn-print:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ═══ PRINT OVERLAY ═══ */
+.print-overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 9999;
+  background: rgba(0,0,0,.85); display: flex; align-items: center; justify-content: center;
+  padding: 20px; overflow-y: auto;
+}
+.print-sheet {
+  background: #fff; color: #111; max-width: 680px; width: 100%;
+  border-radius: 12px; padding: 48px 40px; position: relative;
+  font-family: 'Source Sans 3', sans-serif; line-height: 1.6;
+}
+.print-close {
+  position: absolute; top: 16px; right: 20px; font-size: 24px; color: #999;
+  cursor: pointer; transition: color .2s; line-height: 1;
+}
+.print-close:hover { color: #333; }
+.print-header { text-align: center; margin-bottom: 32px; border-bottom: 2px solid #b8a88e; padding-bottom: 20px; }
+.print-logo { width: 32px; height: 32px; margin-bottom: 8px; }
+.print-title { font-family: 'Cormorant Garamond', serif; font-size: 14px; letter-spacing: .2em; text-transform: uppercase; color: #b8a88e; margin-bottom: 4px; }
+.print-week { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #888; letter-spacing: .1em; }
+.print-section { margin-bottom: 24px; }
+.print-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: .25em; text-transform: uppercase; color: #b8a88e; margin-bottom: 8px; }
+.print-pillar-name { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; color: #222; }
+.print-pillar-sub { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-style: italic; color: #666; margin-bottom: 8px; }
+.print-pillar-desc { font-size: 15px; color: #444; }
+.print-tenet-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; color: #222; margin-bottom: 8px; }
+.print-section p { font-size: 15px; color: #444; }
+.print-architect { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: #222; }
+.print-architect-life { font-size: 13px; color: #888; margin-bottom: 12px; }
+.print-section blockquote { border-left: 3px solid #b8a88e; padding: 12px 20px; margin: 12px 0; font-family: 'Cormorant Garamond', serif; font-size: 18px; font-style: italic; color: #333; }
+.print-quote-source { font-size: 12px; color: #999; text-align: right; }
+.print-practice { font-size: 17px; color: #222; font-weight: 500; line-height: 1.7; }
+.print-divider { height: 1px; background: #e0ddd8; margin: 20px 0; }
+.print-footer { text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid #e0ddd8; }
+.print-url { font-size: 12px; color: #999; margin-top: 12px; }
+
+/* ═══ PRINT MEDIA ═══ */
+@media print {
+  body, body * { visibility: hidden !important; }
+  .print-overlay, .print-overlay * { visibility: visible !important; }
+  .print-overlay { position: absolute; background: white; padding: 0; }
+  .print-sheet { box-shadow: none; border-radius: 0; padding: 24px; }
+  .print-close, .no-print { display: none !important; }
+  nav, footer, .forge-hero, .scripts-hero, .scripts-grid-section, .gold-divider { display: none !important; }
+}
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 768px) {
+  .scripts-grid { grid-template-columns: 1fr; }
+  .print-sheet { padding: 32px 24px; }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .scripts-grid { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</BaseLayout>
