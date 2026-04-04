@@ -83,23 +83,62 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .section-divider-dramatic {
     position: relative;
     width: 100%;
-    height: 120px;
+    height: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+    overflow: visible;
   }
   .divider-glow {
-    width: 100%;
-    max-width: 600px;
-    height: 2px;
-    background: linear-gradient(90deg, transparent 0%, rgba(184, 168, 142, 0.15) 15%, var(--gold) 50%, rgba(184, 168, 142, 0.15) 85%, transparent 100%);
-    box-shadow: 0 0 20px rgba(184, 168, 142, 0.3), 0 0 60px rgba(184, 168, 142, 0.15), 0 0 100px rgba(184, 168, 142, 0.05);
-    animation: glow-pulse 3s ease-in-out infinite;
+    position: relative;
+    width: 80px;
+    height: 80px;
   }
-  @keyframes glow-pulse {
-    0%, 100% { opacity: 0.6; box-shadow: 0 0 20px rgba(184, 168, 142, 0.2), 0 0 60px rgba(184, 168, 142, 0.1); }
-    50% { opacity: 1; box-shadow: 0 0 30px rgba(184, 168, 142, 0.4), 0 0 80px rgba(184, 168, 142, 0.2), 0 0 120px rgba(184, 168, 142, 0.08); }
+  /* Star shape via overlapping rotated squares */
+  .divider-glow::before,
+  .divider-glow::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 3px;
+    height: 80px;
+    background: linear-gradient(180deg, transparent, var(--gold), transparent);
+    transform-origin: center;
+    animation: star-pulse 3s ease-in-out infinite;
+  }
+  .divider-glow::before {
+    transform: translate(-50%, -50%) rotate(0deg);
+    box-shadow: 0 0 20px rgba(184, 168, 142, 0.5), 0 0 60px rgba(184, 168, 142, 0.2);
+  }
+  .divider-glow::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+    box-shadow: 0 0 20px rgba(184, 168, 142, 0.5), 0 0 60px rgba(184, 168, 142, 0.2);
+  }
+  /* Additional rays via the parent */
+  .divider-glow {
+    background: radial-gradient(circle at center, rgba(184, 168, 142, 0.4) 0%, rgba(184, 168, 142, 0.1) 20%, transparent 50%);
+    animation: star-pulse 3s ease-in-out infinite;
+  }
+  /* Extra diagonal rays */
+  .star-ray-1, .star-ray-2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2px;
+    height: 50px;
+    background: linear-gradient(180deg, transparent, rgba(184, 168, 142, 0.6), transparent);
+    animation: star-pulse 3s ease-in-out infinite;
+  }
+  .star-ray-1 {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  .star-ray-2 {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+  @keyframes star-pulse {
+    0%, 100% { opacity: 0.5; filter: blur(0px); }
+    50% { opacity: 1; filter: blur(0.5px); box-shadow: 0 0 40px rgba(184, 168, 142, 0.5), 0 0 80px rgba(184, 168, 142, 0.25), 0 0 140px rgba(184, 168, 142, 0.1); }
   }
 
   /* ═══ TENETS GROUP ═══ */
@@ -520,7 +559,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 </section>
 
 <div class="section-divider-dramatic">
-  <div class="divider-glow"></div>
+  <div class="divider-glow">
+    <div class="star-ray-1"></div>
+    <div class="star-ray-2"></div>
+  </div>
 </div>
 
 <!-- ═══ VERITY TRANSITION ═══ -->
@@ -537,7 +579,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 </section>
 
 <div class="section-divider-dramatic">
-  <div class="divider-glow"></div>
+  <div class="divider-glow">
+    <div class="star-ray-1"></div>
+    <div class="star-ray-2"></div>
+  </div>
 </div>
 
 <!-- ═══ TENETS OF VERITY ═══ -->
