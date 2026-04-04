@@ -114,13 +114,37 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   /* ═══ VERITY TRANSITION ═══ */
   .verity-transition {
     text-align: center;
-    padding: 60px 20px;
-    max-width: 640px;
+    padding: 80px 20px 60px;
+    max-width: 720px;
     margin: 0 auto;
+  }
+  .verity-transition-line {
+    width: 60px;
+    height: 2px;
+    background: var(--gold);
+    margin: 0 auto 40px;
+    opacity: 0.6;
+  }
+  .verity-transition-label {
+    font-family: var(--mono);
+    font-size: clamp(11px, 1.5vw, 13px);
+    font-weight: 600;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+  .verity-transition-headline {
+    font-family: var(--heading);
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.3;
+    margin-bottom: 28px;
   }
   .verity-transition-text {
     font-family: var(--serif);
-    font-size: 18px;
+    font-size: clamp(17px, 2vw, 20px);
     font-style: italic;
     color: var(--cream);
     line-height: 1.8;
@@ -460,10 +484,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <!-- ═══ VERITY TRANSITION ═══ -->
 <section class="verity-transition reveal d1">
+  <div class="verity-transition-line"></div>
   <div class="wrap">
+    <p class="verity-transition-label">ENTERING THE ENGINEERED AGE</p>
+    <h2 class="verity-transition-headline">The world changed.<br>The tenets evolved.</h2>
     <p class="verity-transition-text">The first twelve tenets are timeless. They were true before electricity, before the internet, before any of this. They will be true long after.</p>
-    <p class="verity-transition-text">But we do not live in a timeless world. We live in an engineered one. And that demands its own reckoning.</p>
+    <p class="verity-transition-text">But we do not live in a timeless world. We live in an engineered one — where algorithms shape your thoughts, machines mimic your voice, and comfort is manufactured at scale.</p>
+    <p class="verity-transition-text">That demands its own reckoning.</p>
   </div>
+  <div class="verity-transition-line"></div>
 </section>
 
 <!-- ═══ TENETS OF VERITY ═══ -->
