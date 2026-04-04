@@ -91,43 +91,48 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
   .divider-glow {
     position: relative;
-    width: 80px;
+    width: 100%;
     height: 80px;
   }
-  /* Star shape via overlapping rotated squares */
-  .divider-glow::before,
+  /* Horizontal wide beam */
+  .divider-glow::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 90vw;
+    max-width: 900px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, rgba(184, 168, 142, 0.08) 10%, rgba(184, 168, 142, 0.4) 30%, var(--gold) 50%, rgba(184, 168, 142, 0.4) 70%, rgba(184, 168, 142, 0.08) 90%, transparent 100%);
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 30px rgba(184, 168, 142, 0.4), 0 0 80px rgba(184, 168, 142, 0.15);
+    animation: star-pulse 3s ease-in-out infinite;
+  }
+  /* Vertical ray */
   .divider-glow::after {
     content: '';
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 3px;
-    height: 80px;
+    width: 2px;
+    height: 70px;
     background: linear-gradient(180deg, transparent, var(--gold), transparent);
-    transform-origin: center;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 20px rgba(184, 168, 142, 0.5), 0 0 60px rgba(184, 168, 142, 0.2);
     animation: star-pulse 3s ease-in-out infinite;
   }
-  .divider-glow::before {
-    transform: translate(-50%, -50%) rotate(0deg);
-    box-shadow: 0 0 20px rgba(184, 168, 142, 0.5), 0 0 60px rgba(184, 168, 142, 0.2);
-  }
-  .divider-glow::after {
-    transform: translate(-50%, -50%) rotate(90deg);
-    box-shadow: 0 0 20px rgba(184, 168, 142, 0.5), 0 0 60px rgba(184, 168, 142, 0.2);
-  }
-  /* Additional rays via the parent */
+  /* Center glow orb */
   .divider-glow {
-    background: radial-gradient(circle at center, rgba(184, 168, 142, 0.4) 0%, rgba(184, 168, 142, 0.1) 20%, transparent 50%);
     animation: star-pulse 3s ease-in-out infinite;
   }
-  /* Extra diagonal rays */
+  /* Diagonal rays */
   .star-ray-1, .star-ray-2 {
     position: absolute;
     top: 50%;
     left: 50%;
     width: 2px;
     height: 50px;
-    background: linear-gradient(180deg, transparent, rgba(184, 168, 142, 0.6), transparent);
+    background: linear-gradient(180deg, transparent, rgba(184, 168, 142, 0.5), transparent);
     animation: star-pulse 3s ease-in-out infinite;
   }
   .star-ray-1 {
@@ -136,9 +141,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .star-ray-2 {
     transform: translate(-50%, -50%) rotate(-45deg);
   }
+  /* Center glow dot */
+  .divider-glow .star-ray-1::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 15px rgba(184, 168, 142, 0.8), 0 0 40px rgba(184, 168, 142, 0.4), 0 0 80px rgba(184, 168, 142, 0.2);
+  }
   @keyframes star-pulse {
-    0%, 100% { opacity: 0.5; filter: blur(0px); }
-    50% { opacity: 1; filter: blur(0.5px); box-shadow: 0 0 40px rgba(184, 168, 142, 0.5), 0 0 80px rgba(184, 168, 142, 0.25), 0 0 140px rgba(184, 168, 142, 0.1); }
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; box-shadow: 0 0 40px rgba(184, 168, 142, 0.5), 0 0 100px rgba(184, 168, 142, 0.25), 0 0 160px rgba(184, 168, 142, 0.1); }
   }
 
   /* ═══ TENETS GROUP ═══ */
