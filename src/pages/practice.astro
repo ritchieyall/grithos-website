@@ -955,8 +955,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       if (viewMonth === currentMonth && d === currentDay) {
         cell.classList.add('today');
       }
-      if (viewMonth === 2 && d === 13) {
-        cell.classList.add('forge-day');
+      // Forge Day = every Friday the 13th
+      if (d === 13) {
+        var checkDate = new Date(2026, viewMonth, 13);
+        if (checkDate.getDay() === 5) {
+          cell.classList.add('forge-day');
+        }
       }
       (function(day) {
         cell.addEventListener('click', function() {
@@ -1005,7 +1009,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     var practices = PRACTICES[viewMonth];
     if (!practices || !practices[day - 1]) return;
 
-    var isForgeDay = (viewMonth === 2 && day === 13);
+    var isForgeDay = (day === 13 && new Date(2026, viewMonth, 13).getDay() === 5);
 
     // Calculate grid position of clicked day
     var start = firstDayOfMonth(viewMonth);
@@ -1017,13 +1021,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     practiceRow.className = 'practice-row';
     var cardClass = isForgeDay ? 'practice-card forge-card' : 'practice-card';
     var forgeLabel = isForgeDay ? '<div class="forge-label">FORGE DAY</div>' : '';
-    var dateLabel = isForgeDay ? 'MARCH 13 — THE FOUNDING' : MONTHS[viewMonth] + ' ' + day;
+    var dateLabel = isForgeDay ? MONTHS[viewMonth] + ' 13 — FORGE DAY' : MONTHS[viewMonth] + ' ' + day;
+    var practiceText = isForgeDay ? 'FORGE DAY — Grithos was born on Friday the 13th. Today, do one thing that is hard on purpose. Superstition fears this date. Grithos was forged in it.' : practices[day - 1];
     practiceRow.innerHTML =
       '<div class="' + cardClass + '">' +
         '<button class="close-btn" aria-label="Close">&times;</button>' +
         forgeLabel +
         '<div class="practice-date">' + dateLabel + '</div>' +
-        '<div class="practice-text">' + practices[day - 1] + '</div>' +
+        '<div class="practice-text">' + practiceText + '</div>' +
         '<div class="practice-tenet-link"><a href="/tenets#' + TENET_IDS[viewMonth] + '">' + TENETS[viewMonth].replace('— ', '— ').split('—')[0].trim() + '</a></div>' +
         '<button class="share-btn" aria-label="Share this practice">' +
           '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="14" height="14"><path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z" /></svg>' +
